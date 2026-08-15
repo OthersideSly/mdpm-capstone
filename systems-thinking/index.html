@@ -828,7 +828,26 @@ svg {
     <button type="button" class="btn" data-map-view="external" aria-pressed="false">4. Outside the Boundary</button>
   </div>
 
-  <p class="lm2-instruction text-small text-muted">Choose a view, then select any box. Only its direct connections will be emphasized and explained below.</p>
+  <section id="lm2-guide" class="lm2-guide" aria-labelledby="lm2-guide-title">
+    <div class="lm2-guide-heading">
+      <div>
+        <strong id="lm2-guide-title">How to read this map</strong>
+        <span class="text-small text-muted">Follow the system from overview to evidence.</span>
+      </div>
+      <button id="lm2-hide-guide" type="button" class="btn btn-ghost text-small">Hide guide</button>
+    </div>
+    <ol class="lm2-guide-steps">
+      <li><span>1</span><strong>Choose a view</strong><small>Start with Transition Overview.</small></li>
+      <li><span>2</span><strong>Select a node</strong><small>Choose any box to set the focus.</small></li>
+      <li><span>3</span><strong>Follow the emphasis</strong><small>Trace the highlighted arrows and labels.</small></li>
+      <li><span>4</span><strong>Read the context</strong><small>Review its role, evidence and connections below.</small></li>
+    </ol>
+  </section>
+
+  <div class="lm2-instruction-row">
+    <p class="lm2-instruction text-small text-muted">Start with Transition Overview. Select any node to isolate its direct relationships, then use the context panel to understand its role, evidence, opportunities and connections.</p>
+    <button id="lm2-show-guide" type="button" class="btn btn-ghost text-small" hidden>Show reading guide</button>
+  </div>
 
   <section class="lm2-map-wrap" aria-label="Interactive systems map">
     <div id="lm2-view-label" class="lm2-view-label">Current relationships → future opportunity</div>
@@ -853,17 +872,18 @@ svg {
   <section class="lm2-legend" aria-label="Map legend">
     <strong class="lm2-legend-title">Legend</strong>
     <div class="lm2-legend-items text-small">
-      <span><i class="lm2-key lm2-key-population"></i>Population</span>
-      <span><i class="lm2-key lm2-key-value"></i>Value / engagement</span>
-      <span><i class="lm2-key lm2-key-partner"></i>Partner</span>
-      <span><i class="lm2-key lm2-key-capability"></i>Capability</span>
-      <span><i class="lm2-key lm2-key-future"></i>Future opportunity</span>
-      <span><i class="lm2-key lm2-key-external"></i>Outside boundary</span>
-      <span><i class="lm2-key lm2-key-outcome"></i>Intended outcome</span>
-      <span><i class="lm2-key-line"></i>Current flow</span>
-      <span><i class="lm2-key-line lm2-key-line-future"></i>Future pathway</span>
-      <span><i class="lm2-key-line lm2-key-line-inferred"></i>Inferred relationship</span>
+      <button type="button" class="lm2-legend-item" data-legend-help="A group participating in or affected by the system." data-tooltip="A group participating in or affected by the system."><i class="lm2-key lm2-key-population"></i>Population</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="The value exchanged or the engagement behaviour the system aims to strengthen." data-tooltip="The value exchanged or the engagement behaviour the system aims to strengthen."><i class="lm2-key lm2-key-value"></i>Value / engagement</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="An organization or ecosystem participant that helps deliver value." data-tooltip="An organization or ecosystem participant that helps deliver value."><i class="lm2-key lm2-key-partner"></i>Partner</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="An organizational capability required to enable the system." data-tooltip="An organizational capability required to enable the system."><i class="lm2-key lm2-key-capability"></i>Capability</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized capability, behaviour or pathway that could emerge next." data-tooltip="A hypothesized capability, behaviour or pathway that could emerge next."><i class="lm2-key lm2-key-future"></i>Future opportunity</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A force outside the bounded system that may influence it without being controlled by it." data-tooltip="A force outside the bounded system that may influence it without being controlled by it."><i class="lm2-key lm2-key-external"></i>Outside boundary</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="The longer-term result the system is intended to produce." data-tooltip="The longer-term result the system is intended to produce."><i class="lm2-key lm2-key-outcome"></i>Intended outcome</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A current, observed or supported relationship between two nodes." data-tooltip="A current, observed or supported relationship between two nodes."><i class="lm2-key-line"></i>Current flow</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized connection that represents a possible future pathway." data-tooltip="A hypothesized connection that represents a possible future pathway."><i class="lm2-key-line lm2-key-line-future"></i>Future pathway</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A plausible relationship that still requires validation." data-tooltip="A plausible relationship that still requires validation."><i class="lm2-key-line lm2-key-line-inferred"></i>Inferred relationship</button>
     </div>
+    <p id="lm2-legend-help" class="lm2-legend-help text-small" aria-live="polite">Select a legend item to see how it should be interpreted.</p>
   </section>
 
   <section class="card lm2-detail" aria-live="polite" aria-label="Selected item explanation">
@@ -956,6 +976,7 @@ svg {
     margin-inline: auto;
     color: var(--foreground);
   }
+  #loyalty-map-v2 [hidden] { display: none !important; }
   #loyalty-map-v2 .viz-controls {
     width: 100%;
     padding: 0.3rem;
@@ -979,9 +1000,78 @@ svg {
     background: #26343b;
     box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
   }
+  #loyalty-map-v2 .lm2-guide {
+    margin-top: 0.85rem;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--ring) 28%, var(--border));
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--accent) 34%, var(--card));
+  }
+  #loyalty-map-v2 .lm2-guide-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  #loyalty-map-v2 .lm2-guide-heading > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.65rem;
+  }
+  #loyalty-map-v2 .lm2-guide-heading strong { font-weight: 600; }
+  #loyalty-map-v2 .lm2-guide-heading .btn { flex: 0 0 auto; }
+  #loyalty-map-v2 .lm2-guide-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  #loyalty-map-v2 .lm2-guide-steps li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.65rem minmax(0, 1fr);
+    gap: 0 0.5rem;
+    min-width: 0;
+  }
+  #loyalty-map-v2 .lm2-guide-steps li > span {
+    display: inline-flex;
+    grid-row: 1 / 3;
+    width: 1.65rem;
+    height: 1.65rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: #fff;
+    background: #405e6e;
+    font-size: var(--font-size-small);
+    font-weight: 650;
+  }
+  #loyalty-map-v2 .lm2-guide-steps strong {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  #loyalty-map-v2 .lm2-guide-steps small {
+    margin-top: 0.08rem;
+    color: var(--muted-foreground);
+    line-height: 1.35;
+  }
+  #loyalty-map-v2 .lm2-instruction-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
   #loyalty-map-v2 .lm2-instruction {
-    max-width: 52rem;
+    max-width: 60rem;
     margin: 0.7rem 0 1.35rem;
+  }
+  #loyalty-map-v2 .lm2-instruction-row .btn {
+    flex: 0 0 auto;
+    margin-bottom: 0.65rem;
   }
   #loyalty-map-v2 .lm2-map-wrap {
     width: 100%;
@@ -1282,7 +1372,8 @@ svg {
   #loyalty-map-v2 .lm2-connection-copy p { margin: 0.3rem 0 0; }
   #loyalty-map-v2 .lm2-connection-item strong { font-weight: 500; }
   #loyalty-map-v2 .lm2-legend {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: flex-start;
     gap: 1rem;
     width: 100%;
@@ -1304,7 +1395,36 @@ svg {
     flex-wrap: wrap;
     gap: 0.55rem 1rem;
   }
-  #loyalty-map-v2 .lm2-legend-items span { display: inline-flex; align-items: center; gap: 0.35rem; }
+  #loyalty-map-v2 .lm2-legend-item {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.35rem;
+    margin: 0;
+    padding: 0.08rem 0.2rem;
+    border: 0;
+    border-radius: 0.35rem;
+    color: var(--foreground);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+  }
+  #loyalty-map-v2 .lm2-legend-item:hover,
+  #loyalty-map-v2 .lm2-legend-item[aria-pressed="true"] {
+    background: var(--muted);
+  }
+  #loyalty-map-v2 .lm2-legend-item:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  #loyalty-map-v2 .lm2-legend-help {
+    grid-column: 2;
+    min-height: var(--line-height-small);
+    margin-top: 0.45rem;
+    color: var(--muted-foreground);
+  }
   #loyalty-map-v2 .lm2-key { width: 0.9rem; height: 0.7rem; border: 1px solid var(--border); border-radius: 0.18rem; }
   #loyalty-map-v2 .lm2-key-population { background: color-mix(in srgb, var(--lm-population) 20%, var(--card)); }
   #loyalty-map-v2 .lm2-key-value { background: color-mix(in srgb, var(--lm-value) 20%, var(--card)); }
@@ -1323,12 +1443,14 @@ svg {
     html > body,
     :root:not([data-app-block-surface]) > body { padding: 16px; }
     #loyalty-map-v2 .viz-controls .btn { flex: 1 1 44%; width: auto; }
+    #loyalty-map-v2 .lm2-guide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     #loyalty-map-v2 .lm2-map-wrap { padding: 1rem; }
     #loyalty-map-v2 .lm2-canvas { padding: 1rem 0.5rem; }
     #loyalty-map-v2 .lm2-grid { gap: 3rem 1.25rem; }
     #loyalty-map-v2 .lm2-grid[data-view="current"] { column-gap: 1.5rem; row-gap: 3rem; }
     #loyalty-map-v2 .lm2-legend { display: block; }
     #loyalty-map-v2 .lm2-legend-items { margin-top: 0.45rem; }
+    #loyalty-map-v2 .lm2-legend-help { margin-top: 0.6rem; }
     #loyalty-map-v2 .lm2-disclosure summary { grid-template-columns: minmax(0, 1fr) auto 1rem; }
     #loyalty-map-v2 .lm2-disclosure-hint { display: none; }
     #loyalty-map-v2 .lm2-evidence-grid { grid-template-columns: 1fr; }
@@ -1337,6 +1459,10 @@ svg {
     html > body,
     :root:not([data-app-block-surface]) > body { padding: 12px; }
     #loyalty-map-v2 .viz-controls .btn { flex-basis: 100%; justify-content: flex-start; }
+    #loyalty-map-v2 .lm2-guide { padding: 0.8rem; }
+    #loyalty-map-v2 .lm2-guide-heading { align-items: center; }
+    #loyalty-map-v2 .lm2-guide-steps { grid-template-columns: 1fr; }
+    #loyalty-map-v2 .lm2-instruction-row { align-items: flex-start; }
     #loyalty-map-v2 .lm2-canvas { padding: 1rem; }
     #loyalty-map-v2 .lm2-grid {
       grid-template-columns: 1fr !important;
@@ -2127,6 +2253,33 @@ svg {
         b.classList.toggle("btn-primary",active);
       });
       renderView(button.getAttribute("data-map-view"));
+    });
+  });
+
+  var guide=root.querySelector("#lm2-guide");
+  var hideGuideButton=root.querySelector("#lm2-hide-guide");
+  var showGuideButton=root.querySelector("#lm2-show-guide");
+  function setGuideHidden(hidden,persist) {
+    guide.hidden=hidden;
+    showGuideButton.hidden=!hidden;
+    if (persist) {
+      try { window.localStorage.setItem("lm2-guide-hidden",hidden?"true":"false"); } catch (error) {}
+    }
+  }
+  var guideStartsHidden=false;
+  try { guideStartsHidden=window.localStorage.getItem("lm2-guide-hidden")==="true"; } catch (error) {}
+  setGuideHidden(guideStartsHidden,false);
+  hideGuideButton.addEventListener("click",function () { setGuideHidden(true,true); });
+  showGuideButton.addEventListener("click",function () { setGuideHidden(false,true); });
+
+  var legendHelp=root.querySelector("#lm2-legend-help");
+  root.querySelectorAll("[data-legend-help]").forEach(function (item) {
+    item.setAttribute("aria-pressed","false");
+    item.addEventListener("click",function () {
+      root.querySelectorAll("[data-legend-help]").forEach(function (other) {
+        other.setAttribute("aria-pressed",String(other===item));
+      });
+      legendHelp.textContent=item.getAttribute("data-legend-help");
     });
   });
 
