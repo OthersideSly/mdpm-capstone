@@ -1,6 +1,6 @@
 # MDPM Capstone
 
-Shared repository for the team’s MDPM Capstone artifacts.
+Shared repository for Sylvester's MDPM Capstone artifacts.
 
 ## Published artifacts
 
