@@ -958,15 +958,19 @@ svg {
 </div>
 
 <div id="lm2-tour" class="lm2-tour" hidden>
-  <div class="lm2-tour-blocker" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="top" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="right" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="bottom" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="left" aria-hidden="true"></div>
   <div id="lm2-tour-spotlight" class="lm2-tour-spotlight" aria-hidden="true"></div>
   <section id="lm2-tour-card" class="lm2-tour-card" role="dialog" aria-modal="true" aria-labelledby="lm2-tour-title" aria-describedby="lm2-tour-copy" tabindex="-1">
     <div class="lm2-tour-meta">
-      <span id="lm2-tour-progress">1 of 6</span>
+      <span id="lm2-tour-progress">Welcome</span>
       <button id="lm2-tour-skip" type="button" class="lm2-tour-skip">Skip tour</button>
     </div>
     <h2 id="lm2-tour-title">Choose a perspective</h2>
     <p id="lm2-tour-copy"></p>
+    <button id="lm2-tour-replay" type="button" class="lm2-tour-replay" hidden>Replay relationship trace</button>
     <div class="lm2-tour-actions">
       <button id="lm2-tour-back" type="button" class="lm2-tour-button lm2-tour-button-secondary">Back</button>
       <button id="lm2-tour-next" type="button" class="lm2-tour-button lm2-tour-button-primary">Next</button>
@@ -1102,15 +1106,19 @@ svg {
 
   .lm2-tour[hidden] { display: none !important; }
   .lm2-tour,
-  .lm2-tour-blocker {
+  .lm2-tour-shield {
     position: fixed;
-    inset: 0;
   }
-  .lm2-tour { z-index: 1000; }
-  .lm2-tour-blocker {
+  .lm2-tour {
+    z-index: 1000;
+    inset: 0;
+    pointer-events: none;
+  }
+  .lm2-tour-shield {
     z-index: 0;
     background: transparent;
     cursor: default;
+    pointer-events: auto;
   }
   .lm2-tour-spotlight {
     position: fixed;
@@ -1131,6 +1139,14 @@ svg {
     color: #f8fafb;
     background: #243239;
     box-shadow: 0 18px 56px rgb(0 0 0 / 32%);
+    pointer-events: auto;
+  }
+  .lm2-tour.is-welcome .lm2-tour-spotlight { display: none; }
+  .lm2-tour.is-welcome .lm2-tour-card {
+    top: 50% !important;
+    left: 50% !important;
+    width: min(27rem, calc(100vw - 2rem));
+    transform: translate(-50%, -50%);
   }
   .lm2-tour-meta,
   .lm2-tour-actions {
@@ -1156,6 +1172,22 @@ svg {
     font: inherit;
     text-decoration: underline;
     text-underline-offset: 0.2rem;
+  }
+  .lm2-tour-replay {
+    appearance: none;
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    margin: -0.15rem 0 1rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 0.5rem;
+    color: rgb(248 250 251 / 82%);
+    background: rgb(255 255 255 / 7%);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 560;
   }
   .lm2-tour-card h2 {
     margin: 0.8rem 0 0;
@@ -1195,6 +1227,37 @@ svg {
   .lm2-tour :is(button, [tabindex]):focus-visible {
     outline: 2px solid #a9daf8;
     outline-offset: 2px;
+  }
+  #loyalty-map-v2 .is-tour-interactive-target { cursor: pointer; }
+  #loyalty-map-v2 .lm2-node.is-tour-demo-origin {
+    animation: lm2-tour-origin-pulse 820ms ease-in-out 2;
+  }
+  #loyalty-map-v2 .lm2-connector.is-tour-trace {
+    stroke-dasharray: var(--tour-length) !important;
+    stroke-dashoffset: var(--tour-length);
+    animation: lm2-tour-line-draw 760ms ease-out var(--tour-delay) forwards;
+  }
+  #loyalty-map-v2 .lm2-edge-label.is-tour-trace-label {
+    opacity: 0;
+    animation: lm2-tour-label-in 360ms ease-out var(--tour-delay) forwards;
+  }
+  #loyalty-map-v2 .lm2-node.is-tour-demo-arrival {
+    animation: lm2-tour-arrival-pulse 680ms ease-out var(--tour-delay) both;
+  }
+  @keyframes lm2-tour-origin-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); box-shadow: 0 0 0 6px color-mix(in srgb, var(--ring) 22%, transparent); }
+  }
+  @keyframes lm2-tour-line-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes lm2-tour-label-in {
+    to { opacity: 1; }
+  }
+  @keyframes lm2-tour-arrival-pulse {
+    0% { transform: scale(0.98); filter: saturate(0.75); }
+    55% { transform: scale(1.025); filter: saturate(1.2); box-shadow: 0 0 0 5px color-mix(in srgb, var(--ring) 18%, transparent); }
+    100% { transform: scale(1); filter: none; }
   }
   #loyalty-map-v2 .lm2-map-wrap {
     width: 100%;
@@ -1562,6 +1625,7 @@ svg {
   @media (prefers-reduced-motion: reduce) {
     #loyalty-map-v2 .lm2-disclosure summary::after { transition: none; }
     .lm2-tour-spotlight { transition: none; }
+    #loyalty-map-v2 :is(.is-tour-demo-origin, .is-tour-trace, .is-tour-trace-label, .is-tour-demo-arrival) { animation: none !important; }
   }
   @media (max-width: 820px) {
     html > body,
@@ -1608,6 +1672,14 @@ svg {
       left: 0.75rem !important;
       top: auto !important;
       width: auto;
+    }
+    .lm2-tour.is-welcome .lm2-tour-card {
+      right: 0.75rem !important;
+      bottom: auto !important;
+      left: 0.75rem !important;
+      top: 50% !important;
+      width: auto;
+      transform: translateY(-50%);
     }
   }
 </style>
@@ -2426,14 +2498,17 @@ svg {
   var tourBack=document.querySelector("#lm2-tour-back");
   var tourNext=document.querySelector("#lm2-tour-next");
   var tourSkip=document.querySelector("#lm2-tour-skip");
+  var tourReplay=document.querySelector("#lm2-tour-replay");
+  var tourShields=Array.prototype.slice.call(tour.querySelectorAll(".lm2-tour-shield"));
   var tourLauncher=root.querySelector("#lm2-start-tour");
+  var tourNodeByView={transition:"data",current:"engagement",future:"delivery",external:"technology-landscape"};
   var tourSteps=[
-    {target:".viz-controls",title:"Choose a perspective",copy:"Use these four views to move from today’s relationships to future opportunities and the external forces around the system."},
-    {target:".lm2-map-wrap",title:"Read the system as a map",copy:"Each box represents a population, capability, behaviour, opportunity or outcome. The active view changes which parts of the system are shown."},
-    {target:".lm2-node.is-selected",title:"Select a node to set the focus",copy:"Choose any box to isolate its immediate relationships. The selected node receives a strong outline so you always know where you are."},
-    {target:".lm2-canvas",title:"Follow the emphasized relationships",copy:"Highlighted arrows and labels show direct connections. Faded nodes remain visible for orientation but sit outside the selected node’s immediate relationship set."},
-    {target:".lm2-legend",title:"Use the legend to interpret the visual language",copy:"Colors identify component types, while solid, dashed and dotted lines distinguish current, future and inferred relationships. Select any legend item for a definition."},
-    {target:".lm2-detail",title:"Continue into the supporting context",copy:"The panel below explains the selected node’s role, evidence, assumptions and future opportunity. Expand direct connections when you want the relationship-level detail."}
+    {welcome:true,title:"Welcome to the loyalty systems map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
+    {target:".viz-controls",interactive:true,title:"Choose a perspective",copy:"Try a view now. Each perspective reveals a different layer of the system, and the map below updates to match your choice."},
+    {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a component in the active system view. Use the always-visible legend below the map to decode it: color identifies the component type, while line style distinguishes current, future and inferred relationships."},
+    {target:function () { return grid.querySelector('[data-node-id="'+(tourNodeByView[currentView] || "data")+'"]') || grid.querySelector(".lm2-node"); },interactive:true,title:"Select a node",copy:"Try the highlighted node. Selecting it brings its immediate relationships forward and updates the supporting context without taking you away from the map."},
+    {target:".lm2-canvas",demo:true,title:"Follow the emphasized relationships",copy:"Watch the selected node trace outward: its direct lines appear first, then their labels and connected nodes. Everything else stays visible but recedes for orientation."},
+    {target:".lm2-detail",title:"Read the supporting context",copy:"This panel explains the selected node’s role, evidence, assumptions and future opportunity. Open Direct connections only when you want relationship-level detail."}
   ];
   var tourActive=false;
   var tourIndex=0;
@@ -2441,14 +2516,89 @@ svg {
   var tourPreviousScroll=0;
   var tourPositionFrame=0;
   var tourReduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tourDemoTimer=0;
 
   function tourTarget() {
-    return root.querySelector(tourSteps[tourIndex].target) || root.querySelector(".viz-controls");
+    var target=tourSteps[tourIndex].target;
+    if (typeof target==="function") return target();
+    return target ? root.querySelector(target) : null;
+  }
+
+  function setTourShield(shield,left,top,width,height) {
+    shield.style.left=Math.max(0,left)+"px";
+    shield.style.top=Math.max(0,top)+"px";
+    shield.style.width=Math.max(0,width)+"px";
+    shield.style.height=Math.max(0,height)+"px";
+  }
+
+  function coverTourScreen() {
+    setTourShield(tourShields[0],0,0,window.innerWidth,window.innerHeight);
+    tourShields.slice(1).forEach(function (shield) { setTourShield(shield,0,0,0,0); });
+  }
+
+  function openTourHole(left,top,right,bottom) {
+    setTourShield(tourShields[0],0,0,window.innerWidth,top);
+    setTourShield(tourShields[1],right,top,window.innerWidth-right,bottom-top);
+    setTourShield(tourShields[2],0,bottom,window.innerWidth,window.innerHeight-bottom);
+    setTourShield(tourShields[3],0,top,left,bottom-top);
+  }
+
+  function clearTourInteractivity() {
+    root.removeAttribute("inert");
+    root.querySelectorAll(".is-tour-interactive-target").forEach(function (item) {
+      item.classList.remove("is-tour-interactive-target");
+    });
+  }
+
+  function applyTourInteractivity(step,target) {
+    clearTourInteractivity();
+    if (step.interactive && target) target.classList.add("is-tour-interactive-target");
+    else root.setAttribute("inert","");
+  }
+
+  function cleanupTourDemo() {
+    window.clearTimeout(tourDemoTimer);
+    root.querySelectorAll(".is-tour-demo-origin,.is-tour-demo-arrival").forEach(function (item) {
+      item.classList.remove("is-tour-demo-origin","is-tour-demo-arrival");
+      item.style.removeProperty("--tour-delay");
+    });
+    root.querySelectorAll(".is-tour-trace,.is-tour-trace-label").forEach(function (item) {
+      item.classList.remove("is-tour-trace","is-tour-trace-label");
+      item.style.removeProperty("--tour-delay");
+      item.style.removeProperty("--tour-length");
+    });
+  }
+
+  function runRelationshipDemo() {
+    cleanupTourDemo();
+    var origin=grid.querySelector(".lm2-node.is-selected") || grid.querySelector(".lm2-node");
+    if (!origin || tourReduceMotion) return;
+    origin.classList.add("is-tour-demo-origin");
+    linesLayer.querySelectorAll(".lm2-connector.is-connected").forEach(function (line,index) {
+      line.style.setProperty("--tour-length",Math.max(1,line.getTotalLength()));
+      line.style.setProperty("--tour-delay",(180+index*150)+"ms");
+      line.classList.add("is-tour-trace");
+    });
+    labelsLayer.querySelectorAll(".lm2-edge-label").forEach(function (label,index) {
+      label.style.setProperty("--tour-delay",(580+index*140)+"ms");
+      label.classList.add("is-tour-trace-label");
+    });
+    grid.querySelectorAll(".lm2-node.is-connected").forEach(function (node,index) {
+      node.style.setProperty("--tour-delay",(850+index*150)+"ms");
+      node.classList.add("is-tour-demo-arrival");
+    });
+    tourDemoTimer=window.setTimeout(cleanupTourDemo,2800);
   }
 
   function positionTour() {
     if (!tourActive) return;
+    var step=tourSteps[tourIndex];
+    if (step.welcome) {
+      coverTourScreen();
+      return;
+    }
     var target=tourTarget();
+    if (!target) return;
     var rect=target.getBoundingClientRect();
     var padding=8;
     var left=Math.max(8,rect.left-padding);
@@ -2459,6 +2609,8 @@ svg {
     tourSpotlight.style.top=top+"px";
     tourSpotlight.style.width=Math.max(24,right-left)+"px";
     tourSpotlight.style.height=Math.max(24,bottom-top)+"px";
+    if (step.interactive) openTourHole(left,top,right,bottom);
+    else coverTourScreen();
 
     if (window.innerWidth<=640) return;
     var cardRect=tourCard.getBoundingClientRect();
@@ -2489,21 +2641,27 @@ svg {
   }
 
   function renderTourStep() {
+    cleanupTourDemo();
     var step=tourSteps[tourIndex];
-    tourProgress.textContent=(tourIndex+1)+" of "+tourSteps.length;
+    var target=tourTarget();
+    tour.classList.toggle("is-welcome",Boolean(step.welcome));
+    tourProgress.textContent=step.welcome?"Welcome":tourIndex+" of "+(tourSteps.length-1);
     tourTitle.textContent=step.title;
     tourCopy.textContent=step.copy;
     tourBack.disabled=tourIndex===0;
-    tourNext.textContent=tourIndex===tourSteps.length-1?"Finish":"Next";
-    tourTarget().scrollIntoView({behavior:tourReduceMotion?"auto":"smooth",block:"center",inline:"nearest"});
+    tourNext.textContent=step.nextLabel || (tourIndex===tourSteps.length-1?"Finish":"Next");
+    tourReplay.hidden=!step.demo || tourReduceMotion;
+    applyTourInteractivity(step,target);
+    if (!step.welcome && target) target.scrollIntoView({behavior:tourReduceMotion?"auto":"smooth",block:"center",inline:"nearest"});
     window.setTimeout(function () {
       positionTour();
       tourCard.focus({preventScroll:true});
+      if (step.demo) runRelationshipDemo();
     },tourReduceMotion?0:260);
   }
 
   function recordTourCompletion() {
-    try { window.localStorage.setItem("lm2-smart-tour-complete-v1","true"); } catch (error) {}
+    try { window.localStorage.setItem("lm2-smart-tour-complete-v2","true"); } catch (error) {}
   }
 
   function closeTour(complete) {
@@ -2511,7 +2669,9 @@ svg {
     if (complete) recordTourCompletion();
     tourActive=false;
     tour.hidden=true;
-    root.removeAttribute("inert");
+    tour.classList.remove("is-welcome");
+    clearTourInteractivity();
+    cleanupTourDemo();
     document.removeEventListener("keydown",handleTourKeydown);
     window.removeEventListener("resize",scheduleTourPosition);
     window.removeEventListener("scroll",scheduleTourPosition,true);
@@ -2543,7 +2703,14 @@ svg {
       return;
     }
     if (event.key!=="Tab") return;
-    var focusable=Array.prototype.slice.call(tourCard.querySelectorAll("button:not(:disabled)"));
+    var focusable=[];
+    var step=tourSteps[tourIndex];
+    var target=tourTarget();
+    if (step.interactive && target) {
+      if (target.matches("button:not(:disabled),[href],[tabindex]:not([tabindex='-1'])")) focusable.push(target);
+      focusable=focusable.concat(Array.prototype.slice.call(target.querySelectorAll("button:not(:disabled),[href],[tabindex]:not([tabindex='-1'])")));
+    }
+    focusable=focusable.concat(Array.prototype.slice.call(tourCard.querySelectorAll("button:not(:disabled):not([hidden])")));
     if (!focusable.length) return;
     var first=focusable[0];
     var last=focusable[focusable.length-1];
@@ -2563,7 +2730,6 @@ svg {
     tourPreviousFocus=document.activeElement;
     tourPreviousScroll=window.scrollY;
     tour.hidden=false;
-    root.setAttribute("inert","");
     document.addEventListener("keydown",handleTourKeydown);
     window.addEventListener("resize",scheduleTourPosition);
     window.addEventListener("scroll",scheduleTourPosition,true);
@@ -2578,6 +2744,7 @@ svg {
     if (tourIndex<tourSteps.length-1) { tourIndex+=1; renderTourStep(); }
     else closeTour(true);
   });
+  tourReplay.addEventListener("click",runRelationshipDemo);
   tourSkip.addEventListener("click",function () { closeTour(true); });
 
   var resizeTimer;
@@ -2592,7 +2759,7 @@ svg {
   renderView("transition");
   window.setTimeout(function () {
     var tourComplete=false;
-    try { tourComplete=window.localStorage.getItem("lm2-smart-tour-complete-v1")==="true"; } catch (error) {}
+    try { tourComplete=window.localStorage.getItem("lm2-smart-tour-complete-v2")==="true"; } catch (error) {}
     if (!tourComplete) startTour();
   },500);
 })();
