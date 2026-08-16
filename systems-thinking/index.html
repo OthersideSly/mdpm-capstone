@@ -2505,7 +2505,7 @@ svg {
   var tourLauncher=root.querySelector("#lm2-start-tour");
   var tourNodeByView={transition:"data",current:"engagement",future:"delivery",external:"technology-landscape"};
   var tourSteps=[
-    {welcome:true,title:"Welcome to Team Zigg's Systems Map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
+    {welcome:true,title:"Welcome to Team Zig's Systems Map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
     {target:".viz-controls",interactive:true,title:"Choose a perspective",copy:"Try a view now. Each perspective reveals a different layer of the system, and the map below updates to match your choice."},
     {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a component in the active system view. Use the always-visible legend below the map to decode it: color identifies the component type, while line style distinguishes current, future and inferred relationships."},
     {target:function () { return grid.querySelector('[data-node-id="'+(tourNodeByView[currentView] || "data")+'"]') || grid.querySelector(".lm2-node"); },interactive:true,title:"Select a node",copy:"Try the highlighted node. Selecting it brings its immediate relationships forward and updates the supporting context without taking you away from the map."},
