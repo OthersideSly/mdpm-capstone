@@ -828,13 +828,20 @@ svg {
     <button type="button" class="btn" data-map-view="external" aria-pressed="false">4. Outside the Boundary</button>
   </div>
 
+  <div class="lm2-instruction-row" aria-label="Map help options">
+    <div class="lm2-instruction-actions">
+      <button id="lm2-hide-guide" type="button" class="btn btn-ghost text-small">Hide reading guide</button>
+      <button id="lm2-show-guide" type="button" class="btn btn-ghost text-small" hidden>Show reading guide</button>
+      <button id="lm2-start-tour" type="button" class="btn text-small">Take the tour</button>
+    </div>
+  </div>
+
   <section id="lm2-guide" class="lm2-guide" aria-labelledby="lm2-guide-title">
     <div class="lm2-guide-heading">
       <div>
         <strong id="lm2-guide-title">How to read this map</strong>
         <span class="text-small text-muted">Follow the system from overview to evidence.</span>
       </div>
-      <button id="lm2-hide-guide" type="button" class="btn btn-ghost text-small">Hide guide</button>
     </div>
     <ol class="lm2-guide-steps">
       <li><span>1</span><strong>Choose a view</strong><small>Start with Transition Overview.</small></li>
@@ -843,13 +850,6 @@ svg {
       <li><span>4</span><strong>Read the context</strong><small>Review its role, evidence and connections below.</small></li>
     </ol>
   </section>
-
-  <div class="lm2-instruction-row">
-    <div class="lm2-instruction-actions">
-      <button id="lm2-show-guide" type="button" class="btn btn-ghost text-small" hidden>Show reading guide</button>
-      <button id="lm2-start-tour" type="button" class="btn text-small">Take the tour</button>
-    </div>
-  </div>
 
   <section class="lm2-map-wrap" aria-label="Interactive systems map">
     <div id="lm2-view-label" class="lm2-view-label">Current relationships → future opportunity</div>
@@ -1024,7 +1024,7 @@ svg {
     box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
   }
   #loyalty-map-v2 .lm2-guide {
-    margin-top: 0.85rem;
+    margin: 0 0 1rem;
     padding: 0.9rem 1rem 1rem;
     border: 1px solid color-mix(in srgb, var(--ring) 28%, var(--border));
     border-radius: 1rem;
@@ -1087,13 +1087,15 @@ svg {
     align-items: center;
     justify-content: flex-end;
     gap: 1rem;
+    margin: 0.9rem 0 1rem;
   }
   #loyalty-map-v2 .lm2-instruction-actions {
     display: flex;
     flex: 0 0 auto;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.35rem;
-    margin-bottom: 0.65rem;
   }
   #loyalty-map-v2 .lm2-instruction-row .btn {
     flex: 0 0 auto;
@@ -1647,8 +1649,6 @@ svg {
     #loyalty-map-v2 .lm2-guide { padding: 0.8rem; }
     #loyalty-map-v2 .lm2-guide-heading { align-items: center; }
     #loyalty-map-v2 .lm2-guide-steps { grid-template-columns: 1fr; }
-    #loyalty-map-v2 .lm2-instruction-row { align-items: flex-start; }
-    #loyalty-map-v2 .lm2-instruction-actions { flex-direction: column; align-items: flex-end; }
     #loyalty-map-v2 .lm2-canvas { padding: 1rem; }
     #loyalty-map-v2 .lm2-grid {
       grid-template-columns: 1fr !important;
@@ -2464,6 +2464,7 @@ svg {
   var showGuideButton=root.querySelector("#lm2-show-guide");
   function setGuideHidden(hidden,persist) {
     guide.hidden=hidden;
+    hideGuideButton.hidden=hidden;
     showGuideButton.hidden=!hidden;
     if (persist) {
       try { window.localStorage.setItem("lm2-guide-hidden",hidden?"true":"false"); } catch (error) {}
