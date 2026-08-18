@@ -3754,18 +3754,21 @@ svg {
     linesLayer.textContent = "";
     labelsLayer.textContent = "";
     var view = views[currentView];
-    var routed=view.edges.map(function (edge) { return connectorRoute(edge[0],edge[1],edge[4]); });
-    view.edges.forEach(function (edge, index) {
+    var renderableEdges=view.edges.filter(function (edge) {
+      return !!view.areas[edge[0]] && !!view.areas[edge[1]];
+    });
+    var routed=renderableEdges.map(function (edge) { return connectorRoute(edge[0],edge[1],edge[4]); });
+    renderableEdges.forEach(function (edge, index) {
       var from=edge[0], to=edge[1], label=edge[2], phase=edge[3];
       var path=svgEl("path",{d:routed[index].d,class:"lm2-connector "+(phase==="future"?"future":phase==="inferred"?"inferred":""),"data-edge-index":index,"data-from":from,"data-to":to});
       linesLayer.appendChild(path);
     });
     var reserved=[];
     var activeRoutes=routed.filter(function (route,index) {
-      var edge=view.edges[index];
+      var edge=renderableEdges[index];
       return edge[0]===selectedId || edge[1]===selectedId;
     });
-    view.edges.forEach(function (edge,index) {
+    renderableEdges.forEach(function (edge,index) {
       if (edge[0]!==selectedId && edge[1]!==selectedId) return;
       var label=edge[2];
       var group=svgEl("g",{class:"lm2-edge-label","data-label-index":index});
@@ -3783,7 +3786,10 @@ svg {
   }
 
   function connectionsFor(id) {
-    return views[currentView].edges.filter(function (e) { return e[0]===id || e[1]===id; });
+    var view=views[currentView];
+    return view.edges.filter(function (e) {
+      return !!view.areas[e[0]] && !!view.areas[e[1]] && (e[0]===id || e[1]===id);
+    });
   }
 
   function renderLogic(node) {

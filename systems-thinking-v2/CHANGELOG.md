@@ -28,3 +28,8 @@
 - Marked group-converged directions and hypotheses as non-evidentiary.
 - Extended the schema and added a deterministic contract-to-renderer adapter.
 - Updated only V2; V1 remains untouched.
+
+## Production hardening
+
+- Limited connector rendering and direct-connection lists to relationships whose endpoints are present in the active view.
+- Prevented view changes and value-state selection from failing when the full research contract includes relationships outside the active view.
