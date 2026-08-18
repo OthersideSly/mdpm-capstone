@@ -1,0 +1,3507 @@
+{
+  "version": "2.0.0-approved-model",
+  "modelStatus": "approved-for-implementation",
+  "governingInquiry": "How does the open loyalty system improve the amount, relevance, reliability, accessibility, usefulness and appropriate speed with which loyalty opportunities become realized member value across its different relationship pathways?",
+  "mainVariableId": "member-value",
+  "classificationModel": {
+    "epistemicStatus": [
+      "Supported",
+      "Inferred",
+      "Assumed",
+      "Contested",
+      "Unresolved"
+    ],
+    "claimBasis": [
+      "evidence",
+      "legacy-evidence-synthesis",
+      "analytical-inference",
+      "group-convergence",
+      "model-definition"
+    ],
+    "decisionStatus": [
+      "active-direction",
+      "hypothesis",
+      "intended-outcome",
+      "unresolved"
+    ],
+    "rule": "Group convergence and hypotheses never become evidence-supported solely through approval."
+  },
+  "sources": [
+    {
+      "id": "SRC-CONTRACT-001",
+      "type": "analytical-contract",
+      "title": "Interactive Loyalty Systems Map — Analytical Architecture Output Contract",
+      "version": "1.0",
+      "date": "2026-08-17",
+      "claimBasis": "group-convergence",
+      "isEmpiricalEvidence": false
+    }
+  ],
+  "boundary": {
+    "purpose": "Analyze how loyalty opportunities become realized member value across an open loyalty, banking and partner ecosystem.",
+    "inside": [
+      "member-only",
+      "member-client",
+      "client-only",
+      "partner",
+      "member-value",
+      "engagement",
+      "products",
+      "data",
+      "channels",
+      "service",
+      "friction",
+      "identity",
+      "orchestration",
+      "delivery",
+      "intersection",
+      "net-value"
+    ],
+    "outside": [
+      "neither",
+      "expectations",
+      "technology-landscape",
+      "regulation",
+      "competitors"
+    ],
+    "premises": [
+      "Member-Only participants must be able to realize credible standalone value.",
+      "Conversion is optional, relevant and need-led.",
+      "Member-Client status does not prove realized or incremental value.",
+      "Partner and organizational outcomes remain distinct from member realized value."
+    ]
+  },
+  "nodes": [
+    {
+      "id": "member-only",
+      "canonicalName": "Member-only",
+      "displayLabel": "Member-only",
+      "label": "Member-only",
+      "subtitle": "Program relationship",
+      "type": "population",
+      "kind": "population",
+      "category": "Relationship population",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current"
+      ],
+      "definition": "A person who belongs to the loyalty program but does not currently hold a banking relationship with the client.",
+      "roleInSystem": "This population sustains the open program ecosystem through earning, redemption and partner participation. It is also the largest immediate population from which relevant banking relationships might be created.",
+      "whyItMatters": "The program was designed to serve people beyond the bank. Preserving credible standalone value is therefore necessary both for member trust and for the client’s future relationship opportunity.",
+      "known": "Member-only participants can receive program and partner value without becoming clients. Research shows that members judge programs by usable value, flexibility and reliable delivery—not ownership alone.",
+      "provisional": "The active size of this population, the data that may be used for banking decisioning, and the proportion with a relevant banking need remain unconfirmed.",
+      "opportunityImplication": "Use permissioned member context to recognize genuine financial needs and present bank-connected value without making conversion a condition for receiving worthwhile program value.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Standalone value",
+        "Participation",
+        "Meaningful engagement",
+        "Relevant banking need",
+        "Optional conversion"
+      ],
+      "dimensions": [],
+      "systemLinks": [],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "CUR-R01",
+        "CUR-R03"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "member-only-known",
+          "text": "Member-only participants can receive program and partner value without becoming clients. Research shows that members judge programs by usable value, flexibility and reliable delivery—not ownership alone.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "member-only-provisional",
+          "text": "The active size of this population, the data that may be used for banking decisioning, and the proportion with a relevant banking need remain unconfirmed.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "member-client",
+      "canonicalName": "Member-client",
+      "displayLabel": "Member-client",
+      "label": "Member-client",
+      "subtitle": "Program + banking relationship",
+      "type": "population",
+      "kind": "population",
+      "category": "Relationship intersection",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current"
+      ],
+      "definition": "A person who simultaneously participates in the loyalty program and holds a banking relationship with the client.",
+      "roleInSystem": "This is the strategic intersection where program value, banking value and partner value can potentially be coordinated across one relationship.",
+      "whyItMatters": "The client expects the intersection to support deeper engagement and greater relationship value. Bank-linked products already demonstrate that members can receive additional earning routes and benefits.",
+      "known": "Member-clients may have access to a higher potential value ceiling through connected products, enhanced earning and integrated channels.",
+      "provisional": "Holding both relationships does not prove engagement, affinity or incremental value. The combined value must still be relevant, used, fulfilled and realized.",
+      "opportunityImplication": "Coordinate program, banking and partner value so the intersection produces recognizably better outcomes rather than simply a larger number of linked accounts.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Program value",
+        "+ Bank-connected value",
+        "Combined potential",
+        "Realized value",
+        "Deeper engagement"
+      ],
+      "dimensions": [],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R01",
+        "CUR-R02"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R04"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "member-client-known",
+          "text": "Member-clients may have access to a higher potential value ceiling through connected products, enhanced earning and integrated channels.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "member-client-provisional",
+          "text": "Holding both relationships does not prove engagement, affinity or incremental value. The combined value must still be relevant, used, fulfilled and realized.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "client-only",
+      "canonicalName": "Client-only",
+      "displayLabel": "Client-only",
+      "label": "Client-only",
+      "subtitle": "Banking relationship",
+      "type": "population",
+      "kind": "population",
+      "category": "Relationship population",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current"
+      ],
+      "definition": "A banking client who does not currently participate in this loyalty program.",
+      "roleInSystem": "This population can enter the intersection through relevant program enrolment. Existing transactions and participation in other reward products may indicate potential fit.",
+      "whyItMatters": "The client already has channels, products and permissioned banking context that may help explain where program participation could add value.",
+      "known": "A client may already use cashback, points or co-branded products outside this program. Those behaviours show broader loyalty engagement, but not engagement with this specific program.",
+      "provisional": "Transaction activity is only a relevance signal. It does not prove interest, consent, product suitability or willingness to manage another loyalty relationship.",
+      "opportunityImplication": "Identify where program participation complements an existing client need, then reduce the friction required to enrol, earn and realize the first meaningful benefit.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Existing client need",
+        "Program relevance",
+        "Enrolment",
+        "First realized value",
+        "Ongoing engagement"
+      ],
+      "dimensions": [],
+      "systemLinks": [],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "CUR-R02",
+        "CUR-R05"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "client-only-known",
+          "text": "A client may already use cashback, points or co-branded products outside this program. Those behaviours show broader loyalty engagement, but not engagement with this specific program.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "client-only-provisional",
+          "text": "Transaction activity is only a relevance signal. It does not prove interest, consent, product suitability or willingness to manage another loyalty relationship.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "partner",
+      "canonicalName": "Partner ecosystem",
+      "displayLabel": "Partner ecosystem",
+      "label": "Partner ecosystem",
+      "subtitle": "Merchants • experiences • business relationships",
+      "type": "partner",
+      "kind": "partner",
+      "category": "Ecosystem actor",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition",
+        "future"
+      ],
+      "definition": "Merchants and business partners that contribute products, services, offers, access or experiences to the loyalty ecosystem.",
+      "roleInSystem": "Partners expand what members can earn, access and redeem while connecting the program to everyday and aspirational needs.",
+      "whyItMatters": "Partner quality, frequency and relevance determine practical value more than the nominal number of brands in the ecosystem.",
+      "known": "Partners can receive sales, attention, repeat purchasing and potential share-of-wallet gains. They may also receive permissioned or aggregated performance insight.",
+      "provisional": "The incrementality of partner sales, actual data-sharing arrangements, offer funding and partner economics are not yet established.",
+      "opportunityImplication": "Create a reciprocal value exchange in which relevant partner contributions strengthen engagement and demonstrated partner returns encourage continued participation.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Partner contribution",
+        "Member participation",
+        "Incremental partner value",
+        "Continued partner participation"
+      ],
+      "dimensions": [
+        "Sales",
+        "Affinity",
+        "Share of wallet",
+        "Insight",
+        "Reach"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R07",
+        "FUT-R04"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R06",
+        "TR-R05",
+        "FUT-R07",
+        "FUT-R08"
+      ],
+      "valueStatesInfluenced": [
+        "opportunity",
+        "potential-value",
+        "earned-value",
+        "available-value",
+        "realized-value",
+        "engagement"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT01",
+        "JTBD-VT03",
+        "JTBD-VT04",
+        "JTBD-VT05"
+      ],
+      "dvoRefs": [
+        "DVO-VT01",
+        "DVO-VT03",
+        "DVO-VT04",
+        "DVO-VT05",
+        "DVO-CROSS-REALIZATION"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "partner-known",
+          "text": "Partners can receive sales, attention, repeat purchasing and potential share-of-wallet gains. They may also receive permissioned or aggregated performance insight.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "partner-provisional",
+          "text": "The incrementality of partner sales, actual data-sharing arrangements, offer funding and partner economics are not yet established.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "member-value",
+      "canonicalName": "Member Value Realization",
+      "displayLabel": "Member Value Realization",
+      "label": "Member Value Realization",
+      "subtitle": "Opportunity → Potential → Earned → Available → Realized",
+      "type": "value-process",
+      "kind": "value",
+      "category": "Focal system process / organizing construct",
+      "boundaryStatus": "inside",
+      "phase": "Current and future focus",
+      "applicableTabs": [
+        "current",
+        "future"
+      ],
+      "definition": "The process through which an applicable loyalty opportunity progresses through the relevant value states until a member successfully uses or converts it into an outcome they perceive as worthwhile.",
+      "roleInSystem": "This is the system main variable. It connects relevance, qualification, posting, access, use, fulfilment and perceived worth without treating activity alone as success.",
+      "whyItMatters": "The system exists to improve the amount, relevance, reliability, accessibility, usefulness and appropriate speed with which loyalty opportunities become realized member value across its relationship pathways.",
+      "known": "The analytical model distinguishes Opportunity, Potential Value, Earned Value, Available Value and Realized Value. Empirical transition rates and drop-offs remain unknown.",
+      "provisional": "The largest realization gaps, causal drivers, population differences and incremental outcomes remain unresolved.",
+      "opportunityImplication": "Improve value progression across multiple dimensions while preserving credible standalone Member-Only value and avoiding speed-only optimization.",
+      "status": "observed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Opportunity",
+        "Potential Value",
+        "Earned Value",
+        "Available Value",
+        "Realized Value"
+      ],
+      "dimensions": [
+        "Realization rate",
+        "Time to realized value",
+        "Realized-value quality",
+        "Reliability",
+        "Effort and complexity",
+        "Flexibility and contextual fit",
+        "Realization equity",
+        "Realization gap"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R03",
+        "CUR-R04",
+        "CUR-R05",
+        "CUR-R06",
+        "CUR-R09",
+        "CUR-R10",
+        "CUR-R11",
+        "CUR-R12",
+        "FUT-R03",
+        "FUT-R08"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R07",
+        "CUR-R13"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [
+        "DVO-CROSS-REALIZATION"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "member-value-main-variable",
+          "text": "Member Value Realization is the organizing construct for V2.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "group-convergence",
+          "decisionStatus": "active-direction",
+          "evidenceRefs": [
+            "SRC-CONTRACT-001"
+          ],
+          "traceabilityStatus": "decision-recorded"
+        },
+        {
+          "id": "member-value-gaps",
+          "text": "Actual transition rates, delays and population-level gaps are not yet established.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "engagement",
+      "canonicalName": "Meaningful engagement",
+      "displayLabel": "Meaningful engagement",
+      "label": "Meaningful engagement",
+      "subtitle": "Frequency • breadth • continuity • completion • progression",
+      "type": "value",
+      "kind": "value",
+      "category": "Downstream behaviour and feedback signal",
+      "boundaryStatus": "inside",
+      "phase": "Current and future downstream behaviour",
+      "applicableTabs": [
+        "current",
+        "transition",
+        "future"
+      ],
+      "definition": "A sustained, multidimensional pattern of participation over time, described through frequency, breadth, continuity, completion and progression.",
+      "roleInSystem": "Meaningful Engagement may follow repeated worthwhile value realization and provides participation and outcome signals back into the system. It is not the main variable.",
+      "whyItMatters": "Sustained participation may indicate that outcomes are worthwhile, but activity, earning, redemption or linked relationships do not by themselves prove realized value.",
+      "known": "Participation is observable through actions such as earning, redeeming, using benefits or adopting relevant products. Activation initiates or renews that participation; repeated participation develops into engagement.",
+      "provisional": "Engagement does not automatically cause conversion, affinity or revenue. Its effect depends on relevance, realized value, trust, suitability and reliable delivery.",
+      "opportunityImplication": "Learn whether and under what conditions repeated worthwhile realization supports continued or expanded participation.",
+      "status": "observed",
+      "epistemicStatus": "Inferred",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Realized Value",
+        "Continued or expanded participation",
+        "Meaningful Engagement",
+        "Outcome learning"
+      ],
+      "dimensions": [
+        "Frequency",
+        "Breadth",
+        "Continuity",
+        "Completion",
+        "Progression"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R13"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R14",
+        "FUT-R05"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "active-direction",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "engagement-role",
+          "text": "Meaningful Engagement is downstream behaviour and feedback, not the organizing construct.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "group-convergence",
+          "decisionStatus": "active-direction",
+          "evidenceRefs": [
+            "SRC-CONTRACT-001"
+          ],
+          "traceabilityStatus": "decision-recorded"
+        },
+        {
+          "id": "engagement-causality",
+          "text": "Realized Value may influence future participation, but the causal pathway is unvalidated.",
+          "epistemicStatus": "Inferred",
+          "claimBasis": "analytical-inference",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "products",
+      "canonicalName": "Products and transactions",
+      "displayLabel": "Products and transactions",
+      "label": "Products and transactions",
+      "subtitle": "Banking • rewards • partner activity",
+      "type": "capability",
+      "kind": "capability",
+      "category": "Shared enabling backbone",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition"
+      ],
+      "definition": "The banking products, reward products and transaction infrastructure through which people spend, earn and access benefits.",
+      "roleInSystem": "Generates loyalty opportunities, participation routes, qualifying activity and transaction evidence that can influence several value-state transitions.",
+      "whyItMatters": "It is an established institutional capability that will be used regardless of how the future loyalty experience is designed.",
+      "known": "Bank-linked products can produce additional earning routes and value. Transaction behaviour can reveal where relevant value might exist.",
+      "provisional": "Product use does not itself prove loyalty or program engagement, and transaction signals cannot be treated as unrestricted targeting permission.",
+      "opportunityImplication": "Clarify which product or transaction conditions create opportunities, establish qualification and provide reliable evidence without treating activity as realized value.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Product use",
+        "Transaction signal",
+        "Decisioning",
+        "Relevant opportunity",
+        "Member action"
+      ],
+      "dimensions": [],
+      "systemLinks": [],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "CUR-R08",
+        "CUR-R09",
+        "TR-R06"
+      ],
+      "valueStatesInfluenced": [
+        "opportunity",
+        "potential-value",
+        "earned-value"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT01",
+        "JTBD-VT02"
+      ],
+      "dvoRefs": [
+        "DVO-VT01",
+        "DVO-VT02"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "products-known",
+          "text": "Bank-linked products can produce additional earning routes and value. Transaction behaviour can reveal where relevant value might exist.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "products-provisional",
+          "text": "Product use does not itself prove loyalty or program engagement, and transaction signals cannot be treated as unrestricted targeting permission.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "canonicalName": "Data and decisioning",
+      "displayLabel": "Data and decisioning",
+      "label": "Data and decisioning",
+      "subtitle": "Priority connective layer",
+      "type": "priority",
+      "kind": "priority",
+      "category": "Shared enabling backbone",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition"
+      ],
+      "definition": "The data, identity, analytical and decision processes used to interpret context and determine an appropriate action or opportunity.",
+      "roleInSystem": "Helps assess relevance, eligibility, context and performance. Data and decisioning do not create value merely by existing.",
+      "whyItMatters": "The core strategic question—what value, to whom, when and through which channel—cannot be answered consistently without usable context and decision governance.",
+      "known": "The client has enterprise data and offer-decisioning capabilities. Public evidence does not establish the extent to which they are integrated with the program.",
+      "provisional": "More data does not guarantee better decisions. Identity gaps, consent, privacy, bias, incomplete signals and over-targeting can reduce relevance or trust.",
+      "opportunityImplication": "Use permitted context to improve relevance and learning while preserving consent, suitability, governance and explainability.",
+      "status": "inferred",
+      "epistemicStatus": "Inferred",
+      "baselineDisplayStatus": "Inferred integration",
+      "chain": [
+        "Permissioned signals",
+        "Interpreted need",
+        "Decision",
+        "Relevant action",
+        "Outcome learning"
+      ],
+      "dimensions": [
+        "Identity",
+        "Consent",
+        "Context",
+        "Relevance",
+        "Measurement"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R08",
+        "CUR-R14",
+        "CUR-R15"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R10",
+        "TR-R07"
+      ],
+      "valueStatesInfluenced": [
+        "opportunity",
+        "potential-value",
+        "earned-value",
+        "realized-value",
+        "engagement"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT01",
+        "JTBD-VT02",
+        "JTBD-VT05"
+      ],
+      "dvoRefs": [
+        "DVO-VT01",
+        "DVO-VT02",
+        "DVO-VT05"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "data-known",
+          "text": "The client has enterprise data and offer-decisioning capabilities. Public evidence does not establish the extent to which they are integrated with the program.",
+          "epistemicStatus": "Inferred",
+          "claimBasis": "analytical-inference",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "data-provisional",
+          "text": "More data does not guarantee better decisions. Identity gaps, consent, privacy, bias, incomplete signals and over-targeting can reduce relevance or trust.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "channels",
+      "canonicalName": "Channels and delivery",
+      "displayLabel": "Channels and delivery",
+      "label": "Channels and delivery",
+      "subtitle": "Program • banking • partner touchpoints",
+      "type": "capability",
+      "kind": "capability",
+      "category": "Shared enabling backbone",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition"
+      ],
+      "definition": "The digital, physical and communication touchpoints through which decisions, offers, information and experiences reach people.",
+      "roleInSystem": "Makes opportunities discoverable and actionable and makes Available Value accessible for use through appropriate touchpoints.",
+      "whyItMatters": "The client already operates mature banking channels, while the program also has standalone surfaces and partner touchpoints.",
+      "known": "Multiple channels exist. Separate access, authentication and feature availability have produced some directional signals of discontinuity.",
+      "provisional": "Multiple channels are not inherently fragmented. The quality of orchestration, ownership and handoffs across them remains unclear.",
+      "opportunityImplication": "Improve opportunity presentation, action access and available-value access without assuming every channel should be integrated.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Decision",
+        "Right channel",
+        "Clear opportunity",
+        "Member action",
+        "Feedback"
+      ],
+      "dimensions": [
+        "Digital",
+        "Physical",
+        "Partner",
+        "Marketing",
+        "Service"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R16"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R11",
+        "TR-R09"
+      ],
+      "valueStatesInfluenced": [
+        "potential-value",
+        "earned-value",
+        "available-value",
+        "realized-value"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT02",
+        "JTBD-VT04"
+      ],
+      "dvoRefs": [
+        "DVO-VT02",
+        "DVO-VT04",
+        "DVO-CROSS-REALIZATION"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "channels-known",
+          "text": "Multiple channels exist. Separate access, authentication and feature availability have produced some directional signals of discontinuity.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "channels-provisional",
+          "text": "Multiple channels are not inherently fragmented. The quality of orchestration, ownership and handoffs across them remains unclear.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "canonicalName": "Service and operations",
+      "displayLabel": "Service and operations",
+      "label": "Service and operations",
+      "subtitle": "Fulfilment • support • recovery",
+      "type": "capability",
+      "kind": "capability",
+      "category": "Shared enabling backbone",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition"
+      ],
+      "definition": "The operational backbone that calculates and fulfils rewards, supports members, manages issues and coordinates program administration.",
+      "roleInSystem": "Supports qualification, posting, release, fulfilment, recovery and especially the movement from Earned Value to Available Value.",
+      "whyItMatters": "The financial institution already has substantial operating capacity. Reusing relevant capabilities for the program could improve consistency and create economies of scale.",
+      "known": "Reliable reward posting, redemption and service recovery influence whether members trust the value proposition. Public signals identify some cross-system support handoffs.",
+      "provisional": "The actual degree of integration, duplication or fragmentation between the client and program operating models is unknown.",
+      "opportunityImplication": "Improve posting reliability, access, fulfilment and recovery while clarifying ownership across handoffs.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported",
+      "chain": [
+        "Value promise",
+        "Fulfilment",
+        "Realized value",
+        "Recovery when needed",
+        "Trust signal"
+      ],
+      "dimensions": [
+        "Reward posting",
+        "Redemption",
+        "Support",
+        "Recovery",
+        "Partner operations"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "CUR-R17"
+      ],
+      "outgoingRelationshipIds": [
+        "CUR-R12",
+        "TR-R08",
+        "TR-R10"
+      ],
+      "valueStatesInfluenced": [
+        "earned-value",
+        "available-value",
+        "realized-value",
+        "engagement"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT03",
+        "JTBD-VT04",
+        "JTBD-VT05"
+      ],
+      "dvoRefs": [
+        "DVO-VT03",
+        "DVO-VT04",
+        "DVO-VT05",
+        "DVO-CROSS-REALIZATION"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "service-known",
+          "text": "Reliable reward posting, redemption and service recovery influence whether members trust the value proposition. Public signals identify some cross-system support handoffs.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "service-provisional",
+          "text": "The actual degree of integration, duplication or fragmentation between the client and program operating models is unknown.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "friction",
+      "canonicalName": "Interface friction",
+      "displayLabel": "Interface friction",
+      "label": "Interface friction",
+      "subtitle": "Partial connectivity • unclear handoffs",
+      "type": "friction",
+      "kind": "friction",
+      "category": "Structural condition",
+      "boundaryStatus": "inside",
+      "phase": "Current",
+      "applicableTabs": [
+        "current",
+        "transition"
+      ],
+      "definition": "A marker for places where identity, information, value, decisions or service may not move reliably across organizational or technological boundaries.",
+      "roleInSystem": "It keeps the map attentive to the quality of interfaces without assuming that every separate system or channel is defective.",
+      "whyItMatters": "Separate surfaces, linking issues, delayed rewards and support transfers provide directional evidence that some interfaces may constrain value delivery.",
+      "known": "Specific member-facing breakdowns have been reported. The existence of multiple channels and systems is also supported.",
+      "provisional": "Those signals do not establish enterprise-wide fragmentation or prove that tighter integration will always create net gains.",
+      "opportunityImplication": "Identify which interfaces require better coordination and which separations are intentional, protective or economically sensible.",
+      "status": "inferred",
+      "epistemicStatus": "Inferred",
+      "baselineDisplayStatus": "Inferred",
+      "chain": [
+        "Interface gap",
+        "Broken or delayed flow",
+        "Reduced realized value",
+        "Additional effort",
+        "Possible trust erosion"
+      ],
+      "dimensions": [
+        "Identity",
+        "Data",
+        "Channels",
+        "Support ownership",
+        "Fulfilment"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "CUR-R15",
+        "CUR-R16",
+        "CUR-R17",
+        "TR-R11"
+      ],
+      "valueStatesInfluenced": [
+        "earned-value",
+        "available-value"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT03"
+      ],
+      "dvoRefs": [
+        "DVO-VT03"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "friction-known",
+          "text": "Specific member-facing breakdowns have been reported. The existence of multiple channels and systems is also supported.",
+          "epistemicStatus": "Inferred",
+          "claimBasis": "analytical-inference",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "friction-provisional",
+          "text": "Those signals do not establish enterprise-wide fragmentation or prove that tighter integration will always create net gains.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "canonicalName": "Permissioned identity and data",
+      "displayLabel": "Permissioned identity and data",
+      "label": "Permissioned identity and data",
+      "subtitle": "Connected context under governance",
+      "type": "future",
+      "kind": "future",
+      "category": "Future connective capability",
+      "boundaryStatus": "inside",
+      "phase": "Future opportunity",
+      "applicableTabs": [
+        "future"
+      ],
+      "definition": "A governed ability to recognize the same person or relationship across program, banking and partner contexts where permitted.",
+      "roleInSystem": "It would create the usable context required for decisioning without treating ownership as unrestricted access to all member data.",
+      "whyItMatters": "Relevant orchestration depends on knowing which signals belong together and which uses the person has consented to.",
+      "known": "Program and banking relationships generate different data. Privacy, consent and organizational access conditions apply to any connection.",
+      "provisional": "The current identity architecture, consent model, data rights and cross-organizational access are not established.",
+      "opportunityImplication": "Connect only the context required to create explainable member and partner value under clear governance.",
+      "status": "proposed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Hypothesis",
+      "chain": [
+        "Identity resolution",
+        "Consent",
+        "Permitted context",
+        "Decisioning input"
+      ],
+      "dimensions": [
+        "Privacy",
+        "Governance",
+        "Accuracy",
+        "Access",
+        "Transparency"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "FUT-R01"
+      ],
+      "valueStatesInfluenced": [
+        "potential-value",
+        "earned-value"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT02"
+      ],
+      "dvoRefs": [
+        "DVO-VT02"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "hypothesis",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "identity-known",
+          "text": "Program and banking relationships generate different data. Privacy, consent and organizational access conditions apply to any connection.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "identity-provisional",
+          "text": "The current identity architecture, consent model, data rights and cross-organizational access are not established.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "identity-future-hypothesis",
+          "text": "This capability is a future hypothesis, not a committed solution architecture.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "group-convergence",
+          "decisionStatus": "active-direction",
+          "evidenceRefs": [
+            "SRC-CONTRACT-001"
+          ],
+          "traceabilityStatus": "decision-recorded"
+        }
+      ]
+    },
+    {
+      "id": "orchestration",
+      "canonicalName": "Integrated value orchestration",
+      "displayLabel": "Integrated value orchestration",
+      "label": "Integrated value orchestration",
+      "subtitle": "What value • to whom • when • where",
+      "type": "future",
+      "kind": "future",
+      "category": "Future decision capability",
+      "boundaryStatus": "inside",
+      "phase": "Future opportunity",
+      "applicableTabs": [
+        "future"
+      ],
+      "definition": "A proposed capability for selecting and coordinating the most relevant available value for a particular relationship and moment.",
+      "roleInSystem": "Coordinates which opportunities or value pathways may be relevant to whom, when, where and for what intended member outcome.",
+      "whyItMatters": "The system contains many products, partners and channels. Without orchestration, additional options can increase complexity rather than realized value.",
+      "known": "The client has broader offer-decisioning capabilities and has publicly emphasized personalization. Member-recognized program personalization is not yet established.",
+      "provisional": "Decision relevance, operating ownership, model governance and the incremental effect on engagement remain hypotheses.",
+      "opportunityImplication": "Test solution-neutral mechanisms for improving relevant paths toward realized outcomes; personalization remains a possible lever rather than the outcome.",
+      "status": "proposed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Hypothesis",
+      "chain": [
+        "What value",
+        "To whom",
+        "At what moment",
+        "Through which channel",
+        "For what member outcome"
+      ],
+      "dimensions": [
+        "Relevance",
+        "Timing",
+        "Suitability",
+        "Explainability",
+        "Learning"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "FUT-R01"
+      ],
+      "outgoingRelationshipIds": [
+        "FUT-R02",
+        "FUT-R04"
+      ],
+      "valueStatesInfluenced": [
+        "available-value",
+        "realized-value"
+      ],
+      "jtbdRefs": [
+        "JTBD-VT04"
+      ],
+      "dvoRefs": [
+        "DVO-VT04"
+      ],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "hypothesis",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "orchestration-known",
+          "text": "The client has broader offer-decisioning capabilities and has publicly emphasized personalization. Member-recognized program personalization is not yet established.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "orchestration-provisional",
+          "text": "Decision relevance, operating ownership, model governance and the incremental effect on engagement remain hypotheses.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "orchestration-future-hypothesis",
+          "text": "This capability is a future hypothesis, not a committed solution architecture.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "group-convergence",
+          "decisionStatus": "active-direction",
+          "evidenceRefs": [
+            "SRC-CONTRACT-001"
+          ],
+          "traceabilityStatus": "decision-recorded"
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "canonicalName": "Coordinated delivery",
+      "displayLabel": "Coordinated delivery",
+      "label": "Coordinated delivery",
+      "subtitle": "Channels • fulfilment • service recovery",
+      "type": "future",
+      "kind": "future",
+      "category": "Future operating capability",
+      "boundaryStatus": "inside",
+      "phase": "Future opportunity",
+      "applicableTabs": [
+        "future"
+      ],
+      "definition": "A future state in which relevant decisions move coherently through channels, fulfilment and service recovery.",
+      "roleInSystem": "Carries selected opportunities and value coherently through channels, fulfilment, access and recovery.",
+      "whyItMatters": "Relevant targeting cannot produce meaningful engagement if access, posting, redemption or issue resolution fails.",
+      "known": "Channels and service capabilities already exist, while some public signals show reliability and handoff issues.",
+      "provisional": "The degree of coordination required, implementation cost and risk of tightly coupled failures remain unknown.",
+      "opportunityImplication": "Test whether fit-for-purpose coordination improves access and reliable fulfilment without creating tightly coupled failure modes.",
+      "status": "proposed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Hypothesis",
+      "chain": [
+        "Relevant decision",
+        "Channel delivery",
+        "Member action",
+        "Fulfilment",
+        "Recovery if needed"
+      ],
+      "dimensions": [],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "FUT-R02"
+      ],
+      "outgoingRelationshipIds": [
+        "FUT-R03"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "hypothesis",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "delivery-known",
+          "text": "Channels and service capabilities already exist, while some public signals show reliability and handoff issues.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "delivery-provisional",
+          "text": "The degree of coordination required, implementation cost and risk of tightly coupled failures remain unknown.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "delivery-future-hypothesis",
+          "text": "This capability is a future hypothesis, not a committed solution architecture.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "group-convergence",
+          "decisionStatus": "active-direction",
+          "evidenceRefs": [
+            "SRC-CONTRACT-001"
+          ],
+          "traceabilityStatus": "decision-recorded"
+        }
+      ]
+    },
+    {
+      "id": "intersection",
+      "canonicalName": "Member-Client Intersection",
+      "displayLabel": "Member-Client Intersection",
+      "label": "Member-Client Intersection",
+      "subtitle": "Relationship structure • not proof of value",
+      "type": "outcome",
+      "kind": "outcome",
+      "category": "Downstream relationship outcome",
+      "boundaryStatus": "inside",
+      "phase": "Future outcome",
+      "applicableTabs": [
+        "future"
+      ],
+      "definition": "A larger and more engaged population holding both program and banking relationships.",
+      "roleInSystem": "Represents people holding both program and banking relationships. Movement into or depth within the intersection is a possible downstream outcome, not the purpose of the system.",
+      "whyItMatters": "The client explicitly intends to convert relevant non-client members and deepen relationships with existing clients.",
+      "known": "The intersection can grow through two different pathways: member-to-client conversion and client-to-member enrolment.",
+      "provisional": "More linked relationships do not automatically create affinity, retention, incremental revenue or realized member value.",
+      "opportunityImplication": "Evaluate appropriate, need-led relationship progression only where demonstrable incremental member value exists.",
+      "status": "proposed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Intended",
+      "chain": [
+        "Member-only or client-only",
+        "Relevant relationship movement",
+        "Member-client intersection",
+        "Deeper combined engagement"
+      ],
+      "dimensions": [
+        "Size",
+        "Activity",
+        "Breadth",
+        "Depth",
+        "Retention"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "FUT-R05"
+      ],
+      "outgoingRelationshipIds": [
+        "FUT-R06"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "intended-outcome",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "intersection-known",
+          "text": "The intersection can grow through two different pathways: member-to-client conversion and client-to-member enrolment.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "intersection-provisional",
+          "text": "More linked relationships do not automatically create affinity, retention, incremental revenue or realized member value.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "net-value",
+      "canonicalName": "Sustainable net relationship value",
+      "displayLabel": "Sustainable net relationship value",
+      "label": "Sustainable net relationship value",
+      "subtitle": "Consumer + business economics",
+      "type": "outcome",
+      "kind": "outcome",
+      "category": "Organizational outcome",
+      "boundaryStatus": "inside",
+      "phase": "Future outcome",
+      "applicableTabs": [
+        "future"
+      ],
+      "definition": "The incremental economic and strategic value created across consumer and business relationships after the full cost of the program is considered.",
+      "roleInSystem": "It is the client’s ultimate organizational outcome and prevents revenue growth from being assessed without the costs and liabilities required to produce it.",
+      "whyItMatters": "Engagement, membership and higher spending are not sufficient evidence of ROI unless they are incremental and exceed rewards, technology, operating and risk costs.",
+      "known": "Potential benefits include acquisition, product use, share of wallet, retention, partner revenue, insight and economies of scale.",
+      "provisional": "Incrementality, partner economics, conversion persistence, total costs and the time required to realize returns remain unmeasured.",
+      "opportunityImplication": "Build a measurement model that connects engagement and relationship movement to causal, long-term net value.",
+      "status": "proposed",
+      "epistemicStatus": "Assumed",
+      "baselineDisplayStatus": "Intended",
+      "chain": [
+        "Consumer relationship value",
+        "+ Partner value",
+        "− Full program costs",
+        "Sustainable net value"
+      ],
+      "dimensions": [
+        "Revenue",
+        "Retention",
+        "Partner economics",
+        "Operating cost",
+        "Liabilities"
+      ],
+      "systemLinks": [],
+      "incomingRelationshipIds": [
+        "FUT-R06",
+        "FUT-R07"
+      ],
+      "outgoingRelationshipIds": [],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "group-convergence",
+      "decisionStatus": "intended-outcome",
+      "traceabilityStatus": "decision-recorded",
+      "claims": [
+        {
+          "id": "net-value-known",
+          "text": "Potential benefits include acquisition, product use, share of wallet, retention, partner revenue, insight and economies of scale.",
+          "epistemicStatus": "Assumed",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "net-value-provisional",
+          "text": "Incrementality, partner economics, conversion persistence, total costs and the time required to realize returns remain unmeasured.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "neither",
+      "canonicalName": "Non-member / non-client",
+      "displayLabel": "Non-member / non-client",
+      "label": "Non-member / non-client",
+      "subtitle": "No current program or banking relationship",
+      "type": "external",
+      "kind": "external",
+      "category": "External population",
+      "boundaryStatus": "outside",
+      "phase": "Outside boundary",
+      "applicableTabs": [
+        "external"
+      ],
+      "definition": "People who are not currently loyalty-program members or banking clients of the institution.",
+      "roleInSystem": "They sit outside the active relationship system because the current inquiry focuses on engagement and movement among people who already hold at least one relationship.",
+      "whyItMatters": "Their eventual entry matters for growth, but modelling acquisition tactics in detail would expand the inquiry beyond the activation and relationship system currently being examined.",
+      "known": "A person could enter the boundary by joining the program, becoming a banking client, or establishing both relationships.",
+      "provisional": "The size, needs, awareness and likelihood of entry for this population have not been established by the current research.",
+      "opportunityImplication": "Treat boundary entry as a downstream consequence of the system’s reputation and value—not as the primary behaviour the present map must explain.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Boundary definition",
+      "chain": [
+        "No relationship",
+        "External impression",
+        "Relevant entry reason",
+        "Member-only or client-only",
+        "Inside boundary"
+      ],
+      "dimensions": [
+        "Awareness",
+        "Relevance",
+        "Trust",
+        "Entry friction"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member-Only",
+            "Client-Only"
+          ],
+          "explanation": "These are the two primary entry states if a person establishes one relationship."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Broader Meaningful Engagement",
+            "Larger, Stronger Intersection"
+          ],
+          "explanation": "These outcomes may strengthen reputation and create entry reasons, but the connection remains indirect and is not drawn as an internal flow."
+        }
+      ],
+      "incomingRelationshipIds": [
+        "EXT-R04",
+        "EXT-R05"
+      ],
+      "outgoingRelationshipIds": [],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "neither-known",
+          "text": "A person could enter the boundary by joining the program, becoming a banking client, or establishing both relationships.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "neither-provisional",
+          "text": "The size, needs, awareness and likelihood of entry for this population have not been established by the current research.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "expectations",
+      "canonicalName": "Customer expectations and market norms",
+      "displayLabel": "Customer expectations and market norms",
+      "label": "Customer expectations and market norms",
+      "subtitle": "Personalization • simplicity • flexibility • trust",
+      "type": "external",
+      "kind": "external",
+      "category": "External influence",
+      "boundaryStatus": "outside",
+      "phase": "Outside boundary",
+      "applicableTabs": [
+        "external"
+      ],
+      "definition": "Changing expectations about relevance, personalization, ease of use, flexibility, transparency and dependable service.",
+      "roleInSystem": "This influence shapes the standard against which people judge program, banking and partner value without being controlled by the bounded system.",
+      "whyItMatters": "The client’s problem statement explicitly links the need for deeper relationships to changing customer needs, while primary research emphasizes flexibility, relevance and reliable value delivery.",
+      "known": "Members compare loyalty value against alternative programs, cash equivalents, service expectations and the effort required to use benefits.",
+      "provisional": "The relative importance of each expectation varies by population, context and moment; the map does not assume one universal preference profile.",
+      "opportunityImplication": "Use expectations as a design and validation condition rather than treating personalization or engagement as inherently valuable.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported • evolving",
+      "chain": [
+        "External norms",
+        "Value expectations",
+        "Experience comparison",
+        "Trust or disengagement"
+      ],
+      "dimensions": [
+        "Relevance",
+        "Simplicity",
+        "Flexibility",
+        "Transparency",
+        "Reliability"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member Value",
+            "Channels And Delivery",
+            "Meaningful Engagement"
+          ],
+          "explanation": "Expectations shape whether available value feels understandable, accessible and worth continued participation."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Integrated Value Orchestration",
+            "Coordinated Delivery",
+            "Broader Meaningful Engagement"
+          ],
+          "explanation": "Future capabilities would need to meet evolving expectations without over-personalizing or increasing complexity."
+        }
+      ],
+      "incomingRelationshipIds": [
+        "EXT-R02",
+        "EXT-R03"
+      ],
+      "outgoingRelationshipIds": [
+        "EXT-R05"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "expectations-known",
+          "text": "Members compare loyalty value against alternative programs, cash equivalents, service expectations and the effort required to use benefits.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "expectations-provisional",
+          "text": "The relative importance of each expectation varies by population, context and moment; the map does not assume one universal preference profile.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "technology-landscape",
+      "canonicalName": "Technology landscape",
+      "displayLabel": "Technology landscape",
+      "label": "Technology landscape",
+      "subtitle": "AI • identity • open-data capabilities",
+      "type": "external",
+      "kind": "external",
+      "category": "External influence",
+      "boundaryStatus": "outside",
+      "phase": "Outside boundary",
+      "applicableTabs": [
+        "external"
+      ],
+      "definition": "The changing availability and maturity of technologies that can support prediction, personalization, identity resolution, data portability and coordinated delivery.",
+      "roleInSystem": "It changes what may be technically possible, expected or economically feasible, but it does not determine which capabilities should be adopted.",
+      "whyItMatters": "Artificial intelligence and data portability may expand decisioning options while also creating new governance, trust and operating requirements.",
+      "known": "The institution has broader enterprise data and AI ambitions. Program-specific integration and demonstrated member value remain unconfirmed.",
+      "provisional": "Technology maturity, implementation cost, model quality, interoperability and incremental impact on engagement are unresolved.",
+      "opportunityImplication": "Evaluate technology only where it improves a defined value or operating flow under appropriate governance.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported • evolving",
+      "chain": [
+        "New capability",
+        "Possible operating use",
+        "Governance and fit test",
+        "Adoption decision"
+      ],
+      "dimensions": [
+        "AI",
+        "Identity",
+        "Interoperability",
+        "Portability",
+        "Automation"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Data And Decisioning",
+            "Channels And Delivery",
+            "Service And Operations"
+          ],
+          "explanation": "External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Permissioned Identity And Data",
+            "Integrated Value Orchestration",
+            "Coordinated Delivery"
+          ],
+          "explanation": "These hypothesized capabilities depend partly on available technology, but technology alone does not establish their value or feasibility."
+        }
+      ],
+      "incomingRelationshipIds": [
+        "EXT-R01"
+      ],
+      "outgoingRelationshipIds": [
+        "EXT-R02"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "technology-landscape-known",
+          "text": "The institution has broader enterprise data and AI ambitions. Program-specific integration and demonstrated member value remain unconfirmed.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "technology-landscape-provisional",
+          "text": "Technology maturity, implementation cost, model quality, interoperability and incremental impact on engagement are unresolved.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "regulation",
+      "canonicalName": "Regulation, privacy and consent environment",
+      "displayLabel": "Regulation, privacy and consent environment",
+      "label": "Regulation, privacy and consent environment",
+      "subtitle": "Permitted use • accountability • protection",
+      "type": "external",
+      "kind": "external",
+      "category": "External institutional influence",
+      "boundaryStatus": "outside",
+      "phase": "Outside boundary",
+      "applicableTabs": [
+        "external"
+      ],
+      "definition": "The laws, regulatory expectations, privacy rules and consent conditions governing the collection, connection, use and exchange of data and value.",
+      "roleInSystem": "This environment defines permissible operating conditions for identity, decisioning, marketing, partner insight and cross-system data use.",
+      "whyItMatters": "Ownership of a program does not imply unrestricted access to or use of member information; permission and purpose remain necessary conditions.",
+      "known": "Privacy, consent, suitability and governance requirements apply to any connection between program, banking and partner contexts.",
+      "provisional": "The specific legal interpretation, data rights, consent architecture and partner-sharing limits are outside the present research scope.",
+      "opportunityImplication": "Treat governance as a design input from the outset rather than a downstream compliance check.",
+      "status": "observed",
+      "epistemicStatus": "Supported",
+      "baselineDisplayStatus": "Supported constraint",
+      "chain": [
+        "External rules",
+        "Permitted purpose",
+        "Governed access",
+        "Constrained action"
+      ],
+      "dimensions": [
+        "Privacy",
+        "Consent",
+        "Suitability",
+        "Transparency",
+        "Accountability"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Data And Decisioning",
+            "Products And Transactions",
+            "Partner Ecosystem",
+            "Channels And Delivery"
+          ],
+          "explanation": "Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Permissioned Identity And Data",
+            "Integrated Value Orchestration",
+            "Coordinated Delivery"
+          ],
+          "explanation": "Governance defines the operating envelope for the future pathway and may intentionally preserve separation between some systems."
+        }
+      ],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "EXT-R01"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "regulation-known",
+          "text": "Privacy, consent, suitability and governance requirements apply to any connection between program, banking and partner contexts.",
+          "epistemicStatus": "Supported",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "regulation-provisional",
+          "text": "The specific legal interpretation, data rights, consent architecture and partner-sharing limits are outside the present research scope.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    },
+    {
+      "id": "competitors",
+      "canonicalName": "Competitor loyalty and financial ecosystems",
+      "displayLabel": "Competitor loyalty and financial ecosystems",
+      "label": "Competitor loyalty and financial ecosystems",
+      "subtitle": "Alternative programs • products • value propositions",
+      "type": "external",
+      "kind": "external",
+      "category": "External market influence",
+      "boundaryStatus": "outside",
+      "phase": "Outside boundary",
+      "applicableTabs": [
+        "external"
+      ],
+      "definition": "Other loyalty, banking, card and partner ecosystems against which people and businesses compare the client’s value proposition.",
+      "roleInSystem": "Competitors provide alternative relationships, benefits and participation options without being actors inside the bounded client-program system.",
+      "whyItMatters": "Primary research shows that members compare reward economics, flexibility, perks and service across multiple programs rather than evaluating one program in isolation.",
+      "known": "Alternative reward products and ecosystems affect members’ reference points and can compete for spending, attention and partner participation.",
+      "provisional": "Competitor-specific performance, switching behaviour and direct effects on this program have not been measured in the current analysis.",
+      "opportunityImplication": "Use competitor ecosystems as contextual benchmarks while preserving a member-value definition grounded in actual needs rather than feature imitation.",
+      "status": "inferred",
+      "epistemicStatus": "Inferred",
+      "baselineDisplayStatus": "Inferred influence",
+      "chain": [
+        "Alternative value",
+        "Comparison",
+        "Allocation of attention and spend",
+        "Relationship choice"
+      ],
+      "dimensions": [
+        "Economics",
+        "Flexibility",
+        "Service",
+        "Access",
+        "Partner breadth"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member Value",
+            "Meaningful Engagement",
+            "Partner Ecosystem"
+          ],
+          "explanation": "Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Broader Meaningful Engagement",
+            "Sustainable Net Relationship Value"
+          ],
+          "explanation": "Competitive responses may influence whether improved engagement persists and produces incremental organizational value."
+        }
+      ],
+      "incomingRelationshipIds": [],
+      "outgoingRelationshipIds": [
+        "EXT-R03",
+        "EXT-R04"
+      ],
+      "valueStatesInfluenced": [],
+      "jtbdRefs": [],
+      "dvoRefs": [],
+      "evidenceRefs": [],
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending",
+      "claims": [
+        {
+          "id": "competitors-known",
+          "text": "Alternative reward products and ecosystems affect members’ reference points and can compete for spending, attention and partner participation.",
+          "epistemicStatus": "Inferred",
+          "claimBasis": "analytical-inference",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        },
+        {
+          "id": "competitors-provisional",
+          "text": "Competitor-specific performance, switching behaviour and direct effects on this program have not been measured in the current analysis.",
+          "epistemicStatus": "Unresolved",
+          "claimBasis": "legacy-evidence-synthesis",
+          "decisionStatus": "unresolved",
+          "evidenceRefs": [],
+          "traceabilityStatus": "source-link-pending"
+        }
+      ]
+    }
+  ],
+  "valueStates": [
+    {
+      "id": "opportunity",
+      "label": "Opportunity",
+      "definition": "An available loyalty proposition, benefit, offer, earning possibility or other source of value whose relevance to a specific member has not yet been established.",
+      "entryCondition": "A proposition, benefit or earning possibility exists.",
+      "exitCondition": "Relevance and a plausible eligible path are established.",
+      "order": 1,
+      "entityType": "value-state",
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ]
+    },
+    {
+      "id": "potential-value",
+      "label": "Potential Value",
+      "definition": "A loyalty opportunity relevant to a member needs, behaviours or context and for which the member has a plausible eligible path to value.",
+      "entryCondition": "Member relevance and plausible eligibility are established.",
+      "exitCondition": "Applicable qualification requirements are satisfied.",
+      "order": 2,
+      "entityType": "value-state",
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ]
+    },
+    {
+      "id": "earned-value",
+      "label": "Earned Value",
+      "definition": "Value to which the member has become entitled by satisfying applicable activity, membership, status, eligibility or program requirements.",
+      "entryCondition": "The applicable qualification rule has been satisfied.",
+      "exitCondition": "The earned value is posted, released, activated or otherwise made accessible.",
+      "order": 3,
+      "entityType": "value-state",
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ]
+    },
+    {
+      "id": "available-value",
+      "label": "Available Value",
+      "definition": "Earned value that has been posted, released, activated or otherwise made accessible for use.",
+      "entryCondition": "The member can operationally access or use the earned entitlement.",
+      "exitCondition": "The member successfully uses or converts the value.",
+      "order": 4,
+      "entityType": "value-state",
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ]
+    },
+    {
+      "id": "realized-value",
+      "label": "Realized Value",
+      "definition": "Value the member has successfully used or converted into an outcome they perceive as worthwhile.",
+      "entryCondition": "Successful use or conversion produces a recognized outcome.",
+      "exitCondition": "The value episode is evaluated and may influence subsequent participation.",
+      "order": 5,
+      "entityType": "value-state",
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ]
+    }
+  ],
+  "valueTransitions": [
+    {
+      "id": "VT01",
+      "fromState": "opportunity",
+      "toState": "potential-value",
+      "definition": "Relevance and a plausible eligible path are established for a particular member and context.",
+      "entryConditions": [
+        "Relevance and a plausible eligible path are established for a particular member and context."
+      ],
+      "exitConditions": [
+        "The next controlled state is reached."
+      ],
+      "systemInfluenceIds": [
+        "partner",
+        "products",
+        "data"
+      ],
+      "frictionOrDelay": "To be specified from evidence for each population and pathway.",
+      "jtbdRefs": [
+        "JTBD-VT01"
+      ],
+      "dvoRefs": [
+        "DVO-VT01"
+      ],
+      "possibleIndicators": [
+        "Transition rate",
+        "Relevance",
+        "Eligibility clarity",
+        "Comprehension"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "openQuestions": [
+        "Structural relationship may be supported; incremental targeting effects remain inferred or assumed."
+      ]
+    },
+    {
+      "id": "VT02",
+      "fromState": "potential-value",
+      "toState": "earned-value",
+      "definition": "The member understands and completes applicable qualification requirements.",
+      "entryConditions": [
+        "The member understands and completes applicable qualification requirements."
+      ],
+      "exitConditions": [
+        "The next controlled state is reached."
+      ],
+      "systemInfluenceIds": [
+        "products",
+        "data",
+        "channels",
+        "identity"
+      ],
+      "frictionOrDelay": "To be specified from evidence for each population and pathway.",
+      "jtbdRefs": [
+        "JTBD-VT02"
+      ],
+      "dvoRefs": [
+        "DVO-VT02"
+      ],
+      "possibleIndicators": [
+        "Qualification completion",
+        "Effort",
+        "Failure rate",
+        "Time to qualify"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "openQuestions": [
+        "Qualification mechanics may be supported; effects on participation or realization require evidence."
+      ]
+    },
+    {
+      "id": "VT03",
+      "fromState": "earned-value",
+      "toState": "available-value",
+      "definition": "Qualified value is correctly posted, released, activated and made accessible.",
+      "entryConditions": [
+        "Qualified value is correctly posted, released, activated and made accessible."
+      ],
+      "exitConditions": [
+        "The next controlled state is reached."
+      ],
+      "systemInfluenceIds": [
+        "service",
+        "partner",
+        "friction"
+      ],
+      "frictionOrDelay": "To be specified from evidence for each population and pathway.",
+      "jtbdRefs": [
+        "JTBD-VT03"
+      ],
+      "dvoRefs": [
+        "DVO-VT03"
+      ],
+      "possibleIndicators": [
+        "Posting delay",
+        "Release reliability",
+        "Support contacts",
+        "Recovery rate"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "openQuestions": [
+        "Posting and fulfilment flows may be supported; systemic fragmentation remains provisional."
+      ]
+    },
+    {
+      "id": "VT04",
+      "fromState": "available-value",
+      "toState": "realized-value",
+      "definition": "The member discovers, accesses, uses or converts available value into a worthwhile outcome.",
+      "entryConditions": [
+        "The member discovers, accesses, uses or converts available value into a worthwhile outcome."
+      ],
+      "exitConditions": [
+        "The next controlled state is reached."
+      ],
+      "systemInfluenceIds": [
+        "channels",
+        "service",
+        "partner",
+        "orchestration"
+      ],
+      "frictionOrDelay": "To be specified from evidence for each population and pathway.",
+      "jtbdRefs": [
+        "JTBD-VT04"
+      ],
+      "dvoRefs": [
+        "DVO-VT04"
+      ],
+      "possibleIndicators": [
+        "Realization rate",
+        "Time to use",
+        "Successful fulfilment",
+        "Perceived usefulness"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "openQuestions": [
+        "The structural transition is defined; effects of specific mechanisms remain hypotheses."
+      ]
+    },
+    {
+      "id": "VT05",
+      "fromState": "realized-value",
+      "toState": "engagement",
+      "definition": "The outcome is perceived as sufficiently worthwhile and trustworthy to influence future behaviour.",
+      "entryConditions": [
+        "The outcome is perceived as sufficiently worthwhile and trustworthy to influence future behaviour."
+      ],
+      "exitConditions": [
+        "A future participation response is observed."
+      ],
+      "systemInfluenceIds": [
+        "data",
+        "partner",
+        "service"
+      ],
+      "frictionOrDelay": "To be specified from evidence for each population and pathway.",
+      "jtbdRefs": [
+        "JTBD-VT05"
+      ],
+      "dvoRefs": [
+        "DVO-VT05"
+      ],
+      "possibleIndicators": [
+        "Repeat participation",
+        "Breadth",
+        "Continuity",
+        "Completion",
+        "Progression"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "openQuestions": [
+        "Treat as inferred until behaviour-over-time evidence validates it."
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "CUR-R01",
+      "sourceId": "member-only",
+      "targetId": "member-client",
+      "from": "member-only",
+      "to": "member-client",
+      "label": "Optional banking adoption",
+      "displayLabel": "Optional banking adoption",
+      "relationshipDefinition": "A Member-Only participant may enter the intersection when a relevant need leads to suitable banking adoption.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R02",
+      "sourceId": "client-only",
+      "targetId": "member-client",
+      "from": "client-only",
+      "to": "member-client",
+      "label": "Program enrolment",
+      "displayLabel": "Program enrolment",
+      "relationshipDefinition": "A Client-Only participant enters the intersection structurally through enrolment, but status does not prove realized value.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R03",
+      "sourceId": "member-only",
+      "targetId": "member-value",
+      "from": "member-only",
+      "to": "member-value",
+      "label": "Standalone realization pathway",
+      "displayLabel": "Standalone realization pathway",
+      "relationshipDefinition": "Member-Only participants must be able to realize credible standalone program and partner value.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R04",
+      "sourceId": "member-client",
+      "targetId": "member-value",
+      "from": "member-client",
+      "to": "member-value",
+      "label": "Combined realization pathway",
+      "displayLabel": "Combined realization pathway",
+      "relationshipDefinition": "Combined relationships may create additional routes to value, but linked status does not prove incremental value.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R05",
+      "sourceId": "client-only",
+      "targetId": "member-value",
+      "from": "client-only",
+      "to": "member-value",
+      "label": "Enrolment → first realized value",
+      "displayLabel": "Enrolment → first realized value",
+      "relationshipDefinition": "Relevant enrolment creates a possible path toward the first realized program outcome.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R06",
+      "sourceId": "partner",
+      "targetId": "member-value",
+      "from": "partner",
+      "to": "member-value",
+      "label": "Opportunities + fulfilment",
+      "displayLabel": "Opportunities + fulfilment",
+      "relationshipDefinition": "Partners contribute propositions, access, experiences and fulfilment that can support value realization.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R07",
+      "sourceId": "member-value",
+      "targetId": "partner",
+      "from": "member-value",
+      "to": "partner",
+      "label": "Participation + partner returns",
+      "displayLabel": "Participation + partner returns",
+      "relationshipDefinition": "Member participation may create sales, affinity, insight or reach, but incrementality is unresolved.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R08",
+      "sourceId": "products",
+      "targetId": "data",
+      "from": "products",
+      "to": "data",
+      "label": "Qualification + transaction evidence",
+      "displayLabel": "Qualification + transaction evidence",
+      "relationshipDefinition": "Product activity can create qualification and transaction evidence where use is permitted.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R09",
+      "sourceId": "products",
+      "targetId": "member-value",
+      "from": "products",
+      "to": "member-value",
+      "label": "Opportunities + earning conditions",
+      "displayLabel": "Opportunities + earning conditions",
+      "relationshipDefinition": "Products and transactions generate opportunities, participation routes and earning conditions.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R10",
+      "sourceId": "data",
+      "targetId": "member-value",
+      "from": "data",
+      "to": "member-value",
+      "label": "Relevance + eligibility context",
+      "displayLabel": "Relevance + eligibility context",
+      "relationshipDefinition": "Decisioning may help assess relevance and eligibility without itself creating value.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R11",
+      "sourceId": "channels",
+      "targetId": "member-value",
+      "from": "channels",
+      "to": "member-value",
+      "label": "Presentation + access",
+      "displayLabel": "Presentation + access",
+      "relationshipDefinition": "Channels present opportunities and provide action or available-value access.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01",
+        "VT02",
+        "VT04"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R12",
+      "sourceId": "service",
+      "targetId": "member-value",
+      "from": "service",
+      "to": "member-value",
+      "label": "Posting + fulfilment + recovery",
+      "displayLabel": "Posting + fulfilment + recovery",
+      "relationshipDefinition": "Operations support posting, release, fulfilment and recovery.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT03",
+        "VT04"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R13",
+      "sourceId": "member-value",
+      "targetId": "engagement",
+      "from": "member-value",
+      "to": "engagement",
+      "label": "Continued / expanded participation",
+      "displayLabel": "Continued / expanded participation",
+      "relationshipDefinition": "Worthwhile realized outcomes may influence sustained participation; the causal effect is unvalidated.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current",
+        "transition",
+        "future"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT05"
+      ],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R14",
+      "sourceId": "engagement",
+      "targetId": "data",
+      "from": "engagement",
+      "to": "data",
+      "label": "Value realization + participation signals",
+      "displayLabel": "Value realization + participation signals",
+      "relationshipDefinition": "Observed outcomes and participation provide signals for measurement and future decisions.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT05"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "CUR-R15",
+      "sourceId": "friction",
+      "targetId": "data",
+      "from": "friction",
+      "to": "data",
+      "label": "Identity + permission handoffs",
+      "displayLabel": "Identity + permission handoffs",
+      "relationshipDefinition": "Identity or permission handoffs may interrupt usable context.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R16",
+      "sourceId": "friction",
+      "targetId": "channels",
+      "from": "friction",
+      "to": "channels",
+      "label": "Channel continuity constraints",
+      "displayLabel": "Channel continuity constraints",
+      "relationshipDefinition": "Separate surfaces may create repeated steps or inconsistent context.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "CUR-R17",
+      "sourceId": "friction",
+      "targetId": "service",
+      "from": "friction",
+      "to": "service",
+      "label": "Support + fulfilment ownership",
+      "displayLabel": "Support + fulfilment ownership",
+      "relationshipDefinition": "Cross-system issues may be transferred rather than resolved end to end.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "current"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "TR-R01",
+      "sourceId": "opportunity",
+      "targetId": "potential-value",
+      "from": "opportunity",
+      "to": "potential-value",
+      "label": "Establish relevance + plausible eligibility",
+      "displayLabel": "Establish relevance + plausible eligibility",
+      "relationshipDefinition": "The opportunity becomes Potential Value when relevance and a plausible eligible path are established.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01"
+      ],
+      "state": "proposed-future"
+    },
+    {
+      "id": "TR-R02",
+      "sourceId": "potential-value",
+      "targetId": "earned-value",
+      "from": "potential-value",
+      "to": "earned-value",
+      "label": "Satisfy qualification requirements",
+      "displayLabel": "Satisfy qualification requirements",
+      "relationshipDefinition": "Potential Value becomes Earned Value when applicable requirements are satisfied.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT02"
+      ],
+      "state": "proposed-future"
+    },
+    {
+      "id": "TR-R03",
+      "sourceId": "earned-value",
+      "targetId": "available-value",
+      "from": "earned-value",
+      "to": "available-value",
+      "label": "Post + release + activate",
+      "displayLabel": "Post + release + activate",
+      "relationshipDefinition": "Earned Value becomes Available Value when the entitlement is operationally accessible.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT03"
+      ],
+      "state": "proposed-future"
+    },
+    {
+      "id": "TR-R04",
+      "sourceId": "available-value",
+      "targetId": "realized-value",
+      "from": "available-value",
+      "to": "realized-value",
+      "label": "Use + convert into worthwhile outcome",
+      "displayLabel": "Use + convert into worthwhile outcome",
+      "relationshipDefinition": "Available Value becomes Realized Value through successful use or conversion into perceived worth.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT04"
+      ],
+      "state": "proposed-future"
+    },
+    {
+      "id": "TR-R05",
+      "sourceId": "partner",
+      "targetId": "opportunity",
+      "from": "partner",
+      "to": "opportunity",
+      "label": "Propositions + benefits",
+      "displayLabel": "Propositions + benefits",
+      "relationshipDefinition": "Partner contributions create sources of opportunity.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "TR-R06",
+      "sourceId": "products",
+      "targetId": "opportunity",
+      "from": "products",
+      "to": "opportunity",
+      "label": "Products + participation routes",
+      "displayLabel": "Products + participation routes",
+      "relationshipDefinition": "Products and transactions create opportunity and earning routes.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "TR-R07",
+      "sourceId": "data",
+      "targetId": "potential-value",
+      "from": "data",
+      "to": "potential-value",
+      "label": "Relevance + eligibility context",
+      "displayLabel": "Relevance + eligibility context",
+      "relationshipDefinition": "Permitted context may support relevance and eligibility assessment.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT01"
+      ],
+      "state": "inferred-current"
+    },
+    {
+      "id": "TR-R08",
+      "sourceId": "service",
+      "targetId": "available-value",
+      "from": "service",
+      "to": "available-value",
+      "label": "Posting + release reliability",
+      "displayLabel": "Posting + release reliability",
+      "relationshipDefinition": "Operations influence whether earned entitlements become accessible.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT03"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "TR-R09",
+      "sourceId": "channels",
+      "targetId": "realized-value",
+      "from": "channels",
+      "to": "realized-value",
+      "label": "Access + use pathway",
+      "displayLabel": "Access + use pathway",
+      "relationshipDefinition": "Channels influence whether available value can be discovered and used.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT04"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "TR-R10",
+      "sourceId": "service",
+      "targetId": "realized-value",
+      "from": "service",
+      "to": "realized-value",
+      "label": "Fulfilment + recovery",
+      "displayLabel": "Fulfilment + recovery",
+      "relationshipDefinition": "Fulfilment and recovery influence successful value use.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Supported",
+      "claimBasis": "legacy-evidence-synthesis",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT04"
+      ],
+      "state": "unresolved"
+    },
+    {
+      "id": "TR-R11",
+      "sourceId": "friction",
+      "targetId": "earned-value",
+      "from": "friction",
+      "to": "earned-value",
+      "label": "Qualification + posting stalls",
+      "displayLabel": "Qualification + posting stalls",
+      "relationshipDefinition": "Interface friction may stall qualification, posting or release.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "transition"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT02",
+        "VT03"
+      ],
+      "state": "inferred-current"
+    },
+    {
+      "id": "FUT-R01",
+      "sourceId": "identity",
+      "targetId": "orchestration",
+      "from": "identity",
+      "to": "orchestration",
+      "label": "Governed permitted context",
+      "displayLabel": "Governed permitted context",
+      "relationshipDefinition": "Permissioned identity may provide usable context under governance.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "proposed-future"
+    },
+    {
+      "id": "FUT-R02",
+      "sourceId": "orchestration",
+      "targetId": "delivery",
+      "from": "orchestration",
+      "to": "delivery",
+      "label": "Coordinated value-path decision",
+      "displayLabel": "Coordinated value-path decision",
+      "relationshipDefinition": "A selected value pathway may be carried into delivery and operations.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "proposed-future"
+    },
+    {
+      "id": "FUT-R03",
+      "sourceId": "delivery",
+      "targetId": "member-value",
+      "from": "delivery",
+      "to": "member-value",
+      "label": "Access + reliable fulfilment",
+      "displayLabel": "Access + reliable fulfilment",
+      "relationshipDefinition": "Coordinated delivery may improve access, fulfilment and recovery.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [
+        "VT03",
+        "VT04"
+      ],
+      "state": "proposed-future"
+    },
+    {
+      "id": "FUT-R04",
+      "sourceId": "orchestration",
+      "targetId": "partner",
+      "from": "orchestration",
+      "to": "partner",
+      "label": "Partner matching + insight",
+      "displayLabel": "Partner matching + insight",
+      "relationshipDefinition": "Partners may be matched to relevant needs and receive performance learning.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "proposed-future"
+    },
+    {
+      "id": "FUT-R05",
+      "sourceId": "engagement",
+      "targetId": "intersection",
+      "from": "engagement",
+      "to": "intersection",
+      "label": "Appropriate relationship progression",
+      "displayLabel": "Appropriate relationship progression",
+      "relationshipDefinition": "Sustained participation may support appropriate progression; causality is unresolved.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "FUT-R06",
+      "sourceId": "intersection",
+      "targetId": "net-value",
+      "from": "intersection",
+      "to": "net-value",
+      "label": "Relationship economics after full costs",
+      "displayLabel": "Relationship economics after full costs",
+      "relationshipDefinition": "Relationship structure may contribute to net value only after incrementality, liabilities and costs.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "FUT-R07",
+      "sourceId": "partner",
+      "targetId": "net-value",
+      "from": "partner",
+      "to": "net-value",
+      "label": "Distinct partner + organizational returns",
+      "displayLabel": "Distinct partner + organizational returns",
+      "relationshipDefinition": "Partner returns may contribute to organizational value but remain distinct from member outcomes.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "inferred-current"
+    },
+    {
+      "id": "FUT-R08",
+      "sourceId": "partner",
+      "targetId": "member-value",
+      "from": "partner",
+      "to": "member-value",
+      "label": "Relevant opportunities + fulfilment",
+      "displayLabel": "Relevant opportunities + fulfilment",
+      "relationshipDefinition": "Future partner participation may support relevant opportunities and fulfilment.",
+      "kind": "other",
+      "flowType": "structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "future"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "evidenceRefs": [],
+      "valueTransitionIds": [],
+      "state": "proposed-future"
+    },
+    {
+      "id": "EXT-R01",
+      "sourceId": "regulation",
+      "targetId": "technology-landscape",
+      "from": "regulation",
+      "to": "technology-landscape",
+      "label": "Governance context",
+      "displayLabel": "Governance context",
+      "relationshipDefinition": "Regulation, privacy and consent conditions shape which emerging technologies and uses are permissible.",
+      "kind": "other",
+      "flowType": "baseline-structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "external"
+      ],
+      "baselineVisualPhase": "inferred",
+      "state": "inferred-current",
+      "epistemicStatus": "Inferred",
+      "evidenceRefs": [],
+      "routeMetadata": {
+        "route": "parallel-horizontal",
+        "fromOffset": 0,
+        "toOffset": 0
+      },
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending"
+    },
+    {
+      "id": "EXT-R02",
+      "sourceId": "technology-landscape",
+      "targetId": "expectations",
+      "from": "technology-landscape",
+      "to": "expectations",
+      "label": "Capability signals",
+      "displayLabel": "Capability signals",
+      "relationshipDefinition": "New technological possibilities can raise expectations for relevance, immediacy, portability and ease of use.",
+      "kind": "other",
+      "flowType": "baseline-structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "external"
+      ],
+      "baselineVisualPhase": "inferred",
+      "state": "inferred-current",
+      "epistemicStatus": "Inferred",
+      "evidenceRefs": [],
+      "routeMetadata": {
+        "route": "parallel-horizontal",
+        "fromOffset": 0,
+        "toOffset": 0
+      },
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending"
+    },
+    {
+      "id": "EXT-R03",
+      "sourceId": "competitors",
+      "targetId": "expectations",
+      "from": "competitors",
+      "to": "expectations",
+      "label": "Market reference points",
+      "displayLabel": "Market reference points",
+      "relationshipDefinition": "Competing ecosystems influence the standards people use to compare value, flexibility, service and access.",
+      "kind": "other",
+      "flowType": "baseline-structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "external"
+      ],
+      "baselineVisualPhase": "inferred",
+      "state": "inferred-current",
+      "epistemicStatus": "Inferred",
+      "evidenceRefs": [],
+      "routeMetadata": null,
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending"
+    },
+    {
+      "id": "EXT-R04",
+      "sourceId": "competitors",
+      "targetId": "neither",
+      "from": "competitors",
+      "to": "neither",
+      "label": "Alternative value propositions",
+      "displayLabel": "Alternative value propositions",
+      "relationshipDefinition": "People outside the boundary can choose alternative loyalty and financial relationships before entering this system.",
+      "kind": "other",
+      "flowType": "baseline-structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "external"
+      ],
+      "baselineVisualPhase": "inferred",
+      "state": "inferred-current",
+      "epistemicStatus": "Inferred",
+      "evidenceRefs": [],
+      "routeMetadata": {
+        "route": "parallel-horizontal",
+        "fromOffset": 0,
+        "toOffset": 0
+      },
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending"
+    },
+    {
+      "id": "EXT-R05",
+      "sourceId": "expectations",
+      "targetId": "neither",
+      "from": "expectations",
+      "to": "neither",
+      "label": "Entry expectations",
+      "displayLabel": "Entry expectations",
+      "relationshipDefinition": "Expectations about value, trust and effort shape the threshold for establishing a first relationship.",
+      "kind": "other",
+      "flowType": "baseline-structural-flow",
+      "direction": "directed",
+      "conditions": [],
+      "applicableTabs": [
+        "external"
+      ],
+      "baselineVisualPhase": "inferred",
+      "state": "inferred-current",
+      "epistemicStatus": "Inferred",
+      "evidenceRefs": [],
+      "routeMetadata": {
+        "route": "straight-vertical"
+      },
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "traceabilityStatus": "source-link-pending"
+    }
+  ],
+  "overlays": [
+    {
+      "id": "JTBD-VT01",
+      "type": "JTBD",
+      "statement": "Recognize and understand an opportunity that is relevant and worthwhile.",
+      "relatedTransitionIds": [
+        "VT01"
+      ],
+      "relatedNodeIds": [
+        "partner",
+        "products",
+        "data"
+      ],
+      "evidenceRefs": [],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-VT01",
+      "type": "DVO",
+      "statement": "Improve identification, relevance, reach and understandability of worthwhile opportunities.",
+      "relatedTransitionIds": [
+        "VT01"
+      ],
+      "relatedNodeIds": [
+        "partner",
+        "products",
+        "data"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": false
+    },
+    {
+      "id": "JTBD-VT02",
+      "type": "JTBD",
+      "statement": "Complete the required activity with reasonable preparation, effort and confidence.",
+      "relatedTransitionIds": [
+        "VT02"
+      ],
+      "relatedNodeIds": [
+        "products",
+        "data",
+        "channels",
+        "identity"
+      ],
+      "evidenceRefs": [],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-VT02",
+      "type": "DVO",
+      "statement": "Reduce effort, preparation, complexity and failure in earning value.",
+      "relatedTransitionIds": [
+        "VT02"
+      ],
+      "relatedNodeIds": [
+        "products",
+        "data",
+        "channels",
+        "identity"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": false
+    },
+    {
+      "id": "JTBD-VT03",
+      "type": "JTBD",
+      "statement": "Know whether value was earned, what it is worth and when it can be used.",
+      "relatedTransitionIds": [
+        "VT03"
+      ],
+      "relatedNodeIds": [
+        "service",
+        "partner",
+        "friction"
+      ],
+      "evidenceRefs": [],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-VT03",
+      "type": "DVO",
+      "statement": "Improve legibility, trust, posting reliability, accessibility and recovery for earned value.",
+      "relatedTransitionIds": [
+        "VT03"
+      ],
+      "relatedNodeIds": [
+        "service",
+        "partner",
+        "friction"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": false
+    },
+    {
+      "id": "JTBD-VT04",
+      "type": "JTBD",
+      "statement": "Use available value in a meaningful moment, channel or context with acceptable effort.",
+      "relatedTransitionIds": [
+        "VT04"
+      ],
+      "relatedNodeIds": [
+        "channels",
+        "service",
+        "partner",
+        "orchestration"
+      ],
+      "evidenceRefs": [],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-VT04",
+      "type": "DVO",
+      "statement": "Convert more available value into worthwhile outcomes through usability, contextual reach, flexibility and successful fulfilment.",
+      "relatedTransitionIds": [
+        "VT04"
+      ],
+      "relatedNodeIds": [
+        "channels",
+        "service",
+        "partner",
+        "orchestration"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": false
+    },
+    {
+      "id": "JTBD-VT05",
+      "type": "JTBD",
+      "statement": "Decide whether to return, broaden, continue or discontinue participation.",
+      "relatedTransitionIds": [
+        "VT05"
+      ],
+      "relatedNodeIds": [
+        "data",
+        "partner",
+        "service"
+      ],
+      "evidenceRefs": [],
+      "epistemicStatus": "Inferred",
+      "claimBasis": "analytical-inference",
+      "decisionStatus": "unresolved",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-VT05",
+      "type": "DVO",
+      "statement": "Reinforce continued participation through consistently worthwhile outcomes and learning.",
+      "relatedTransitionIds": [
+        "VT05"
+      ],
+      "relatedNodeIds": [
+        "data",
+        "partner",
+        "service"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": false
+    },
+    {
+      "id": "DVO-CROSS-REALIZATION",
+      "type": "DVO",
+      "statement": "Convert more earned loyalty value into realized member value by reducing barriers to understanding, accessing and using it in meaningful moments and contexts.",
+      "relatedTransitionIds": [
+        "VT03",
+        "VT04"
+      ],
+      "relatedNodeIds": [
+        "member-value",
+        "channels",
+        "service",
+        "partner"
+      ],
+      "evidenceRefs": [
+        "SRC-CONTRACT-001"
+      ],
+      "epistemicStatus": "Assumed",
+      "claimBasis": "group-convergence",
+      "decisionStatus": "active-direction",
+      "crossCutting": true,
+      "dimensions": [
+        "Trust and legibility",
+        "Reach and timing",
+        "Usability, flexibility and scope",
+        "Posting, fulfilment and recovery",
+        "Awareness and access"
+      ]
+    }
+  ],
+  "views": [
+    {
+      "id": "current",
+      "label": "1. Current System",
+      "heading": "Current System",
+      "purpose": "Show what exists today and where value progression may be enabled, interrupted, delayed or obscured.",
+      "contextParagraph": "This view shows the populations, partners, value flows and institutional capabilities operating today. It highlights where loyalty value may progress or stall between Opportunity, Potential, Earned, Available and Realized Value, while preserving uncertainty about the actual degree of integration, fragmentation and causal effect.",
+      "nodeIds": [
+        "member-only",
+        "member-client",
+        "client-only",
+        "partner",
+        "member-value",
+        "engagement",
+        "products",
+        "data",
+        "channels",
+        "service",
+        "friction"
+      ],
+      "relationshipIds": [
+        "CUR-R01",
+        "CUR-R02",
+        "CUR-R03",
+        "CUR-R04",
+        "CUR-R05",
+        "CUR-R06",
+        "CUR-R07",
+        "CUR-R08",
+        "CUR-R09",
+        "CUR-R10",
+        "CUR-R11",
+        "CUR-R12",
+        "CUR-R13",
+        "CUR-R14",
+        "CUR-R15",
+        "CUR-R16",
+        "CUR-R17"
+      ],
+      "transitionIds": [
+        "VT01",
+        "VT02",
+        "VT03",
+        "VT04",
+        "VT05"
+      ],
+      "exclusions": [
+        "Future capabilities are not operational current-state components."
+      ],
+      "interpretationRules": [
+        "Structural arrows do not establish causal effects."
+      ]
+    },
+    {
+      "id": "transition",
+      "label": "2. Main Variable Transition",
+      "heading": "Main Variable: Member Value Realization",
+      "purpose": "Show where different parts of the system can improve progression toward Realized Value.",
+      "contextParagraph": "This view uses Member Value Realization as the system main variable. It shows how loyalty opportunities progress from Opportunity to Potential, Earned, Available and ultimately Realized Value; where that progression may stall; and which system conditions, member needs and broad opportunity areas could improve the amount, relevance, reliability, accessibility, usefulness and appropriate speed of realized value.",
+      "nodeIds": [
+        "partner",
+        "products",
+        "data",
+        "service",
+        "channels",
+        "friction",
+        "engagement"
+      ],
+      "valueStateIds": [
+        "opportunity",
+        "potential-value",
+        "earned-value",
+        "available-value",
+        "realized-value"
+      ],
+      "relationshipIds": [
+        "CUR-R13",
+        "TR-R01",
+        "TR-R02",
+        "TR-R03",
+        "TR-R04",
+        "TR-R05",
+        "TR-R06",
+        "TR-R07",
+        "TR-R08",
+        "TR-R09",
+        "TR-R10",
+        "TR-R11"
+      ],
+      "transitionIds": [
+        "VT01",
+        "VT02",
+        "VT03",
+        "VT04",
+        "VT05"
+      ],
+      "overlayIds": [
+        "JTBD-VT01",
+        "DVO-VT01",
+        "JTBD-VT02",
+        "DVO-VT02",
+        "JTBD-VT03",
+        "DVO-VT03",
+        "JTBD-VT04",
+        "DVO-VT04",
+        "JTBD-VT05",
+        "DVO-VT05",
+        "DVO-CROSS-REALIZATION"
+      ],
+      "exclusions": [
+        "JTBDs and DVOs are overlays, not operating components."
+      ],
+      "interpretationRules": [
+        "VT05 is feedback after the canonical value-state chain."
+      ]
+    },
+    {
+      "id": "future",
+      "label": "3. Future Opportunity",
+      "heading": "Future Opportunity",
+      "purpose": "Show a hypothesized improved system if relevant value-state transitions are strengthened.",
+      "contextParagraph": "This view shows a hypothesized improved system in which governed context, coordinated decisions, delivery, fulfilment and recovery could help more loyalty value become relevant, earned, available and ultimately realized. The capabilities and downstream outcomes remain opportunity hypotheses rather than a committed solution architecture or proven causal model.",
+      "nodeIds": [
+        "identity",
+        "orchestration",
+        "delivery",
+        "member-value",
+        "engagement",
+        "intersection",
+        "partner",
+        "net-value"
+      ],
+      "relationshipIds": [
+        "CUR-R13",
+        "FUT-R01",
+        "FUT-R02",
+        "FUT-R03",
+        "FUT-R04",
+        "FUT-R05",
+        "FUT-R06",
+        "FUT-R07",
+        "FUT-R08"
+      ],
+      "transitionIds": [
+        "VT01",
+        "VT02",
+        "VT03",
+        "VT04",
+        "VT05"
+      ],
+      "exclusions": [
+        "No capability is a committed target architecture."
+      ],
+      "interpretationRules": [
+        "Member, partner and organizational outcomes remain distinct."
+      ]
+    },
+    {
+      "id": "external",
+      "label": "4. Outside the Boundary",
+      "heading": "Outside the System Boundary",
+      "purpose": "Show external actors and conditions without treating them as internal components.",
+      "contextParagraph": "This view isolates external actors and conditions that may influence the bounded system. Only relationships among external factors are drawn; possible links to current and future nodes remain narrative and contextual rather than established internal flows.",
+      "nodeIds": [
+        "regulation",
+        "technology-landscape",
+        "expectations",
+        "competitors",
+        "neither"
+      ],
+      "relationshipIds": [
+        "EXT-R01",
+        "EXT-R02",
+        "EXT-R03",
+        "EXT-R04",
+        "EXT-R05"
+      ],
+      "transitionIds": [],
+      "exclusions": [
+        "External-to-internal connectors are not drawn."
+      ],
+      "interpretationRules": [
+        "External factors influence but are not controlled by the bounded system."
+      ]
+    }
+  ],
+  "materialAssumptions": [
+    "Current transition rates and realization gaps are unknown.",
+    "Causal effects from realization to engagement and relationship outcomes are unvalidated.",
+    "The current degree of integration or fragmentation is unresolved.",
+    "Partner incrementality and sustainable net value after full costs remain unresolved."
+  ]
+}

@@ -14,3 +14,17 @@
 - Preserved 22 nodes, 38 relationships, four views, edge meanings, layout metadata, and contextual narratives.
 - Added `STRUCTURAL_AUDIT.md` comparing the baseline with the refreshed analytical architecture contract.
 - Proposed changes remain unimplemented pending explicit approval.
+
+## Approved V2 analytical model
+
+- Approved all eight structural decision gates.
+- Made Member Value Realization the main variable while retaining the stable `member-value` ID.
+- Added five controlled value states and transitions VT01–VT05.
+- Reclassified Meaningful Engagement as downstream behaviour and feedback.
+- Merged the duplicate future engagement entity into `engagement`.
+- Replaced Transition Overview with Main Variable Transition.
+- Added JTBD and DVO overlays without treating them as system nodes.
+- Added independent epistemic-status, claim-basis, and decision-status classifiers.
+- Marked group-converged directions and hypotheses as non-evidentiary.
+- Extended the schema and added a deterministic contract-to-renderer adapter.
+- Updated only V2; V1 remains untouched.

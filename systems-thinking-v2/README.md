@@ -21,3 +21,11 @@ This directory is the isolated Version 2 workspace. The published Version 1 site
 6. Render the approved contract and regression-test every view.
 
 Raw research is welcome; it does not need to be converted into JSON. Use `data/research-input-template.md` as an optional guide.
+
+## Source of truth
+
+- `data/system-map.json` is the approved V2 analytical contract.
+- `schema/system-map.schema.json` defines its information architecture.
+- `CLASSIFICATION_GUIDE.md` defines how evidence, inference, group convergence, hypotheses, and intended outcomes remain distinct.
+- `scripts/sync-index-data.mjs` deterministically adapts the contract into the existing static renderer.
+- Generated analytical data inside `index.html` must not be edited directly.

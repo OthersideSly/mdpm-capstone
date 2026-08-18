@@ -3,30 +3,315 @@
   "$id": "https://othersidesly.github.io/mdpm-capstone/systems-thinking-v2/schema/system-map.schema.json",
   "title": "Team Zig Systems Map Contract",
   "type": "object",
-  "required": ["version", "boundary", "nodes", "relationships", "views"],
+  "required": [
+    "version",
+    "governingInquiry",
+    "mainVariableId",
+    "classificationModel",
+    "boundary",
+    "nodes",
+    "valueStates",
+    "valueTransitions",
+    "relationships",
+    "overlays",
+    "views"
+  ],
   "properties": {
-    "version": { "type": "string" },
+    "version": {
+      "type": "string"
+    },
+    "modelStatus": {
+      "type": "string"
+    },
+    "governingInquiry": {
+      "type": "string"
+    },
+    "mainVariableId": {
+      "type": "string"
+    },
+    "classificationModel": {
+      "type": "object"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "title",
+          "claimBasis",
+          "isEmpiricalEvidence"
+        ]
+      }
+    },
     "boundary": {
       "type": "object",
-      "required": ["purpose", "inside", "outside"],
+      "required": [
+        "purpose",
+        "inside",
+        "outside",
+        "premises"
+      ],
       "properties": {
-        "purpose": { "type": "string" },
-        "inside": { "type": "array", "items": { "type": "string" } },
-        "outside": { "type": "array", "items": { "type": "string" } }
+        "purpose": {
+          "type": "string"
+        },
+        "inside": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "outside": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "premises": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "nodes": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "label", "kind", "definition", "status"],
+        "required": [
+          "id",
+          "canonicalName",
+          "displayLabel",
+          "type",
+          "category",
+          "boundaryStatus",
+          "definition",
+          "roleInSystem",
+          "epistemicStatus",
+          "claimBasis",
+          "decisionStatus"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "label": { "type": "string" },
-          "kind": { "type": "string" },
-          "definition": { "type": "string" },
-          "status": { "enum": ["observed", "inferred", "proposed", "unresolved"] },
-          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "canonicalName": {
+            "type": "string"
+          },
+          "displayLabel": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "boundaryStatus": {
+            "type": "string",
+            "enum": [
+              "inside",
+              "outside"
+            ]
+          },
+          "definition": {
+            "type": "string"
+          },
+          "roleInSystem": {
+            "type": "string"
+          },
+          "epistemicStatus": {
+            "type": "string",
+            "enum": [
+              "Supported",
+              "Inferred",
+              "Assumed",
+              "Contested",
+              "Unresolved"
+            ]
+          },
+          "claimBasis": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "legacy-evidence-synthesis",
+              "analytical-inference",
+              "group-convergence",
+              "model-definition"
+            ]
+          },
+          "decisionStatus": {
+            "type": "string",
+            "enum": [
+              "active-direction",
+              "hypothesis",
+              "intended-outcome",
+              "unresolved"
+            ]
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/claim"
+            }
+          }
+        }
+      }
+    },
+    "valueStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "definition",
+          "entryCondition",
+          "exitCondition",
+          "order",
+          "epistemicStatus",
+          "claimBasis",
+          "decisionStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "entryCondition": {
+            "type": "string"
+          },
+          "exitCondition": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "epistemicStatus": {
+            "type": "string",
+            "enum": [
+              "Supported",
+              "Inferred",
+              "Assumed",
+              "Contested",
+              "Unresolved"
+            ]
+          },
+          "claimBasis": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "legacy-evidence-synthesis",
+              "analytical-inference",
+              "group-convergence",
+              "model-definition"
+            ]
+          },
+          "decisionStatus": {
+            "type": "string",
+            "enum": [
+              "active-direction",
+              "hypothesis",
+              "intended-outcome",
+              "unresolved"
+            ]
+          }
+        }
+      }
+    },
+    "valueTransitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "fromState",
+          "toState",
+          "definition",
+          "systemInfluenceIds",
+          "jtbdRefs",
+          "dvoRefs",
+          "epistemicStatus",
+          "claimBasis",
+          "decisionStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^VT0[1-5]$"
+          },
+          "fromState": {
+            "type": "string"
+          },
+          "toState": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "systemInfluenceIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "jtbdRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dvoRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "epistemicStatus": {
+            "type": "string",
+            "enum": [
+              "Supported",
+              "Inferred",
+              "Assumed",
+              "Contested",
+              "Unresolved"
+            ]
+          },
+          "claimBasis": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "legacy-evidence-synthesis",
+              "analytical-inference",
+              "group-convergence",
+              "model-definition"
+            ]
+          },
+          "decisionStatus": {
+            "type": "string",
+            "enum": [
+              "active-direction",
+              "hypothesis",
+              "intended-outcome",
+              "unresolved"
+            ]
+          }
         }
       }
     },
@@ -34,15 +319,156 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "from", "to", "label", "kind", "state"],
+        "required": [
+          "id",
+          "sourceId",
+          "targetId",
+          "displayLabel",
+          "relationshipDefinition",
+          "applicableTabs",
+          "epistemicStatus",
+          "claimBasis",
+          "decisionStatus"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "from": { "type": "string" },
-          "to": { "type": "string" },
-          "label": { "type": "string" },
-          "kind": { "enum": ["causal", "enabling", "constraining", "information-flow", "value-exchange", "association", "other"] },
-          "state": { "enum": ["observed-current", "inferred-current", "proposed-future", "unresolved"] },
-          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+          "id": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "displayLabel": {
+            "type": "string"
+          },
+          "relationshipDefinition": {
+            "type": "string"
+          },
+          "applicableTabs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "valueTransitionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "epistemicStatus": {
+            "type": "string",
+            "enum": [
+              "Supported",
+              "Inferred",
+              "Assumed",
+              "Contested",
+              "Unresolved"
+            ]
+          },
+          "claimBasis": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "legacy-evidence-synthesis",
+              "analytical-inference",
+              "group-convergence",
+              "model-definition"
+            ]
+          },
+          "decisionStatus": {
+            "type": "string",
+            "enum": [
+              "active-direction",
+              "hypothesis",
+              "intended-outcome",
+              "unresolved"
+            ]
+          },
+          "evidenceRefs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "overlays": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "statement",
+          "relatedTransitionIds",
+          "relatedNodeIds",
+          "epistemicStatus",
+          "claimBasis",
+          "decisionStatus",
+          "crossCutting"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "JTBD",
+              "DVO"
+            ]
+          },
+          "statement": {
+            "type": "string"
+          },
+          "relatedTransitionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relatedNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "epistemicStatus": {
+            "type": "string",
+            "enum": [
+              "Supported",
+              "Inferred",
+              "Assumed",
+              "Contested",
+              "Unresolved"
+            ]
+          },
+          "claimBasis": {
+            "type": "string",
+            "enum": [
+              "evidence",
+              "legacy-evidence-synthesis",
+              "analytical-inference",
+              "group-convergence",
+              "model-definition"
+            ]
+          },
+          "decisionStatus": {
+            "type": "string",
+            "enum": [
+              "active-direction",
+              "hypothesis",
+              "intended-outcome",
+              "unresolved"
+            ]
+          },
+          "crossCutting": {
+            "type": "boolean"
+          }
         }
       }
     },
@@ -50,12 +476,134 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "label", "nodeIds", "relationshipIds"],
+        "required": [
+          "id",
+          "label",
+          "heading",
+          "purpose",
+          "contextParagraph",
+          "nodeIds",
+          "relationshipIds",
+          "transitionIds"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "label": { "type": "string" },
-          "nodeIds": { "type": "array", "items": { "type": "string" } },
-          "relationshipIds": { "type": "array", "items": { "type": "string" } }
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "contextParagraph": {
+            "type": "string"
+          },
+          "nodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "valueStateIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "relationshipIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transitionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "overlayIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "interpretationRules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": [
+        "id",
+        "text",
+        "epistemicStatus",
+        "claimBasis",
+        "decisionStatus",
+        "evidenceRefs",
+        "traceabilityStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "epistemicStatus": {
+          "type": "string",
+          "enum": [
+            "Supported",
+            "Inferred",
+            "Assumed",
+            "Contested",
+            "Unresolved"
+          ]
+        },
+        "claimBasis": {
+          "type": "string",
+          "enum": [
+            "evidence",
+            "legacy-evidence-synthesis",
+            "analytical-inference",
+            "group-convergence",
+            "model-definition"
+          ]
+        },
+        "decisionStatus": {
+          "type": "string",
+          "enum": [
+            "active-direction",
+            "hypothesis",
+            "intended-outcome",
+            "unresolved"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "traceabilityStatus": {
+          "type": "string"
         }
       }
     }

@@ -823,8 +823,8 @@ svg {
 <div id="loyalty-map-v2" class="lm2-root">
   <div class="lm2-version-badge">Version 2 research workspace</div>
   <div class="viz-controls" aria-label="Choose a map view">
-    <button type="button" class="btn btn-primary" data-map-view="transition" aria-pressed="true">1. Transition Overview</button>
-    <button type="button" class="btn" data-map-view="current" aria-pressed="false">2. Current System</button>
+    <button type="button" class="btn btn-primary" data-map-view="current" aria-pressed="true">1. Current System</button>
+    <button type="button" class="btn" data-map-view="transition" aria-pressed="false">2. Main Variable Transition</button>
     <button type="button" class="btn" data-map-view="future" aria-pressed="false">3. Future Opportunity</button>
     <button type="button" class="btn" data-map-view="external" aria-pressed="false">4. Outside the Boundary</button>
   </div>
@@ -845,7 +845,7 @@ svg {
       </div>
     </div>
     <ol class="lm2-guide-steps">
-      <li><span>1</span><strong>Choose a view</strong><small>Start with Transition Overview.</small></li>
+      <li><span>1</span><strong>Choose a view</strong><small>Start with Current System.</small></li>
       <li><span>2</span><strong>Select a node</strong><small>Choose any box to set the focus.</small></li>
       <li><span>3</span><strong>Follow the emphasis</strong><small>Trace the highlighted arrows and labels.</small></li>
       <li><span>4</span><strong>Read the context</strong><small>Review its role, evidence and connections below.</small></li>
@@ -876,15 +876,19 @@ svg {
     <strong class="lm2-legend-title">Legend</strong>
     <div class="lm2-legend-items text-small">
       <button type="button" class="lm2-legend-item" data-legend-help="A group participating in or affected by the system." data-tooltip="A group participating in or affected by the system."><i class="lm2-key lm2-key-population"></i>Population</button>
-      <button type="button" class="lm2-legend-item" data-legend-help="The value exchanged or the engagement behaviour the system aims to strengthen." data-tooltip="The value exchanged or the engagement behaviour the system aims to strengthen."><i class="lm2-key lm2-key-value"></i>Value / engagement</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="The focal Member Value Realization process or a downstream participation behaviour." data-tooltip="The focal Member Value Realization process or a downstream participation behaviour."><i class="lm2-key lm2-key-value"></i>Process / behaviour</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A controlled analytical state in the Opportunity-to-Realized-Value progression; it is not an operating component." data-tooltip="A controlled analytical state in the Opportunity-to-Realized-Value progression; it is not an operating component."><i class="lm2-key lm2-key-value"></i>Value state</button>
       <button type="button" class="lm2-legend-item" data-legend-help="An organization or ecosystem participant that helps deliver value." data-tooltip="An organization or ecosystem participant that helps deliver value."><i class="lm2-key lm2-key-partner"></i>Partner</button>
       <button type="button" class="lm2-legend-item" data-legend-help="An organizational capability required to enable the system." data-tooltip="An organizational capability required to enable the system."><i class="lm2-key lm2-key-capability"></i>Capability</button>
       <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized capability, behaviour or pathway that could emerge next." data-tooltip="A hypothesized capability, behaviour or pathway that could emerge next."><i class="lm2-key lm2-key-future"></i>Future opportunity</button>
       <button type="button" class="lm2-legend-item" data-legend-help="A force outside the bounded system that may influence it without being controlled by it." data-tooltip="A force outside the bounded system that may influence it without being controlled by it."><i class="lm2-key lm2-key-external"></i>Outside boundary</button>
       <button type="button" class="lm2-legend-item" data-legend-help="The longer-term result the system is intended to produce." data-tooltip="The longer-term result the system is intended to produce."><i class="lm2-key lm2-key-outcome"></i>Intended outcome</button>
-      <button type="button" class="lm2-legend-item" data-legend-help="A current, observed or supported relationship between two nodes." data-tooltip="A current, observed or supported relationship between two nodes."><i class="lm2-key-line"></i>Current flow</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A structural flow or approved analytical progression. A solid arrow does not by itself establish evidence or causality." data-tooltip="A structural flow or approved analytical progression. A solid arrow does not by itself establish evidence or causality."><i class="lm2-key-line"></i>Structural flow</button>
       <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized connection that represents a possible future pathway." data-tooltip="A hypothesized connection that represents a possible future pathway."><i class="lm2-key-line lm2-key-line-future"></i>Future pathway</button>
       <button type="button" class="lm2-legend-item" data-legend-help="A plausible relationship that still requires validation." data-tooltip="A plausible relationship that still requires validation."><i class="lm2-key-line lm2-key-line-inferred"></i>Inferred relationship</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="Directly supported for this analysis. Source traceability is shown separately where it is still pending." data-tooltip="Directly supported for this analysis. Source traceability is shown separately where it is still pending."><i class="lm2-key lm2-key-capability"></i>Supported</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A direction approved through Team Zig convergence. Approval makes it active direction, not empirical evidence." data-tooltip="A direction approved through Team Zig convergence. Approval makes it active direction, not empirical evidence."><i class="lm2-key lm2-key-value"></i>Group convergence</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A future mechanism or outcome requiring validation; it is not a committed architecture or proven effect." data-tooltip="A future mechanism or outcome requiring validation; it is not a committed architecture or proven effect."><i class="lm2-key lm2-key-future"></i>Hypothesis</button>
     </div>
     <p id="lm2-legend-help" class="lm2-legend-help text-small" aria-live="polite">Select a legend item to see how it should be interpreted.</p>
   </section>
@@ -894,6 +898,8 @@ svg {
       <div class="viz-row">
         <span id="lm2-phase" class="viz-badge">Current</span>
         <span id="lm2-status" class="viz-badge">Supported</span>
+        <span id="lm2-basis" class="viz-badge">Evidence trace pending</span>
+        <span id="lm2-decision" class="viz-badge">Unresolved</span>
         <span id="lm2-category" class="viz-badge">Primary behaviour</span>
       </div>
       <strong id="lm2-detail-title">Meaningful engagement</strong>
@@ -1314,11 +1320,13 @@ svg {
     align-items: stretch;
   }
   #loyalty-map-v2 .lm2-grid[data-view="transition"] {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 1.35rem;
+    row-gap: 4.25rem;
     grid-template-areas:
-      "mo co mc partner"
-      "data data orchestration delivery"
-      "engagement engagement intersection net";
+      "opportunity potential earned available realized"
+      "partner products data service channels"
+      "friction friction . engagement engagement";
   }
   #loyalty-map-v2 .lm2-grid[data-view="current"] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1361,6 +1369,12 @@ svg {
   }
   #loyalty-map-v2 .lm2-node-population { background: color-mix(in srgb, var(--lm-population) 20%, var(--card)); }
   #loyalty-map-v2 .lm2-node-value { background: color-mix(in srgb, var(--lm-value) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-node-state {
+    min-height: 4.25rem;
+    border-color: color-mix(in srgb, var(--lm-value) 64%, var(--border));
+    background: color-mix(in srgb, var(--lm-value) 27%, var(--card));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lm-value) 18%, transparent);
+  }
   #loyalty-map-v2 .lm2-node-partner { background: color-mix(in srgb, var(--lm-partner) 20%, var(--card)); }
   #loyalty-map-v2 .lm2-node-capability { background: color-mix(in srgb, var(--lm-capability) 18%, var(--card)); }
   #loyalty-map-v2 .lm2-node-priority { background: color-mix(in srgb, var(--lm-capability) 30%, var(--card)); border-color: var(--lm-capability); }
@@ -1567,6 +1581,14 @@ svg {
   #loyalty-map-v2 .lm2-connection-copy strong,
   #loyalty-map-v2 .lm2-connection-copy span { display: block; }
   #loyalty-map-v2 .lm2-connection-copy span { margin-top: 0.15rem; }
+  #loyalty-map-v2 .lm2-connection-copy .lm2-connection-classifier {
+    display: block;
+    margin-top: 0.28rem;
+    color: var(--muted-foreground);
+    font-size: calc(var(--font-size-small) * 0.88);
+    font-weight: 560;
+    letter-spacing: 0.01em;
+  }
   #loyalty-map-v2 .lm2-connection-copy p { margin: 0.3rem 0 0; }
   #loyalty-map-v2 .lm2-connection-item strong { font-weight: 500; }
   #loyalty-map-v2 .lm2-legend {
@@ -1706,356 +1728,1761 @@ svg {
   var labelsLayer = root.querySelector("#lm2-labels");
   var ns = "http://www.w3.org/2000/svg";
 
+  /* GENERATED FROM data/system-map.json. Run scripts/sync-index-data.mjs after contract changes. */
   var nodes = {
     "member-only": {
-      label:"Member-only", sub:"Program relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship population",
-      definition:"A person who belongs to the loyalty program but does not currently hold a banking relationship with the client.",
-      role:"This population sustains the open program ecosystem through earning, redemption and partner participation. It is also the largest immediate population from which relevant banking relationships might be created.",
-      why:"The program was designed to serve people beyond the bank. Preserving credible standalone value is therefore necessary both for member trust and for the client’s future relationship opportunity.",
-      known:"Member-only participants can receive program and partner value without becoming clients. Research shows that members judge programs by usable value, flexibility and reliable delivery—not ownership alone.",
-      provisional:"The active size of this population, the data that may be used for banking decisioning, and the proportion with a relevant banking need remain unconfirmed.",
-      opportunity:"Use permissioned member context to recognize genuine financial needs and present bank-connected value without making conversion a condition for receiving worthwhile program value.",
-      chain:["Standalone value","Participation","Meaningful engagement","Relevant banking need","Optional conversion"], dimensions:[]
+      "label": "Member-only",
+      "sub": "Program relationship",
+      "kind": "population",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Relationship population",
+      "definition": "A person who belongs to the loyalty program but does not currently hold a banking relationship with the client.",
+      "role": "This population sustains the open program ecosystem through earning, redemption and partner participation. It is also the largest immediate population from which relevant banking relationships might be created.",
+      "why": "The program was designed to serve people beyond the bank. Preserving credible standalone value is therefore necessary both for member trust and for the client’s future relationship opportunity.",
+      "known": "Member-only participants can receive program and partner value without becoming clients. Research shows that members judge programs by usable value, flexibility and reliable delivery—not ownership alone.",
+      "provisional": "The active size of this population, the data that may be used for banking decisioning, and the proportion with a relevant banking need remain unconfirmed.",
+      "opportunity": "Use permissioned member context to recognize genuine financial needs and present bank-connected value without making conversion a condition for receiving worthwhile program value.",
+      "chain": [
+        "Standalone value",
+        "Participation",
+        "Meaningful engagement",
+        "Relevant banking need",
+        "Optional conversion"
+      ],
+      "dimensions": [],
+      "systemLinks": []
     },
     "member-client": {
-      label:"Member-client", sub:"Program + banking relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship intersection",
-      definition:"A person who simultaneously participates in the loyalty program and holds a banking relationship with the client.",
-      role:"This is the strategic intersection where program value, banking value and partner value can potentially be coordinated across one relationship.",
-      why:"The client expects the intersection to support deeper engagement and greater relationship value. Bank-linked products already demonstrate that members can receive additional earning routes and benefits.",
-      known:"Member-clients may have access to a higher potential value ceiling through connected products, enhanced earning and integrated channels.",
-      provisional:"Holding both relationships does not prove engagement, affinity or incremental value. The combined value must still be relevant, used, fulfilled and realized.",
-      opportunity:"Coordinate program, banking and partner value so the intersection produces recognizably better outcomes rather than simply a larger number of linked accounts.",
-      chain:["Program value","+ Bank-connected value","Combined potential","Realized value","Deeper engagement"], dimensions:[]
+      "label": "Member-client",
+      "sub": "Program + banking relationship",
+      "kind": "population",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Relationship intersection",
+      "definition": "A person who simultaneously participates in the loyalty program and holds a banking relationship with the client.",
+      "role": "This is the strategic intersection where program value, banking value and partner value can potentially be coordinated across one relationship.",
+      "why": "The client expects the intersection to support deeper engagement and greater relationship value. Bank-linked products already demonstrate that members can receive additional earning routes and benefits.",
+      "known": "Member-clients may have access to a higher potential value ceiling through connected products, enhanced earning and integrated channels.",
+      "provisional": "Holding both relationships does not prove engagement, affinity or incremental value. The combined value must still be relevant, used, fulfilled and realized.",
+      "opportunity": "Coordinate program, banking and partner value so the intersection produces recognizably better outcomes rather than simply a larger number of linked accounts.",
+      "chain": [
+        "Program value",
+        "+ Bank-connected value",
+        "Combined potential",
+        "Realized value",
+        "Deeper engagement"
+      ],
+      "dimensions": [],
+      "systemLinks": []
     },
     "client-only": {
-      label:"Client-only", sub:"Banking relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship population",
-      definition:"A banking client who does not currently participate in this loyalty program.",
-      role:"This population can enter the intersection through relevant program enrolment. Existing transactions and participation in other reward products may indicate potential fit.",
-      why:"The client already has channels, products and permissioned banking context that may help explain where program participation could add value.",
-      known:"A client may already use cashback, points or co-branded products outside this program. Those behaviours show broader loyalty engagement, but not engagement with this specific program.",
-      provisional:"Transaction activity is only a relevance signal. It does not prove interest, consent, product suitability or willingness to manage another loyalty relationship.",
-      opportunity:"Identify where program participation complements an existing client need, then reduce the friction required to enrol, earn and realize the first meaningful benefit.",
-      chain:["Existing client need","Program relevance","Enrolment","First realized value","Ongoing engagement"], dimensions:[]
+      "label": "Client-only",
+      "sub": "Banking relationship",
+      "kind": "population",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Relationship population",
+      "definition": "A banking client who does not currently participate in this loyalty program.",
+      "role": "This population can enter the intersection through relevant program enrolment. Existing transactions and participation in other reward products may indicate potential fit.",
+      "why": "The client already has channels, products and permissioned banking context that may help explain where program participation could add value.",
+      "known": "A client may already use cashback, points or co-branded products outside this program. Those behaviours show broader loyalty engagement, but not engagement with this specific program.",
+      "provisional": "Transaction activity is only a relevance signal. It does not prove interest, consent, product suitability or willingness to manage another loyalty relationship.",
+      "opportunity": "Identify where program participation complements an existing client need, then reduce the friction required to enrol, earn and realize the first meaningful benefit.",
+      "chain": [
+        "Existing client need",
+        "Program relevance",
+        "Enrolment",
+        "First realized value",
+        "Ongoing engagement"
+      ],
+      "dimensions": [],
+      "systemLinks": []
     },
     "partner": {
-      label:"Partner ecosystem", sub:"Merchants • experiences • business relationships", kind:"partner", phase:"Current", status:"Supported", category:"Ecosystem actor",
-      definition:"Merchants and business partners that contribute products, services, offers, access or experiences to the loyalty ecosystem.",
-      role:"Partners expand what members can earn, access and redeem while connecting the program to everyday and aspirational needs.",
-      why:"Partner quality, frequency and relevance determine practical value more than the nominal number of brands in the ecosystem.",
-      known:"Partners can receive sales, attention, repeat purchasing and potential share-of-wallet gains. They may also receive permissioned or aggregated performance insight.",
-      provisional:"The incrementality of partner sales, actual data-sharing arrangements, offer funding and partner economics are not yet established.",
-      opportunity:"Create a reciprocal value exchange in which relevant partner contributions strengthen engagement and demonstrated partner returns encourage continued participation.",
-      chain:["Partner contribution","Member participation","Incremental partner value","Continued partner participation"], dimensions:["Sales","Affinity","Share of wallet","Insight","Reach"]
+      "label": "Partner ecosystem",
+      "sub": "Merchants • experiences • business relationships",
+      "kind": "partner",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Ecosystem actor",
+      "definition": "Merchants and business partners that contribute products, services, offers, access or experiences to the loyalty ecosystem.",
+      "role": "Partners expand what members can earn, access and redeem while connecting the program to everyday and aspirational needs.",
+      "why": "Partner quality, frequency and relevance determine practical value more than the nominal number of brands in the ecosystem.",
+      "known": "Partners can receive sales, attention, repeat purchasing and potential share-of-wallet gains. They may also receive permissioned or aggregated performance insight.",
+      "provisional": "The incrementality of partner sales, actual data-sharing arrangements, offer funding and partner economics are not yet established.",
+      "opportunity": "Create a reciprocal value exchange in which relevant partner contributions strengthen engagement and demonstrated partner returns encourage continued participation.",
+      "chain": [
+        "Partner contribution",
+        "Member participation",
+        "Incremental partner value",
+        "Continued partner participation"
+      ],
+      "dimensions": [
+        "Sales",
+        "Affinity",
+        "Share of wallet",
+        "Insight",
+        "Reach"
+      ],
+      "systemLinks": []
     },
     "member-value": {
-      label:"Member value", sub:"Potential → accessible → realized", kind:"value", phase:"Current", status:"Supported", category:"Value subsystem",
-      definition:"The financial, functional, experiential and emotional value that a person can potentially access through the program and its ecosystem.",
-      role:"Member value is the exchange that gives people a reason to participate. Points are an intermediate mechanism—not the final outcome.",
-      why:"Both interviews show that members translate points into tangible savings or experiences while also valuing flexibility, access, recognition, convenience and dependable service.",
-      known:"Value can exist before it is realized. Awareness, eligibility, accessibility, fulfilment and redemption determine whether potential value becomes useful.",
-      provisional:"The relative importance of each value type differs by member and context. More available benefits can also increase complexity and management effort.",
-      opportunity:"Make value easier to understand, access, use and validate while preserving enough flexibility for different member needs.",
-      chain:["Potential","Understood","Accessible","Earned","Redeemed","Realized"], dimensions:["Savings","Flexibility","Access","Recognition","Convenience","Experiences"]
+      "label": "Member Value Realization",
+      "sub": "Opportunity → Potential → Earned → Available → Realized",
+      "kind": "value",
+      "phase": "Current and future focus",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Focal system process / organizing construct",
+      "definition": "The process through which an applicable loyalty opportunity progresses through the relevant value states until a member successfully uses or converts it into an outcome they perceive as worthwhile.",
+      "role": "This is the system main variable. It connects relevance, qualification, posting, access, use, fulfilment and perceived worth without treating activity alone as success.",
+      "why": "The system exists to improve the amount, relevance, reliability, accessibility, usefulness and appropriate speed with which loyalty opportunities become realized member value across its relationship pathways.",
+      "known": "The analytical model distinguishes Opportunity, Potential Value, Earned Value, Available Value and Realized Value. Empirical transition rates and drop-offs remain unknown.",
+      "provisional": "The largest realization gaps, causal drivers, population differences and incremental outcomes remain unresolved.",
+      "opportunity": "Improve value progression across multiple dimensions while preserving credible standalone Member-Only value and avoiding speed-only optimization.",
+      "chain": [
+        "Opportunity",
+        "Potential Value",
+        "Earned Value",
+        "Available Value",
+        "Realized Value"
+      ],
+      "dimensions": [
+        "Realization rate",
+        "Time to realized value",
+        "Realized-value quality",
+        "Reliability",
+        "Effort and complexity",
+        "Flexibility and contextual fit",
+        "Realization equity",
+        "Realization gap"
+      ],
+      "systemLinks": []
     },
     "engagement": {
-      label:"Meaningful engagement", sub:"Frequency • breadth • continuity • completion • progression", kind:"value", phase:"Current focus", status:"Supported", category:"Primary system behaviour",
-      definition:"A sustained pattern of participation through which members, clients and partners repeatedly access, contribute to or realize relevant value.",
-      role:"Engagement is the primary behaviour this system must explain. It applies across all three populations and precedes potential relationship deepening or movement into the member-client intersection.",
-      why:"The client uses engagement as a strategic objective. We distinguished it from activation and participation so the map does not mistake isolated activity for a durable relationship.",
-      known:"Participation is observable through actions such as earning, redeeming, using benefits or adopting relevant products. Activation initiates or renews that participation; repeated participation develops into engagement.",
-      provisional:"Engagement does not automatically cause conversion, affinity or revenue. Its effect depends on relevance, realized value, trust, suitability and reliable delivery.",
-      opportunity:"Improve the quality—not only the volume—of engagement across member-only, client-only and member-client populations, allowing appropriate progression to emerge as a downstream result.",
-      chain:["Activation","Participation","Repeated value realization","Meaningful engagement","Relationship depth / conversion"], dimensions:["Frequency","Breadth","Continuity","Completion","Progression"]
+      "label": "Meaningful engagement",
+      "sub": "Frequency • breadth • continuity • completion • progression",
+      "kind": "value",
+      "phase": "Current and future downstream behaviour",
+      "status": "Inferred",
+      "basis": "Analytical inference",
+      "decision": "Active direction",
+      "category": "Downstream behaviour and feedback signal",
+      "definition": "A sustained, multidimensional pattern of participation over time, described through frequency, breadth, continuity, completion and progression.",
+      "role": "Meaningful Engagement may follow repeated worthwhile value realization and provides participation and outcome signals back into the system. It is not the main variable.",
+      "why": "Sustained participation may indicate that outcomes are worthwhile, but activity, earning, redemption or linked relationships do not by themselves prove realized value.",
+      "known": "Participation is observable through actions such as earning, redeeming, using benefits or adopting relevant products. Activation initiates or renews that participation; repeated participation develops into engagement.",
+      "provisional": "Engagement does not automatically cause conversion, affinity or revenue. Its effect depends on relevance, realized value, trust, suitability and reliable delivery.",
+      "opportunity": "Learn whether and under what conditions repeated worthwhile realization supports continued or expanded participation.",
+      "chain": [
+        "Realized Value",
+        "Continued or expanded participation",
+        "Meaningful Engagement",
+        "Outcome learning"
+      ],
+      "dimensions": [
+        "Frequency",
+        "Breadth",
+        "Continuity",
+        "Completion",
+        "Progression"
+      ],
+      "systemLinks": []
     },
     "products": {
-      label:"Products and transactions", sub:"Banking • rewards • partner activity", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
-      definition:"The banking products, reward products and transaction infrastructure through which people spend, earn and access benefits.",
-      role:"This layer performs the institution’s core processing activity and generates signals that may indicate needs, eligibility and engagement potential.",
-      why:"It is an established institutional capability that will be used regardless of how the future loyalty experience is designed.",
-      known:"Bank-linked products can produce additional earning routes and value. Transaction behaviour can reveal where relevant value might exist.",
-      provisional:"Product use does not itself prove loyalty or program engagement, and transaction signals cannot be treated as unrestricted targeting permission.",
-      opportunity:"Reuse reliable transaction and product capabilities while connecting their outputs to permissioned decisioning and program value delivery.",
-      chain:["Product use","Transaction signal","Decisioning","Relevant opportunity","Member action"], dimensions:[]
+      "label": "Products and transactions",
+      "sub": "Banking • rewards • partner activity",
+      "kind": "capability",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Shared enabling backbone",
+      "definition": "The banking products, reward products and transaction infrastructure through which people spend, earn and access benefits.",
+      "role": "Generates loyalty opportunities, participation routes, qualifying activity and transaction evidence that can influence several value-state transitions.",
+      "why": "It is an established institutional capability that will be used regardless of how the future loyalty experience is designed.",
+      "known": "Bank-linked products can produce additional earning routes and value. Transaction behaviour can reveal where relevant value might exist.",
+      "provisional": "Product use does not itself prove loyalty or program engagement, and transaction signals cannot be treated as unrestricted targeting permission.",
+      "opportunity": "Clarify which product or transaction conditions create opportunities, establish qualification and provide reliable evidence without treating activity as realized value.",
+      "chain": [
+        "Product use",
+        "Transaction signal",
+        "Decisioning",
+        "Relevant opportunity",
+        "Member action"
+      ],
+      "dimensions": [],
+      "systemLinks": []
     },
     "data": {
-      label:"Data and decisioning", sub:"Priority connective layer", kind:"priority", phase:"Current", status:"Inferred integration", category:"Shared enabling backbone",
-      definition:"The data, identity, analytical and decision processes used to interpret context and determine an appropriate action or opportunity.",
-      role:"This is the most consequential connective layer identified because it links changing needs, available value, partners, products and delivery channels.",
-      why:"The core strategic question—what value, to whom, when and through which channel—cannot be answered consistently without usable context and decision governance.",
-      known:"The client has enterprise data and offer-decisioning capabilities. Public evidence does not establish the extent to which they are integrated with the program.",
-      provisional:"More data does not guarantee better decisions. Identity gaps, consent, privacy, bias, incomplete signals and over-targeting can reduce relevance or trust.",
-      opportunity:"Create permissioned, explainable decisioning that identifies where incremental value genuinely exists across members, clients and partners.",
-      chain:["Permissioned signals","Interpreted need","Decision","Relevant action","Outcome learning"], dimensions:["Identity","Consent","Context","Relevance","Measurement"]
+      "label": "Data and decisioning",
+      "sub": "Priority connective layer",
+      "kind": "priority",
+      "phase": "Current",
+      "status": "Inferred",
+      "basis": "Analytical inference",
+      "decision": "Unresolved",
+      "category": "Shared enabling backbone",
+      "definition": "The data, identity, analytical and decision processes used to interpret context and determine an appropriate action or opportunity.",
+      "role": "Helps assess relevance, eligibility, context and performance. Data and decisioning do not create value merely by existing.",
+      "why": "The core strategic question—what value, to whom, when and through which channel—cannot be answered consistently without usable context and decision governance.",
+      "known": "The client has enterprise data and offer-decisioning capabilities. Public evidence does not establish the extent to which they are integrated with the program.",
+      "provisional": "More data does not guarantee better decisions. Identity gaps, consent, privacy, bias, incomplete signals and over-targeting can reduce relevance or trust.",
+      "opportunity": "Use permitted context to improve relevance and learning while preserving consent, suitability, governance and explainability.",
+      "chain": [
+        "Permissioned signals",
+        "Interpreted need",
+        "Decision",
+        "Relevant action",
+        "Outcome learning"
+      ],
+      "dimensions": [
+        "Identity",
+        "Consent",
+        "Context",
+        "Relevance",
+        "Measurement"
+      ],
+      "systemLinks": []
     },
     "channels": {
-      label:"Channels and delivery", sub:"Program • banking • partner touchpoints", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
-      definition:"The digital, physical and communication touchpoints through which decisions, offers, information and experiences reach people.",
-      role:"Channels translate an organizational decision into something a member or client can discover, understand and act upon.",
-      why:"The client already operates mature banking channels, while the program also has standalone surfaces and partner touchpoints.",
-      known:"Multiple channels exist. Separate access, authentication and feature availability have produced some directional signals of discontinuity.",
-      provisional:"Multiple channels are not inherently fragmented. The quality of orchestration, ownership and handoffs across them remains unclear.",
-      opportunity:"Deliver consistent context and value across the appropriate channel while preserving intentional separation where it protects privacy or accessibility.",
-      chain:["Decision","Right channel","Clear opportunity","Member action","Feedback"], dimensions:["Digital","Physical","Partner","Marketing","Service"]
+      "label": "Channels and delivery",
+      "sub": "Program • banking • partner touchpoints",
+      "kind": "capability",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Shared enabling backbone",
+      "definition": "The digital, physical and communication touchpoints through which decisions, offers, information and experiences reach people.",
+      "role": "Makes opportunities discoverable and actionable and makes Available Value accessible for use through appropriate touchpoints.",
+      "why": "The client already operates mature banking channels, while the program also has standalone surfaces and partner touchpoints.",
+      "known": "Multiple channels exist. Separate access, authentication and feature availability have produced some directional signals of discontinuity.",
+      "provisional": "Multiple channels are not inherently fragmented. The quality of orchestration, ownership and handoffs across them remains unclear.",
+      "opportunity": "Improve opportunity presentation, action access and available-value access without assuming every channel should be integrated.",
+      "chain": [
+        "Decision",
+        "Right channel",
+        "Clear opportunity",
+        "Member action",
+        "Feedback"
+      ],
+      "dimensions": [
+        "Digital",
+        "Physical",
+        "Partner",
+        "Marketing",
+        "Service"
+      ],
+      "systemLinks": []
     },
     "service": {
-      label:"Service and operations", sub:"Fulfilment • support • recovery", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
-      definition:"The operational backbone that calculates and fulfils rewards, supports members, manages issues and coordinates program administration.",
-      role:"It converts a promised benefit into delivered value and determines what happens when that delivery fails.",
-      why:"The financial institution already has substantial operating capacity. Reusing relevant capabilities for the program could improve consistency and create economies of scale.",
-      known:"Reliable reward posting, redemption and service recovery influence whether members trust the value proposition. Public signals identify some cross-system support handoffs.",
-      provisional:"The actual degree of integration, duplication or fragmentation between the client and program operating models is unknown.",
-      opportunity:"Connect only the operational capabilities that improve fulfilment, issue ownership and cost efficiency while avoiding tightly coupled failure points.",
-      chain:["Value promise","Fulfilment","Realized value","Recovery when needed","Trust signal"], dimensions:["Reward posting","Redemption","Support","Recovery","Partner operations"]
+      "label": "Service and operations",
+      "sub": "Fulfilment • support • recovery",
+      "kind": "capability",
+      "phase": "Current",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "Shared enabling backbone",
+      "definition": "The operational backbone that calculates and fulfils rewards, supports members, manages issues and coordinates program administration.",
+      "role": "Supports qualification, posting, release, fulfilment, recovery and especially the movement from Earned Value to Available Value.",
+      "why": "The financial institution already has substantial operating capacity. Reusing relevant capabilities for the program could improve consistency and create economies of scale.",
+      "known": "Reliable reward posting, redemption and service recovery influence whether members trust the value proposition. Public signals identify some cross-system support handoffs.",
+      "provisional": "The actual degree of integration, duplication or fragmentation between the client and program operating models is unknown.",
+      "opportunity": "Improve posting reliability, access, fulfilment and recovery while clarifying ownership across handoffs.",
+      "chain": [
+        "Value promise",
+        "Fulfilment",
+        "Realized value",
+        "Recovery when needed",
+        "Trust signal"
+      ],
+      "dimensions": [
+        "Reward posting",
+        "Redemption",
+        "Support",
+        "Recovery",
+        "Partner operations"
+      ],
+      "systemLinks": []
     },
     "friction": {
-      label:"Interface friction", sub:"Partial connectivity • unclear handoffs", kind:"friction", phase:"Current", status:"Inferred", category:"Structural condition",
-      definition:"A marker for places where identity, information, value, decisions or service may not move reliably across organizational or technological boundaries.",
-      role:"It keeps the map attentive to the quality of interfaces without assuming that every separate system or channel is defective.",
-      why:"Separate surfaces, linking issues, delayed rewards and support transfers provide directional evidence that some interfaces may constrain value delivery.",
-      known:"Specific member-facing breakdowns have been reported. The existence of multiple channels and systems is also supported.",
-      provisional:"Those signals do not establish enterprise-wide fragmentation or prove that tighter integration will always create net gains.",
-      opportunity:"Identify which interfaces require better coordination and which separations are intentional, protective or economically sensible.",
-      chain:["Interface gap","Broken or delayed flow","Reduced realized value","Additional effort","Possible trust erosion"], dimensions:["Identity","Data","Channels","Support ownership","Fulfilment"]
+      "label": "Interface friction",
+      "sub": "Partial connectivity • unclear handoffs",
+      "kind": "friction",
+      "phase": "Current",
+      "status": "Inferred",
+      "basis": "Analytical inference",
+      "decision": "Unresolved",
+      "category": "Structural condition",
+      "definition": "A marker for places where identity, information, value, decisions or service may not move reliably across organizational or technological boundaries.",
+      "role": "It keeps the map attentive to the quality of interfaces without assuming that every separate system or channel is defective.",
+      "why": "Separate surfaces, linking issues, delayed rewards and support transfers provide directional evidence that some interfaces may constrain value delivery.",
+      "known": "Specific member-facing breakdowns have been reported. The existence of multiple channels and systems is also supported.",
+      "provisional": "Those signals do not establish enterprise-wide fragmentation or prove that tighter integration will always create net gains.",
+      "opportunity": "Identify which interfaces require better coordination and which separations are intentional, protective or economically sensible.",
+      "chain": [
+        "Interface gap",
+        "Broken or delayed flow",
+        "Reduced realized value",
+        "Additional effort",
+        "Possible trust erosion"
+      ],
+      "dimensions": [
+        "Identity",
+        "Data",
+        "Channels",
+        "Support ownership",
+        "Fulfilment"
+      ],
+      "systemLinks": []
     },
     "identity": {
-      label:"Permissioned identity and data", sub:"Connected context under governance", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future connective capability",
-      definition:"A governed ability to recognize the same person or relationship across program, banking and partner contexts where permitted.",
-      role:"It would create the usable context required for decisioning without treating ownership as unrestricted access to all member data.",
-      why:"Relevant orchestration depends on knowing which signals belong together and which uses the person has consented to.",
-      known:"Program and banking relationships generate different data. Privacy, consent and organizational access conditions apply to any connection.",
-      provisional:"The current identity architecture, consent model, data rights and cross-organizational access are not established.",
-      opportunity:"Connect only the context required to create explainable member and partner value under clear governance.",
-      chain:["Identity resolution","Consent","Permitted context","Decisioning input"], dimensions:["Privacy","Governance","Accuracy","Access","Transparency"]
+      "label": "Permissioned identity and data",
+      "sub": "Connected context under governance",
+      "kind": "future",
+      "phase": "Future opportunity",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Hypothesis",
+      "category": "Future connective capability",
+      "definition": "A governed ability to recognize the same person or relationship across program, banking and partner contexts where permitted.",
+      "role": "It would create the usable context required for decisioning without treating ownership as unrestricted access to all member data.",
+      "why": "Relevant orchestration depends on knowing which signals belong together and which uses the person has consented to.",
+      "known": "Program and banking relationships generate different data. Privacy, consent and organizational access conditions apply to any connection.",
+      "provisional": "The current identity architecture, consent model, data rights and cross-organizational access are not established.",
+      "opportunity": "Connect only the context required to create explainable member and partner value under clear governance.",
+      "chain": [
+        "Identity resolution",
+        "Consent",
+        "Permitted context",
+        "Decisioning input"
+      ],
+      "dimensions": [
+        "Privacy",
+        "Governance",
+        "Accuracy",
+        "Access",
+        "Transparency"
+      ],
+      "systemLinks": []
     },
     "orchestration": {
-      label:"Integrated value orchestration", sub:"What value • to whom • when • where", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future decision capability",
-      definition:"A proposed capability for selecting and coordinating the most relevant available value for a particular relationship and moment.",
-      role:"It translates connected context into an actionable decision across program, banking and partner opportunities.",
-      why:"The system contains many products, partners and channels. Without orchestration, additional options can increase complexity rather than realized value.",
-      known:"The client has broader offer-decisioning capabilities and has publicly emphasized personalization. Member-recognized program personalization is not yet established.",
-      provisional:"Decision relevance, operating ownership, model governance and the incremental effect on engagement remain hypotheses.",
-      opportunity:"Answer the system’s core decision question consistently while respecting need, suitability, permission and channel context.",
-      chain:["What value","To whom","At what moment","Through which channel","For what member outcome"], dimensions:["Relevance","Timing","Suitability","Explainability","Learning"]
+      "label": "Integrated value orchestration",
+      "sub": "What value • to whom • when • where",
+      "kind": "future",
+      "phase": "Future opportunity",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Hypothesis",
+      "category": "Future decision capability",
+      "definition": "A proposed capability for selecting and coordinating the most relevant available value for a particular relationship and moment.",
+      "role": "Coordinates which opportunities or value pathways may be relevant to whom, when, where and for what intended member outcome.",
+      "why": "The system contains many products, partners and channels. Without orchestration, additional options can increase complexity rather than realized value.",
+      "known": "The client has broader offer-decisioning capabilities and has publicly emphasized personalization. Member-recognized program personalization is not yet established.",
+      "provisional": "Decision relevance, operating ownership, model governance and the incremental effect on engagement remain hypotheses.",
+      "opportunity": "Test solution-neutral mechanisms for improving relevant paths toward realized outcomes; personalization remains a possible lever rather than the outcome.",
+      "chain": [
+        "What value",
+        "To whom",
+        "At what moment",
+        "Through which channel",
+        "For what member outcome"
+      ],
+      "dimensions": [
+        "Relevance",
+        "Timing",
+        "Suitability",
+        "Explainability",
+        "Learning"
+      ],
+      "systemLinks": []
     },
     "delivery": {
-      label:"Coordinated delivery", sub:"Channels • fulfilment • service recovery", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future operating capability",
-      definition:"A future state in which relevant decisions move coherently through channels, fulfilment and service recovery.",
-      role:"It closes the gap between selecting an opportunity and ensuring that the promised value is actually received.",
-      why:"Relevant targeting cannot produce meaningful engagement if access, posting, redemption or issue resolution fails.",
-      known:"Channels and service capabilities already exist, while some public signals show reliability and handoff issues.",
-      provisional:"The degree of coordination required, implementation cost and risk of tightly coupled failures remain unknown.",
-      opportunity:"Create fit-for-purpose continuity across discovery, action, fulfilment and recovery.",
-      chain:["Relevant decision","Channel delivery","Member action","Fulfilment","Recovery if needed"], dimensions:[]
-    },
-    "future-engagement": {
-      label:"Broader meaningful engagement", sub:"Across all three populations", kind:"future", phase:"Future outcome", status:"Intended", category:"Primary future behaviour",
-      definition:"An intended increase in the quality and persistence of meaningful participation across the existing relationship base.",
-      role:"It is the proximal future result of improving relevance, accessibility and delivery—not the final commercial outcome.",
-      why:"Engagement applies to member-only, client-only and member-client relationships, whereas intersection growth captures only one downstream movement.",
-      known:"Research identifies observable participation behaviours and multiple engagement dimensions.",
-      provisional:"The causal effect of better data, orchestration and delivery on engagement has not yet been validated over time.",
-      opportunity:"Increase engagement quality while monitoring whether it creates realized value, relationship depth and appropriate progression.",
-      chain:["Better context","Relevant value","Reliable experience","Broader engagement","Relationship effects"], dimensions:["Frequency","Breadth","Continuity","Completion","Progression"]
+      "label": "Coordinated delivery",
+      "sub": "Channels • fulfilment • service recovery",
+      "kind": "future",
+      "phase": "Future opportunity",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Hypothesis",
+      "category": "Future operating capability",
+      "definition": "A future state in which relevant decisions move coherently through channels, fulfilment and service recovery.",
+      "role": "Carries selected opportunities and value coherently through channels, fulfilment, access and recovery.",
+      "why": "Relevant targeting cannot produce meaningful engagement if access, posting, redemption or issue resolution fails.",
+      "known": "Channels and service capabilities already exist, while some public signals show reliability and handoff issues.",
+      "provisional": "The degree of coordination required, implementation cost and risk of tightly coupled failures remain unknown.",
+      "opportunity": "Test whether fit-for-purpose coordination improves access and reliable fulfilment without creating tightly coupled failure modes.",
+      "chain": [
+        "Relevant decision",
+        "Channel delivery",
+        "Member action",
+        "Fulfilment",
+        "Recovery if needed"
+      ],
+      "dimensions": [],
+      "systemLinks": []
     },
     "intersection": {
-      label:"Larger, stronger intersection", sub:"Appropriate movement + deeper relationships", kind:"outcome", phase:"Future outcome", status:"Intended", category:"Relationship outcome",
-      definition:"A larger and more engaged population holding both program and banking relationships.",
-      role:"It captures the client’s desired relationship movement while distinguishing size from the quality and depth of engagement within the intersection.",
-      why:"The client explicitly intends to convert relevant non-client members and deepen relationships with existing clients.",
-      known:"The intersection can grow through two different pathways: member-to-client conversion and client-to-member enrolment.",
-      provisional:"More linked relationships do not automatically create affinity, retention, incremental revenue or realized member value.",
-      opportunity:"Grow the intersection only where the combined relationship creates demonstrable incremental value for the person and the organization.",
-      chain:["Member-only or client-only","Relevant relationship movement","Member-client intersection","Deeper combined engagement"], dimensions:["Size","Activity","Breadth","Depth","Retention"]
+      "label": "Member-Client Intersection",
+      "sub": "Relationship structure • not proof of value",
+      "kind": "outcome",
+      "phase": "Future outcome",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Intended outcome",
+      "category": "Downstream relationship outcome",
+      "definition": "A larger and more engaged population holding both program and banking relationships.",
+      "role": "Represents people holding both program and banking relationships. Movement into or depth within the intersection is a possible downstream outcome, not the purpose of the system.",
+      "why": "The client explicitly intends to convert relevant non-client members and deepen relationships with existing clients.",
+      "known": "The intersection can grow through two different pathways: member-to-client conversion and client-to-member enrolment.",
+      "provisional": "More linked relationships do not automatically create affinity, retention, incremental revenue or realized member value.",
+      "opportunity": "Evaluate appropriate, need-led relationship progression only where demonstrable incremental member value exists.",
+      "chain": [
+        "Member-only or client-only",
+        "Relevant relationship movement",
+        "Member-client intersection",
+        "Deeper combined engagement"
+      ],
+      "dimensions": [
+        "Size",
+        "Activity",
+        "Breadth",
+        "Depth",
+        "Retention"
+      ],
+      "systemLinks": []
     },
     "net-value": {
-      label:"Sustainable net relationship value", sub:"Consumer + business economics", kind:"outcome", phase:"Future outcome", status:"Intended", category:"Organizational outcome",
-      definition:"The incremental economic and strategic value created across consumer and business relationships after the full cost of the program is considered.",
-      role:"It is the client’s ultimate organizational outcome and prevents revenue growth from being assessed without the costs and liabilities required to produce it.",
-      why:"Engagement, membership and higher spending are not sufficient evidence of ROI unless they are incremental and exceed rewards, technology, operating and risk costs.",
-      known:"Potential benefits include acquisition, product use, share of wallet, retention, partner revenue, insight and economies of scale.",
-      provisional:"Incrementality, partner economics, conversion persistence, total costs and the time required to realize returns remain unmeasured.",
-      opportunity:"Build a measurement model that connects engagement and relationship movement to causal, long-term net value.",
-      chain:["Consumer relationship value","+ Partner value","− Full program costs","Sustainable net value"], dimensions:["Revenue","Retention","Partner economics","Operating cost","Liabilities"]
+      "label": "Sustainable net relationship value",
+      "sub": "Consumer + business economics",
+      "kind": "outcome",
+      "phase": "Future outcome",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Intended outcome",
+      "category": "Organizational outcome",
+      "definition": "The incremental economic and strategic value created across consumer and business relationships after the full cost of the program is considered.",
+      "role": "It is the client’s ultimate organizational outcome and prevents revenue growth from being assessed without the costs and liabilities required to produce it.",
+      "why": "Engagement, membership and higher spending are not sufficient evidence of ROI unless they are incremental and exceed rewards, technology, operating and risk costs.",
+      "known": "Potential benefits include acquisition, product use, share of wallet, retention, partner revenue, insight and economies of scale.",
+      "provisional": "Incrementality, partner economics, conversion persistence, total costs and the time required to realize returns remain unmeasured.",
+      "opportunity": "Build a measurement model that connects engagement and relationship movement to causal, long-term net value.",
+      "chain": [
+        "Consumer relationship value",
+        "+ Partner value",
+        "− Full program costs",
+        "Sustainable net value"
+      ],
+      "dimensions": [
+        "Revenue",
+        "Retention",
+        "Partner economics",
+        "Operating cost",
+        "Liabilities"
+      ],
+      "systemLinks": []
     },
     "neither": {
-      label:"Non-member / non-client", sub:"No current program or banking relationship", kind:"external", phase:"Outside boundary", status:"Boundary definition", category:"External population",
-      definition:"People who are not currently loyalty-program members or banking clients of the institution.",
-      role:"They sit outside the active relationship system because the current inquiry focuses on engagement and movement among people who already hold at least one relationship.",
-      why:"Their eventual entry matters for growth, but modelling acquisition tactics in detail would expand the inquiry beyond the activation and relationship system currently being examined.",
-      known:"A person could enter the boundary by joining the program, becoming a banking client, or establishing both relationships.",
-      provisional:"The size, needs, awareness and likelihood of entry for this population have not been established by the current research.",
-      opportunity:"Treat boundary entry as a downstream consequence of the system’s reputation and value—not as the primary behaviour the present map must explain.",
-      chain:["No relationship","External impression","Relevant entry reason","Member-only or client-only","Inside boundary"], dimensions:["Awareness","Relevance","Trust","Entry friction"],
-      systemLinks:[
-        {phase:"Current System",targets:["Member-Only","Client-Only"],explanation:"These are the two primary entry states if a person establishes one relationship."},
-        {phase:"Future Opportunity",targets:["Broader Meaningful Engagement","Larger, Stronger Intersection"],explanation:"These outcomes may strengthen reputation and create entry reasons, but the connection remains indirect and is not drawn as an internal flow."}
+      "label": "Non-member / non-client",
+      "sub": "No current program or banking relationship",
+      "kind": "external",
+      "phase": "Outside boundary",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "External population",
+      "definition": "People who are not currently loyalty-program members or banking clients of the institution.",
+      "role": "They sit outside the active relationship system because the current inquiry focuses on engagement and movement among people who already hold at least one relationship.",
+      "why": "Their eventual entry matters for growth, but modelling acquisition tactics in detail would expand the inquiry beyond the activation and relationship system currently being examined.",
+      "known": "A person could enter the boundary by joining the program, becoming a banking client, or establishing both relationships.",
+      "provisional": "The size, needs, awareness and likelihood of entry for this population have not been established by the current research.",
+      "opportunity": "Treat boundary entry as a downstream consequence of the system’s reputation and value—not as the primary behaviour the present map must explain.",
+      "chain": [
+        "No relationship",
+        "External impression",
+        "Relevant entry reason",
+        "Member-only or client-only",
+        "Inside boundary"
+      ],
+      "dimensions": [
+        "Awareness",
+        "Relevance",
+        "Trust",
+        "Entry friction"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member-Only",
+            "Client-Only"
+          ],
+          "explanation": "These are the two primary entry states if a person establishes one relationship."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Broader Meaningful Engagement",
+            "Larger, Stronger Intersection"
+          ],
+          "explanation": "These outcomes may strengthen reputation and create entry reasons, but the connection remains indirect and is not drawn as an internal flow."
+        }
       ]
     },
     "expectations": {
-      label:"Customer expectations and market norms", sub:"Personalization • simplicity • flexibility • trust", kind:"external", phase:"Outside boundary", status:"Supported • evolving", category:"External influence",
-      definition:"Changing expectations about relevance, personalization, ease of use, flexibility, transparency and dependable service.",
-      role:"This influence shapes the standard against which people judge program, banking and partner value without being controlled by the bounded system.",
-      why:"The client’s problem statement explicitly links the need for deeper relationships to changing customer needs, while primary research emphasizes flexibility, relevance and reliable value delivery.",
-      known:"Members compare loyalty value against alternative programs, cash equivalents, service expectations and the effort required to use benefits.",
-      provisional:"The relative importance of each expectation varies by population, context and moment; the map does not assume one universal preference profile.",
-      opportunity:"Use expectations as a design and validation condition rather than treating personalization or engagement as inherently valuable.",
-      chain:["External norms","Value expectations","Experience comparison","Trust or disengagement"], dimensions:["Relevance","Simplicity","Flexibility","Transparency","Reliability"],
-      systemLinks:[
-        {phase:"Current System",targets:["Member Value","Channels And Delivery","Meaningful Engagement"],explanation:"Expectations shape whether available value feels understandable, accessible and worth continued participation."},
-        {phase:"Future Opportunity",targets:["Integrated Value Orchestration","Coordinated Delivery","Broader Meaningful Engagement"],explanation:"Future capabilities would need to meet evolving expectations without over-personalizing or increasing complexity."}
+      "label": "Customer expectations and market norms",
+      "sub": "Personalization • simplicity • flexibility • trust",
+      "kind": "external",
+      "phase": "Outside boundary",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "External influence",
+      "definition": "Changing expectations about relevance, personalization, ease of use, flexibility, transparency and dependable service.",
+      "role": "This influence shapes the standard against which people judge program, banking and partner value without being controlled by the bounded system.",
+      "why": "The client’s problem statement explicitly links the need for deeper relationships to changing customer needs, while primary research emphasizes flexibility, relevance and reliable value delivery.",
+      "known": "Members compare loyalty value against alternative programs, cash equivalents, service expectations and the effort required to use benefits.",
+      "provisional": "The relative importance of each expectation varies by population, context and moment; the map does not assume one universal preference profile.",
+      "opportunity": "Use expectations as a design and validation condition rather than treating personalization or engagement as inherently valuable.",
+      "chain": [
+        "External norms",
+        "Value expectations",
+        "Experience comparison",
+        "Trust or disengagement"
+      ],
+      "dimensions": [
+        "Relevance",
+        "Simplicity",
+        "Flexibility",
+        "Transparency",
+        "Reliability"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member Value",
+            "Channels And Delivery",
+            "Meaningful Engagement"
+          ],
+          "explanation": "Expectations shape whether available value feels understandable, accessible and worth continued participation."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Integrated Value Orchestration",
+            "Coordinated Delivery",
+            "Broader Meaningful Engagement"
+          ],
+          "explanation": "Future capabilities would need to meet evolving expectations without over-personalizing or increasing complexity."
+        }
       ]
     },
     "technology-landscape": {
-      label:"Technology landscape", sub:"AI • identity • open-data capabilities", kind:"external", phase:"Outside boundary", status:"Supported • evolving", category:"External influence",
-      definition:"The changing availability and maturity of technologies that can support prediction, personalization, identity resolution, data portability and coordinated delivery.",
-      role:"It changes what may be technically possible, expected or economically feasible, but it does not determine which capabilities should be adopted.",
-      why:"Artificial intelligence and data portability may expand decisioning options while also creating new governance, trust and operating requirements.",
-      known:"The institution has broader enterprise data and AI ambitions. Program-specific integration and demonstrated member value remain unconfirmed.",
-      provisional:"Technology maturity, implementation cost, model quality, interoperability and incremental impact on engagement are unresolved.",
-      opportunity:"Evaluate technology only where it improves a defined value or operating flow under appropriate governance.",
-      chain:["New capability","Possible operating use","Governance and fit test","Adoption decision"], dimensions:["AI","Identity","Interoperability","Portability","Automation"],
-      systemLinks:[
-        {phase:"Current System",targets:["Data And Decisioning","Channels And Delivery","Service And Operations"],explanation:"External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."},
-        {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"These hypothesized capabilities depend partly on available technology, but technology alone does not establish their value or feasibility."}
+      "label": "Technology landscape",
+      "sub": "AI • identity • open-data capabilities",
+      "kind": "external",
+      "phase": "Outside boundary",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "External influence",
+      "definition": "The changing availability and maturity of technologies that can support prediction, personalization, identity resolution, data portability and coordinated delivery.",
+      "role": "It changes what may be technically possible, expected or economically feasible, but it does not determine which capabilities should be adopted.",
+      "why": "Artificial intelligence and data portability may expand decisioning options while also creating new governance, trust and operating requirements.",
+      "known": "The institution has broader enterprise data and AI ambitions. Program-specific integration and demonstrated member value remain unconfirmed.",
+      "provisional": "Technology maturity, implementation cost, model quality, interoperability and incremental impact on engagement are unresolved.",
+      "opportunity": "Evaluate technology only where it improves a defined value or operating flow under appropriate governance.",
+      "chain": [
+        "New capability",
+        "Possible operating use",
+        "Governance and fit test",
+        "Adoption decision"
+      ],
+      "dimensions": [
+        "AI",
+        "Identity",
+        "Interoperability",
+        "Portability",
+        "Automation"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Data And Decisioning",
+            "Channels And Delivery",
+            "Service And Operations"
+          ],
+          "explanation": "External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Permissioned Identity And Data",
+            "Integrated Value Orchestration",
+            "Coordinated Delivery"
+          ],
+          "explanation": "These hypothesized capabilities depend partly on available technology, but technology alone does not establish their value or feasibility."
+        }
       ]
     },
     "regulation": {
-      label:"Regulation, privacy and consent environment", sub:"Permitted use • accountability • protection", kind:"external", phase:"Outside boundary", status:"Supported constraint", category:"External institutional influence",
-      definition:"The laws, regulatory expectations, privacy rules and consent conditions governing the collection, connection, use and exchange of data and value.",
-      role:"This environment defines permissible operating conditions for identity, decisioning, marketing, partner insight and cross-system data use.",
-      why:"Ownership of a program does not imply unrestricted access to or use of member information; permission and purpose remain necessary conditions.",
-      known:"Privacy, consent, suitability and governance requirements apply to any connection between program, banking and partner contexts.",
-      provisional:"The specific legal interpretation, data rights, consent architecture and partner-sharing limits are outside the present research scope.",
-      opportunity:"Treat governance as a design input from the outset rather than a downstream compliance check.",
-      chain:["External rules","Permitted purpose","Governed access","Constrained action"], dimensions:["Privacy","Consent","Suitability","Transparency","Accountability"],
-      systemLinks:[
-        {phase:"Current System",targets:["Data And Decisioning","Products And Transactions","Partner Ecosystem","Channels And Delivery"],explanation:"Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."},
-        {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"Governance defines the operating envelope for the future pathway and may intentionally preserve separation between some systems."}
+      "label": "Regulation, privacy and consent environment",
+      "sub": "Permitted use • accountability • protection",
+      "kind": "external",
+      "phase": "Outside boundary",
+      "status": "Supported",
+      "basis": "Evidence trace pending",
+      "decision": "Unresolved",
+      "category": "External institutional influence",
+      "definition": "The laws, regulatory expectations, privacy rules and consent conditions governing the collection, connection, use and exchange of data and value.",
+      "role": "This environment defines permissible operating conditions for identity, decisioning, marketing, partner insight and cross-system data use.",
+      "why": "Ownership of a program does not imply unrestricted access to or use of member information; permission and purpose remain necessary conditions.",
+      "known": "Privacy, consent, suitability and governance requirements apply to any connection between program, banking and partner contexts.",
+      "provisional": "The specific legal interpretation, data rights, consent architecture and partner-sharing limits are outside the present research scope.",
+      "opportunity": "Treat governance as a design input from the outset rather than a downstream compliance check.",
+      "chain": [
+        "External rules",
+        "Permitted purpose",
+        "Governed access",
+        "Constrained action"
+      ],
+      "dimensions": [
+        "Privacy",
+        "Consent",
+        "Suitability",
+        "Transparency",
+        "Accountability"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Data And Decisioning",
+            "Products And Transactions",
+            "Partner Ecosystem",
+            "Channels And Delivery"
+          ],
+          "explanation": "Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Permissioned Identity And Data",
+            "Integrated Value Orchestration",
+            "Coordinated Delivery"
+          ],
+          "explanation": "Governance defines the operating envelope for the future pathway and may intentionally preserve separation between some systems."
+        }
       ]
     },
     "competitors": {
-      label:"Competitor loyalty and financial ecosystems", sub:"Alternative programs • products • value propositions", kind:"external", phase:"Outside boundary", status:"Inferred influence", category:"External market influence",
-      definition:"Other loyalty, banking, card and partner ecosystems against which people and businesses compare the client’s value proposition.",
-      role:"Competitors provide alternative relationships, benefits and participation options without being actors inside the bounded client-program system.",
-      why:"Primary research shows that members compare reward economics, flexibility, perks and service across multiple programs rather than evaluating one program in isolation.",
-      known:"Alternative reward products and ecosystems affect members’ reference points and can compete for spending, attention and partner participation.",
-      provisional:"Competitor-specific performance, switching behaviour and direct effects on this program have not been measured in the current analysis.",
-      opportunity:"Use competitor ecosystems as contextual benchmarks while preserving a member-value definition grounded in actual needs rather than feature imitation.",
-      chain:["Alternative value","Comparison","Allocation of attention and spend","Relationship choice"], dimensions:["Economics","Flexibility","Service","Access","Partner breadth"],
-      systemLinks:[
-        {phase:"Current System",targets:["Member Value","Meaningful Engagement","Partner Ecosystem"],explanation:"Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."},
-        {phase:"Future Opportunity",targets:["Broader Meaningful Engagement","Sustainable Net Relationship Value"],explanation:"Competitive responses may influence whether improved engagement persists and produces incremental organizational value."}
+      "label": "Competitor loyalty and financial ecosystems",
+      "sub": "Alternative programs • products • value propositions",
+      "kind": "external",
+      "phase": "Outside boundary",
+      "status": "Inferred",
+      "basis": "Analytical inference",
+      "decision": "Unresolved",
+      "category": "External market influence",
+      "definition": "Other loyalty, banking, card and partner ecosystems against which people and businesses compare the client’s value proposition.",
+      "role": "Competitors provide alternative relationships, benefits and participation options without being actors inside the bounded client-program system.",
+      "why": "Primary research shows that members compare reward economics, flexibility, perks and service across multiple programs rather than evaluating one program in isolation.",
+      "known": "Alternative reward products and ecosystems affect members’ reference points and can compete for spending, attention and partner participation.",
+      "provisional": "Competitor-specific performance, switching behaviour and direct effects on this program have not been measured in the current analysis.",
+      "opportunity": "Use competitor ecosystems as contextual benchmarks while preserving a member-value definition grounded in actual needs rather than feature imitation.",
+      "chain": [
+        "Alternative value",
+        "Comparison",
+        "Allocation of attention and spend",
+        "Relationship choice"
+      ],
+      "dimensions": [
+        "Economics",
+        "Flexibility",
+        "Service",
+        "Access",
+        "Partner breadth"
+      ],
+      "systemLinks": [
+        {
+          "phase": "Current System",
+          "targets": [
+            "Member Value",
+            "Meaningful Engagement",
+            "Partner Ecosystem"
+          ],
+          "explanation": "Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."
+        },
+        {
+          "phase": "Future Opportunity",
+          "targets": [
+            "Broader Meaningful Engagement",
+            "Sustainable Net Relationship Value"
+          ],
+          "explanation": "Competitive responses may influence whether improved engagement persists and produces incremental organizational value."
+        }
+      ]
+    },
+    "opportunity": {
+      "label": "Opportunity",
+      "sub": "VT01 begins here",
+      "kind": "state",
+      "phase": "Main Variable Transition",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Controlled value state",
+      "definition": "An available loyalty proposition, benefit, offer, earning possibility or other source of value whose relevance to a specific member has not yet been established.",
+      "role": "Entry condition: A proposition, benefit or earning possibility exists. Exit condition: Relevance and a plausible eligible path are established.",
+      "why": "This state is analytically distinct so qualification, posting, access, use and perceived worth are not collapsed into generic value.",
+      "known": "The state definition is an approved group-converged modeling decision. Current volumes, conversion rates and delays are not yet established.",
+      "provisional": "Structural relationship may be supported; incremental targeting effects remain inferred or assumed.",
+      "opportunity": "Improve identification, relevance, reach and understandability of worthwhile opportunities.",
+      "chain": [
+        "Opportunity",
+        "VT01",
+        "Potential-Value"
+      ],
+      "dimensions": [
+        "Transition rate",
+        "Relevance",
+        "Eligibility clarity",
+        "Comprehension"
+      ],
+      "systemLinks": [
+        {
+          "phase": "VT01",
+          "targets": [
+            "Opportunity → Potential-Value"
+          ],
+          "explanation": "Relevance and a plausible eligible path are established for a particular member and context."
+        },
+        {
+          "phase": "Member progress / JTBD",
+          "targets": [
+            "Recognize and understand an opportunity that is relevant and worthwhile."
+          ],
+          "explanation": "Analytical overlay • not an operating system component."
+        },
+        {
+          "phase": "Digital Value Opportunity",
+          "targets": [
+            "Improve identification, relevance, reach and understandability of worthwhile opportunities."
+          ],
+          "explanation": "Group-converged opportunity space • not a proven leverage point."
+        }
+      ]
+    },
+    "potential-value": {
+      "label": "Potential Value",
+      "sub": "VT02 begins here",
+      "kind": "state",
+      "phase": "Main Variable Transition",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Controlled value state",
+      "definition": "A loyalty opportunity relevant to a member needs, behaviours or context and for which the member has a plausible eligible path to value.",
+      "role": "Entry condition: Member relevance and plausible eligibility are established. Exit condition: Applicable qualification requirements are satisfied.",
+      "why": "This state is analytically distinct so qualification, posting, access, use and perceived worth are not collapsed into generic value.",
+      "known": "The state definition is an approved group-converged modeling decision. Current volumes, conversion rates and delays are not yet established.",
+      "provisional": "Qualification mechanics may be supported; effects on participation or realization require evidence.",
+      "opportunity": "Reduce effort, preparation, complexity and failure in earning value.",
+      "chain": [
+        "Potential Value",
+        "VT02",
+        "Earned-Value"
+      ],
+      "dimensions": [
+        "Qualification completion",
+        "Effort",
+        "Failure rate",
+        "Time to qualify"
+      ],
+      "systemLinks": [
+        {
+          "phase": "VT02",
+          "targets": [
+            "Potential-Value → Earned-Value"
+          ],
+          "explanation": "The member understands and completes applicable qualification requirements."
+        },
+        {
+          "phase": "Member progress / JTBD",
+          "targets": [
+            "Complete the required activity with reasonable preparation, effort and confidence."
+          ],
+          "explanation": "Analytical overlay • not an operating system component."
+        },
+        {
+          "phase": "Digital Value Opportunity",
+          "targets": [
+            "Reduce effort, preparation, complexity and failure in earning value."
+          ],
+          "explanation": "Group-converged opportunity space • not a proven leverage point."
+        }
+      ]
+    },
+    "earned-value": {
+      "label": "Earned Value",
+      "sub": "VT03 begins here",
+      "kind": "state",
+      "phase": "Main Variable Transition",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Controlled value state",
+      "definition": "Value to which the member has become entitled by satisfying applicable activity, membership, status, eligibility or program requirements.",
+      "role": "Entry condition: The applicable qualification rule has been satisfied. Exit condition: The earned value is posted, released, activated or otherwise made accessible.",
+      "why": "This state is analytically distinct so qualification, posting, access, use and perceived worth are not collapsed into generic value.",
+      "known": "The state definition is an approved group-converged modeling decision. Current volumes, conversion rates and delays are not yet established.",
+      "provisional": "Posting and fulfilment flows may be supported; systemic fragmentation remains provisional.",
+      "opportunity": "Improve legibility, trust, posting reliability, accessibility and recovery for earned value.",
+      "chain": [
+        "Earned Value",
+        "VT03",
+        "Available-Value"
+      ],
+      "dimensions": [
+        "Posting delay",
+        "Release reliability",
+        "Support contacts",
+        "Recovery rate"
+      ],
+      "systemLinks": [
+        {
+          "phase": "VT03",
+          "targets": [
+            "Earned-Value → Available-Value"
+          ],
+          "explanation": "Qualified value is correctly posted, released, activated and made accessible."
+        },
+        {
+          "phase": "Member progress / JTBD",
+          "targets": [
+            "Know whether value was earned, what it is worth and when it can be used."
+          ],
+          "explanation": "Analytical overlay • not an operating system component."
+        },
+        {
+          "phase": "Digital Value Opportunity",
+          "targets": [
+            "Improve legibility, trust, posting reliability, accessibility and recovery for earned value."
+          ],
+          "explanation": "Group-converged opportunity space • not a proven leverage point."
+        }
+      ]
+    },
+    "available-value": {
+      "label": "Available Value",
+      "sub": "VT04 begins here",
+      "kind": "state",
+      "phase": "Main Variable Transition",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Controlled value state",
+      "definition": "Earned value that has been posted, released, activated or otherwise made accessible for use.",
+      "role": "Entry condition: The member can operationally access or use the earned entitlement. Exit condition: The member successfully uses or converts the value.",
+      "why": "This state is analytically distinct so qualification, posting, access, use and perceived worth are not collapsed into generic value.",
+      "known": "The state definition is an approved group-converged modeling decision. Current volumes, conversion rates and delays are not yet established.",
+      "provisional": "The structural transition is defined; effects of specific mechanisms remain hypotheses.",
+      "opportunity": "Convert more available value into worthwhile outcomes through usability, contextual reach, flexibility and successful fulfilment.",
+      "chain": [
+        "Available Value",
+        "VT04",
+        "Realized-Value"
+      ],
+      "dimensions": [
+        "Realization rate",
+        "Time to use",
+        "Successful fulfilment",
+        "Perceived usefulness"
+      ],
+      "systemLinks": [
+        {
+          "phase": "VT04",
+          "targets": [
+            "Available-Value → Realized-Value"
+          ],
+          "explanation": "The member discovers, accesses, uses or converts available value into a worthwhile outcome."
+        },
+        {
+          "phase": "Member progress / JTBD",
+          "targets": [
+            "Use available value in a meaningful moment, channel or context with acceptable effort."
+          ],
+          "explanation": "Analytical overlay • not an operating system component."
+        },
+        {
+          "phase": "Digital Value Opportunity",
+          "targets": [
+            "Convert more available value into worthwhile outcomes through usability, contextual reach, flexibility and successful fulfilment."
+          ],
+          "explanation": "Group-converged opportunity space • not a proven leverage point."
+        }
+      ]
+    },
+    "realized-value": {
+      "label": "Realized Value",
+      "sub": "VT05 begins here",
+      "kind": "state",
+      "phase": "Main Variable Transition",
+      "status": "Assumed",
+      "basis": "Group convergence",
+      "decision": "Active direction",
+      "category": "Controlled value state",
+      "definition": "Value the member has successfully used or converted into an outcome they perceive as worthwhile.",
+      "role": "Entry condition: Successful use or conversion produces a recognized outcome. Exit condition: The value episode is evaluated and may influence subsequent participation.",
+      "why": "This state is analytically distinct so qualification, posting, access, use and perceived worth are not collapsed into generic value.",
+      "known": "The state definition is an approved group-converged modeling decision. Current volumes, conversion rates and delays are not yet established.",
+      "provisional": "Treat as inferred until behaviour-over-time evidence validates it.",
+      "opportunity": "Reinforce continued participation through consistently worthwhile outcomes and learning.",
+      "chain": [
+        "Realized Value",
+        "VT05",
+        "Meaningful engagement"
+      ],
+      "dimensions": [
+        "Repeat participation",
+        "Breadth",
+        "Continuity",
+        "Completion",
+        "Progression"
+      ],
+      "systemLinks": [
+        {
+          "phase": "VT05",
+          "targets": [
+            "Realized-Value → Engagement"
+          ],
+          "explanation": "The outcome is perceived as sufficiently worthwhile and trustworthy to influence future behaviour."
+        },
+        {
+          "phase": "Member progress / JTBD",
+          "targets": [
+            "Decide whether to return, broaden, continue or discontinue participation."
+          ],
+          "explanation": "Analytical overlay • not an operating system component."
+        },
+        {
+          "phase": "Digital Value Opportunity",
+          "targets": [
+            "Reinforce continued participation through consistently worthwhile outcomes and learning."
+          ],
+          "explanation": "Group-converged opportunity space • not a proven leverage point."
+        }
       ]
     }
   };
 
   var views = {
-    transition: {
-      label:"Current relationships → future opportunity",
-      description:"This view connects today’s relationship populations and signals to the hypothesized capabilities, behaviours and organizational outcomes that could emerge next.",
-      areas:{"member-only":"mo","client-only":"co","member-client":"mc","partner":"partner","data":"data","orchestration":"orchestration","delivery":"delivery","engagement":"engagement","intersection":"intersection","net-value":"net"},
-      edges:[
-        ["member-only","data","Member signals","current"],
-        ["client-only","data","Client signals","current"],
-        ["member-client","data","Combined signals","current"],
-        ["partner","data","Partner signals","current"],
-        ["data","orchestration","Permissioned context","future"],
-        ["orchestration","delivery","Relevant decision","future"],
-        ["delivery","engagement","Delivered value","future"],
-        ["engagement","intersection","Appropriate progression","future"],
-        ["intersection","net-value","Relationship economics","future"],
-        ["partner","net-value","Consumer + business value","future"]
+    "current": {
+      "label": "Current System",
+      "description": "This view shows the populations, partners, value flows and institutional capabilities operating today. It highlights where loyalty value may progress or stall between Opportunity, Potential, Earned, Available and Realized Value, while preserving uncertainty about the actual degree of integration, fragmentation and causal effect.",
+      "areas": {
+        "member-only": "mo",
+        "member-client": "mc",
+        "client-only": "co",
+        "partner": "partner",
+        "member-value": "value",
+        "engagement": "engagement",
+        "products": "products",
+        "data": "data",
+        "channels": "channels",
+        "service": "service",
+        "friction": "friction"
+      },
+      "edges": [
+        [
+          "member-only",
+          "member-client",
+          "Optional banking adoption",
+          "current",
+          null,
+          "CUR-R01"
+        ],
+        [
+          "client-only",
+          "member-client",
+          "Program enrolment",
+          "current",
+          null,
+          "CUR-R02"
+        ],
+        [
+          "member-only",
+          "member-value",
+          "Standalone realization pathway",
+          "current",
+          null,
+          "CUR-R03"
+        ],
+        [
+          "member-client",
+          "member-value",
+          "Combined realization pathway",
+          "current",
+          null,
+          "CUR-R04"
+        ],
+        [
+          "client-only",
+          "member-value",
+          "Enrolment → first realized value",
+          "inferred",
+          null,
+          "CUR-R05"
+        ],
+        [
+          "partner",
+          "member-value",
+          "Opportunities + fulfilment",
+          "current",
+          null,
+          "CUR-R06"
+        ],
+        [
+          "member-value",
+          "partner",
+          "Participation + partner returns",
+          "inferred",
+          null,
+          "CUR-R07"
+        ],
+        [
+          "products",
+          "data",
+          "Qualification + transaction evidence",
+          "current",
+          null,
+          "CUR-R08"
+        ],
+        [
+          "products",
+          "member-value",
+          "Opportunities + earning conditions",
+          "current",
+          null,
+          "CUR-R09"
+        ],
+        [
+          "data",
+          "member-value",
+          "Relevance + eligibility context",
+          "inferred",
+          null,
+          "CUR-R10"
+        ],
+        [
+          "channels",
+          "member-value",
+          "Presentation + access",
+          "current",
+          null,
+          "CUR-R11"
+        ],
+        [
+          "service",
+          "member-value",
+          "Posting + fulfilment + recovery",
+          "current",
+          null,
+          "CUR-R12"
+        ],
+        [
+          "member-value",
+          "engagement",
+          "Continued / expanded participation",
+          "inferred",
+          null,
+          "CUR-R13"
+        ],
+        [
+          "engagement",
+          "data",
+          "Value realization + participation signals",
+          "current",
+          null,
+          "CUR-R14"
+        ],
+        [
+          "friction",
+          "data",
+          "Identity + permission handoffs",
+          "inferred",
+          null,
+          "CUR-R15"
+        ],
+        [
+          "friction",
+          "channels",
+          "Channel continuity constraints",
+          "inferred",
+          null,
+          "CUR-R16"
+        ],
+        [
+          "friction",
+          "service",
+          "Support + fulfilment ownership",
+          "inferred",
+          null,
+          "CUR-R17"
+        ]
       ]
     },
-    current: {
-      label:"Current transitional system",
-      description:"This view shows the populations, partners, value flows and shared institutional capabilities operating today, including the interfaces where friction may constrain realized value and engagement.",
-      areas:{"member-only":"mo","member-client":"mc","client-only":"co","partner":"partner","member-value":"value","engagement":"engagement","products":"products","data":"data","channels":"channels","service":"service","friction":"friction"},
-      edges:[
-        ["member-only","member-client","Banking adoption","current"],
-        ["client-only","member-client","Program enrolment","current"],
-        ["member-only","member-value","Open program participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:-0.26}],
-        ["member-client","member-value","Combined participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:0.22}],
-        ["partner","member-value","Offers + experiences","current",{route:"parallel-horizontal",fromOffset:-0.25,toOffset:-0.25}],
-        ["member-value","partner","Purchases + preference","current",{route:"parallel-horizontal",fromOffset:0.25,toOffset:0.25}],
-        ["member-value","engagement","Realized value","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
-        ["products","data","Transaction signals","current"],
-        ["data","channels","Decisions + opportunities","current"],
-        ["channels","member-value","Opportunity delivery","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:0.26}],
-        ["service","member-value","Fulfilment + recovery","current",{route:"service-up-left",labelPosition:"source-gap"}],
-        ["engagement","data","Outcome signals","current"],
-        ["friction","data","Identity + data handoffs","inferred"],
-        ["friction","channels","Channel continuity","inferred"],
-        ["friction","service","Support ownership","inferred"]
+    "transition": {
+      "label": "Main Variable: Member Value Realization",
+      "description": "This view uses Member Value Realization as the system main variable. It shows how loyalty opportunities progress from Opportunity to Potential, Earned, Available and ultimately Realized Value; where that progression may stall; and which system conditions, member needs and broad opportunity areas could improve the amount, relevance, reliability, accessibility, usefulness and appropriate speed of realized value.",
+      "areas": {
+        "opportunity": "opportunity",
+        "potential-value": "potential",
+        "earned-value": "earned",
+        "available-value": "available",
+        "realized-value": "realized",
+        "partner": "partner",
+        "products": "products",
+        "data": "data",
+        "service": "service",
+        "channels": "channels",
+        "friction": "friction",
+        "engagement": "engagement"
+      },
+      "edges": [
+        [
+          "member-value",
+          "engagement",
+          "Continued / expanded participation",
+          "inferred",
+          null,
+          "CUR-R13"
+        ],
+        [
+          "opportunity",
+          "potential-value",
+          "Establish relevance + plausible eligibility",
+          "current",
+          null,
+          "TR-R01"
+        ],
+        [
+          "potential-value",
+          "earned-value",
+          "Satisfy qualification requirements",
+          "current",
+          null,
+          "TR-R02"
+        ],
+        [
+          "earned-value",
+          "available-value",
+          "Post + release + activate",
+          "current",
+          null,
+          "TR-R03"
+        ],
+        [
+          "available-value",
+          "realized-value",
+          "Use + convert into worthwhile outcome",
+          "current",
+          null,
+          "TR-R04"
+        ],
+        [
+          "partner",
+          "opportunity",
+          "Propositions + benefits",
+          "current",
+          null,
+          "TR-R05"
+        ],
+        [
+          "products",
+          "opportunity",
+          "Products + participation routes",
+          "current",
+          null,
+          "TR-R06"
+        ],
+        [
+          "data",
+          "potential-value",
+          "Relevance + eligibility context",
+          "inferred",
+          null,
+          "TR-R07"
+        ],
+        [
+          "service",
+          "available-value",
+          "Posting + release reliability",
+          "current",
+          null,
+          "TR-R08"
+        ],
+        [
+          "channels",
+          "realized-value",
+          "Access + use pathway",
+          "current",
+          null,
+          "TR-R09"
+        ],
+        [
+          "service",
+          "realized-value",
+          "Fulfilment + recovery",
+          "current",
+          null,
+          "TR-R10"
+        ],
+        [
+          "friction",
+          "earned-value",
+          "Qualification + posting stalls",
+          "inferred",
+          null,
+          "TR-R11"
+        ]
       ]
     },
-    future: {
-      label:"Future opportunity space",
-      description:"This view shows a hypothesized pathway in which permissioned context, value orchestration and coordinated delivery could improve realized value, meaningful engagement, relationship convergence and sustainable net value.",
-      areas:{"identity":"identity","orchestration":"orchestration","delivery":"delivery","member-value":"value","future-engagement":"futureengagement","intersection":"intersection","partner":"partner","net-value":"net"},
-      edges:[
-        ["identity","orchestration","Unified permissioned context","future"],
-        ["orchestration","delivery","Coordinated decisions","future"],
-        ["delivery","member-value","Reliable relevant value","future",{route:"straight-vertical"}],
-        ["orchestration","partner","Partner matching + insight","future",{route:"straight-vertical"}],
-        ["member-value","future-engagement","Realized value","future",{route:"straight-vertical"}],
-        ["future-engagement","intersection","Appropriate progression","future"],
-        ["intersection","net-value","Relationship economics","future"],
-        ["partner","net-value","Consumer + business value","future"]
+    "future": {
+      "label": "Future Opportunity",
+      "description": "This view shows a hypothesized improved system in which governed context, coordinated decisions, delivery, fulfilment and recovery could help more loyalty value become relevant, earned, available and ultimately realized. The capabilities and downstream outcomes remain opportunity hypotheses rather than a committed solution architecture or proven causal model.",
+      "areas": {
+        "identity": "identity",
+        "orchestration": "orchestration",
+        "delivery": "delivery",
+        "partner": "partner",
+        "member-value": "value",
+        "engagement": "futureengagement",
+        "intersection": "intersection",
+        "net-value": "net"
+      },
+      "edges": [
+        [
+          "member-value",
+          "engagement",
+          "Continued / expanded participation",
+          "inferred",
+          null,
+          "CUR-R13"
+        ],
+        [
+          "identity",
+          "orchestration",
+          "Governed permitted context",
+          "future",
+          null,
+          "FUT-R01"
+        ],
+        [
+          "orchestration",
+          "delivery",
+          "Coordinated value-path decision",
+          "future",
+          null,
+          "FUT-R02"
+        ],
+        [
+          "delivery",
+          "member-value",
+          "Access + reliable fulfilment",
+          "future",
+          null,
+          "FUT-R03"
+        ],
+        [
+          "orchestration",
+          "partner",
+          "Partner matching + insight",
+          "future",
+          null,
+          "FUT-R04"
+        ],
+        [
+          "engagement",
+          "intersection",
+          "Appropriate relationship progression",
+          "inferred",
+          null,
+          "FUT-R05"
+        ],
+        [
+          "intersection",
+          "net-value",
+          "Relationship economics after full costs",
+          "inferred",
+          null,
+          "FUT-R06"
+        ],
+        [
+          "partner",
+          "net-value",
+          "Distinct partner + organizational returns",
+          "inferred",
+          null,
+          "FUT-R07"
+        ],
+        [
+          "partner",
+          "member-value",
+          "Relevant opportunities + fulfilment",
+          "future",
+          null,
+          "FUT-R08"
+        ]
       ]
     },
-    external: {
-      label:"Outside the system boundary",
-      description:"This view isolates external actors and conditions that may influence the bounded system. Only relationships among external factors are drawn; possible links to the current and future system appear in the detail panel and remain contextual rather than established internal flows.",
-      areas:{"regulation":"regulation","technology-landscape":"technology","expectations":"expectations","competitors":"competitors","neither":"neither"},
-      edges:[
-        ["regulation","technology-landscape","Governance context","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
-        ["technology-landscape","expectations","Capability signals","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
-        ["competitors","expectations","Market reference points","inferred"],
-        ["competitors","neither","Alternative value propositions","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
-        ["expectations","neither","Entry expectations","inferred",{route:"straight-vertical"}]
+    "external": {
+      "label": "Outside the System Boundary",
+      "description": "This view isolates external actors and conditions that may influence the bounded system. Only relationships among external factors are drawn; possible links to current and future nodes remain narrative and contextual rather than established internal flows.",
+      "areas": {
+        "regulation": "regulation",
+        "technology-landscape": "technology",
+        "expectations": "expectations",
+        "competitors": "competitors",
+        "neither": "neither"
+      },
+      "edges": [
+        [
+          "regulation",
+          "technology-landscape",
+          "Governance context",
+          "inferred",
+          null,
+          "EXT-R01"
+        ],
+        [
+          "technology-landscape",
+          "expectations",
+          "Capability signals",
+          "inferred",
+          null,
+          "EXT-R02"
+        ],
+        [
+          "competitors",
+          "expectations",
+          "Market reference points",
+          "inferred",
+          null,
+          "EXT-R03"
+        ],
+        [
+          "competitors",
+          "neither",
+          "Alternative value propositions",
+          "inferred",
+          null,
+          "EXT-R04"
+        ],
+        [
+          "expectations",
+          "neither",
+          "Entry expectations",
+          "inferred",
+          null,
+          "EXT-R05"
+        ]
       ]
     }
   };
 
   var edgeMeanings = {
-    "Member signals":"Program activity can reveal preferences, value-seeking behaviour and potential needs where use is permitted.",
-    "Client signals":"Banking and broader rewards behaviour may indicate where program participation could create incremental value.",
-    "Combined signals":"The intersection may provide richer context, but only when identity, consent and permitted use are resolved.",
-    "Partner signals":"Offer, transaction and fulfilment information helps evaluate partner relevance and performance.",
-    "Permissioned context":"Existing signals become usable decision inputs only after governance, identity and consent conditions are met.",
-    "Relevant decision":"Decisioning selects an appropriate opportunity, audience, moment and delivery route.",
-    "Delivered value":"A decision becomes meaningful only when the opportunity is understood, accessible and fulfilled.",
-    "Appropriate progression":"Repeated relevant engagement may support conversion or relationship depth, but the effect is not automatic.",
-    "Relationship economics":"Relationship movement must create incremental value after costs rather than simply more linked accounts.",
-    "Consumer + business value":"Partners may create consumer revenue, partner economics and deeper business relationships simultaneously.",
-    "Banking adoption":"A member-only participant enters the intersection when a relevant banking need leads to product adoption.",
-    "Program enrolment":"A client-only participant enters the intersection by joining and beginning to use the program.",
-    "Open program participation":"Members can earn, redeem and use partner value without becoming banking clients.",
-    "Combined participation":"Member-clients can access program value alongside eligible bank-connected benefits.",
-    "Offers + experiences":"Partner contributions expand the ways members can earn, save, access or realize value.",
-    "Purchases + preference":"Member activity returns sales, attention, affinity and potential share-of-wallet value to partners.",
-    "Transaction signals":"Product activity supplies behavioural context to the data and decisioning layer.",
-    "Decisions + opportunities":"Decisioning outputs must move into a channel before a person can discover or act on them.",
-    "Opportunity delivery":"Channels translate selected value into a visible and actionable member experience.",
-    "Fulfilment + recovery":"Operations deliver the promise and determine how failures are corrected.",
-    "Outcome signals":"Participation and outcomes create feedback for measurement and future decisions.",
-    "Identity + data handoffs":"Separate identities or permissions may interrupt the movement of usable context.",
-    "Channel continuity":"Separate surfaces may create repeated steps, inconsistent context or unclear ownership.",
-    "Support ownership":"Cross-system issues may be transferred between teams rather than resolved end to end.",
-    "Unified permissioned context":"Governed identity and data create the context required for more relevant orchestration.",
-    "Coordinated decisions":"The chosen action is carried consistently into delivery, fulfilment and service processes.",
-    "Reliable relevant value":"Future coordination aims to make relevant value easier to access and dependable to receive.",
-    "Partner matching + insight":"Partners can be matched to relevant needs and receive useful performance feedback in return.",
-    "Realized value":"Value must move beyond availability into an outcome the person can recognize and use.",
-    "Governance context":"Regulation, privacy and consent conditions shape which emerging technologies and uses are permissible.",
-    "Capability signals":"New technological possibilities can raise expectations for relevance, immediacy, portability and ease of use.",
-    "Market reference points":"Competing ecosystems influence the standards people use to compare value, flexibility, service and access.",
-    "Alternative value propositions":"People outside the boundary can choose alternative loyalty and financial relationships before entering this system.",
-    "Entry expectations":"Expectations about value, trust and effort shape the threshold for establishing a first relationship."
+    "Optional banking adoption": "A Member-Only participant may enter the intersection when a relevant need leads to suitable banking adoption.",
+    "Program enrolment": "A Client-Only participant enters the intersection structurally through enrolment, but status does not prove realized value.",
+    "Standalone realization pathway": "Member-Only participants must be able to realize credible standalone program and partner value.",
+    "Combined realization pathway": "Combined relationships may create additional routes to value, but linked status does not prove incremental value.",
+    "Enrolment → first realized value": "Relevant enrolment creates a possible path toward the first realized program outcome.",
+    "Opportunities + fulfilment": "Partners contribute propositions, access, experiences and fulfilment that can support value realization.",
+    "Participation + partner returns": "Member participation may create sales, affinity, insight or reach, but incrementality is unresolved.",
+    "Qualification + transaction evidence": "Product activity can create qualification and transaction evidence where use is permitted.",
+    "Opportunities + earning conditions": "Products and transactions generate opportunities, participation routes and earning conditions.",
+    "Relevance + eligibility context": "Permitted context may support relevance and eligibility assessment.",
+    "Presentation + access": "Channels present opportunities and provide action or available-value access.",
+    "Posting + fulfilment + recovery": "Operations support posting, release, fulfilment and recovery.",
+    "Continued / expanded participation": "Worthwhile realized outcomes may influence sustained participation; the causal effect is unvalidated.",
+    "Value realization + participation signals": "Observed outcomes and participation provide signals for measurement and future decisions.",
+    "Identity + permission handoffs": "Identity or permission handoffs may interrupt usable context.",
+    "Channel continuity constraints": "Separate surfaces may create repeated steps or inconsistent context.",
+    "Support + fulfilment ownership": "Cross-system issues may be transferred rather than resolved end to end.",
+    "Establish relevance + plausible eligibility": "The opportunity becomes Potential Value when relevance and a plausible eligible path are established.",
+    "Satisfy qualification requirements": "Potential Value becomes Earned Value when applicable requirements are satisfied.",
+    "Post + release + activate": "Earned Value becomes Available Value when the entitlement is operationally accessible.",
+    "Use + convert into worthwhile outcome": "Available Value becomes Realized Value through successful use or conversion into perceived worth.",
+    "Propositions + benefits": "Partner contributions create sources of opportunity.",
+    "Products + participation routes": "Products and transactions create opportunity and earning routes.",
+    "Posting + release reliability": "Operations influence whether earned entitlements become accessible.",
+    "Access + use pathway": "Channels influence whether available value can be discovered and used.",
+    "Fulfilment + recovery": "Fulfilment and recovery influence successful value use.",
+    "Qualification + posting stalls": "Interface friction may stall qualification, posting or release.",
+    "Governed permitted context": "Permissioned identity may provide usable context under governance.",
+    "Coordinated value-path decision": "A selected value pathway may be carried into delivery and operations.",
+    "Access + reliable fulfilment": "Coordinated delivery may improve access, fulfilment and recovery.",
+    "Partner matching + insight": "Partners may be matched to relevant needs and receive performance learning.",
+    "Appropriate relationship progression": "Sustained participation may support appropriate progression; causality is unresolved.",
+    "Relationship economics after full costs": "Relationship structure may contribute to net value only after incrementality, liabilities and costs.",
+    "Distinct partner + organizational returns": "Partner returns may contribute to organizational value but remain distinct from member outcomes.",
+    "Relevant opportunities + fulfilment": "Future partner participation may support relevant opportunities and fulfilment.",
+    "Governance context": "Regulation, privacy and consent conditions shape which emerging technologies and uses are permissible.",
+    "Capability signals": "New technological possibilities can raise expectations for relevance, immediacy, portability and ease of use.",
+    "Market reference points": "Competing ecosystems influence the standards people use to compare value, flexibility, service and access.",
+    "Alternative value propositions": "People outside the boundary can choose alternative loyalty and financial relationships before entering this system.",
+    "Entry expectations": "Expectations about value, trust and effort shape the threshold for establishing a first relationship."
   };
 
-  var currentView = "transition";
+  var relationshipMeta = {
+    "CUR-R01": {
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R02": {
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R03": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R04": {
+      "epistemicStatus": "Unresolved",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R05": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R06": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R07": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R08": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R09": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R10": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R11": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01",
+        "VT02",
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R12": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT03",
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R13": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT05"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R14": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT05"
+      ],
+      "evidenceRefs": []
+    },
+    "CUR-R15": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R16": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "CUR-R17": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "TR-R01": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [
+        "VT01"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R02": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [
+        "VT02"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R03": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [
+        "VT03"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R04": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R05": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R06": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01",
+        "VT02"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R07": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT01"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R08": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT03"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R09": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R10": {
+      "epistemicStatus": "Supported",
+      "claimBasis": "Evidence trace pending",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "TR-R11": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [
+        "VT02",
+        "VT03"
+      ],
+      "evidenceRefs": []
+    },
+    "FUT-R01": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R02": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R03": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [
+        "VT03",
+        "VT04"
+      ],
+      "evidenceRefs": []
+    },
+    "FUT-R04": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R05": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R06": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R07": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "FUT-R08": {
+      "epistemicStatus": "Assumed",
+      "claimBasis": "Group convergence",
+      "decisionStatus": "Active direction",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "EXT-R01": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "EXT-R02": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "EXT-R03": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "EXT-R04": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    },
+    "EXT-R05": {
+      "epistemicStatus": "Inferred",
+      "claimBasis": "Analytical inference",
+      "decisionStatus": "Unresolved",
+      "transitionIds": [],
+      "evidenceRefs": []
+    }
+  };
+
+  var currentView = "current";
   var selectedId = "engagement";
 
   function svgEl(name, attrs) {
@@ -2397,6 +3824,8 @@ svg {
     var node=nodes[id];
     root.querySelector("#lm2-phase").textContent=node.phase;
     root.querySelector("#lm2-status").textContent=node.status;
+    root.querySelector("#lm2-basis").textContent=node.basis;
+    root.querySelector("#lm2-decision").textContent=node.decision;
     root.querySelector("#lm2-category").textContent=node.category;
     root.querySelector("#lm2-detail-title").textContent=titleCaseLabel(node.label);
     root.querySelector("#lm2-definition").textContent=node.definition;
@@ -2406,7 +3835,7 @@ svg {
     root.querySelector("#lm2-provisional").textContent=node.provisional;
     root.querySelector("#lm2-opportunity").textContent=node.opportunity;
     root.querySelector("#lm2-opportunity-wrap").hidden=!node.opportunity;
-    root.querySelector("#lm2-opportunity-label").textContent=currentView==="external"?"Boundary implication":"Future opportunity";
+    root.querySelector("#lm2-opportunity-label").textContent=currentView==="external"?"Boundary implication":node.kind==="state"?"Digital Value Opportunity":"Future opportunity";
     var linksWrap=root.querySelector("#lm2-system-links-wrap");
     var systemLinks=node.systemLinks||[];
     linksWrap.hidden=!systemLinks.length;
@@ -2419,7 +3848,9 @@ svg {
     var html=directConnections.map(function (e) {
       var outgoing=e[0]===id;
       var other=nodes[outgoing?e[1]:e[0]];
-      return "<div class=\"lm2-connection-item text-small\"><span class=\"lm2-connection-direction\">"+(outgoing?"Outgoing →":"← Incoming")+"</span><div class=\"lm2-connection-copy\"><strong>"+titleCaseLabel(other.label)+"</strong><span>"+e[2]+"</span><p>"+(edgeMeanings[e[2]]||"")+"</p></div></div>";
+      var meta=relationshipMeta[e[5]]||{};
+      var classifier=[meta.epistemicStatus,meta.claimBasis,meta.decisionStatus].filter(Boolean).join(" • ");
+      return "<div class=\"lm2-connection-item text-small\"><span class=\"lm2-connection-direction\">"+(outgoing?"Outgoing →":"← Incoming")+"</span><div class=\"lm2-connection-copy\"><strong>"+titleCaseLabel(other.label)+"</strong><span>"+e[2]+"</span><small class=\"lm2-connection-classifier\">"+classifier+"</small><p>"+(edgeMeanings[e[2]]||"")+"</p></div></div>";
     }).join("");
     root.querySelector("#lm2-connection-list").innerHTML=html || "<span class=\"text-small text-muted\">No direct connections in this view.</span>";
   }
@@ -2449,7 +3880,7 @@ svg {
 
   function renderView(viewName) {
     currentView=viewName;
-    var preferred=viewName==="transition"?"engagement":viewName==="current"?"data":viewName==="future"?"orchestration":"expectations";
+    var preferred=viewName==="transition"?"opportunity":viewName==="current"?"member-value":viewName==="future"?"member-value":"expectations";
     selectedId=preferred;
     root.querySelector("#lm2-view-label").textContent=views[viewName].label;
     root.querySelector("#lm2-view-description").textContent=views[viewName].description;
@@ -2512,11 +3943,11 @@ svg {
   var tourReplay=document.querySelector("#lm2-tour-replay");
   var tourShields=Array.prototype.slice.call(tour.querySelectorAll(".lm2-tour-shield"));
   var tourLauncher=root.querySelector("#lm2-start-tour");
-  var tourNodeByView={transition:"data",current:"engagement",future:"delivery",external:"technology-landscape"};
+  var tourNodeByView={transition:"earned-value",current:"member-value",future:"member-value",external:"technology-landscape"};
   var tourSteps=[
     {welcome:true,title:"Welcome to Team Zig's Systems Map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
     {target:".viz-controls",interactive:true,title:"Choose a perspective",copy:"Try a view now. Each perspective reveals a different layer of the system, and the map below updates to match your choice."},
-    {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a component in the active system view. Use the always-visible legend below the map to decode it: color identifies the component type, while line style distinguishes current, future and inferred relationships."},
+    {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a system component or, in the Main Variable view, a controlled value state. Use the legend and detail classifiers together: line style shows structural treatment, while the badges distinguish evidence, inference, convergence and hypothesis."},
     {target:function () { return grid.querySelector('[data-node-id="'+(tourNodeByView[currentView] || "data")+'"]') || grid.querySelector(".lm2-node"); },interactive:true,title:"Select a node",copy:"Try the highlighted node. Selecting it brings its immediate relationships forward and updates the supporting context without taking you away from the map."},
     {target:".lm2-canvas",demo:true,title:"Follow the emphasized relationships",copy:"Watch the selected node trace outward: its direct lines appear first, then their labels and connected nodes. Everything else stays visible but recedes for orientation."},
     {target:".lm2-detail",title:"Read the supporting context",copy:"This panel explains the selected node’s role, evidence, assumptions and future opportunity. Open Direct connections only when you want relationship-level detail."}
@@ -2672,7 +4103,7 @@ svg {
   }
 
   function recordTourCompletion() {
-    try { window.localStorage.setItem("lm2-v2-smart-tour-complete-v1","true"); } catch (error) {}
+    try { window.localStorage.setItem("lm2-v2-smart-tour-complete-v2","true"); } catch (error) {}
   }
 
   function closeTour(complete) {
@@ -2767,10 +4198,10 @@ svg {
     },100);
   });
   observer.observe(canvas);
-  renderView("transition");
+  renderView("current");
   window.setTimeout(function () {
     var tourComplete=false;
-    try { tourComplete=window.localStorage.getItem("lm2-v2-smart-tour-complete-v1")==="true"; } catch (error) {}
+    try { tourComplete=window.localStorage.getItem("lm2-v2-smart-tour-complete-v2")==="true"; } catch (error) {}
     if (!tourComplete) startTour();
   },500);
 })();
