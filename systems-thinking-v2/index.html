@@ -1,0 +1,3018 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Team Zig Systems Map — Version 2</title>
+<style>:root {
+  color-scheme: light dark;
+  background-color: transparent !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --main-surface-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 10px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cpath d='M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z'/%3E%3C/svg%3E");
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-visualize-standalone] {
+  background-color: var(--background) !important;
+}
+
+/* Generic mobile code-block hosts provide light/dark mode but no series palette.
+   AppBlock hosts set all six variables themselves. */
+:root:not([data-app-block-surface]) {
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(#f3883b, #f59a56);
+  --viz-series-3: light-dark(#5dc977, #74d58b);
+  --viz-series-4: light-dark(#eb77b1, #f08fc0);
+  --viz-series-5: light-dark(#9b79ec, #aa91ef);
+  --viz-series-6: light-dark(#3ab9b1, #5acbc2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html > body {
+  margin: 0;
+  padding: 24px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+:root:not([data-app-block-surface]) > body {
+  padding: 24px;
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive > .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align="right"]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align="center"]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget > :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* The bundled tooltip runtime owns [data-tooltip]. AppBlock's CSS-only
+   pseudo-tooltip can widen dense grids even while hidden. */
+main [data-tooltip]::after {
+  content: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls > .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls > .form-label > :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--interactive-label-primary-default, var(--primary-foreground));
+  background: var(--interactive-bg-primary-default, var(--foreground));
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(
+    in srgb,
+    var(--interactive-label-primary-default, var(--primary-foreground)) 50%,
+    transparent
+  );
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type="file"] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type="file"]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type="file"]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type="color"] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type="checkbox"]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type="checkbox"]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: "";
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type="radio"] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type="radio"]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: "";
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed="true"],
+    [aria-selected="true"],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed="true"], [aria-selected="true"], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget > svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+</style>
+</head>
+<body>
+<div id="loyalty-map-v2" class="lm2-root">
+  <div class="lm2-version-badge">Version 2 research workspace</div>
+  <div class="viz-controls" aria-label="Choose a map view">
+    <button type="button" class="btn btn-primary" data-map-view="transition" aria-pressed="true">1. Transition Overview</button>
+    <button type="button" class="btn" data-map-view="current" aria-pressed="false">2. Current System</button>
+    <button type="button" class="btn" data-map-view="future" aria-pressed="false">3. Future Opportunity</button>
+    <button type="button" class="btn" data-map-view="external" aria-pressed="false">4. Outside the Boundary</button>
+  </div>
+
+  <div class="lm2-instruction-row" aria-label="Map help options">
+    <div class="lm2-instruction-actions">
+      <button id="lm2-hide-guide" type="button" class="btn btn-ghost text-small">Hide reading guide</button>
+      <button id="lm2-show-guide" type="button" class="btn btn-ghost text-small" hidden>Show reading guide</button>
+      <button id="lm2-start-tour" type="button" class="btn text-small">Take the tour</button>
+    </div>
+  </div>
+
+  <section id="lm2-guide" class="lm2-guide" aria-labelledby="lm2-guide-title">
+    <div class="lm2-guide-heading">
+      <div>
+        <strong id="lm2-guide-title">How to read this map</strong>
+        <span class="text-small text-muted">Follow the system from overview to evidence.</span>
+      </div>
+    </div>
+    <ol class="lm2-guide-steps">
+      <li><span>1</span><strong>Choose a view</strong><small>Start with Transition Overview.</small></li>
+      <li><span>2</span><strong>Select a node</strong><small>Choose any box to set the focus.</small></li>
+      <li><span>3</span><strong>Follow the emphasis</strong><small>Trace the highlighted arrows and labels.</small></li>
+      <li><span>4</span><strong>Read the context</strong><small>Review its role, evidence and connections below.</small></li>
+    </ol>
+  </section>
+
+  <section class="lm2-map-wrap" aria-label="Interactive systems map">
+    <div id="lm2-view-label" class="lm2-view-label">Current relationships → future opportunity</div>
+    <p id="lm2-view-description" class="lm2-view-description text-small">This view connects today’s relationship populations and signals to the hypothesized capabilities, behaviours and organizational outcomes that could emerge next.</p>
+    <div id="lm2-canvas" class="lm2-canvas">
+      <svg id="lm2-connectors" aria-hidden="true">
+        <defs>
+          <marker id="lm2-arrow-current" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+            <path class="lm2-arrow-current-shape" d="M 1 1 L 9 5 L 1 9 z"></path>
+          </marker>
+          <marker id="lm2-arrow-future" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path class="lm2-arrow-future-shape" d="M 1 1 L 9 5 L 1 9 z"></path>
+          </marker>
+        </defs>
+        <g id="lm2-lines"></g>
+        <g id="lm2-labels"></g>
+      </svg>
+      <div id="lm2-grid" class="lm2-grid"></div>
+    </div>
+  </section>
+
+  <section class="lm2-legend" aria-label="Map legend">
+    <strong class="lm2-legend-title">Legend</strong>
+    <div class="lm2-legend-items text-small">
+      <button type="button" class="lm2-legend-item" data-legend-help="A group participating in or affected by the system." data-tooltip="A group participating in or affected by the system."><i class="lm2-key lm2-key-population"></i>Population</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="The value exchanged or the engagement behaviour the system aims to strengthen." data-tooltip="The value exchanged or the engagement behaviour the system aims to strengthen."><i class="lm2-key lm2-key-value"></i>Value / engagement</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="An organization or ecosystem participant that helps deliver value." data-tooltip="An organization or ecosystem participant that helps deliver value."><i class="lm2-key lm2-key-partner"></i>Partner</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="An organizational capability required to enable the system." data-tooltip="An organizational capability required to enable the system."><i class="lm2-key lm2-key-capability"></i>Capability</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized capability, behaviour or pathway that could emerge next." data-tooltip="A hypothesized capability, behaviour or pathway that could emerge next."><i class="lm2-key lm2-key-future"></i>Future opportunity</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A force outside the bounded system that may influence it without being controlled by it." data-tooltip="A force outside the bounded system that may influence it without being controlled by it."><i class="lm2-key lm2-key-external"></i>Outside boundary</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="The longer-term result the system is intended to produce." data-tooltip="The longer-term result the system is intended to produce."><i class="lm2-key lm2-key-outcome"></i>Intended outcome</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A current, observed or supported relationship between two nodes." data-tooltip="A current, observed or supported relationship between two nodes."><i class="lm2-key-line"></i>Current flow</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A hypothesized connection that represents a possible future pathway." data-tooltip="A hypothesized connection that represents a possible future pathway."><i class="lm2-key-line lm2-key-line-future"></i>Future pathway</button>
+      <button type="button" class="lm2-legend-item" data-legend-help="A plausible relationship that still requires validation." data-tooltip="A plausible relationship that still requires validation."><i class="lm2-key-line lm2-key-line-inferred"></i>Inferred relationship</button>
+    </div>
+    <p id="lm2-legend-help" class="lm2-legend-help text-small" aria-live="polite">Select a legend item to see how it should be interpreted.</p>
+  </section>
+
+  <section class="card lm2-detail" aria-live="polite" aria-label="Selected item explanation">
+    <div class="lm2-detail-heading">
+      <div class="viz-row">
+        <span id="lm2-phase" class="viz-badge">Current</span>
+        <span id="lm2-status" class="viz-badge">Supported</span>
+        <span id="lm2-category" class="viz-badge">Primary behaviour</span>
+      </div>
+      <strong id="lm2-detail-title">Meaningful engagement</strong>
+    </div>
+    <div class="lm2-detail-section">
+      <span class="lm2-section-label">What it is</span>
+      <p id="lm2-definition">A sustained pattern of meaningful participation across member-only, client-only and member-client populations.</p>
+    </div>
+    <div id="lm2-logic" class="lm2-logic" aria-label="Node logic"></div>
+    <div id="lm2-dimensions" class="lm2-dimensions"></div>
+    <div class="lm2-narrative-grid">
+      <div class="lm2-detail-section">
+        <span class="lm2-section-label">Role in the system</span>
+        <p id="lm2-role"></p>
+      </div>
+      <div class="lm2-detail-section">
+        <span class="lm2-section-label">Why it matters</span>
+        <p id="lm2-why"></p>
+      </div>
+    </div>
+    <div id="lm2-opportunity-wrap" class="lm2-detail-section lm2-opportunity-wrap">
+      <span id="lm2-opportunity-label" class="lm2-section-label">Future opportunity</span>
+      <p id="lm2-opportunity"></p>
+    </div>
+
+    <div class="lm2-disclosures">
+      <details class="lm2-disclosure" open>
+        <summary>
+          <span>Evidence &amp; assumptions</span>
+          <span class="lm2-disclosure-hint">Current understanding and open questions</span>
+        </summary>
+        <div class="lm2-evidence-grid">
+          <div class="lm2-detail-section">
+            <span class="lm2-section-label">Current understanding</span>
+            <p id="lm2-known"></p>
+          </div>
+          <div class="lm2-detail-section lm2-provisional">
+            <span class="lm2-section-label">What remains provisional</span>
+            <p id="lm2-provisional"></p>
+          </div>
+        </div>
+      </details>
+
+      <details id="lm2-system-links-wrap" class="lm2-disclosure lm2-system-links-wrap" hidden>
+        <summary>
+          <span>Potential influence on the bounded system</span>
+          <span class="lm2-disclosure-hint">Indirect relationships not drawn on the map</span>
+        </summary>
+        <div id="lm2-system-links" class="lm2-system-links"></div>
+      </details>
+
+      <details class="lm2-disclosure lm2-connections-disclosure" open>
+        <summary>
+          <span>Direct connections in this view</span>
+          <span id="lm2-connection-count" class="lm2-disclosure-count">0</span>
+        </summary>
+        <div id="lm2-connection-list" class="lm2-connection-list"></div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<div id="lm2-tour" class="lm2-tour" hidden>
+  <div class="lm2-tour-shield" data-tour-shield="top" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="right" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="bottom" aria-hidden="true"></div>
+  <div class="lm2-tour-shield" data-tour-shield="left" aria-hidden="true"></div>
+  <div id="lm2-tour-spotlight" class="lm2-tour-spotlight" aria-hidden="true"></div>
+  <section id="lm2-tour-card" class="lm2-tour-card" role="dialog" aria-modal="true" aria-labelledby="lm2-tour-title" aria-describedby="lm2-tour-copy" tabindex="-1">
+    <div class="lm2-tour-meta">
+      <span id="lm2-tour-progress">Welcome</span>
+      <button id="lm2-tour-skip" type="button" class="lm2-tour-skip">Skip tour</button>
+    </div>
+    <h2 id="lm2-tour-title">Choose a perspective</h2>
+    <p id="lm2-tour-copy"></p>
+    <button id="lm2-tour-replay" type="button" class="lm2-tour-replay" hidden>Replay relationship trace</button>
+    <div class="lm2-tour-actions">
+      <button id="lm2-tour-back" type="button" class="lm2-tour-button lm2-tour-button-secondary">Back</button>
+      <button id="lm2-tour-next" type="button" class="lm2-tour-button lm2-tour-button-primary">Next</button>
+    </div>
+  </section>
+</div>
+
+<style>
+  :root[data-visualize-standalone] {
+    --background: light-dark(#f4f1ea, #181817);
+    --card: light-dark(#fcfbf8, #242422);
+    --secondary: light-dark(#fbfaf6, #30302e);
+    --popover: light-dark(#fffefa, #30302e);
+    --border: light-dark(rgb(50 55 58 / 12%), rgb(255 255 255 / 10%));
+    --input: light-dark(rgb(50 55 58 / 14%), rgb(255 255 255 / 13%));
+    --muted: light-dark(rgb(50 55 58 / 8%), rgb(255 255 255 / 9%));
+    --muted-foreground: light-dark(rgb(45 49 52 / 62%), rgb(255 255 255 / 58%));
+  }
+  #loyalty-map-v2 {
+    --lm-population: var(--viz-series-2);
+    --lm-value: var(--viz-series-3);
+    --lm-partner: var(--viz-series-4);
+    --lm-capability: var(--viz-series-1);
+    --lm-future: var(--viz-series-5);
+    --lm-external: var(--viz-series-6);
+    width: min(100%, 1080px);
+    margin-inline: auto;
+    color: var(--foreground);
+  }
+  #loyalty-map-v2 [hidden] { display: none !important; }
+  #loyalty-map-v2 .lm2-version-badge {
+    width: fit-content;
+    margin: 0 0 0.65rem auto;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid color-mix(in srgb, var(--ring) 32%, var(--border));
+    border-radius: 999px;
+    color: var(--muted-foreground);
+    background: color-mix(in srgb, var(--accent) 28%, var(--card));
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  #loyalty-map-v2 .viz-controls {
+    width: 100%;
+    padding: 0.3rem;
+    gap: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--foreground) 4%, var(--background));
+  }
+  #loyalty-map-v2 .viz-controls .btn {
+    flex: 1 1 0;
+    width: 25%;
+    min-height: 2.25rem;
+    padding-inline: 0.8rem;
+    border-color: transparent;
+    border-radius: 0.62rem;
+    color: color-mix(in srgb, var(--foreground) 78%, transparent);
+    font-weight: 520;
+  }
+  #loyalty-map-v2 .viz-controls .btn.btn-primary {
+    color: #fff;
+    background: #26343b;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 16%);
+  }
+  #loyalty-map-v2 .lm2-guide {
+    margin: 0 0 1rem;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--ring) 28%, var(--border));
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--accent) 34%, var(--card));
+  }
+  #loyalty-map-v2 .lm2-guide-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  #loyalty-map-v2 .lm2-guide-heading > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.65rem;
+  }
+  #loyalty-map-v2 .lm2-guide-heading strong { font-weight: 600; }
+  #loyalty-map-v2 .lm2-guide-heading .btn { flex: 0 0 auto; }
+  #loyalty-map-v2 .lm2-guide-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  #loyalty-map-v2 .lm2-guide-steps li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.65rem minmax(0, 1fr);
+    gap: 0 0.5rem;
+    min-width: 0;
+  }
+  #loyalty-map-v2 .lm2-guide-steps li > span {
+    display: inline-flex;
+    grid-row: 1 / 3;
+    width: 1.65rem;
+    height: 1.65rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: #fff;
+    background: #405e6e;
+    font-size: var(--font-size-small);
+    font-weight: 650;
+  }
+  #loyalty-map-v2 .lm2-guide-steps strong {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  #loyalty-map-v2 .lm2-guide-steps small {
+    margin-top: 0.08rem;
+    color: var(--muted-foreground);
+    line-height: 1.35;
+  }
+  #loyalty-map-v2 .lm2-instruction-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 0.9rem 0 1rem;
+  }
+  #loyalty-map-v2 .lm2-instruction-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+  }
+  #loyalty-map-v2 .lm2-instruction-row .btn {
+    flex: 0 0 auto;
+  }
+
+  .lm2-tour[hidden] { display: none !important; }
+  .lm2-tour,
+  .lm2-tour-shield {
+    position: fixed;
+  }
+  .lm2-tour {
+    z-index: 1000;
+    inset: 0;
+    pointer-events: none;
+  }
+  .lm2-tour.is-welcome { background: rgb(20 28 32 / 67%); }
+  .lm2-tour-shield {
+    z-index: 0;
+    background: transparent;
+    cursor: default;
+    pointer-events: auto;
+  }
+  .lm2-tour-spotlight {
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #9bc9e7;
+    border-radius: 0.9rem;
+    box-shadow: 0 0 0 9999px rgb(20 28 32 / 67%), 0 8px 32px rgb(0 0 0 / 24%);
+    pointer-events: none;
+    transition: top 220ms ease, left 220ms ease, width 220ms ease, height 220ms ease;
+  }
+  .lm2-tour-card {
+    position: fixed;
+    z-index: 2;
+    width: min(22rem, calc(100vw - 2rem));
+    padding: 1rem;
+    border: 1px solid rgb(255 255 255 / 14%);
+    border-radius: 1rem;
+    color: #f8fafb;
+    background: #243239;
+    box-shadow: 0 18px 56px rgb(0 0 0 / 32%);
+    pointer-events: auto;
+  }
+  .lm2-tour.is-welcome .lm2-tour-spotlight { display: none; }
+  .lm2-tour.is-welcome .lm2-tour-card {
+    top: 50% !important;
+    left: 50% !important;
+    width: min(27rem, calc(100vw - 2rem));
+    transform: translate(-50%, -50%);
+  }
+  .lm2-tour-meta,
+  .lm2-tour-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .lm2-tour-meta {
+    color: rgb(248 250 251 / 64%);
+    font-size: 0.75rem;
+    font-weight: 560;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .lm2-tour-skip {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    color: rgb(248 250 251 / 72%);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .lm2-tour-replay {
+    appearance: none;
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    margin: -0.15rem 0 1rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 0.5rem;
+    color: rgb(248 250 251 / 82%);
+    background: rgb(255 255 255 / 7%);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 560;
+  }
+  .lm2-tour-replay[hidden] { display: none !important; }
+  .lm2-tour-card h2 {
+    margin: 0.8rem 0 0;
+    color: #fff;
+    font-size: 1.12rem;
+    font-weight: 640;
+    line-height: 1.3;
+  }
+  .lm2-tour-card p {
+    margin: 0.5rem 0 1rem;
+    color: rgb(248 250 251 / 82%);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .lm2-tour-actions { justify-content: flex-end; }
+  .lm2-tour-button {
+    appearance: none;
+    min-height: 2.25rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 580;
+  }
+  .lm2-tour-button-secondary {
+    color: rgb(248 250 251 / 78%);
+    border-color: rgb(255 255 255 / 16%);
+    background: transparent;
+  }
+  .lm2-tour-button-primary {
+    color: #172126;
+    background: #d7ebf7;
+  }
+  .lm2-tour-button:disabled { visibility: hidden; }
+  .lm2-tour :is(button, [tabindex]):focus-visible {
+    outline: 2px solid #a9daf8;
+    outline-offset: 2px;
+  }
+  #loyalty-map-v2 .is-tour-interactive-target { cursor: pointer; }
+  #loyalty-map-v2 .lm2-node.is-tour-demo-origin {
+    animation: lm2-tour-origin-pulse 820ms ease-in-out 2;
+  }
+  #loyalty-map-v2 .lm2-connector.is-tour-trace {
+    stroke-dasharray: var(--tour-length) !important;
+    stroke-dashoffset: var(--tour-length);
+    animation: lm2-tour-line-draw 760ms ease-out var(--tour-delay) forwards;
+  }
+  #loyalty-map-v2 .lm2-edge-label.is-tour-trace-label {
+    opacity: 0;
+    animation: lm2-tour-label-in 360ms ease-out var(--tour-delay) forwards;
+  }
+  #loyalty-map-v2 .lm2-node.is-tour-demo-arrival {
+    animation: lm2-tour-arrival-pulse 680ms ease-out var(--tour-delay) both;
+  }
+  @keyframes lm2-tour-origin-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.035); box-shadow: 0 0 0 6px color-mix(in srgb, var(--ring) 22%, transparent); }
+  }
+  @keyframes lm2-tour-line-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes lm2-tour-label-in {
+    to { opacity: 1; }
+  }
+  @keyframes lm2-tour-arrival-pulse {
+    0% { transform: scale(0.98); filter: saturate(0.75); }
+    55% { transform: scale(1.025); filter: saturate(1.2); box-shadow: 0 0 0 5px color-mix(in srgb, var(--ring) 18%, transparent); }
+    100% { transform: scale(1); filter: none; }
+  }
+  #loyalty-map-v2 .lm2-map-wrap {
+    width: 100%;
+    padding: 1.15rem 1.25rem 1.35rem;
+    border: 1px solid var(--border);
+    border-radius: 1.15rem;
+    background: var(--card);
+    box-shadow: 0 14px 40px rgb(43 39 31 / 6%);
+  }
+  #loyalty-map-v2 .lm2-view-label {
+    color: var(--muted-foreground);
+    font-size: calc(var(--font-size-base) * 0.78);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  #loyalty-map-v2 .lm2-view-description {
+    max-width: 54rem;
+    margin: 0 0 1rem;
+    color: var(--foreground);
+  }
+  #loyalty-map-v2 .lm2-canvas {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: none;
+    margin-inline: auto;
+    padding: 1.35rem 1.5rem 1.55rem;
+  }
+  #loyalty-map-v2 #lm2-connectors {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+  #loyalty-map-v2 .lm2-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 3.5rem 2.5rem;
+    align-items: stretch;
+  }
+  #loyalty-map-v2 .lm2-grid[data-view="transition"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-areas:
+      "mo co mc partner"
+      "data data orchestration delivery"
+      "engagement engagement intersection net";
+  }
+  #loyalty-map-v2 .lm2-grid[data-view="current"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 3rem;
+    row-gap: 3.75rem;
+    grid-template-areas:
+      "mo mc co"
+      "partner value engagement"
+      "products data channels"
+      ". service friction";
+  }
+  #loyalty-map-v2 .lm2-grid[data-view="future"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "identity orchestration delivery"
+      ". partner value"
+      ". . futureengagement"
+      ". intersection net";
+  }
+  #loyalty-map-v2 .lm2-grid[data-view="external"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "regulation technology expectations"
+      ". competitors neither";
+  }
+  #loyalty-map-v2 .lm2-node {
+    min-width: 0;
+    min-height: 3.4rem;
+    padding: 0.65rem 0.75rem;
+    white-space: normal;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-color: var(--border);
+  }
+  #loyalty-map-v2 .lm2-node strong {
+    font-weight: 560;
+    line-height: 1.25;
+  }
+  #loyalty-map-v2 .lm2-node-population { background: color-mix(in srgb, var(--lm-population) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-node-value { background: color-mix(in srgb, var(--lm-value) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-node-partner { background: color-mix(in srgb, var(--lm-partner) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-node-capability { background: color-mix(in srgb, var(--lm-capability) 18%, var(--card)); }
+  #loyalty-map-v2 .lm2-node-priority { background: color-mix(in srgb, var(--lm-capability) 30%, var(--card)); border-color: var(--lm-capability); }
+  #loyalty-map-v2 .lm2-node-future { background: color-mix(in srgb, var(--lm-future) 16%, var(--card)); border-color: var(--lm-future); border-style: dashed; }
+  #loyalty-map-v2 .lm2-node-outcome { background: color-mix(in srgb, var(--green) 15%, var(--card)); border-color: var(--green); border-style: dashed; }
+  #loyalty-map-v2 .lm2-node-friction { background: color-mix(in srgb, var(--red) 12%, var(--card)); border-color: var(--red); }
+  #loyalty-map-v2 .lm2-node-external { background: color-mix(in srgb, var(--lm-external) 14%, var(--card)); border-color: var(--lm-external); border-style: dashed; }
+  #loyalty-map-v2 .lm2-node.is-selected {
+    color: var(--foreground);
+    background: light-dark(#e8f2fa, #263846);
+    border-color: color-mix(in srgb, var(--ring) 76%, var(--foreground));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent);
+  }
+  #loyalty-map-v2 .lm2-node.is-connected { box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 55%, transparent); }
+  #loyalty-map-v2 .lm2-node.is-dimmed { opacity: 0.58; }
+  #loyalty-map-v2 .lm2-connector {
+    fill: none;
+    stroke: var(--muted-foreground);
+    stroke-width: 1.4;
+    opacity: 0.3;
+    marker-end: url(#lm2-arrow-current);
+    transition: opacity 120ms ease, stroke-width 120ms ease;
+  }
+  #loyalty-map-v2 .lm2-connector.future {
+    stroke: var(--lm-future);
+    stroke-dasharray: 7 5;
+    marker-end: url(#lm2-arrow-future);
+  }
+  #loyalty-map-v2 .lm2-connector.inferred { stroke-dasharray: 2 5; }
+  #loyalty-map-v2 .lm2-connector.is-connected { opacity: 1; stroke-width: 3; }
+  #loyalty-map-v2 .lm2-connector.is-dimmed { opacity: 0.07; }
+  #loyalty-map-v2 .lm2-arrow-current-shape { fill: var(--muted-foreground); }
+  #loyalty-map-v2 .lm2-arrow-future-shape { fill: var(--lm-future); }
+  #loyalty-map-v2 .lm2-edge-label rect { fill: var(--popover); stroke: var(--border); }
+  #loyalty-map-v2 .lm2-edge-label text { fill: var(--popover-foreground); font-size: calc(var(--font-size-base) * 0.72); font-style: italic; font-weight: 400; }
+  #loyalty-map-v2 .lm2-label-leader { stroke: var(--muted-foreground); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.8; }
+  #loyalty-map-v2 .lm2-detail {
+    width: 100%;
+    margin: 1rem auto 0;
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 1.15rem;
+    background: var(--card);
+  }
+  #loyalty-map-v2 .lm2-detail-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #loyalty-map-v2 .lm2-detail p { margin-block: 0.45rem; }
+  #loyalty-map-v2 .lm2-detail-section { margin-top: 0.65rem; }
+  #loyalty-map-v2 .lm2-section-label {
+    color: var(--muted-foreground);
+    font-size: calc(var(--font-size-base) * 0.72);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  #loyalty-map-v2 .lm2-narrative-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem 2rem;
+  }
+  #loyalty-map-v2 .lm2-logic {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.7rem;
+  }
+  #loyalty-map-v2 .lm2-logic-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  #loyalty-map-v2 .lm2-logic-node {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 0.45rem;
+    background: color-mix(in srgb, var(--lm-value) 10%, var(--card));
+    font-size: calc(var(--font-size-base) * 0.75);
+    font-weight: 500;
+  }
+  #loyalty-map-v2 .lm2-logic-arrow { color: var(--muted-foreground); }
+  #loyalty-map-v2 .lm2-dimensions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+  }
+  #loyalty-map-v2 .lm2-dimension {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: var(--muted);
+    color: var(--foreground);
+    font-size: calc(var(--font-size-base) * 0.7);
+  }
+  #loyalty-map-v2 .lm2-provisional {
+    padding-left: 0.65rem;
+    border-left: 2px dotted var(--muted-foreground);
+  }
+  #loyalty-map-v2 .lm2-opportunity-wrap {
+    padding: 0.55rem 0.7rem;
+    background: color-mix(in srgb, var(--lm-future) 8%, transparent);
+    border-left: 3px solid var(--lm-future);
+  }
+  #loyalty-map-v2 .lm2-disclosures {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  #loyalty-map-v2 .lm2-disclosure {
+    border-bottom: 1px solid var(--border);
+  }
+  #loyalty-map-v2 .lm2-disclosure:last-child { border-bottom: 0; }
+  #loyalty-map-v2 .lm2-disclosure summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 1rem;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 3.1rem;
+    padding: 0.65rem 0.25rem;
+    cursor: pointer;
+    font-weight: 560;
+    list-style: none;
+  }
+  #loyalty-map-v2 .lm2-disclosure summary::-webkit-details-marker { display: none; }
+  #loyalty-map-v2 .lm2-disclosure summary::after {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1.5px solid var(--muted-foreground);
+    border-bottom: 1.5px solid var(--muted-foreground);
+    transform: rotate(45deg) translateY(-0.15rem);
+    transition: transform 160ms ease;
+  }
+  #loyalty-map-v2 .lm2-disclosure[open] summary::after {
+    transform: rotate(225deg) translate(-0.1rem, -0.1rem);
+  }
+  #loyalty-map-v2 .lm2-disclosure summary:hover {
+    color: color-mix(in srgb, var(--foreground) 82%, var(--primary));
+  }
+  #loyalty-map-v2 .lm2-disclosure summary:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 0.45rem;
+  }
+  #loyalty-map-v2 .lm2-disclosure-hint {
+    color: var(--muted-foreground);
+    font-size: var(--font-size-small);
+    font-weight: 430;
+  }
+  #loyalty-map-v2 .lm2-disclosure-count {
+    min-width: 1.65rem;
+    padding: 0.08rem 0.45rem;
+    border-radius: 999px;
+    color: var(--muted-foreground);
+    background: var(--muted);
+    font-size: var(--font-size-small);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  #loyalty-map-v2 .lm2-evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 2rem;
+    padding: 0 0.25rem 0.9rem;
+  }
+  #loyalty-map-v2 .lm2-system-links-wrap {
+    padding: 0;
+  }
+  #loyalty-map-v2 .lm2-system-links { padding: 0 0.25rem 0.9rem; }
+  #loyalty-map-v2 .lm2-system-link {
+    display: block;
+    padding: 0.55rem 0.7rem;
+    background: color-mix(in srgb, var(--lm-external) 8%, transparent);
+    border-left: 3px solid var(--lm-external);
+  }
+  #loyalty-map-v2 .lm2-system-link + .lm2-system-link { margin-top: 0.6rem; }
+  #loyalty-map-v2 .lm2-system-targets { display: block; margin-top: 0.35rem; font-weight: 500; }
+  #loyalty-map-v2 .lm2-system-link p { margin: 0.3rem 0 0; }
+  #loyalty-map-v2 .lm2-connection-list {
+    display: block;
+    padding: 0 0.25rem 0.5rem;
+  }
+  #loyalty-map-v2 .lm2-connection-item {
+    display: grid;
+    grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: start;
+    padding-block: 0.65rem;
+    border-bottom: 1px solid var(--border);
+  }
+  #loyalty-map-v2 .lm2-connection-item:last-child { border-bottom: 0; }
+  #loyalty-map-v2 .lm2-connection-direction { color: var(--muted-foreground); }
+  #loyalty-map-v2 .lm2-connection-copy { min-width: 0; }
+  #loyalty-map-v2 .lm2-connection-copy strong,
+  #loyalty-map-v2 .lm2-connection-copy span { display: block; }
+  #loyalty-map-v2 .lm2-connection-copy span { margin-top: 0.15rem; }
+  #loyalty-map-v2 .lm2-connection-copy p { margin: 0.3rem 0 0; }
+  #loyalty-map-v2 .lm2-connection-item strong { font-weight: 500; }
+  #loyalty-map-v2 .lm2-legend {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    background: color-mix(in srgb, var(--card) 82%, var(--background));
+  }
+  #loyalty-map-v2 .lm2-legend-title {
+    flex: 0 0 auto;
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    line-height: var(--line-height-small);
+  }
+  #loyalty-map-v2 .lm2-legend-items {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
+  }
+  #loyalty-map-v2 .lm2-legend-item {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.35rem;
+    margin: 0;
+    padding: 0.08rem 0.2rem;
+    border: 0;
+    border-radius: 0.35rem;
+    color: var(--foreground);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+  }
+  #loyalty-map-v2 .lm2-legend-item:hover,
+  #loyalty-map-v2 .lm2-legend-item[aria-pressed="true"] {
+    background: var(--muted);
+  }
+  #loyalty-map-v2 .lm2-legend-item:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  #loyalty-map-v2 .lm2-legend-help {
+    grid-column: 2;
+    min-height: var(--line-height-small);
+    margin-top: 0.45rem;
+    color: var(--muted-foreground);
+  }
+  #loyalty-map-v2 .lm2-key { width: 0.9rem; height: 0.7rem; border: 1px solid var(--border); border-radius: 0.18rem; }
+  #loyalty-map-v2 .lm2-key-population { background: color-mix(in srgb, var(--lm-population) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-key-value { background: color-mix(in srgb, var(--lm-value) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-key-partner { background: color-mix(in srgb, var(--lm-partner) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-key-capability { background: color-mix(in srgb, var(--lm-capability) 20%, var(--card)); }
+  #loyalty-map-v2 .lm2-key-future { background: color-mix(in srgb, var(--lm-future) 16%, var(--card)); border-style: dashed; }
+  #loyalty-map-v2 .lm2-key-external { background: color-mix(in srgb, var(--lm-external) 14%, var(--card)); border-color: var(--lm-external); border-style: dashed; }
+  #loyalty-map-v2 .lm2-key-outcome { background: color-mix(in srgb, var(--green) 15%, var(--card)); border-color: var(--green); border-style: dashed; }
+  #loyalty-map-v2 .lm2-key-line { width: 1.25rem; height: 0; border-top: 2px solid var(--muted-foreground); }
+  #loyalty-map-v2 .lm2-key-line-future { border-top: 2px dashed var(--lm-future); }
+  #loyalty-map-v2 .lm2-key-line-inferred { border-top-style: dotted; }
+  @media (prefers-reduced-motion: reduce) {
+    #loyalty-map-v2 .lm2-disclosure summary::after { transition: none; }
+    .lm2-tour-spotlight { transition: none; }
+    #loyalty-map-v2 :is(.is-tour-demo-origin, .is-tour-trace, .is-tour-trace-label, .is-tour-demo-arrival) { animation: none !important; }
+  }
+  @media (max-width: 820px) {
+    html > body,
+    :root:not([data-app-block-surface]) > body { padding: 16px; }
+    #loyalty-map-v2 .viz-controls .btn { flex: 1 1 44%; width: auto; }
+    #loyalty-map-v2 .lm2-guide-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #loyalty-map-v2 .lm2-map-wrap { padding: 1rem; }
+    #loyalty-map-v2 .lm2-canvas { padding: 1rem 0.5rem; }
+    #loyalty-map-v2 .lm2-grid { gap: 3rem 1.25rem; }
+    #loyalty-map-v2 .lm2-grid[data-view="current"] { column-gap: 1.5rem; row-gap: 3rem; }
+    #loyalty-map-v2 .lm2-legend { display: block; }
+    #loyalty-map-v2 .lm2-legend-items { margin-top: 0.45rem; }
+    #loyalty-map-v2 .lm2-legend-help { margin-top: 0.6rem; }
+    #loyalty-map-v2 .lm2-disclosure summary { grid-template-columns: minmax(0, 1fr) auto 1rem; }
+    #loyalty-map-v2 .lm2-disclosure-hint { display: none; }
+    #loyalty-map-v2 .lm2-evidence-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    html > body,
+    :root:not([data-app-block-surface]) > body { padding: 12px; }
+    #loyalty-map-v2 .viz-controls .btn { flex-basis: 100%; justify-content: flex-start; }
+    #loyalty-map-v2 .lm2-guide { padding: 0.8rem; }
+    #loyalty-map-v2 .lm2-guide-heading { align-items: center; }
+    #loyalty-map-v2 .lm2-guide-steps { grid-template-columns: 1fr; }
+    #loyalty-map-v2 .lm2-canvas { padding: 1rem; }
+    #loyalty-map-v2 .lm2-grid {
+      grid-template-columns: 1fr !important;
+      grid-template-areas: none !important;
+      gap: 3.5rem;
+    }
+    #loyalty-map-v2 .lm2-grid[data-view="current"] { column-gap: 3.5rem; row-gap: 3.5rem; }
+    #loyalty-map-v2 .lm2-node { grid-area: auto !important; }
+    #loyalty-map-v2 .lm2-canvas.is-narrow .lm2-connector:not(.is-connected) { opacity: 0; }
+    #loyalty-map-v2 .lm2-edge-label { display: none; }
+    #loyalty-map-v2 .lm2-narrative-grid { grid-template-columns: 1fr; }
+    #loyalty-map-v2 .lm2-connection-item { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+  @media (max-width: 640px) {
+    .lm2-tour-card {
+      right: 0.75rem !important;
+      bottom: 0.75rem !important;
+      left: 0.75rem !important;
+      top: auto !important;
+      width: auto;
+    }
+    .lm2-tour.is-welcome .lm2-tour-card {
+      right: 0.75rem !important;
+      bottom: auto !important;
+      left: 0.75rem !important;
+      top: 50% !important;
+      width: auto;
+      transform: translateY(-50%);
+    }
+  }
+</style>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.getElementById("loyalty-map-v2");
+  if (!root) return;
+  var canvas = root.querySelector("#lm2-canvas");
+  var grid = root.querySelector("#lm2-grid");
+  var svg = root.querySelector("#lm2-connectors");
+  var linesLayer = root.querySelector("#lm2-lines");
+  var labelsLayer = root.querySelector("#lm2-labels");
+  var ns = "http://www.w3.org/2000/svg";
+
+  var nodes = {
+    "member-only": {
+      label:"Member-only", sub:"Program relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship population",
+      definition:"A person who belongs to the loyalty program but does not currently hold a banking relationship with the client.",
+      role:"This population sustains the open program ecosystem through earning, redemption and partner participation. It is also the largest immediate population from which relevant banking relationships might be created.",
+      why:"The program was designed to serve people beyond the bank. Preserving credible standalone value is therefore necessary both for member trust and for the client’s future relationship opportunity.",
+      known:"Member-only participants can receive program and partner value without becoming clients. Research shows that members judge programs by usable value, flexibility and reliable delivery—not ownership alone.",
+      provisional:"The active size of this population, the data that may be used for banking decisioning, and the proportion with a relevant banking need remain unconfirmed.",
+      opportunity:"Use permissioned member context to recognize genuine financial needs and present bank-connected value without making conversion a condition for receiving worthwhile program value.",
+      chain:["Standalone value","Participation","Meaningful engagement","Relevant banking need","Optional conversion"], dimensions:[]
+    },
+    "member-client": {
+      label:"Member-client", sub:"Program + banking relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship intersection",
+      definition:"A person who simultaneously participates in the loyalty program and holds a banking relationship with the client.",
+      role:"This is the strategic intersection where program value, banking value and partner value can potentially be coordinated across one relationship.",
+      why:"The client expects the intersection to support deeper engagement and greater relationship value. Bank-linked products already demonstrate that members can receive additional earning routes and benefits.",
+      known:"Member-clients may have access to a higher potential value ceiling through connected products, enhanced earning and integrated channels.",
+      provisional:"Holding both relationships does not prove engagement, affinity or incremental value. The combined value must still be relevant, used, fulfilled and realized.",
+      opportunity:"Coordinate program, banking and partner value so the intersection produces recognizably better outcomes rather than simply a larger number of linked accounts.",
+      chain:["Program value","+ Bank-connected value","Combined potential","Realized value","Deeper engagement"], dimensions:[]
+    },
+    "client-only": {
+      label:"Client-only", sub:"Banking relationship", kind:"population", phase:"Current", status:"Supported", category:"Relationship population",
+      definition:"A banking client who does not currently participate in this loyalty program.",
+      role:"This population can enter the intersection through relevant program enrolment. Existing transactions and participation in other reward products may indicate potential fit.",
+      why:"The client already has channels, products and permissioned banking context that may help explain where program participation could add value.",
+      known:"A client may already use cashback, points or co-branded products outside this program. Those behaviours show broader loyalty engagement, but not engagement with this specific program.",
+      provisional:"Transaction activity is only a relevance signal. It does not prove interest, consent, product suitability or willingness to manage another loyalty relationship.",
+      opportunity:"Identify where program participation complements an existing client need, then reduce the friction required to enrol, earn and realize the first meaningful benefit.",
+      chain:["Existing client need","Program relevance","Enrolment","First realized value","Ongoing engagement"], dimensions:[]
+    },
+    "partner": {
+      label:"Partner ecosystem", sub:"Merchants • experiences • business relationships", kind:"partner", phase:"Current", status:"Supported", category:"Ecosystem actor",
+      definition:"Merchants and business partners that contribute products, services, offers, access or experiences to the loyalty ecosystem.",
+      role:"Partners expand what members can earn, access and redeem while connecting the program to everyday and aspirational needs.",
+      why:"Partner quality, frequency and relevance determine practical value more than the nominal number of brands in the ecosystem.",
+      known:"Partners can receive sales, attention, repeat purchasing and potential share-of-wallet gains. They may also receive permissioned or aggregated performance insight.",
+      provisional:"The incrementality of partner sales, actual data-sharing arrangements, offer funding and partner economics are not yet established.",
+      opportunity:"Create a reciprocal value exchange in which relevant partner contributions strengthen engagement and demonstrated partner returns encourage continued participation.",
+      chain:["Partner contribution","Member participation","Incremental partner value","Continued partner participation"], dimensions:["Sales","Affinity","Share of wallet","Insight","Reach"]
+    },
+    "member-value": {
+      label:"Member value", sub:"Potential → accessible → realized", kind:"value", phase:"Current", status:"Supported", category:"Value subsystem",
+      definition:"The financial, functional, experiential and emotional value that a person can potentially access through the program and its ecosystem.",
+      role:"Member value is the exchange that gives people a reason to participate. Points are an intermediate mechanism—not the final outcome.",
+      why:"Both interviews show that members translate points into tangible savings or experiences while also valuing flexibility, access, recognition, convenience and dependable service.",
+      known:"Value can exist before it is realized. Awareness, eligibility, accessibility, fulfilment and redemption determine whether potential value becomes useful.",
+      provisional:"The relative importance of each value type differs by member and context. More available benefits can also increase complexity and management effort.",
+      opportunity:"Make value easier to understand, access, use and validate while preserving enough flexibility for different member needs.",
+      chain:["Potential","Understood","Accessible","Earned","Redeemed","Realized"], dimensions:["Savings","Flexibility","Access","Recognition","Convenience","Experiences"]
+    },
+    "engagement": {
+      label:"Meaningful engagement", sub:"Frequency • breadth • continuity • completion • progression", kind:"value", phase:"Current focus", status:"Supported", category:"Primary system behaviour",
+      definition:"A sustained pattern of participation through which members, clients and partners repeatedly access, contribute to or realize relevant value.",
+      role:"Engagement is the primary behaviour this system must explain. It applies across all three populations and precedes potential relationship deepening or movement into the member-client intersection.",
+      why:"The client uses engagement as a strategic objective. We distinguished it from activation and participation so the map does not mistake isolated activity for a durable relationship.",
+      known:"Participation is observable through actions such as earning, redeeming, using benefits or adopting relevant products. Activation initiates or renews that participation; repeated participation develops into engagement.",
+      provisional:"Engagement does not automatically cause conversion, affinity or revenue. Its effect depends on relevance, realized value, trust, suitability and reliable delivery.",
+      opportunity:"Improve the quality—not only the volume—of engagement across member-only, client-only and member-client populations, allowing appropriate progression to emerge as a downstream result.",
+      chain:["Activation","Participation","Repeated value realization","Meaningful engagement","Relationship depth / conversion"], dimensions:["Frequency","Breadth","Continuity","Completion","Progression"]
+    },
+    "products": {
+      label:"Products and transactions", sub:"Banking • rewards • partner activity", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      definition:"The banking products, reward products and transaction infrastructure through which people spend, earn and access benefits.",
+      role:"This layer performs the institution’s core processing activity and generates signals that may indicate needs, eligibility and engagement potential.",
+      why:"It is an established institutional capability that will be used regardless of how the future loyalty experience is designed.",
+      known:"Bank-linked products can produce additional earning routes and value. Transaction behaviour can reveal where relevant value might exist.",
+      provisional:"Product use does not itself prove loyalty or program engagement, and transaction signals cannot be treated as unrestricted targeting permission.",
+      opportunity:"Reuse reliable transaction and product capabilities while connecting their outputs to permissioned decisioning and program value delivery.",
+      chain:["Product use","Transaction signal","Decisioning","Relevant opportunity","Member action"], dimensions:[]
+    },
+    "data": {
+      label:"Data and decisioning", sub:"Priority connective layer", kind:"priority", phase:"Current", status:"Inferred integration", category:"Shared enabling backbone",
+      definition:"The data, identity, analytical and decision processes used to interpret context and determine an appropriate action or opportunity.",
+      role:"This is the most consequential connective layer identified because it links changing needs, available value, partners, products and delivery channels.",
+      why:"The core strategic question—what value, to whom, when and through which channel—cannot be answered consistently without usable context and decision governance.",
+      known:"The client has enterprise data and offer-decisioning capabilities. Public evidence does not establish the extent to which they are integrated with the program.",
+      provisional:"More data does not guarantee better decisions. Identity gaps, consent, privacy, bias, incomplete signals and over-targeting can reduce relevance or trust.",
+      opportunity:"Create permissioned, explainable decisioning that identifies where incremental value genuinely exists across members, clients and partners.",
+      chain:["Permissioned signals","Interpreted need","Decision","Relevant action","Outcome learning"], dimensions:["Identity","Consent","Context","Relevance","Measurement"]
+    },
+    "channels": {
+      label:"Channels and delivery", sub:"Program • banking • partner touchpoints", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      definition:"The digital, physical and communication touchpoints through which decisions, offers, information and experiences reach people.",
+      role:"Channels translate an organizational decision into something a member or client can discover, understand and act upon.",
+      why:"The client already operates mature banking channels, while the program also has standalone surfaces and partner touchpoints.",
+      known:"Multiple channels exist. Separate access, authentication and feature availability have produced some directional signals of discontinuity.",
+      provisional:"Multiple channels are not inherently fragmented. The quality of orchestration, ownership and handoffs across them remains unclear.",
+      opportunity:"Deliver consistent context and value across the appropriate channel while preserving intentional separation where it protects privacy or accessibility.",
+      chain:["Decision","Right channel","Clear opportunity","Member action","Feedback"], dimensions:["Digital","Physical","Partner","Marketing","Service"]
+    },
+    "service": {
+      label:"Service and operations", sub:"Fulfilment • support • recovery", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      definition:"The operational backbone that calculates and fulfils rewards, supports members, manages issues and coordinates program administration.",
+      role:"It converts a promised benefit into delivered value and determines what happens when that delivery fails.",
+      why:"The financial institution already has substantial operating capacity. Reusing relevant capabilities for the program could improve consistency and create economies of scale.",
+      known:"Reliable reward posting, redemption and service recovery influence whether members trust the value proposition. Public signals identify some cross-system support handoffs.",
+      provisional:"The actual degree of integration, duplication or fragmentation between the client and program operating models is unknown.",
+      opportunity:"Connect only the operational capabilities that improve fulfilment, issue ownership and cost efficiency while avoiding tightly coupled failure points.",
+      chain:["Value promise","Fulfilment","Realized value","Recovery when needed","Trust signal"], dimensions:["Reward posting","Redemption","Support","Recovery","Partner operations"]
+    },
+    "friction": {
+      label:"Interface friction", sub:"Partial connectivity • unclear handoffs", kind:"friction", phase:"Current", status:"Inferred", category:"Structural condition",
+      definition:"A marker for places where identity, information, value, decisions or service may not move reliably across organizational or technological boundaries.",
+      role:"It keeps the map attentive to the quality of interfaces without assuming that every separate system or channel is defective.",
+      why:"Separate surfaces, linking issues, delayed rewards and support transfers provide directional evidence that some interfaces may constrain value delivery.",
+      known:"Specific member-facing breakdowns have been reported. The existence of multiple channels and systems is also supported.",
+      provisional:"Those signals do not establish enterprise-wide fragmentation or prove that tighter integration will always create net gains.",
+      opportunity:"Identify which interfaces require better coordination and which separations are intentional, protective or economically sensible.",
+      chain:["Interface gap","Broken or delayed flow","Reduced realized value","Additional effort","Possible trust erosion"], dimensions:["Identity","Data","Channels","Support ownership","Fulfilment"]
+    },
+    "identity": {
+      label:"Permissioned identity and data", sub:"Connected context under governance", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future connective capability",
+      definition:"A governed ability to recognize the same person or relationship across program, banking and partner contexts where permitted.",
+      role:"It would create the usable context required for decisioning without treating ownership as unrestricted access to all member data.",
+      why:"Relevant orchestration depends on knowing which signals belong together and which uses the person has consented to.",
+      known:"Program and banking relationships generate different data. Privacy, consent and organizational access conditions apply to any connection.",
+      provisional:"The current identity architecture, consent model, data rights and cross-organizational access are not established.",
+      opportunity:"Connect only the context required to create explainable member and partner value under clear governance.",
+      chain:["Identity resolution","Consent","Permitted context","Decisioning input"], dimensions:["Privacy","Governance","Accuracy","Access","Transparency"]
+    },
+    "orchestration": {
+      label:"Integrated value orchestration", sub:"What value • to whom • when • where", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future decision capability",
+      definition:"A proposed capability for selecting and coordinating the most relevant available value for a particular relationship and moment.",
+      role:"It translates connected context into an actionable decision across program, banking and partner opportunities.",
+      why:"The system contains many products, partners and channels. Without orchestration, additional options can increase complexity rather than realized value.",
+      known:"The client has broader offer-decisioning capabilities and has publicly emphasized personalization. Member-recognized program personalization is not yet established.",
+      provisional:"Decision relevance, operating ownership, model governance and the incremental effect on engagement remain hypotheses.",
+      opportunity:"Answer the system’s core decision question consistently while respecting need, suitability, permission and channel context.",
+      chain:["What value","To whom","At what moment","Through which channel","For what member outcome"], dimensions:["Relevance","Timing","Suitability","Explainability","Learning"]
+    },
+    "delivery": {
+      label:"Coordinated delivery", sub:"Channels • fulfilment • service recovery", kind:"future", phase:"Future opportunity", status:"Hypothesis", category:"Future operating capability",
+      definition:"A future state in which relevant decisions move coherently through channels, fulfilment and service recovery.",
+      role:"It closes the gap between selecting an opportunity and ensuring that the promised value is actually received.",
+      why:"Relevant targeting cannot produce meaningful engagement if access, posting, redemption or issue resolution fails.",
+      known:"Channels and service capabilities already exist, while some public signals show reliability and handoff issues.",
+      provisional:"The degree of coordination required, implementation cost and risk of tightly coupled failures remain unknown.",
+      opportunity:"Create fit-for-purpose continuity across discovery, action, fulfilment and recovery.",
+      chain:["Relevant decision","Channel delivery","Member action","Fulfilment","Recovery if needed"], dimensions:[]
+    },
+    "future-engagement": {
+      label:"Broader meaningful engagement", sub:"Across all three populations", kind:"future", phase:"Future outcome", status:"Intended", category:"Primary future behaviour",
+      definition:"An intended increase in the quality and persistence of meaningful participation across the existing relationship base.",
+      role:"It is the proximal future result of improving relevance, accessibility and delivery—not the final commercial outcome.",
+      why:"Engagement applies to member-only, client-only and member-client relationships, whereas intersection growth captures only one downstream movement.",
+      known:"Research identifies observable participation behaviours and multiple engagement dimensions.",
+      provisional:"The causal effect of better data, orchestration and delivery on engagement has not yet been validated over time.",
+      opportunity:"Increase engagement quality while monitoring whether it creates realized value, relationship depth and appropriate progression.",
+      chain:["Better context","Relevant value","Reliable experience","Broader engagement","Relationship effects"], dimensions:["Frequency","Breadth","Continuity","Completion","Progression"]
+    },
+    "intersection": {
+      label:"Larger, stronger intersection", sub:"Appropriate movement + deeper relationships", kind:"outcome", phase:"Future outcome", status:"Intended", category:"Relationship outcome",
+      definition:"A larger and more engaged population holding both program and banking relationships.",
+      role:"It captures the client’s desired relationship movement while distinguishing size from the quality and depth of engagement within the intersection.",
+      why:"The client explicitly intends to convert relevant non-client members and deepen relationships with existing clients.",
+      known:"The intersection can grow through two different pathways: member-to-client conversion and client-to-member enrolment.",
+      provisional:"More linked relationships do not automatically create affinity, retention, incremental revenue or realized member value.",
+      opportunity:"Grow the intersection only where the combined relationship creates demonstrable incremental value for the person and the organization.",
+      chain:["Member-only or client-only","Relevant relationship movement","Member-client intersection","Deeper combined engagement"], dimensions:["Size","Activity","Breadth","Depth","Retention"]
+    },
+    "net-value": {
+      label:"Sustainable net relationship value", sub:"Consumer + business economics", kind:"outcome", phase:"Future outcome", status:"Intended", category:"Organizational outcome",
+      definition:"The incremental economic and strategic value created across consumer and business relationships after the full cost of the program is considered.",
+      role:"It is the client’s ultimate organizational outcome and prevents revenue growth from being assessed without the costs and liabilities required to produce it.",
+      why:"Engagement, membership and higher spending are not sufficient evidence of ROI unless they are incremental and exceed rewards, technology, operating and risk costs.",
+      known:"Potential benefits include acquisition, product use, share of wallet, retention, partner revenue, insight and economies of scale.",
+      provisional:"Incrementality, partner economics, conversion persistence, total costs and the time required to realize returns remain unmeasured.",
+      opportunity:"Build a measurement model that connects engagement and relationship movement to causal, long-term net value.",
+      chain:["Consumer relationship value","+ Partner value","− Full program costs","Sustainable net value"], dimensions:["Revenue","Retention","Partner economics","Operating cost","Liabilities"]
+    },
+    "neither": {
+      label:"Non-member / non-client", sub:"No current program or banking relationship", kind:"external", phase:"Outside boundary", status:"Boundary definition", category:"External population",
+      definition:"People who are not currently loyalty-program members or banking clients of the institution.",
+      role:"They sit outside the active relationship system because the current inquiry focuses on engagement and movement among people who already hold at least one relationship.",
+      why:"Their eventual entry matters for growth, but modelling acquisition tactics in detail would expand the inquiry beyond the activation and relationship system currently being examined.",
+      known:"A person could enter the boundary by joining the program, becoming a banking client, or establishing both relationships.",
+      provisional:"The size, needs, awareness and likelihood of entry for this population have not been established by the current research.",
+      opportunity:"Treat boundary entry as a downstream consequence of the system’s reputation and value—not as the primary behaviour the present map must explain.",
+      chain:["No relationship","External impression","Relevant entry reason","Member-only or client-only","Inside boundary"], dimensions:["Awareness","Relevance","Trust","Entry friction"],
+      systemLinks:[
+        {phase:"Current System",targets:["Member-Only","Client-Only"],explanation:"These are the two primary entry states if a person establishes one relationship."},
+        {phase:"Future Opportunity",targets:["Broader Meaningful Engagement","Larger, Stronger Intersection"],explanation:"These outcomes may strengthen reputation and create entry reasons, but the connection remains indirect and is not drawn as an internal flow."}
+      ]
+    },
+    "expectations": {
+      label:"Customer expectations and market norms", sub:"Personalization • simplicity • flexibility • trust", kind:"external", phase:"Outside boundary", status:"Supported • evolving", category:"External influence",
+      definition:"Changing expectations about relevance, personalization, ease of use, flexibility, transparency and dependable service.",
+      role:"This influence shapes the standard against which people judge program, banking and partner value without being controlled by the bounded system.",
+      why:"The client’s problem statement explicitly links the need for deeper relationships to changing customer needs, while primary research emphasizes flexibility, relevance and reliable value delivery.",
+      known:"Members compare loyalty value against alternative programs, cash equivalents, service expectations and the effort required to use benefits.",
+      provisional:"The relative importance of each expectation varies by population, context and moment; the map does not assume one universal preference profile.",
+      opportunity:"Use expectations as a design and validation condition rather than treating personalization or engagement as inherently valuable.",
+      chain:["External norms","Value expectations","Experience comparison","Trust or disengagement"], dimensions:["Relevance","Simplicity","Flexibility","Transparency","Reliability"],
+      systemLinks:[
+        {phase:"Current System",targets:["Member Value","Channels And Delivery","Meaningful Engagement"],explanation:"Expectations shape whether available value feels understandable, accessible and worth continued participation."},
+        {phase:"Future Opportunity",targets:["Integrated Value Orchestration","Coordinated Delivery","Broader Meaningful Engagement"],explanation:"Future capabilities would need to meet evolving expectations without over-personalizing or increasing complexity."}
+      ]
+    },
+    "technology-landscape": {
+      label:"Technology landscape", sub:"AI • identity • open-data capabilities", kind:"external", phase:"Outside boundary", status:"Supported • evolving", category:"External influence",
+      definition:"The changing availability and maturity of technologies that can support prediction, personalization, identity resolution, data portability and coordinated delivery.",
+      role:"It changes what may be technically possible, expected or economically feasible, but it does not determine which capabilities should be adopted.",
+      why:"Artificial intelligence and data portability may expand decisioning options while also creating new governance, trust and operating requirements.",
+      known:"The institution has broader enterprise data and AI ambitions. Program-specific integration and demonstrated member value remain unconfirmed.",
+      provisional:"Technology maturity, implementation cost, model quality, interoperability and incremental impact on engagement are unresolved.",
+      opportunity:"Evaluate technology only where it improves a defined value or operating flow under appropriate governance.",
+      chain:["New capability","Possible operating use","Governance and fit test","Adoption decision"], dimensions:["AI","Identity","Interoperability","Portability","Automation"],
+      systemLinks:[
+        {phase:"Current System",targets:["Data And Decisioning","Channels And Delivery","Service And Operations"],explanation:"External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."},
+        {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"These hypothesized capabilities depend partly on available technology, but technology alone does not establish their value or feasibility."}
+      ]
+    },
+    "regulation": {
+      label:"Regulation, privacy and consent environment", sub:"Permitted use • accountability • protection", kind:"external", phase:"Outside boundary", status:"Supported constraint", category:"External institutional influence",
+      definition:"The laws, regulatory expectations, privacy rules and consent conditions governing the collection, connection, use and exchange of data and value.",
+      role:"This environment defines permissible operating conditions for identity, decisioning, marketing, partner insight and cross-system data use.",
+      why:"Ownership of a program does not imply unrestricted access to or use of member information; permission and purpose remain necessary conditions.",
+      known:"Privacy, consent, suitability and governance requirements apply to any connection between program, banking and partner contexts.",
+      provisional:"The specific legal interpretation, data rights, consent architecture and partner-sharing limits are outside the present research scope.",
+      opportunity:"Treat governance as a design input from the outset rather than a downstream compliance check.",
+      chain:["External rules","Permitted purpose","Governed access","Constrained action"], dimensions:["Privacy","Consent","Suitability","Transparency","Accountability"],
+      systemLinks:[
+        {phase:"Current System",targets:["Data And Decisioning","Products And Transactions","Partner Ecosystem","Channels And Delivery"],explanation:"Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."},
+        {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"Governance defines the operating envelope for the future pathway and may intentionally preserve separation between some systems."}
+      ]
+    },
+    "competitors": {
+      label:"Competitor loyalty and financial ecosystems", sub:"Alternative programs • products • value propositions", kind:"external", phase:"Outside boundary", status:"Inferred influence", category:"External market influence",
+      definition:"Other loyalty, banking, card and partner ecosystems against which people and businesses compare the client’s value proposition.",
+      role:"Competitors provide alternative relationships, benefits and participation options without being actors inside the bounded client-program system.",
+      why:"Primary research shows that members compare reward economics, flexibility, perks and service across multiple programs rather than evaluating one program in isolation.",
+      known:"Alternative reward products and ecosystems affect members’ reference points and can compete for spending, attention and partner participation.",
+      provisional:"Competitor-specific performance, switching behaviour and direct effects on this program have not been measured in the current analysis.",
+      opportunity:"Use competitor ecosystems as contextual benchmarks while preserving a member-value definition grounded in actual needs rather than feature imitation.",
+      chain:["Alternative value","Comparison","Allocation of attention and spend","Relationship choice"], dimensions:["Economics","Flexibility","Service","Access","Partner breadth"],
+      systemLinks:[
+        {phase:"Current System",targets:["Member Value","Meaningful Engagement","Partner Ecosystem"],explanation:"Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."},
+        {phase:"Future Opportunity",targets:["Broader Meaningful Engagement","Sustainable Net Relationship Value"],explanation:"Competitive responses may influence whether improved engagement persists and produces incremental organizational value."}
+      ]
+    }
+  };
+
+  var views = {
+    transition: {
+      label:"Current relationships → future opportunity",
+      description:"This view connects today’s relationship populations and signals to the hypothesized capabilities, behaviours and organizational outcomes that could emerge next.",
+      areas:{"member-only":"mo","client-only":"co","member-client":"mc","partner":"partner","data":"data","orchestration":"orchestration","delivery":"delivery","engagement":"engagement","intersection":"intersection","net-value":"net"},
+      edges:[
+        ["member-only","data","Member signals","current"],
+        ["client-only","data","Client signals","current"],
+        ["member-client","data","Combined signals","current"],
+        ["partner","data","Partner signals","current"],
+        ["data","orchestration","Permissioned context","future"],
+        ["orchestration","delivery","Relevant decision","future"],
+        ["delivery","engagement","Delivered value","future"],
+        ["engagement","intersection","Appropriate progression","future"],
+        ["intersection","net-value","Relationship economics","future"],
+        ["partner","net-value","Consumer + business value","future"]
+      ]
+    },
+    current: {
+      label:"Current transitional system",
+      description:"This view shows the populations, partners, value flows and shared institutional capabilities operating today, including the interfaces where friction may constrain realized value and engagement.",
+      areas:{"member-only":"mo","member-client":"mc","client-only":"co","partner":"partner","member-value":"value","engagement":"engagement","products":"products","data":"data","channels":"channels","service":"service","friction":"friction"},
+      edges:[
+        ["member-only","member-client","Banking adoption","current"],
+        ["client-only","member-client","Program enrolment","current"],
+        ["member-only","member-value","Open program participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:-0.26}],
+        ["member-client","member-value","Combined participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:0.22}],
+        ["partner","member-value","Offers + experiences","current",{route:"parallel-horizontal",fromOffset:-0.25,toOffset:-0.25}],
+        ["member-value","partner","Purchases + preference","current",{route:"parallel-horizontal",fromOffset:0.25,toOffset:0.25}],
+        ["member-value","engagement","Realized value","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
+        ["products","data","Transaction signals","current"],
+        ["data","channels","Decisions + opportunities","current"],
+        ["channels","member-value","Opportunity delivery","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:0.26}],
+        ["service","member-value","Fulfilment + recovery","current",{route:"service-up-left",labelPosition:"source-gap"}],
+        ["engagement","data","Outcome signals","current"],
+        ["friction","data","Identity + data handoffs","inferred"],
+        ["friction","channels","Channel continuity","inferred"],
+        ["friction","service","Support ownership","inferred"]
+      ]
+    },
+    future: {
+      label:"Future opportunity space",
+      description:"This view shows a hypothesized pathway in which permissioned context, value orchestration and coordinated delivery could improve realized value, meaningful engagement, relationship convergence and sustainable net value.",
+      areas:{"identity":"identity","orchestration":"orchestration","delivery":"delivery","member-value":"value","future-engagement":"futureengagement","intersection":"intersection","partner":"partner","net-value":"net"},
+      edges:[
+        ["identity","orchestration","Unified permissioned context","future"],
+        ["orchestration","delivery","Coordinated decisions","future"],
+        ["delivery","member-value","Reliable relevant value","future",{route:"straight-vertical"}],
+        ["orchestration","partner","Partner matching + insight","future",{route:"straight-vertical"}],
+        ["member-value","future-engagement","Realized value","future",{route:"straight-vertical"}],
+        ["future-engagement","intersection","Appropriate progression","future"],
+        ["intersection","net-value","Relationship economics","future"],
+        ["partner","net-value","Consumer + business value","future"]
+      ]
+    },
+    external: {
+      label:"Outside the system boundary",
+      description:"This view isolates external actors and conditions that may influence the bounded system. Only relationships among external factors are drawn; possible links to the current and future system appear in the detail panel and remain contextual rather than established internal flows.",
+      areas:{"regulation":"regulation","technology-landscape":"technology","expectations":"expectations","competitors":"competitors","neither":"neither"},
+      edges:[
+        ["regulation","technology-landscape","Governance context","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
+        ["technology-landscape","expectations","Capability signals","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
+        ["competitors","expectations","Market reference points","inferred"],
+        ["competitors","neither","Alternative value propositions","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
+        ["expectations","neither","Entry expectations","inferred",{route:"straight-vertical"}]
+      ]
+    }
+  };
+
+  var edgeMeanings = {
+    "Member signals":"Program activity can reveal preferences, value-seeking behaviour and potential needs where use is permitted.",
+    "Client signals":"Banking and broader rewards behaviour may indicate where program participation could create incremental value.",
+    "Combined signals":"The intersection may provide richer context, but only when identity, consent and permitted use are resolved.",
+    "Partner signals":"Offer, transaction and fulfilment information helps evaluate partner relevance and performance.",
+    "Permissioned context":"Existing signals become usable decision inputs only after governance, identity and consent conditions are met.",
+    "Relevant decision":"Decisioning selects an appropriate opportunity, audience, moment and delivery route.",
+    "Delivered value":"A decision becomes meaningful only when the opportunity is understood, accessible and fulfilled.",
+    "Appropriate progression":"Repeated relevant engagement may support conversion or relationship depth, but the effect is not automatic.",
+    "Relationship economics":"Relationship movement must create incremental value after costs rather than simply more linked accounts.",
+    "Consumer + business value":"Partners may create consumer revenue, partner economics and deeper business relationships simultaneously.",
+    "Banking adoption":"A member-only participant enters the intersection when a relevant banking need leads to product adoption.",
+    "Program enrolment":"A client-only participant enters the intersection by joining and beginning to use the program.",
+    "Open program participation":"Members can earn, redeem and use partner value without becoming banking clients.",
+    "Combined participation":"Member-clients can access program value alongside eligible bank-connected benefits.",
+    "Offers + experiences":"Partner contributions expand the ways members can earn, save, access or realize value.",
+    "Purchases + preference":"Member activity returns sales, attention, affinity and potential share-of-wallet value to partners.",
+    "Transaction signals":"Product activity supplies behavioural context to the data and decisioning layer.",
+    "Decisions + opportunities":"Decisioning outputs must move into a channel before a person can discover or act on them.",
+    "Opportunity delivery":"Channels translate selected value into a visible and actionable member experience.",
+    "Fulfilment + recovery":"Operations deliver the promise and determine how failures are corrected.",
+    "Outcome signals":"Participation and outcomes create feedback for measurement and future decisions.",
+    "Identity + data handoffs":"Separate identities or permissions may interrupt the movement of usable context.",
+    "Channel continuity":"Separate surfaces may create repeated steps, inconsistent context or unclear ownership.",
+    "Support ownership":"Cross-system issues may be transferred between teams rather than resolved end to end.",
+    "Unified permissioned context":"Governed identity and data create the context required for more relevant orchestration.",
+    "Coordinated decisions":"The chosen action is carried consistently into delivery, fulfilment and service processes.",
+    "Reliable relevant value":"Future coordination aims to make relevant value easier to access and dependable to receive.",
+    "Partner matching + insight":"Partners can be matched to relevant needs and receive useful performance feedback in return.",
+    "Realized value":"Value must move beyond availability into an outcome the person can recognize and use.",
+    "Governance context":"Regulation, privacy and consent conditions shape which emerging technologies and uses are permissible.",
+    "Capability signals":"New technological possibilities can raise expectations for relevance, immediacy, portability and ease of use.",
+    "Market reference points":"Competing ecosystems influence the standards people use to compare value, flexibility, service and access.",
+    "Alternative value propositions":"People outside the boundary can choose alternative loyalty and financial relationships before entering this system.",
+    "Entry expectations":"Expectations about value, trust and effort shape the threshold for establishing a first relationship."
+  };
+
+  var currentView = "transition";
+  var selectedId = "engagement";
+
+  function svgEl(name, attrs) {
+    var el = document.createElementNS(ns, name);
+    Object.keys(attrs || {}).forEach(function (key) { el.setAttribute(key, String(attrs[key])); });
+    return el;
+  }
+
+  function nodeClass(node) {
+    return "btn lm2-node lm2-node-" + node.kind;
+  }
+
+  function titleCaseLabel(label) {
+    return label.replace(/\b[a-z]/g,function (letter) { return letter.toUpperCase(); });
+  }
+
+  function renderNodes() {
+    var view = views[currentView];
+    grid.textContent = "";
+    grid.setAttribute("data-view", currentView);
+    Object.keys(view.areas).forEach(function (id) {
+      var node = nodes[id];
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = nodeClass(node);
+      button.setAttribute("data-node-id", id);
+      button.style.gridArea = view.areas[id];
+      button.innerHTML = "<strong>" + titleCaseLabel(node.label) + "</strong>";
+      button.addEventListener("click", function () { selectNode(id); });
+      grid.appendChild(button);
+    });
+  }
+
+  function rectOf(id) {
+    var el = grid.querySelector("[data-node-id='" + id + "']");
+    var r = el.getBoundingClientRect();
+    var c = canvas.getBoundingClientRect();
+    return {left:r.left-c.left, right:r.right-c.left, top:r.top-c.top, bottom:r.bottom-c.top, x:r.left-c.left+r.width/2, y:r.top-c.top+r.height/2, w:r.width, h:r.height};
+  }
+
+  function port(r, side) {
+    if (side === "left") return {x:r.left, y:r.y};
+    if (side === "right") return {x:r.right, y:r.y};
+    if (side === "top") return {x:r.x, y:r.top};
+    return {x:r.x, y:r.bottom};
+  }
+
+  function edgePort(r,side,offset) {
+    offset=offset||0;
+    if (side==="left") return {x:r.left,y:r.y+offset*r.h};
+    if (side==="right") return {x:r.right,y:r.y+offset*r.h};
+    if (side==="top") return {x:r.x+offset*r.w,y:r.top};
+    return {x:r.x+offset*r.w,y:r.bottom};
+  }
+
+  function cleanPoints(points) {
+    return points.filter(function (point, index) {
+      if (!index) return true;
+      var previous=points[index-1];
+      return Math.abs(point.x-previous.x)>0.5 || Math.abs(point.y-previous.y)>0.5;
+    });
+  }
+
+  function segmentIntersectsRect(a,b,r,pad) {
+    var left=r.left-pad, right=r.right+pad, top=r.top-pad, bottom=r.bottom+pad;
+    if (Math.abs(a.x-b.x)<0.5) {
+      return a.x>=left && a.x<=right && Math.max(Math.min(a.y,b.y),top)<=Math.min(Math.max(a.y,b.y),bottom);
+    }
+    if (Math.abs(a.y-b.y)<0.5) {
+      return a.y>=top && a.y<=bottom && Math.max(Math.min(a.x,b.x),left)<=Math.min(Math.max(a.x,b.x),right);
+    }
+    return false;
+  }
+
+  function routeScore(points,from,to) {
+    var score=(points.length-2)*22;
+    for (var i=0;i<points.length-1;i++) {
+      var a=points[i], b=points[i+1];
+      score+=Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
+      Object.keys(views[currentView].areas).forEach(function (id) {
+        if (id!==from && id!==to && segmentIntersectsRect(a,b,rectOf(id),13)) score+=100000;
+      });
+    }
+    return score;
+  }
+
+  function routeBlocked(points,from,to) {
+    for (var i=0;i<points.length-1;i++) {
+      var a=points[i], b=points[i+1];
+      var blocked=Object.keys(views[currentView].areas).some(function (id) {
+        return id!==from && id!==to && segmentIntersectsRect(a,b,rectOf(id),13);
+      });
+      if (blocked) return true;
+    }
+    return false;
+  }
+
+  function finishRoute(points) {
+    points=cleanPoints(points);
+    return {points:points,d:points.map(function (p,index) { return (index?"L":"M")+p.x+","+p.y; }).join(" ")};
+  }
+
+  function connectorRoute(from,to,options) {
+    var a=rectOf(from), b=rectOf(to), dx=b.x-a.x, dy=b.y-a.y;
+    var c=canvas.getBoundingClientRect(), margin=28;
+    if (options && options.route==="straight-vertical") {
+      return finishRoute([
+        edgePort(a,dy>=0?"bottom":"top",0),
+        edgePort(b,dy>=0?"top":"bottom",0)
+      ]);
+    }
+    if (options && options.route==="parallel-horizontal") {
+      return finishRoute([
+        edgePort(a,dx>=0?"right":"left",options.fromOffset||0),
+        edgePort(b,dx>=0?"left":"right",options.toOffset||0)
+      ]);
+    }
+    if (options && options.route==="orthogonal") {
+      var hintedStart=edgePort(a,options.fromSide,options.fromOffset||0);
+      var hintedEnd=edgePort(b,options.toSide,options.toOffset||0);
+      var hintedMidY=(hintedStart.y+hintedEnd.y)/2;
+      return finishRoute([
+        hintedStart,
+        {x:hintedStart.x,y:hintedMidY},
+        {x:hintedEnd.x,y:hintedMidY},
+        hintedEnd
+      ]);
+    }
+    if (options && options.route==="service-up-left") {
+      var dataRect=rectOf("data");
+      var serviceTop=port(a,"top");
+      var memberValueBottom=edgePort(b,"bottom",-0.24);
+      var lowerGapY=serviceTop.y-22;
+      var upperGapY=memberValueBottom.y+28;
+      var leftCorridor=Math.max(12,dataRect.left-28);
+      return finishRoute([
+        serviceTop,
+        {x:serviceTop.x,y:lowerGapY},
+        {x:leftCorridor,y:lowerGapY},
+        {x:leftCorridor,y:upperGapY},
+        {x:memberValueBottom.x,y:upperGapY},
+        memberValueBottom
+      ]);
+    }
+    var leftRail=margin, rightRail=c.width-margin, topRail=margin, bottomRail=c.height-margin;
+    var hs=port(a,dx>=0?"right":"left"), ht=port(b,dx>=0?"left":"right");
+    var vs=port(a,dy>=0?"bottom":"top"), vt=port(b,dy>=0?"top":"bottom");
+    var midX=(hs.x+ht.x)/2, midY=(vs.y+vt.y)/2;
+    var candidates=[];
+
+    if (Math.abs(a.x-b.x)<8) {
+      var verticalDirect=[vs,vt];
+      if (!routeBlocked(verticalDirect,from,to)) return finishRoute(verticalDirect);
+      var verticalBlockers=Object.keys(views[currentView].areas).filter(function (id) {
+        return id!==from && id!==to && segmentIntersectsRect(vs,vt,rectOf(id),13);
+      }).map(rectOf);
+      var directionY=dy>=0?1:-1;
+      var sourceY=vs.y+directionY*34;
+      var targetY=vt.y-directionY*34;
+      var detourLeft=Math.max(18,Math.min.apply(null,verticalBlockers.map(function (r) { return r.left; }))-28);
+      var detourRight=Math.min(c.width-18,Math.max.apply(null,verticalBlockers.map(function (r) { return r.right; }))+28);
+      candidates.push([vs,{x:vs.x,y:sourceY},{x:detourLeft,y:sourceY},{x:detourLeft,y:targetY},{x:vt.x,y:targetY},vt]);
+      candidates.push([vs,{x:vs.x,y:sourceY},{x:detourRight,y:sourceY},{x:detourRight,y:targetY},{x:vt.x,y:targetY},vt]);
+    } else if (Math.abs(a.y-b.y)<8) {
+      var horizontalDirect=[hs,ht];
+      if (!routeBlocked(horizontalDirect,from,to)) return finishRoute(horizontalDirect);
+      var horizontalBlockers=Object.keys(views[currentView].areas).filter(function (id) {
+        return id!==from && id!==to && segmentIntersectsRect(hs,ht,rectOf(id),13);
+      }).map(rectOf);
+      var directionX=dx>=0?1:-1;
+      var sourceX=hs.x+directionX*34;
+      var targetX=ht.x-directionX*34;
+      var detourTop=Math.max(18,Math.min.apply(null,horizontalBlockers.map(function (r) { return r.top; }))-28);
+      var detourBottom=Math.min(c.height-18,Math.max.apply(null,horizontalBlockers.map(function (r) { return r.bottom; }))+28);
+      candidates.push([hs,{x:sourceX,y:hs.y},{x:sourceX,y:detourTop},{x:targetX,y:detourTop},{x:targetX,y:ht.y},ht]);
+      candidates.push([hs,{x:sourceX,y:hs.y},{x:sourceX,y:detourBottom},{x:targetX,y:detourBottom},{x:targetX,y:ht.y},ht]);
+    }
+    candidates.push([hs,{x:midX,y:hs.y},{x:midX,y:ht.y},ht]);
+    candidates.push([vs,{x:vs.x,y:midY},{x:vt.x,y:midY},vt]);
+    candidates.push([port(a,"left"),{x:leftRail,y:a.y},{x:leftRail,y:b.y},port(b,"left")]);
+    candidates.push([port(a,"right"),{x:rightRail,y:a.y},{x:rightRail,y:b.y},port(b,"right")]);
+    candidates.push([port(a,"top"),{x:a.x,y:topRail},{x:b.x,y:topRail},port(b,"top")]);
+    candidates.push([port(a,"bottom"),{x:a.x,y:bottomRail},{x:b.x,y:bottomRail},port(b,"bottom")]);
+    candidates=candidates.map(cleanPoints);
+    candidates.sort(function (p,q) { return routeScore(p,from,to)-routeScore(q,from,to); });
+    return finishRoute(candidates[0]);
+  }
+
+  function boxesOverlap(a,b) {
+    return a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top;
+  }
+
+  function boxHitsRoutes(box,routes) {
+    return routes.some(function (route) {
+      for (var i=0;i<route.points.length-1;i++) {
+        if (segmentIntersectsRect(route.points[i],route.points[i+1],box,3)) return true;
+      }
+      return false;
+    });
+  }
+
+  function labelPosition(points,width,height,reserved,options,activeRoutes) {
+    var segments=[];
+    for (var i=0;i<points.length-1;i++) {
+      var a=points[i], b=points[i+1];
+      segments.push({a:a,b:b,length:Math.abs(a.x-b.x)+Math.abs(a.y-b.y),horizontal:Math.abs(a.y-b.y)<0.5});
+    }
+    segments.sort(function (a,b) { return b.length-a.length; });
+    var nodeRects=Object.keys(views[currentView].areas).map(rectOf);
+    var canvasWidth=canvas.getBoundingClientRect().width;
+    var canvasHeight=canvas.getBoundingClientRect().height;
+    var best=null;
+    function evaluate(x,y,anchorX,anchorY) {
+      x=Math.max(width/2+4,Math.min(canvasWidth-width/2-4,x));
+      y=Math.max(height/2+4,Math.min(canvasHeight-height/2-4,y));
+      var box={left:x-width/2,right:x+width/2,top:y-height/2,bottom:y+height/2};
+      var blocked=nodeRects.some(function (r) { return boxesOverlap(box,{left:r.left-7,right:r.right+7,top:r.top-7,bottom:r.bottom+7}); });
+      blocked=blocked || reserved.some(function (r) { return boxesOverlap(box,r); });
+      blocked=blocked || boxHitsRoutes(box,activeRoutes);
+      return blocked?null:{x:x,y:y,box:box,anchorX:anchorX,anchorY:anchorY};
+    }
+    if (options && options.labelPosition==="source-gap" && points.length>2) {
+      var preferredA=points[1], preferredB=points[2];
+      var preferredAnchorX=(preferredA.x+preferredB.x)/2;
+      var preferredAnchorY=(preferredA.y+preferredB.y)/2;
+      var preferred=evaluate(preferredAnchorX,preferredAnchorY-28,preferredAnchorX,preferredAnchorY);
+      if (preferred) return preferred;
+    }
+    segments.some(function (segment) {
+      return [0.5,0.3,0.7].some(function (fraction) {
+        var anchorX=segment.a.x+(segment.b.x-segment.a.x)*fraction;
+        var anchorY=segment.a.y+(segment.b.y-segment.a.y)*fraction;
+        var shifts=segment.horizontal?[-28,28,-52,52,-76,76]:[-(width/2+18),(width/2+18),-(width/2+42),(width/2+42)];
+        return shifts.some(function (shift) {
+          var candidate=evaluate(segment.horizontal?anchorX:anchorX+shift,segment.horizontal?anchorY+shift:anchorY,anchorX,anchorY);
+          if (candidate) { best=candidate; return true; }
+          return false;
+        });
+      });
+    });
+    if (!best) {
+      var nearestScore=Infinity;
+      for (var gy=height/2+6;gy<=canvasHeight-height/2-6;gy+=18) {
+        for (var gx=width/2+6;gx<=canvasWidth-width/2-6;gx+=18) {
+          var gridCandidate=evaluate(gx,gy,gx,gy);
+          if (!gridCandidate) continue;
+          segments.forEach(function (segment) {
+            var anchorX=(segment.a.x+segment.b.x)/2;
+            var anchorY=(segment.a.y+segment.b.y)/2;
+            var score=(gx-anchorX)*(gx-anchorX)+(gy-anchorY)*(gy-anchorY);
+            if (score<nearestScore) {
+              nearestScore=score;
+              best={x:gridCandidate.x,y:gridCandidate.y,box:gridCandidate.box,anchorX:anchorX,anchorY:anchorY};
+            }
+          });
+        }
+      }
+    }
+    if (!best) {
+      var fallback=segments[0];
+      var fallbackX=(fallback.a.x+fallback.b.x)/2;
+      var fallbackY=(fallback.a.y+fallback.b.y)/2;
+      best={x:fallbackX,y:Math.max(height/2+4,fallbackY-32),box:{left:fallbackX-width/2,right:fallbackX+width/2,top:fallbackY-32-height/2,bottom:fallbackY-32+height/2},anchorX:fallbackX,anchorY:fallbackY};
+    }
+    return best;
+  }
+
+  function renderConnectors() {
+    linesLayer.textContent = "";
+    labelsLayer.textContent = "";
+    var view = views[currentView];
+    var routed=view.edges.map(function (edge) { return connectorRoute(edge[0],edge[1],edge[4]); });
+    view.edges.forEach(function (edge, index) {
+      var from=edge[0], to=edge[1], label=edge[2], phase=edge[3];
+      var path=svgEl("path",{d:routed[index].d,class:"lm2-connector "+(phase==="future"?"future":phase==="inferred"?"inferred":""),"data-edge-index":index,"data-from":from,"data-to":to});
+      linesLayer.appendChild(path);
+    });
+    var reserved=[];
+    var activeRoutes=routed.filter(function (route,index) {
+      var edge=view.edges[index];
+      return edge[0]===selectedId || edge[1]===selectedId;
+    });
+    view.edges.forEach(function (edge,index) {
+      if (edge[0]!==selectedId && edge[1]!==selectedId) return;
+      var label=edge[2];
+      var group=svgEl("g",{class:"lm2-edge-label","data-label-index":index});
+      var width=Math.min(184,Math.max(78,label.length*5.5+16));
+      var position=labelPosition(routed[index].points,width,26,reserved,edge[4],activeRoutes);
+      reserved.push(position.box);
+      group.appendChild(svgEl("line",{x1:position.anchorX,y1:position.anchorY,x2:position.x,y2:position.y,class:"lm2-label-leader"}));
+      group.appendChild(svgEl("rect",{x:position.x-width/2,y:position.y-13,width:width,height:26,rx:9}));
+      var text=svgEl("text",{x:position.x,y:position.y+4,"text-anchor":"middle"});
+      text.textContent=label.toLowerCase();
+      group.appendChild(text);
+      labelsLayer.appendChild(group);
+    });
+    applySelection(selectedId);
+  }
+
+  function connectionsFor(id) {
+    return views[currentView].edges.filter(function (e) { return e[0]===id || e[1]===id; });
+  }
+
+  function renderLogic(node) {
+    var logic=root.querySelector("#lm2-logic");
+    logic.textContent="";
+    (node.chain||[]).forEach(function (step,index) {
+      var wrap=document.createElement("span");
+      wrap.className="lm2-logic-step";
+      var box=document.createElement("span");
+      box.className="lm2-logic-node";
+      box.textContent=step;
+      wrap.appendChild(box);
+      if (index<(node.chain||[]).length-1) {
+        var arrow=document.createElement("span");
+        arrow.className="lm2-logic-arrow";
+        arrow.textContent="→";
+        wrap.appendChild(arrow);
+      }
+      logic.appendChild(wrap);
+    });
+    var dimensions=root.querySelector("#lm2-dimensions");
+    dimensions.textContent="";
+    if ((node.dimensions||[]).length) {
+      var label=document.createElement("span");
+      label.className="lm2-section-label";
+      label.textContent="Key dimensions";
+      dimensions.appendChild(label);
+      node.dimensions.forEach(function (item) {
+        var chip=document.createElement("span");
+        chip.className="lm2-dimension";
+        chip.textContent=item;
+        dimensions.appendChild(chip);
+      });
+    }
+  }
+
+  function updateDetail(id) {
+    var node=nodes[id];
+    root.querySelector("#lm2-phase").textContent=node.phase;
+    root.querySelector("#lm2-status").textContent=node.status;
+    root.querySelector("#lm2-category").textContent=node.category;
+    root.querySelector("#lm2-detail-title").textContent=titleCaseLabel(node.label);
+    root.querySelector("#lm2-definition").textContent=node.definition;
+    root.querySelector("#lm2-role").textContent=node.role;
+    root.querySelector("#lm2-why").textContent=node.why;
+    root.querySelector("#lm2-known").textContent=node.known;
+    root.querySelector("#lm2-provisional").textContent=node.provisional;
+    root.querySelector("#lm2-opportunity").textContent=node.opportunity;
+    root.querySelector("#lm2-opportunity-wrap").hidden=!node.opportunity;
+    root.querySelector("#lm2-opportunity-label").textContent=currentView==="external"?"Boundary implication":"Future opportunity";
+    var linksWrap=root.querySelector("#lm2-system-links-wrap");
+    var systemLinks=node.systemLinks||[];
+    linksWrap.hidden=!systemLinks.length;
+    root.querySelector("#lm2-system-links").innerHTML=systemLinks.map(function (link) {
+      return "<div class=\"lm2-system-link\"><span class=\"lm2-section-label\">"+link.phase+"</span><strong class=\"lm2-system-targets\">"+link.targets.join(" • ")+"</strong><p>"+link.explanation+"</p></div>";
+    }).join("");
+    renderLogic(node);
+    var directConnections=connectionsFor(id);
+    root.querySelector("#lm2-connection-count").textContent=String(directConnections.length);
+    var html=directConnections.map(function (e) {
+      var outgoing=e[0]===id;
+      var other=nodes[outgoing?e[1]:e[0]];
+      return "<div class=\"lm2-connection-item text-small\"><span class=\"lm2-connection-direction\">"+(outgoing?"Outgoing →":"← Incoming")+"</span><div class=\"lm2-connection-copy\"><strong>"+titleCaseLabel(other.label)+"</strong><span>"+e[2]+"</span><p>"+(edgeMeanings[e[2]]||"")+"</p></div></div>";
+    }).join("");
+    root.querySelector("#lm2-connection-list").innerHTML=html || "<span class=\"text-small text-muted\">No direct connections in this view.</span>";
+  }
+
+  function applySelection(id) {
+    var connected={}; connected[id]=true;
+    connectionsFor(id).forEach(function (e) { connected[e[0]]=true; connected[e[1]]=true; });
+    grid.querySelectorAll(".lm2-node").forEach(function (el) {
+      var nodeId=el.getAttribute("data-node-id");
+      el.classList.toggle("is-selected",nodeId===id);
+      el.classList.toggle("is-connected",nodeId!==id && !!connected[nodeId]);
+      el.classList.toggle("is-dimmed",!connected[nodeId]);
+    });
+    linesLayer.querySelectorAll(".lm2-connector").forEach(function (el) {
+      var active=el.getAttribute("data-from")===id || el.getAttribute("data-to")===id;
+      el.classList.toggle("is-connected",active);
+      el.classList.toggle("is-dimmed",!active);
+    });
+  }
+
+  function selectNode(id, skipDetail) {
+    if (!views[currentView].areas[id]) id=Object.keys(views[currentView].areas)[0];
+    selectedId=id;
+    renderConnectors();
+    if (!skipDetail) updateDetail(id);
+  }
+
+  function renderView(viewName) {
+    currentView=viewName;
+    var preferred=viewName==="transition"?"engagement":viewName==="current"?"data":viewName==="future"?"orchestration":"expectations";
+    selectedId=preferred;
+    root.querySelector("#lm2-view-label").textContent=views[viewName].label;
+    root.querySelector("#lm2-view-description").textContent=views[viewName].description;
+    renderNodes();
+    requestAnimationFrame(function () {
+      canvas.classList.toggle("is-narrow",canvas.getBoundingClientRect().width<=560);
+      renderConnectors();
+      updateDetail(selectedId);
+    });
+  }
+
+  root.querySelectorAll("[data-map-view]").forEach(function (button) {
+    button.addEventListener("click",function () {
+      root.querySelectorAll("[data-map-view]").forEach(function (b) {
+        var active=b===button;
+        b.setAttribute("aria-pressed",String(active));
+        b.classList.toggle("btn-primary",active);
+      });
+      renderView(button.getAttribute("data-map-view"));
+    });
+  });
+
+  var guide=root.querySelector("#lm2-guide");
+  var hideGuideButton=root.querySelector("#lm2-hide-guide");
+  var showGuideButton=root.querySelector("#lm2-show-guide");
+  function setGuideHidden(hidden,persist) {
+    guide.hidden=hidden;
+    hideGuideButton.hidden=hidden;
+    showGuideButton.hidden=!hidden;
+    if (persist) {
+      try { window.localStorage.setItem("lm2-v2-guide-hidden",hidden?"true":"false"); } catch (error) {}
+    }
+  }
+  var guideStartsHidden=false;
+  try { guideStartsHidden=window.localStorage.getItem("lm2-v2-guide-hidden")==="true"; } catch (error) {}
+  setGuideHidden(guideStartsHidden,false);
+  hideGuideButton.addEventListener("click",function () { setGuideHidden(true,true); });
+  showGuideButton.addEventListener("click",function () { setGuideHidden(false,true); });
+
+  var legendHelp=root.querySelector("#lm2-legend-help");
+  root.querySelectorAll("[data-legend-help]").forEach(function (item) {
+    item.setAttribute("aria-pressed","false");
+    item.addEventListener("click",function () {
+      root.querySelectorAll("[data-legend-help]").forEach(function (other) {
+        other.setAttribute("aria-pressed",String(other===item));
+      });
+      legendHelp.textContent=item.getAttribute("data-legend-help");
+    });
+  });
+
+  var tour=document.querySelector("#lm2-tour");
+  var tourCard=document.querySelector("#lm2-tour-card");
+  var tourSpotlight=document.querySelector("#lm2-tour-spotlight");
+  var tourProgress=document.querySelector("#lm2-tour-progress");
+  var tourTitle=document.querySelector("#lm2-tour-title");
+  var tourCopy=document.querySelector("#lm2-tour-copy");
+  var tourBack=document.querySelector("#lm2-tour-back");
+  var tourNext=document.querySelector("#lm2-tour-next");
+  var tourSkip=document.querySelector("#lm2-tour-skip");
+  var tourReplay=document.querySelector("#lm2-tour-replay");
+  var tourShields=Array.prototype.slice.call(tour.querySelectorAll(".lm2-tour-shield"));
+  var tourLauncher=root.querySelector("#lm2-start-tour");
+  var tourNodeByView={transition:"data",current:"engagement",future:"delivery",external:"technology-landscape"};
+  var tourSteps=[
+    {welcome:true,title:"Welcome to Team Zig's Systems Map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
+    {target:".viz-controls",interactive:true,title:"Choose a perspective",copy:"Try a view now. Each perspective reveals a different layer of the system, and the map below updates to match your choice."},
+    {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a component in the active system view. Use the always-visible legend below the map to decode it: color identifies the component type, while line style distinguishes current, future and inferred relationships."},
+    {target:function () { return grid.querySelector('[data-node-id="'+(tourNodeByView[currentView] || "data")+'"]') || grid.querySelector(".lm2-node"); },interactive:true,title:"Select a node",copy:"Try the highlighted node. Selecting it brings its immediate relationships forward and updates the supporting context without taking you away from the map."},
+    {target:".lm2-canvas",demo:true,title:"Follow the emphasized relationships",copy:"Watch the selected node trace outward: its direct lines appear first, then their labels and connected nodes. Everything else stays visible but recedes for orientation."},
+    {target:".lm2-detail",title:"Read the supporting context",copy:"This panel explains the selected node’s role, evidence, assumptions and future opportunity. Open Direct connections only when you want relationship-level detail."}
+  ];
+  var tourActive=false;
+  var tourIndex=0;
+  var tourPreviousFocus=null;
+  var tourPreviousScroll=0;
+  var tourPositionFrame=0;
+  var tourReduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tourDemoTimer=0;
+
+  function tourTarget() {
+    var target=tourSteps[tourIndex].target;
+    if (typeof target==="function") return target();
+    return target ? root.querySelector(target) : null;
+  }
+
+  function setTourShield(shield,left,top,width,height) {
+    shield.style.left=Math.max(0,left)+"px";
+    shield.style.top=Math.max(0,top)+"px";
+    shield.style.width=Math.max(0,width)+"px";
+    shield.style.height=Math.max(0,height)+"px";
+  }
+
+  function coverTourScreen() {
+    setTourShield(tourShields[0],0,0,window.innerWidth,window.innerHeight);
+    tourShields.slice(1).forEach(function (shield) { setTourShield(shield,0,0,0,0); });
+  }
+
+  function openTourHole(left,top,right,bottom) {
+    setTourShield(tourShields[0],0,0,window.innerWidth,top);
+    setTourShield(tourShields[1],right,top,window.innerWidth-right,bottom-top);
+    setTourShield(tourShields[2],0,bottom,window.innerWidth,window.innerHeight-bottom);
+    setTourShield(tourShields[3],0,top,left,bottom-top);
+  }
+
+  function clearTourInteractivity() {
+    root.removeAttribute("inert");
+    root.querySelectorAll(".is-tour-interactive-target").forEach(function (item) {
+      item.classList.remove("is-tour-interactive-target");
+    });
+  }
+
+  function applyTourInteractivity(step,target) {
+    clearTourInteractivity();
+    if (step.interactive && target) target.classList.add("is-tour-interactive-target");
+    else root.setAttribute("inert","");
+  }
+
+  function cleanupTourDemo() {
+    window.clearTimeout(tourDemoTimer);
+    root.querySelectorAll(".is-tour-demo-origin,.is-tour-demo-arrival").forEach(function (item) {
+      item.classList.remove("is-tour-demo-origin","is-tour-demo-arrival");
+      item.style.removeProperty("--tour-delay");
+    });
+    root.querySelectorAll(".is-tour-trace,.is-tour-trace-label").forEach(function (item) {
+      item.classList.remove("is-tour-trace","is-tour-trace-label");
+      item.style.removeProperty("--tour-delay");
+      item.style.removeProperty("--tour-length");
+    });
+  }
+
+  function runRelationshipDemo() {
+    cleanupTourDemo();
+    var origin=grid.querySelector(".lm2-node.is-selected") || grid.querySelector(".lm2-node");
+    if (!origin || tourReduceMotion) return;
+    origin.classList.add("is-tour-demo-origin");
+    linesLayer.querySelectorAll(".lm2-connector.is-connected").forEach(function (line,index) {
+      line.style.setProperty("--tour-length",Math.max(1,line.getTotalLength()));
+      line.style.setProperty("--tour-delay",(180+index*150)+"ms");
+      line.classList.add("is-tour-trace");
+    });
+    labelsLayer.querySelectorAll(".lm2-edge-label").forEach(function (label,index) {
+      label.style.setProperty("--tour-delay",(580+index*140)+"ms");
+      label.classList.add("is-tour-trace-label");
+    });
+    grid.querySelectorAll(".lm2-node.is-connected").forEach(function (node,index) {
+      node.style.setProperty("--tour-delay",(850+index*150)+"ms");
+      node.classList.add("is-tour-demo-arrival");
+    });
+    tourDemoTimer=window.setTimeout(cleanupTourDemo,2800);
+  }
+
+  function positionTour() {
+    if (!tourActive) return;
+    var step=tourSteps[tourIndex];
+    if (step.welcome) {
+      coverTourScreen();
+      return;
+    }
+    var target=tourTarget();
+    if (!target) return;
+    var rect=target.getBoundingClientRect();
+    var padding=8;
+    var left=Math.max(8,rect.left-padding);
+    var top=Math.max(8,rect.top-padding);
+    var right=Math.min(window.innerWidth-8,rect.right+padding);
+    var bottom=Math.min(window.innerHeight-8,rect.bottom+padding);
+    tourSpotlight.style.left=left+"px";
+    tourSpotlight.style.top=top+"px";
+    tourSpotlight.style.width=Math.max(24,right-left)+"px";
+    tourSpotlight.style.height=Math.max(24,bottom-top)+"px";
+    if (step.interactive) openTourHole(left,top,right,bottom);
+    else coverTourScreen();
+
+    if (window.innerWidth<=640) return;
+    var cardRect=tourCard.getBoundingClientRect();
+    var gap=14;
+    var cardLeft=Math.min(Math.max(12,left),window.innerWidth-cardRect.width-12);
+    var cardTop;
+    if (bottom+gap+cardRect.height<=window.innerHeight-12) {
+      cardTop=bottom+gap;
+    } else if (top-gap-cardRect.height>=12) {
+      cardTop=top-gap-cardRect.height;
+    } else if (right+gap+cardRect.width<=window.innerWidth-12) {
+      cardLeft=right+gap;
+      cardTop=Math.min(Math.max(12,top),window.innerHeight-cardRect.height-12);
+    } else if (left-gap-cardRect.width>=12) {
+      cardLeft=left-gap-cardRect.width;
+      cardTop=Math.min(Math.max(12,top),window.innerHeight-cardRect.height-12);
+    } else {
+      cardLeft=(window.innerWidth-cardRect.width)/2;
+      cardTop=window.innerHeight-cardRect.height-12;
+    }
+    tourCard.style.left=Math.round(cardLeft)+"px";
+    tourCard.style.top=Math.round(cardTop)+"px";
+  }
+
+  function scheduleTourPosition() {
+    window.cancelAnimationFrame(tourPositionFrame);
+    tourPositionFrame=window.requestAnimationFrame(positionTour);
+  }
+
+  function renderTourStep() {
+    cleanupTourDemo();
+    var step=tourSteps[tourIndex];
+    var target=tourTarget();
+    tour.classList.toggle("is-welcome",Boolean(step.welcome));
+    tourProgress.textContent=step.welcome?"Welcome":tourIndex+" of "+(tourSteps.length-1);
+    tourTitle.textContent=step.title;
+    tourCopy.textContent=step.copy;
+    tourBack.disabled=tourIndex===0;
+    tourNext.textContent=step.nextLabel || (tourIndex===tourSteps.length-1?"Finish":"Next");
+    tourReplay.hidden=!step.demo || tourReduceMotion;
+    applyTourInteractivity(step,target);
+    if (!step.welcome && target) target.scrollIntoView({behavior:tourReduceMotion?"auto":"smooth",block:"center",inline:"nearest"});
+    window.setTimeout(function () {
+      positionTour();
+      tourCard.focus({preventScroll:true});
+      if (step.demo) runRelationshipDemo();
+    },tourReduceMotion?0:260);
+  }
+
+  function recordTourCompletion() {
+    try { window.localStorage.setItem("lm2-v2-smart-tour-complete-v1","true"); } catch (error) {}
+  }
+
+  function closeTour(complete) {
+    if (!tourActive) return;
+    if (complete) recordTourCompletion();
+    tourActive=false;
+    tour.hidden=true;
+    tour.classList.remove("is-welcome");
+    clearTourInteractivity();
+    cleanupTourDemo();
+    document.removeEventListener("keydown",handleTourKeydown);
+    window.removeEventListener("resize",scheduleTourPosition);
+    window.removeEventListener("scroll",scheduleTourPosition,true);
+    window.cancelAnimationFrame(tourPositionFrame);
+    window.scrollTo({top:tourPreviousScroll,left:0,behavior:"auto"});
+    window.setTimeout(function () {
+      if (tourPreviousFocus && document.contains(tourPreviousFocus)) tourPreviousFocus.focus({preventScroll:true});
+      else tourLauncher.focus({preventScroll:true});
+    },0);
+  }
+
+  function handleTourKeydown(event) {
+    if (!tourActive) return;
+    if (event.key==="Escape") {
+      event.preventDefault();
+      closeTour(true);
+      return;
+    }
+    if (event.key==="ArrowRight") {
+      event.preventDefault();
+      if (tourIndex<tourSteps.length-1) { tourIndex+=1; renderTourStep(); }
+      else closeTour(true);
+      return;
+    }
+    if (event.key==="ArrowLeft" && tourIndex>0) {
+      event.preventDefault();
+      tourIndex-=1;
+      renderTourStep();
+      return;
+    }
+    if (event.key!=="Tab") return;
+    var focusable=[];
+    var step=tourSteps[tourIndex];
+    var target=tourTarget();
+    if (step.interactive && target) {
+      if (target.matches("button:not(:disabled),[href],[tabindex]:not([tabindex='-1'])")) focusable.push(target);
+      focusable=focusable.concat(Array.prototype.slice.call(target.querySelectorAll("button:not(:disabled),[href],[tabindex]:not([tabindex='-1'])")));
+    }
+    focusable=focusable.concat(Array.prototype.slice.call(tourCard.querySelectorAll("button:not(:disabled):not([hidden])")));
+    if (!focusable.length) return;
+    var first=focusable[0];
+    var last=focusable[focusable.length-1];
+    if (event.shiftKey && document.activeElement===first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement===last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function startTour() {
+    if (tourActive) return;
+    tourActive=true;
+    tourIndex=0;
+    tourPreviousFocus=document.activeElement;
+    tourPreviousScroll=window.scrollY;
+    tour.hidden=false;
+    document.addEventListener("keydown",handleTourKeydown);
+    window.addEventListener("resize",scheduleTourPosition);
+    window.addEventListener("scroll",scheduleTourPosition,true);
+    renderTourStep();
+  }
+
+  tourLauncher.addEventListener("click",startTour);
+  tourBack.addEventListener("click",function () {
+    if (tourIndex>0) { tourIndex-=1; renderTourStep(); }
+  });
+  tourNext.addEventListener("click",function () {
+    if (tourIndex<tourSteps.length-1) { tourIndex+=1; renderTourStep(); }
+    else closeTour(true);
+  });
+  tourReplay.addEventListener("click",runRelationshipDemo);
+  tourSkip.addEventListener("click",function () { closeTour(true); });
+
+  var resizeTimer;
+  var observer=new ResizeObserver(function () {
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(function () {
+      canvas.classList.toggle("is-narrow",canvas.getBoundingClientRect().width<=560);
+      renderConnectors();
+    },100);
+  });
+  observer.observe(canvas);
+  renderView("transition");
+  window.setTimeout(function () {
+    var tourComplete=false;
+    try { tourComplete=window.localStorage.getItem("lm2-v2-smart-tour-complete-v1")==="true"; } catch (error) {}
+    if (!tourComplete) startTour();
+  },500);
+})();
+</script>
+
+<script id="codex-visualization-floating-ui-core" src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
+<script id="codex-visualization-floating-ui-dom" src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
+<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
+<script id="codex-visualization-tooltip">/* oxlint-disable typescript/no-unsafe-argument, typescript/no-unsafe-call, typescript/no-unsafe-return */
+// Runs inside the visualization sandbox, not the host webview.
+(() => {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =>
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest("[data-tooltip]")
+      : null;
+  const containsTarget = (trigger, target) =>
+    target?.nodeType != null && trigger.contains(target);
+  const getContent = (trigger) =>
+    trigger.getAttribute("data-tooltip")?.trim() ?? "";
+  const getPlacement = (trigger) => {
+    const placement = trigger.getAttribute("data-tooltip-placement");
+    return tooltipPlacements.has(placement) ? placement : "top";
+  };
+  const getTooltip = () => {
+    if (tooltip == null) {
+      tooltip = document.createElement("div");
+      tooltip.id = tooltipId;
+      tooltip.className = "tooltip";
+      tooltip.setAttribute("role", "tooltip");
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) => {
+    const ids = new Set(
+      (trigger.getAttribute("aria-describedby") ?? "")
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute("aria-describedby");
+    } else {
+      trigger.setAttribute("aria-describedby", [...ids].join(" "));
+    }
+  };
+  const clearOpenTimeout = () => {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) => {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) => {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              "--tooltip-available-width",
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              "--tooltip-available-height",
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: "fixed",
+    })
+      .then(({ x, y }) => {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = "visible";
+      })
+      .catch(() => {
+        if (activeTrigger === trigger && request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) => {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = "hidden";
+    floating.style.transform = "translate(0, 0)";
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) => {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() < skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() => {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) => {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(":focus-visible")) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) => {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () => {
+    closeTooltip(false);
+    document.removeEventListener("pointerover", handlePointerOpen);
+    document.removeEventListener("pointerout", handleLeave);
+    document.removeEventListener("focusin", handleFocusIn);
+    document.removeEventListener("focusout", handleLeave);
+    document.removeEventListener("keydown", handleKeyDown);
+    document.removeEventListener("contextmenu", handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener("pointerover", handlePointerOpen);
+  document.addEventListener("pointerout", handleLeave);
+  document.addEventListener("focusin", handleFocusIn);
+  document.addEventListener("focusout", handleLeave);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("contextmenu", handleContextMenu);
+  window.addEventListener("pagehide", destroy, { once: true });
+})();
+</script>
+<script id="codex-visualization-lucide-initialization">(() => {
+  const initialize = () => {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById("codex-visualization-lucide")
+    ?.addEventListener("load", initialize, { once: true });
+})();
+</script>
+</body>
+</html>
