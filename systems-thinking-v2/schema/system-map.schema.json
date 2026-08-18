@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://othersidesly.github.io/mdpm-capstone/systems-thinking-v2/schema/system-map.schema.json",
+  "title": "Team Zig Systems Map Contract",
+  "type": "object",
+  "required": ["version", "boundary", "nodes", "relationships", "views"],
+  "properties": {
+    "version": { "type": "string" },
+    "boundary": {
+      "type": "object",
+      "required": ["purpose", "inside", "outside"],
+      "properties": {
+        "purpose": { "type": "string" },
+        "inside": { "type": "array", "items": { "type": "string" } },
+        "outside": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "kind", "definition", "status"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "label": { "type": "string" },
+          "kind": { "type": "string" },
+          "definition": { "type": "string" },
+          "status": { "enum": ["observed", "inferred", "proposed", "unresolved"] },
+          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "from", "to", "label", "kind", "state"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "label": { "type": "string" },
+          "kind": { "enum": ["causal", "enabling", "constraining", "information-flow", "value-exchange", "association", "other"] },
+          "state": { "enum": ["observed-current", "inferred-current", "proposed-future", "unresolved"] },
+          "evidenceIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "nodeIds", "relationshipIds"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "nodeIds": { "type": "array", "items": { "type": "string" } },
+          "relationshipIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
