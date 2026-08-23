@@ -1308,15 +1308,16 @@ svg {
       "engagement engagement intersection net";
   }
   #loyalty-map-v2 .lm2-grid[data-view="current"] {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 3rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 0.75rem;
     row-gap: 3.75rem;
     grid-template-areas:
-      "mo mc co"
-      "partner value engagement"
-      "products data channels"
-      ". service friction";
+      "mo mo mo mo mc mc mc mc co co co co"
+      "partner partner partner . value value value value . engagement engagement engagement"
+      "products products products data data data service service service channels channels channels"
+      "friction friction friction friction friction friction friction friction friction friction friction friction";
   }
+  #loyalty-map-v2 .lm2-grid[data-view="current"] .lm2-node { inline-size: 100%; }
   #loyalty-map-v2 .lm2-grid[data-view="future"] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas:
@@ -1735,7 +1736,7 @@ svg {
       chain:["Partner contribution","Member participation","Incremental partner value","Continued partner participation"], dimensions:["Sales","Affinity","Share of wallet","Insight","Reach"]
     },
     "member-value": {
-      label:"Member value", sub:"Potential → accessible → realized", kind:"value", phase:"Current", status:"Supported", category:"Value subsystem",
+      label:"Value realization", sub:"Potential → accessible → realized", kind:"value", phase:"Current", status:"Supported", category:"Value subsystem",
       definition:"The financial, functional, experiential and emotional value that a person can potentially access through the program and its ecosystem.",
       role:"Member value is the exchange that gives people a reason to participate. Points are an intermediate mechanism—not the final outcome.",
       why:"Both interviews show that members translate points into tangible savings or experiences while also valuing flexibility, access, recognition, convenience and dependable service.",
@@ -1745,7 +1746,7 @@ svg {
       chain:["Potential","Understood","Accessible","Earned","Redeemed","Realized"], dimensions:["Savings","Flexibility","Access","Recognition","Convenience","Experiences"]
     },
     "engagement": {
-      label:"Meaningful engagement", sub:"Frequency • breadth • continuity • completion • progression", kind:"value", phase:"Current focus", status:"Supported", category:"Primary system behaviour",
+      label:"Sustained engagement", sub:"Frequency • breadth • continuity • completion • progression", kind:"value", phase:"Current focus", status:"Supported", category:"Primary system behaviour",
       definition:"A sustained pattern of participation through which members, clients and partners repeatedly access, contribute to or realize relevant value.",
       role:"Engagement is the primary behaviour this system must explain. It applies across all three populations and precedes potential relationship deepening or movement into the member-client intersection.",
       why:"The client uses engagement as a strategic objective. We distinguished it from activation and participation so the map does not mistake isolated activity for a durable relationship.",
@@ -1755,7 +1756,7 @@ svg {
       chain:["Activation","Participation","Repeated value realization","Meaningful engagement","Relationship depth / conversion"], dimensions:["Frequency","Breadth","Continuity","Completion","Progression"]
     },
     "products": {
-      label:"Products and transactions", sub:"Banking • rewards • partner activity", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      label:"Products & transactions", sub:"Banking • rewards • partner activity", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
       definition:"The banking products, reward products and transaction infrastructure through which people spend, earn and access benefits.",
       role:"This layer performs the institution’s core processing activity and generates signals that may indicate needs, eligibility and engagement potential.",
       why:"It is an established institutional capability that will be used regardless of how the future loyalty experience is designed.",
@@ -1765,7 +1766,7 @@ svg {
       chain:["Product use","Transaction signal","Decisioning","Relevant opportunity","Member action"], dimensions:[]
     },
     "data": {
-      label:"Data and decisioning", sub:"Priority connective layer", kind:"priority", phase:"Current", status:"Inferred integration", category:"Shared enabling backbone",
+      label:"Data & decisioning", sub:"Priority connective layer", kind:"priority", phase:"Current", status:"Inferred integration", category:"Shared enabling backbone",
       definition:"The data, identity, analytical and decision processes used to interpret context and determine an appropriate action or opportunity.",
       role:"This is the most consequential connective layer identified because it links changing needs, available value, partners, products and delivery channels.",
       why:"The core strategic question—what value, to whom, when and through which channel—cannot be answered consistently without usable context and decision governance.",
@@ -1775,7 +1776,7 @@ svg {
       chain:["Permissioned signals","Interpreted need","Decision","Relevant action","Outcome learning"], dimensions:["Identity","Consent","Context","Relevance","Measurement"]
     },
     "channels": {
-      label:"Channels and delivery", sub:"Program • banking • partner touchpoints", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      label:"Delivery channels", sub:"Program • banking • partner touchpoints", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
       definition:"The digital, physical and communication touchpoints through which decisions, offers, information and experiences reach people.",
       role:"Channels translate an organizational decision into something a member or client can discover, understand and act upon.",
       why:"The client already operates mature banking channels, while the program also has standalone surfaces and partner touchpoints.",
@@ -1785,7 +1786,7 @@ svg {
       chain:["Decision","Right channel","Clear opportunity","Member action","Feedback"], dimensions:["Digital","Physical","Partner","Marketing","Service"]
     },
     "service": {
-      label:"Service and operations", sub:"Fulfilment • support • recovery", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
+      label:"Operational backbone", sub:"Fulfilment • support • recovery", kind:"capability", phase:"Current", status:"Supported", category:"Shared enabling backbone",
       definition:"The operational backbone that calculates and fulfils rewards, supports members, manages issues and coordinates program administration.",
       role:"It converts a promised benefit into delivered value and determines what happens when that delivery fails.",
       why:"The financial institution already has substantial operating capacity. Reusing relevant capabilities for the program could improve consistency and create economies of scale.",
@@ -1795,7 +1796,7 @@ svg {
       chain:["Value promise","Fulfilment","Realized value","Recovery when needed","Trust signal"], dimensions:["Reward posting","Redemption","Support","Recovery","Partner operations"]
     },
     "friction": {
-      label:"Interface friction", sub:"Partial connectivity • unclear handoffs", kind:"friction", phase:"Current", status:"Inferred", category:"Structural condition",
+      label:"Ecosystem friction", sub:"Partial connectivity • unclear handoffs", kind:"friction", phase:"Current", status:"Inferred", category:"Structural condition",
       definition:"A marker for places where identity, information, value, decisions or service may not move reliably across organizational or technological boundaries.",
       role:"It keeps the map attentive to the quality of interfaces without assuming that every separate system or channel is defective.",
       why:"Separate surfaces, linking issues, delayed rewards and support transfers provide directional evidence that some interfaces may constrain value delivery.",
@@ -1888,7 +1889,7 @@ svg {
       opportunity:"Use expectations as a design and validation condition rather than treating personalization or engagement as inherently valuable.",
       chain:["External norms","Value expectations","Experience comparison","Trust or disengagement"], dimensions:["Relevance","Simplicity","Flexibility","Transparency","Reliability"],
       systemLinks:[
-        {phase:"Current System",targets:["Member Value","Channels And Delivery","Meaningful Engagement"],explanation:"Expectations shape whether available value feels understandable, accessible and worth continued participation."},
+        {phase:"Current System",targets:["Value Realization","Delivery Channels","Sustained Engagement"],explanation:"Expectations shape whether available value feels understandable, accessible and worth continued participation."},
         {phase:"Future Opportunity",targets:["Integrated Value Orchestration","Coordinated Delivery","Broader Meaningful Engagement"],explanation:"Future capabilities would need to meet evolving expectations without over-personalizing or increasing complexity."}
       ]
     },
@@ -1902,7 +1903,7 @@ svg {
       opportunity:"Evaluate technology only where it improves a defined value or operating flow under appropriate governance.",
       chain:["New capability","Possible operating use","Governance and fit test","Adoption decision"], dimensions:["AI","Identity","Interoperability","Portability","Automation"],
       systemLinks:[
-        {phase:"Current System",targets:["Data And Decisioning","Channels And Delivery","Service And Operations"],explanation:"External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."},
+        {phase:"Current System",targets:["Data & Decisioning","Delivery Channels","Operational Backbone"],explanation:"External technology options may improve or complicate how signals, decisions and fulfilment move across existing capabilities."},
         {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"These hypothesized capabilities depend partly on available technology, but technology alone does not establish their value or feasibility."}
       ]
     },
@@ -1916,7 +1917,7 @@ svg {
       opportunity:"Treat governance as a design input from the outset rather than a downstream compliance check.",
       chain:["External rules","Permitted purpose","Governed access","Constrained action"], dimensions:["Privacy","Consent","Suitability","Transparency","Accountability"],
       systemLinks:[
-        {phase:"Current System",targets:["Data And Decisioning","Products And Transactions","Partner Ecosystem","Channels And Delivery"],explanation:"Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."},
+        {phase:"Current System",targets:["Data & Decisioning","Products & Transactions","Partner Ecosystem","Delivery Channels"],explanation:"Regulatory and consent conditions affect which signals may be used, which actions are suitable and what information may flow to partners."},
         {phase:"Future Opportunity",targets:["Permissioned Identity And Data","Integrated Value Orchestration","Coordinated Delivery"],explanation:"Governance defines the operating envelope for the future pathway and may intentionally preserve separation between some systems."}
       ]
     },
@@ -1930,7 +1931,7 @@ svg {
       opportunity:"Use competitor ecosystems as contextual benchmarks while preserving a member-value definition grounded in actual needs rather than feature imitation.",
       chain:["Alternative value","Comparison","Allocation of attention and spend","Relationship choice"], dimensions:["Economics","Flexibility","Service","Access","Partner breadth"],
       systemLinks:[
-        {phase:"Current System",targets:["Member Value","Meaningful Engagement","Partner Ecosystem"],explanation:"Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."},
+        {phase:"Current System",targets:["Value Realization","Sustained Engagement","Partner Ecosystem"],explanation:"Alternative programs affect value comparisons, participation choices and the attractiveness of the partner network."},
         {phase:"Future Opportunity",targets:["Broader Meaningful Engagement","Sustainable Net Relationship Value"],explanation:"Competitive responses may influence whether improved engagement persists and produces incremental organizational value."}
       ]
     }
@@ -1955,25 +1956,27 @@ svg {
       ]
     },
     current: {
-      label:"Current transitional system",
+      label:"Current system",
       description:"This view shows the populations, partners, value flows and shared institutional capabilities operating today, including the interfaces where friction may constrain realized value and engagement.",
       areas:{"member-only":"mo","member-client":"mc","client-only":"co","partner":"partner","member-value":"value","engagement":"engagement","products":"products","data":"data","channels":"channels","service":"service","friction":"friction"},
       edges:[
         ["member-only","member-client","Banking adoption","current"],
         ["client-only","member-client","Program enrolment","current"],
-        ["member-only","member-value","Open program participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:-0.26}],
-        ["member-client","member-value","Combined participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:0.22}],
+        ["member-only","member-value","Open program participation","current",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:-0.32}],
+        ["member-client","member-value","Combined participation","current",{route:"straight-vertical"}],
+        ["client-only","member-value","Banking relationship signals","inferred",{route:"orthogonal",fromSide:"bottom",toSide:"top",toOffset:0.32}],
         ["partner","member-value","Offers + experiences","current",{route:"parallel-horizontal",fromOffset:-0.25,toOffset:-0.25}],
         ["member-value","partner","Purchases + preference","current",{route:"parallel-horizontal",fromOffset:0.25,toOffset:0.25}],
         ["member-value","engagement","Realized value","inferred",{route:"parallel-horizontal",fromOffset:0,toOffset:0}],
         ["products","data","Transaction signals","current"],
-        ["data","channels","Decisions + opportunities","current"],
-        ["channels","member-value","Opportunity delivery","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:0.26}],
-        ["service","member-value","Fulfilment + recovery","current",{route:"service-up-left",labelPosition:"source-gap"}],
-        ["engagement","data","Outcome signals","current"],
-        ["friction","data","Identity + data handoffs","inferred"],
-        ["friction","channels","Channel continuity","inferred"],
-        ["friction","service","Support ownership","inferred"]
+        ["products","member-value","Product-enabled value","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:-0.36}],
+        ["data","member-value","Relevant decision","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:-0.12}],
+        ["service","member-value","Fulfilment + recovery","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:0.12}],
+        ["channels","member-value","Opportunity delivery","current",{route:"orthogonal",fromSide:"top",toSide:"bottom",toOffset:0.36}],
+        ["friction","products","Product complexity","inferred",{route:"straight-vertical"}],
+        ["friction","data","Identity + data handoffs","inferred",{route:"straight-vertical"}],
+        ["friction","service","Support ownership","inferred",{route:"straight-vertical"}],
+        ["friction","channels","Channel continuity","inferred",{route:"straight-vertical"}]
       ]
     },
     future: {
@@ -2023,6 +2026,9 @@ svg {
     "Offers + experiences":"Partner contributions expand the ways members can earn, save, access or realize value.",
     "Purchases + preference":"Member activity returns sales, attention, affinity and potential share-of-wallet value to partners.",
     "Transaction signals":"Product activity supplies behavioural context to the data and decisioning layer.",
+    "Banking relationship signals":"Existing banking participation may indicate where loyalty value could be relevant, but it does not establish interest, consent or suitability.",
+    "Product-enabled value":"Products and transactions create earning routes, benefits and activity through which potential value may become available.",
+    "Product complexity":"Product rules, eligibility and transaction dependencies may add effort or interrupt the path to realized value.",
     "Decisions + opportunities":"Decisioning outputs must move into a channel before a person can discover or act on them.",
     "Opportunity delivery":"Channels translate selected value into a visible and actionable member experience.",
     "Fulfilment + recovery":"Operations deliver the promise and determine how failures are corrected.",
