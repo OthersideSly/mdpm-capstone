@@ -822,10 +822,10 @@ svg {
 <body>
 <div id="loyalty-map-v2" class="lm2-root">
   <div class="viz-controls" aria-label="Choose a map view">
-    <button type="button" class="btn btn-primary" data-map-view="transition" aria-pressed="true">1. Transition Overview</button>
-    <button type="button" class="btn" data-map-view="current" aria-pressed="false">2. Current System</button>
-    <button type="button" class="btn" data-map-view="future" aria-pressed="false">3. Future Opportunity</button>
-    <button type="button" class="btn" data-map-view="external" aria-pressed="false">4. Outside the Boundary</button>
+    <button type="button" class="btn" data-map-view="transition" aria-pressed="false" hidden>Transition Overview</button>
+    <button type="button" class="btn btn-primary" data-map-view="current" aria-pressed="true">Current System</button>
+    <button type="button" class="btn" data-map-view="future" aria-pressed="false" hidden>Future Opportunity</button>
+    <button type="button" class="btn" data-map-view="external" aria-pressed="false">Outside the Boundary</button>
   </div>
 
   <div class="lm2-instruction-row" aria-label="Map help options">
@@ -844,7 +844,7 @@ svg {
       </div>
     </div>
     <ol class="lm2-guide-steps">
-      <li><span>1</span><strong>Choose a view</strong><small>Start with Transition Overview.</small></li>
+      <li><span>1</span><strong>Choose a view</strong><small>Start with Current System.</small></li>
       <li><span>2</span><strong>Select a node</strong><small>Choose any box to set the focus.</small></li>
       <li><span>3</span><strong>Follow the emphasis</strong><small>Trace the highlighted arrows and labels.</small></li>
       <li><span>4</span><strong>Read the context</strong><small>Review its role, evidence and connections below.</small></li>
@@ -1010,7 +1010,7 @@ svg {
   }
   #loyalty-map-v2 .viz-controls .btn {
     flex: 1 1 0;
-    width: 25%;
+    width: 50%;
     min-height: 2.25rem;
     padding-inline: 0.8rem;
     border-color: transparent;
@@ -2042,8 +2042,8 @@ svg {
     "Entry expectations":"Expectations about value, trust and effort shape the threshold for establishing a first relationship."
   };
 
-  var currentView = "transition";
-  var selectedId = "engagement";
+  var currentView = "current";
+  var selectedId = "data";
 
   function svgEl(name, attrs) {
     var el = document.createElementNS(ns, name);
@@ -2754,7 +2754,7 @@ svg {
     },100);
   });
   observer.observe(canvas);
-  renderView("transition");
+  renderView("current");
   window.setTimeout(function () {
     var tourComplete=false;
     try { tourComplete=window.localStorage.getItem("lm2-smart-tour-complete-v2")==="true"; } catch (error) {}
