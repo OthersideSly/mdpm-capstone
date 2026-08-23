@@ -1318,6 +1318,18 @@ svg {
       "friction friction friction friction friction friction friction friction friction friction friction friction";
   }
   #loyalty-map-v2 .lm2-grid[data-view="current"] .lm2-node { inline-size: 100%; }
+  #loyalty-map-v2 .lm2-grid[data-view="current"] :is(
+    [data-node-id="member-only"],
+    [data-node-id="member-client"],
+    [data-node-id="client-only"],
+    [data-node-id="products"],
+    [data-node-id="data"],
+    [data-node-id="service"],
+    [data-node-id="channels"]
+  ) {
+    inline-size: 84%;
+    justify-self: center;
+  }
   #loyalty-map-v2 .lm2-grid[data-view="future"] {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-areas:
