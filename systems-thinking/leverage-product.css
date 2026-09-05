@@ -101,7 +101,14 @@
 .lp-loop-effect { display: inline-flex; margin-top: 0.55rem; padding: 0.18rem 0.45rem; border-radius: 999px; color: var(--foreground); background: var(--muted); font-size: calc(var(--font-size-base) * 0.68); }
 
 .lp-wedge { border-color: color-mix(in srgb, var(--lm-future) 58%, var(--border)); }
+.lp-focus-explainer { margin: 0.8rem 0 0; padding: 0.75rem 0.85rem; border-left: 3px solid var(--lm-future); background: color-mix(in srgb, var(--lm-future) 8%, var(--card)); line-height: 1.55; }
 .lp-wedge-definition { margin: 0.8rem 0 0; font-size: calc(var(--font-size-base) * 0.93); line-height: 1.58; }
+.lp-focus-map { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin-top: 0.85rem; }
+.lp-focus-map > div { padding: 0.7rem; border: 1px solid var(--border); border-radius: 0.7rem; background: color-mix(in srgb, var(--muted) 38%, var(--card)); }
+.lp-focus-map > div.is-focus { border-color: var(--lm-future); background: color-mix(in srgb, var(--lm-future) 10%, var(--card)); }
+.lp-focus-map span { display: block; color: var(--muted-foreground); font-size: calc(var(--font-size-base) * 0.68); font-weight: 650; letter-spacing: 0.03em; text-transform: uppercase; }
+.lp-focus-map strong { display: block; margin-top: 0.28rem; font-weight: 650; }
+.lp-focus-map p { margin: 0.3rem 0 0; font-size: var(--font-size-small); }
 .lp-rationale { margin: 0.85rem 0 0; padding-left: 1.15rem; }
 .lp-rationale li + li { margin-top: 0.32rem; }
 .lp-impact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.85rem; }
@@ -160,7 +167,9 @@
 .lp-cheat-trace { display: inline-flex; margin-top: 0.65rem; padding: 0.3rem 0.55rem; border-radius: 999px; color: var(--muted-foreground); background: var(--muted); font-size: calc(var(--font-size-base) * 0.72); line-height: 1.4; }
 .lp-cheat-capabilities { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-top: 0.75rem; }
 .lp-cheat-capabilities div,.lp-cheat-boundary div { padding: 0.7rem; border: 1px solid var(--border); border-radius: 0.7rem; background: color-mix(in srgb, var(--muted) 38%, var(--card)); }
+.lp-cheat-capabilities div.is-focus { border-color: var(--lm-future); background: color-mix(in srgb, var(--lm-future) 9%, var(--card)); }
 .lp-cheat-capabilities strong,.lp-cheat-boundary strong { display: block; font-weight: 650; }
+.lp-capability-tag { display: inline-flex; margin-top: 0.28rem; padding: 0.15rem 0.4rem; border-radius: 999px; color: var(--foreground); background: var(--card); font-size: calc(var(--font-size-base) * 0.66); }
 .lp-cheat-capabilities p,.lp-cheat-boundary p { margin: 0.28rem 0 0; }
 .lp-cheat-boundary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; margin-top: 0.75rem; }
 .lp-cheat-boundary div:first-child { border-left: 3px solid var(--ring); }
@@ -178,6 +187,7 @@
   .lp-product-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-product-path .lp-mechanism:nth-child(2)::after { display: none; }
   .lp-operating-grid { grid-template-columns: 1fr; }
+  .lp-focus-map { grid-template-columns: 1fr; }
   .lp-validation-grid { grid-template-columns: 1fr; }
   .lp-cheat-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-sequence { grid-template-columns: repeat(3, minmax(0, 1fr)); }
