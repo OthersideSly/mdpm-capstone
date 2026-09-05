@@ -3,7 +3,8 @@
 
   var leverageRoot=document.querySelector("#leverage-analysis-view");
   var productRoot=document.querySelector("#product-definition-view");
-  if (!leverageRoot || !productRoot) return;
+  var cheatRoot=document.querySelector("#product-cheat-view");
+  if (!leverageRoot || !productRoot || !cheatRoot) return;
 
   var leveragePoints={
     L01:{
@@ -124,6 +125,43 @@
       <p class="lp-fine-print text-small text-muted">Working product definition developed from Team Zig’s research and analysis for discussion and refinement.</p>\
     </div>';
 
+  cheatRoot.innerHTML='\
+    <div class="lp-stack lp-cheat-stack">\
+      <header class="lp-card lp-hero">\
+        <div><span class="lp-kicker">At-a-glance reference</span><h2 id="lp-cheat-title">Product Definition Cheat Sheet</h2></div>\
+        <p class="text-small">The shortest version of the current product thinking—organized around the six questions needed to describe the product clearly.</p>\
+      </header>\
+      <section class="lp-cheat-grid">\
+        <article class="lp-card lp-cheat-card lp-cheat-anchor">\
+          <span class="lp-cheat-number">01</span><div><span class="lp-kicker">Product in one sentence</span><h3>What is the digital product?</h3><p class="lp-cheat-answer">A member-controlled digital rewards experience that helps loyalty-program members discover worthwhile opportunities, track promised value, and recover it when it is delayed, missing, or at risk.</p></div>\
+        </article>\
+        <article class="lp-card lp-cheat-card">\
+          <span class="lp-cheat-number">02</span><div><span class="lp-kicker">Primary user</span><h3>Who is it primarily designed for?</h3><p class="lp-cheat-answer">Loyalty-program members who want to earn and use worthwhile rewards—and need confidence that promised value will arrive.</p></div>\
+        </article>\
+        <article class="lp-card lp-cheat-card">\
+          <span class="lp-cheat-number">03</span><div><span class="lp-kicker">Core job / outcome</span><h3>What is the user trying to accomplish?</h3><p class="lp-cheat-answer">“Help me turn worthwhile reward opportunities into value I can see, trust, and use—without making me diagnose the system or chase support when fulfilment breaks.”</p><span class="lp-cheat-trace">Grounded in the system goal of realized value and the R1/B1 leverage analysis.</span></div>\
+        </article>\
+        <article class="lp-card lp-cheat-card lp-cheat-wide">\
+          <span class="lp-cheat-number">04</span><div><span class="lp-kicker">What the product enables</span><h3>What would the member see, use, or do?</h3><div class="lp-cheat-capabilities">\
+            <div><strong>Discover</strong><p>See worthwhile, attainable reward opportunities.</p></div>\
+            <div><strong>Track</strong><p>Follow qualification, earning, posting, redemption, and fulfilment status.</p></div>\
+            <div><strong>Assure</strong><p>Receive proactive notice when promised value is delayed or at risk.</p></div>\
+            <div><strong>Recover</strong><p>Resolve or route missing value with context and track the outcome.</p></div>\
+          </div></div>\
+        </article>\
+        <article class="lp-card lp-cheat-card lp-cheat-wide">\
+          <span class="lp-cheat-number">05</span><div><span class="lp-kicker">Product boundary</span><h3>What will—and will not—the product support?</h3><div class="lp-cheat-boundary">\
+            <div><strong>In scope</strong><p>Opportunity discovery; value-status visibility; at-risk value detection; member communication and approval; recovery or accountable routing; and outcome verification.</p></div>\
+            <div><strong>Outside the boundary</strong><p>Replacing loyalty, banking, partner, or service systems; maximizing redemption at any cost; forcing banking conversion; or masking structural failures through repeated case-by-case recovery.</p></div>\
+          </div></div>\
+        </article>\
+        <article class="lp-card lp-cheat-card lp-cheat-wide lp-cheat-assumption">\
+          <span class="lp-cheat-number">06</span><div><span class="lp-kicker">Basic experience / technology assumption</span><h3>Where does the product live?</h3><p class="lp-cheat-answer">Working assumption: it is embedded within existing authenticated BMO and Blue Rewards digital experiences, with a mobile-first member experience available across relevant digital touchpoints. It connects to existing loyalty, banking, partner, and service systems rather than replacing them.</p></div>\
+        </article>\
+      </section>\
+      <p class="lp-fine-print text-small text-muted">Concise working definition derived from Team Zig’s current systems analysis and product direction. The experience and technology assumption remains subject to validation.</p>\
+    </div>';
+
   var ns="http://www.w3.org/2000/svg";
   var edgesLayer=leverageRoot.querySelector("#lp-loop-edges");
   var nodesLayer=leverageRoot.querySelector("#lp-loop-nodes");
@@ -181,4 +219,5 @@
 
   window.renderLeverageAnalysis=function () {};
   window.renderProductDefinition=function () {};
+  window.renderProductCheatSheet=function () {};
 }());
