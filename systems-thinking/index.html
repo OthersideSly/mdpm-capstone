@@ -819,6 +819,7 @@ svg {
 }
 </style>
 <link rel="stylesheet" href="system-loops.css?v=metrics-1">
+<link rel="stylesheet" href="leverage-product.css?v=1">
 </head>
 <body>
 <div id="loyalty-map-v2" class="lm2-root">
@@ -828,6 +829,8 @@ svg {
     <button type="button" class="btn" data-map-view="future" aria-pressed="false" hidden>Future Opportunity</button>
     <button type="button" class="btn" data-map-view="external" aria-pressed="false">Outside the Boundary</button>
     <button type="button" class="btn" data-map-view="loops" aria-pressed="false">System Loops</button>
+    <button type="button" class="btn" data-map-view="leverage" aria-pressed="false">Leverage Points Analysis</button>
+    <button type="button" class="btn" data-map-view="product" aria-pressed="false">Product Definition</button>
   </div>
 
   <div class="lm2-instruction-row" aria-label="Map help options">
@@ -880,49 +883,6 @@ svg {
       </div>
     </div>
 
-    <section class="sl-metrics-panel" aria-labelledby="sl-metrics-title">
-      <div class="sl-metrics-heading">
-        <div>
-          <span class="lm2-view-label">Potential measurement framework</span>
-          <h3 id="sl-metrics-title">Measure where worthwhile value is being lost</h3>
-        </div>
-        <p class="text-small">These measures distinguish upstream opportunity loss, unrealized earned value, and total loss across the complete journey.</p>
-      </div>
-      <div class="sl-metrics-table-wrap">
-        <table class="sl-metrics-table">
-          <thead>
-            <tr>
-              <th scope="col">Metric</th>
-              <th scope="col">Conceptual calculation</th>
-              <th scope="col">What it reveals</th>
-              <th scope="col">Diagnostic problem prevented</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Opportunity capture rate</th>
-              <td>Points successfully earned ÷ points available through worthwhile, eligible opportunities entering the chain</td>
-              <td>How effectively worthwhile earning potential progresses into confirmed earned value</td>
-              <td>Prevents missed surfacing, comprehension, action, or qualification failures from being misclassified as redemption problems</td>
-            </tr>
-            <tr>
-              <th scope="row">Earned-value realization rate</th>
-              <td>Earned points successfully converted into fulfilled benefits ÷ earned points available for intended use</td>
-              <td>How effectively earned value progresses through visibility, redemption, and fulfilment</td>
-              <td>Prevents issued points or balances from being treated as realized member value</td>
-            </tr>
-            <tr>
-              <th scope="row">End-to-end realization rate</th>
-              <td>Points-derived value successfully realized ÷ worthwhile, eligible points-value entering the chain</td>
-              <td>The conversion efficiency of the complete pathway from worthwhile opportunity to fulfilled benefit</td>
-              <td>Prevents local optimization of earning or redemption while total value loss persists elsewhere</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sl-metrics-note text-small text-muted">Operational definitions still need to establish cohort logic, points-to-benefit valuation, treatment of deliberate saving, and reward-specific expected fulfilment periods.</p>
-    </section>
-
     <div class="sl-map-card">
       <div class="sl-map-intro">
         <div>
@@ -962,6 +922,9 @@ svg {
 
     <p class="sl-fine-print text-small text-muted">Working causal model developed from Team Zig’s research and analysis. It is intended to support discussion and refinement, not to present validated causal findings.</p>
   </section>
+
+  <section id="leverage-analysis-view" class="lp-view" aria-labelledby="lp-leverage-title" hidden></section>
+  <section id="product-definition-view" class="lp-view" aria-labelledby="lp-product-title" hidden></section>
 
   <section class="lm2-map-wrap" aria-label="Interactive systems map">
     <div id="lm2-view-label" class="lm2-view-label">Current relationships → future opportunity</div>
@@ -1122,7 +1085,7 @@ svg {
   }
   #loyalty-map-v2 .viz-controls .btn {
     flex: 1 1 0;
-    width: 33.333%;
+    width: 20%;
     min-height: 2.25rem;
     padding-inline: 0.8rem;
     border-color: transparent;
@@ -2554,15 +2517,23 @@ svg {
 
   function renderView(viewName) {
     var loopsView=root.querySelector("#system-loops-view");
+    var leverageView=root.querySelector("#leverage-analysis-view");
+    var productView=root.querySelector("#product-definition-view");
     var standardSections=root.querySelectorAll(":scope > .lm2-map-wrap, :scope > .lm2-legend, :scope > .lm2-detail");
-    if (viewName==="loops") {
+    if (viewName==="loops" || viewName==="leverage" || viewName==="product") {
       currentView=viewName;
-      loopsView.hidden=false;
+      loopsView.hidden=viewName!=="loops";
+      leverageView.hidden=viewName!=="leverage";
+      productView.hidden=viewName!=="product";
       standardSections.forEach(function (section) { section.hidden=true; });
-      if (window.renderSystemLoops) window.renderSystemLoops();
+      if (viewName==="loops" && window.renderSystemLoops) window.renderSystemLoops();
+      if (viewName==="leverage" && window.renderLeverageAnalysis) window.renderLeverageAnalysis();
+      if (viewName==="product" && window.renderProductDefinition) window.renderProductDefinition();
       return;
     }
     loopsView.hidden=true;
+    leverageView.hidden=true;
+    productView.hidden=true;
     standardSections.forEach(function (section) { section.hidden=false; });
     currentView=viewName;
     var preferred=viewName==="transition"?"engagement":viewName==="current"?"data":viewName==="future"?"orchestration":"expectations";
@@ -2852,7 +2823,7 @@ svg {
 
   function startTour() {
     if (tourActive) return;
-    if (currentView==="loops") {
+    if (currentView==="loops" || currentView==="leverage" || currentView==="product") {
       var currentButton=root.querySelector('[data-map-view="current"]');
       if (currentButton) currentButton.click();
     }
@@ -2882,7 +2853,7 @@ svg {
   var observer=new ResizeObserver(function () {
     clearTimeout(resizeTimer);
     resizeTimer=setTimeout(function () {
-      if (currentView==="loops") return;
+      if (currentView==="loops" || currentView==="leverage" || currentView==="product") return;
       canvas.classList.toggle("is-narrow",canvas.getBoundingClientRect().width<=560);
       renderConnectors();
     },100);
@@ -2897,6 +2868,7 @@ svg {
 })();
 </script>
 <script src="system-loops.js?v=metrics-1"></script>
+<script src="leverage-product.js?v=1"></script>
 
 <script id="codex-visualization-floating-ui-core" src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
 <script id="codex-visualization-floating-ui-dom" src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
