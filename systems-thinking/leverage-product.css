@@ -24,6 +24,8 @@
 .lp-hero > p,
 .lp-section-heading > p { max-width: 40rem; margin: 0; text-align: right; }
 .lp-kicker { color: var(--muted-foreground); font-size: var(--font-size-small); }
+.lp-hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.lp-plain-language { margin: 0.75rem 0 0; color: var(--muted-foreground); font-size: calc(var(--font-size-base) * 0.84); }
 
 .lp-leverage-layout {
   display: grid;
@@ -84,6 +86,7 @@
 .lp-definition-item { padding: 0.8rem; border: 1px solid var(--border); border-radius: 0.75rem; background: color-mix(in srgb, var(--muted) 38%, var(--card)); }
 .lp-definition-item span { color: var(--muted-foreground); font-size: calc(var(--font-size-base) * 0.69); font-weight: 650; letter-spacing: 0.03em; text-transform: uppercase; }
 .lp-definition-item p { margin: 0.35rem 0 0; }
+.lp-definition-wide { grid-column: 1 / -1; }
 
 .lp-mechanism-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.9rem; }
 .lp-product-path { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -154,7 +157,7 @@
 .lp-cheat-anchor { border-color: color-mix(in srgb, var(--ring) 42%, var(--border)); background: color-mix(in srgb, var(--accent) 28%, var(--card)); }
 .lp-cheat-number { display: inline-flex; width: 2.35rem; height: 2.35rem; align-items: center; justify-content: center; border-radius: 999px; color: #fff; background: #405e6e; font-size: calc(var(--font-size-base) * 0.7); font-weight: 700; letter-spacing: 0.03em; }
 .lp-cheat-answer { margin: 0.55rem 0 0; font-size: calc(var(--font-size-base) * 0.94); line-height: 1.55; }
-.lp-cheat-trace { display: inline-flex; margin-top: 0.65rem; padding: 0.25rem 0.5rem; border-radius: 999px; color: var(--muted-foreground); background: var(--muted); font-size: calc(var(--font-size-base) * 0.67); }
+.lp-cheat-trace { display: inline-flex; margin-top: 0.65rem; padding: 0.3rem 0.55rem; border-radius: 999px; color: var(--muted-foreground); background: var(--muted); font-size: calc(var(--font-size-base) * 0.72); line-height: 1.4; }
 .lp-cheat-capabilities { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-top: 0.75rem; }
 .lp-cheat-capabilities div,.lp-cheat-boundary div { padding: 0.7rem; border: 1px solid var(--border); border-radius: 0.7rem; background: color-mix(in srgb, var(--muted) 38%, var(--card)); }
 .lp-cheat-capabilities strong,.lp-cheat-boundary strong { display: block; font-weight: 650; }
@@ -171,6 +174,7 @@
   .lp-leverage-layout { grid-template-columns: 1fr; }
   .lp-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-definition-grid,.lp-mechanism-grid,.lp-impact-grid,.lp-two-column,.lp-new-loops { grid-template-columns: 1fr; }
+  .lp-definition-wide { grid-column: auto; }
   .lp-product-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-product-path .lp-mechanism:nth-child(2)::after { display: none; }
   .lp-operating-grid { grid-template-columns: 1fr; }
