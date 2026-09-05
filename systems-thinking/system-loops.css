@@ -170,6 +170,9 @@
 .sl-node text { fill: var(--foreground); text-anchor: middle; pointer-events: none; }
 .sl-node .sl-node-id { fill: var(--muted-foreground); font-size: 12px; font-weight: 650; letter-spacing: 0.05em; }
 .sl-node .sl-node-label { font-size: 16px; font-weight: 580; }
+.sl-loop-identity rect { fill: color-mix(in srgb, var(--accent) 58%, var(--card)); stroke: color-mix(in srgb, var(--ring) 34%, var(--border)); stroke-width: 1.2; }
+.sl-loop-identity .sl-loop-code { fill: color-mix(in srgb, var(--ring) 78%, var(--foreground)); font-size: 23px; font-weight: 720; text-anchor: middle; }
+.sl-loop-identity .sl-loop-name { fill: var(--foreground); font-size: 13px; font-weight: 590; text-anchor: middle; }
 .sl-node.is-selected rect { stroke: color-mix(in srgb, var(--ring) 85%, var(--foreground)); stroke-width: 3; }
 .sl-map-hint { margin: 0.1rem 0 0; text-align: center; }
 

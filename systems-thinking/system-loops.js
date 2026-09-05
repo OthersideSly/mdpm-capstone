@@ -37,6 +37,7 @@
         "As decision relevance and opportunity visibility improve, members capture more worthwhile opportunities. Greater capture increases successful value realization. Repeated realization builds trust, which supports continued participation. Participation generates richer evidence about what members pursue, earn, redeem, realize, ignore, or struggle with. When that outcome information improves decisioning, future opportunities become more relevant and visible.",
         "The loop can also move downward: poor relevance can reduce opportunity capture and realization, weakening trust, participation, outcome information, and future decisioning. This is a learning loop organized around realized outcomes—not simply offer personalization."
       ],
+      loopLabels:[{code:"R1",name:"Value Realization and Learning Flywheel",lines:["Value Realization and Learning Flywheel"],x:600,y:330,width:330}],
       nodes:{V01:[600,80],V02:[930,190],V03:[1010,430],V04:[760,580],V05:[440,580],V06:[190,430],V07:[270,190]},
       edges:[
         ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned.","CL01"],
@@ -55,6 +56,7 @@
         "As repeat participation increases, more reward events must be qualified, posted, redeemed, fulfilled, explained, and supported. If this demand grows faster than effective operational capacity, delays, errors, and unresolved exceptions increase. These failures reduce successful value realization, weaken trust, and eventually constrain participation.",
         "Balancing does not mean beneficial. This loop can impose a ceiling on participation and value realization."
       ],
+      loopLabels:[{code:"B1",name:"Operational Friction and Capacity Constraint",lines:["Operational Friction and Capacity Constraint"],x:600,y:330,width:350}],
       nodes:{V05:[600,80],V08:[930,190],V09:[1010,430],V10:[760,580],V03:[440,580],V04:[190,430]},
       edges:[
         ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions.","CL08"],
@@ -72,7 +74,11 @@
         "Repeat participation creates two effects at the same time: richer outcome information can strengthen relevance and learning through R1, while additional qualification, fulfilment, exception, and support demand can increase operational pressure through B1.",
         "The central tension is whether learning, coordination, and recovery improve quickly enough for the reinforcing value-realization loop to remain stronger than the operational constraint created by growing participation."
       ],
-      nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1070,330],V10:[1010,100]},
+      loopLabels:[
+        {code:"R1",name:"Value Realization and Learning Flywheel",lines:["Value Realization and","Learning Flywheel"],x:380,y:330,width:250},
+        {code:"B1",name:"Operational Friction and Capacity Constraint",lines:["Operational Friction","and Capacity Constraint"],x:900,y:330,width:150}
+      ],
+      nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1090,330],V10:[1010,100]},
       edges:[
         ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned.","CL01"],
         ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized.","CL02"],
@@ -172,6 +178,15 @@
       group.appendChild(polarity);
       if (edge[3]) { var note=svgEl("text",{x:mx,y:my+12,class:"sl-edge-note"}); note.textContent="delay"; group.appendChild(note); }
       edgesLayer.appendChild(group);
+    });
+
+    (layout.loopLabels||[]).forEach(function (loop) {
+      var group=svgEl("g",{class:"sl-loop-identity","aria-label":loop.code+" "+loop.name});
+      var lines=loop.lines||[loop.name],height=72+(lines.length-1)*16;
+      group.appendChild(svgEl("rect",{x:loop.x-loop.width/2,y:loop.y-height/2,width:loop.width,height:height,rx:18}));
+      var code=svgEl("text",{x:loop.x,y:loop.y-10,class:"sl-loop-code"}); code.textContent=loop.code; group.appendChild(code);
+      lines.forEach(function (line,index) { var name=svgEl("text",{x:loop.x,y:loop.y+14+index*16,class:"sl-loop-name"}); name.textContent=line; group.appendChild(name); });
+      nodesLayer.appendChild(group);
     });
 
     Object.keys(layout.nodes).forEach(function (id) {

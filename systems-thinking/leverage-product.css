@@ -27,7 +27,7 @@
 
 .lp-leverage-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(16rem, 0.75fr);
+  grid-template-columns: minmax(16rem, 0.62fr) minmax(0, 1.38fr);
   gap: 1rem;
   align-items: start;
 }
@@ -45,10 +45,16 @@
 .lp-loop-node text { fill: var(--foreground); text-anchor: middle; }
 .lp-loop-node .lp-node-id { fill: var(--muted-foreground); font-size: 11px; font-weight: 650; }
 .lp-loop-node .lp-node-label { font-size: 14px; font-weight: 580; }
+.lp-loop-identity rect { fill: color-mix(in srgb, var(--accent) 58%, var(--card)); stroke: color-mix(in srgb, var(--ring) 32%, var(--border)); stroke-width: 1.2; }
+.lp-loop-identity .lp-loop-code { fill: color-mix(in srgb, var(--ring) 78%, var(--foreground)); font-size: 22px; font-weight: 720; text-anchor: middle; }
+.lp-loop-identity .lp-loop-name { fill: var(--foreground); font-size: 12px; font-weight: 590; text-anchor: middle; }
 .lp-loop-tag rect { fill: color-mix(in srgb, var(--lm-future) 26%, var(--card)); stroke: var(--lm-future); stroke-width: 1.3; }
 .lp-loop-tag text { fill: var(--foreground); font-size: 12px; font-weight: 650; text-anchor: middle; }
 
 .lp-leverage-list { display: grid; gap: 0.55rem; }
+.lp-selector-heading { margin-bottom: 0.8rem; }
+.lp-selector-heading h3 { margin: 0.15rem 0 0.35rem; font-size: 1.05rem; }
+.lp-selector-heading p { margin: 0; }
 .lp-leverage-button {
   appearance: none;
   width: 100%;
@@ -65,9 +71,10 @@
 .lp-leverage-button[aria-pressed="true"] { border-color: var(--lm-future); background: color-mix(in srgb, var(--lm-future) 12%, var(--card)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--lm-future) 18%, transparent); }
 .lp-leverage-button span { display: block; color: var(--muted-foreground); font-size: var(--font-size-small); }
 .lp-leverage-button strong { display: block; margin-top: 0.15rem; font-weight: 620; }
-.lp-leverage-detail { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.lp-leverage-detail { margin-top: 0; }
+.lp-leverage-detail > strong { display: inline-block; margin-left: 0.25rem; }
 .lp-leverage-detail p { margin: 0.55rem 0 0; }
-.lp-detail-grid { display: grid; grid-template-columns: 1fr; gap: 0.55rem; margin-top: 0.7rem; }
+.lp-detail-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.65rem; margin-top: 0.8rem; }
 .lp-detail-item { padding: 0.65rem 0.7rem; border-left: 3px solid var(--ring); background: var(--muted); }
 .lp-detail-item span { display: block; color: var(--muted-foreground); font-size: calc(var(--font-size-base) * 0.68); font-weight: 650; letter-spacing: 0.03em; text-transform: uppercase; }
 .lp-detail-item p { margin: 0.25rem 0 0; }
@@ -136,6 +143,7 @@
   .lp-hero,.lp-section-heading { display: block; }
   .lp-hero > p,.lp-section-heading > p { margin-top: 0.45rem; text-align: left; }
   .lp-leverage-layout { grid-template-columns: 1fr; }
+  .lp-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-definition-grid,.lp-mechanism-grid,.lp-impact-grid,.lp-two-column,.lp-new-loops { grid-template-columns: 1fr; }
   .lp-validation-grid { grid-template-columns: 1fr; }
   .lp-sequence { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -144,6 +152,7 @@
 @media (max-width: 560px) {
   #loyalty-map-v2 .viz-controls .btn { flex-basis: 100%; }
   .lp-capability-list { grid-template-columns: 1fr; }
+  .lp-detail-grid { grid-template-columns: 1fr; }
   .lp-sequence { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-sequence span:nth-child(3)::after { display: block; }
   .lp-sequence span:nth-child(even)::after { display: none; }

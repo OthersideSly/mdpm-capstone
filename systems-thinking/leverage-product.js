@@ -40,7 +40,7 @@
     }
   };
 
-  var loopNodes={V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1070,330],V10:[1010,100]};
+  var loopNodes={V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1090,330],V10:[1010,100]};
   var nodeLabels={V01:"Relevant, visible opportunities",V02:"Opportunity capture",V03:"Value realization",V04:"Program trust",V05:"Repeat participation",V06:"Outcome information",V07:"Decisioning quality",V08:"Reward-processing demand",V09:"Operational load",V10:"Value friction"};
   var shared={V03:true,V04:true,V05:true};
   var loopEdges=[
@@ -56,19 +56,16 @@
         <p class="text-small">Explore where an intervention could strengthen the value-realization flywheel, weaken its operational constraint, or reshape the goal governing both loops.</p>\
       </header>\
       <div class="lp-leverage-layout">\
+        <aside class="lp-card" aria-label="Identified leverage points">\
+          <div class="lp-selector-heading"><span class="lp-kicker">Strategic sequence</span><h3>Identified Leverage Points</h3><p class="text-small">Select a leverage point to see its potential impact on the Linked Loops.</p></div>\
+          <div id="lp-leverage-buttons" class="lp-leverage-list"></div>\
+        </aside>\
         <section class="lp-card lp-diagram-card" aria-labelledby="lp-linked-title">\
           <div class="lp-section-heading"><div><span class="lp-kicker">R1 + B1</span><h3 id="lp-linked-title">Leverage within the Linked Loops</h3></div><p class="text-small">Select a leverage point to see which variables it reaches.</p></div>\
           <div class="lp-canvas-wrap"><svg id="lp-loop-canvas" class="lp-canvas" viewBox="0 0 1200 670" role="img" aria-label="Linked causal loops with highlighted leverage points"><defs><marker id="lp-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9 z"></path></marker></defs><g id="lp-loop-edges"></g><g id="lp-loop-nodes"></g></svg></div>\
         </section>\
-        <aside class="lp-card" aria-label="Leverage point selector">\
-          <div id="lp-leverage-buttons" class="lp-leverage-list"></div>\
-          <div id="lp-leverage-detail" class="lp-leverage-detail" aria-live="polite"></div>\
-        </aside>\
       </div>\
-      <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Working leverage bundle</span><h3>Use realized member value as the governing intent</h3></div></div>\
-        <p class="lp-quote">Then intervene through information flows, feedback, decision rules, and recovery mechanisms that a digital product can realistically influence.</p>\
-      </section>\
+      <section id="lp-leverage-detail" class="lp-card lp-leverage-detail" aria-live="polite"></section>\
       <p class="lp-fine-print text-small text-muted">These leverage points indicate where change may matter; they are not an automatic ranking of feasibility or priority. Working analysis developed from Team Zig’s research.</p>\
     </div>';
 
@@ -175,11 +172,24 @@
     nodesLayer.appendChild(group);
   });
 
+  [
+    {code:"R1",name:"Value Realization and Learning Flywheel",lines:["Value Realization and","Learning Flywheel"],x:380,y:330,width:250},
+    {code:"B1",name:"Operational Friction and Capacity Constraint",lines:["Operational Friction","and Capacity Constraint"],x:900,y:330,width:150}
+  ].forEach(function (loop) {
+    var group=svgEl("g",{class:"lp-loop-identity","aria-label":loop.code+" "+loop.name});
+    var lines=loop.lines||[loop.name],height=70+(lines.length-1)*15;
+    group.appendChild(svgEl("rect",{x:loop.x-loop.width/2,y:loop.y-height/2,width:loop.width,height:height,rx:17}));
+    var code=svgEl("text",{x:loop.x,y:loop.y-10,class:"lp-loop-code"}); code.textContent=loop.code; group.appendChild(code);
+    lines.forEach(function (line,index) { var name=svgEl("text",{x:loop.x,y:loop.y+13+index*15,class:"lp-loop-name"}); name.textContent=line; group.appendChild(name); });
+    nodesLayer.insertBefore(group,nodesLayer.firstChild);
+  });
+
   var buttonsRoot=leverageRoot.querySelector("#lp-leverage-buttons");
-  Object.keys(leveragePoints).forEach(function (id,index) {
+  var leverageOrder=["L04","L03","L01","L02"];
+  leverageOrder.forEach(function (id,index) {
     var point=leveragePoints[id],button=document.createElement("button");
     button.type="button"; button.className="lp-leverage-button"; button.setAttribute("data-leverage",id); button.setAttribute("aria-pressed",String(index===0));
-    button.innerHTML="<span>"+id+" · "+point.effect+"</span><strong>"+point.title+"</strong>";
+    button.innerHTML="<span>"+(index+1)+" · "+id+" · "+point.effect+"</span><strong>"+point.title+"</strong>";
     button.addEventListener("click",function () { selectLeverage(id); }); buttonsRoot.appendChild(button);
   });
   function selectLeverage(id) {
@@ -189,7 +199,7 @@
     edgesLayer.querySelectorAll(".lp-loop-edge").forEach(function (edge) { edge.classList.toggle("is-leverage",point.nodes.indexOf(edge.getAttribute("data-from"))>=0 && point.nodes.indexOf(edge.getAttribute("data-to"))>=0); });
     leverageRoot.querySelector("#lp-leverage-detail").innerHTML='<span class="viz-badge">'+id+'</span><strong> '+point.title+'</strong><p>'+point.mechanism+'</p><div class="lp-detail-grid"><div class="lp-detail-item"><span>What it signals</span><p>'+point.signal+'</p></div><div class="lp-detail-item"><span>If acted upon</span><p>'+point.result+'</p></div><div class="lp-detail-item"><span>Leverage classification</span><p>'+point.classification+'</p></div><div class="lp-detail-item"><span>Dependency or risk</span><p>'+point.dependency+'</p></div></div>';
   }
-  selectLeverage("L01");
+  selectLeverage("L04");
 
   window.renderLeverageAnalysis=function () {};
   window.renderProductDefinition=function () {};
