@@ -57,7 +57,7 @@
       </header>\
       <div class="lp-leverage-layout">\
         <aside class="lp-card" aria-label="Identified leverage points">\
-          <div class="lp-selector-heading"><span class="lp-kicker">Strategic sequence</span><h3>Identified Leverage Points</h3><p class="text-small">Select a leverage point to see its potential impact on the Linked Loops.</p></div>\
+          <div class="lp-selector-heading"><span class="lp-kicker">Strategic sequence</span><h3>Identified Leverage Points</h3><p class="text-small">Select a leverage point to see its potential impact on the Linked Loops.</p><p class="text-small text-muted">Ordered by systemic role and relevance to the product wedge—not a validated impact score.</p></div>\
           <div id="lp-leverage-buttons" class="lp-leverage-list"></div>\
         </aside>\
         <section class="lp-card lp-diagram-card" aria-labelledby="lp-linked-title">\

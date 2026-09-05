@@ -75,8 +75,8 @@
         "The central tension is whether learning, coordination, and recovery improve quickly enough for the reinforcing value-realization loop to remain stronger than the operational constraint created by growing participation."
       ],
       loopLabels:[
-        {code:"R1",name:"Value Realization and Learning Flywheel",lines:["Value Realization and","Learning Flywheel"],x:380,y:330,width:250},
-        {code:"B1",name:"Operational Friction and Capacity Constraint",lines:["Operational Friction","and Capacity Constraint"],x:900,y:330,width:150}
+        {code:"R1",name:"Value Realization and Learning Flywheel",lines:["Value Realization and","Learning Flywheel"],x:380,y:330,width:190,compact:true},
+        {code:"B1",name:"Operational Friction and Capacity Constraint",lines:["Operational Friction","and Capacity Constraint"],x:900,y:330,width:125,compact:true}
       ],
       nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1090,330],V10:[1010,100]},
       edges:[
@@ -181,11 +181,11 @@
     });
 
     (layout.loopLabels||[]).forEach(function (loop) {
-      var group=svgEl("g",{class:"sl-loop-identity","aria-label":loop.code+" "+loop.name});
-      var lines=loop.lines||[loop.name],height=72+(lines.length-1)*16;
+      var group=svgEl("g",{class:"sl-loop-identity"+(loop.compact?" is-compact":""),"aria-label":loop.code+" "+loop.name});
+      var lines=loop.lines||[loop.name],lineGap=loop.compact?13:16,height=(loop.compact?58:72)+(lines.length-1)*lineGap;
       group.appendChild(svgEl("rect",{x:loop.x-loop.width/2,y:loop.y-height/2,width:loop.width,height:height,rx:18}));
-      var code=svgEl("text",{x:loop.x,y:loop.y-10,class:"sl-loop-code"}); code.textContent=loop.code; group.appendChild(code);
-      lines.forEach(function (line,index) { var name=svgEl("text",{x:loop.x,y:loop.y+14+index*16,class:"sl-loop-name"}); name.textContent=line; group.appendChild(name); });
+      var code=svgEl("text",{x:loop.x,y:loop.y-(loop.compact?8:10),class:"sl-loop-code"}); code.textContent=loop.code; group.appendChild(code);
+      lines.forEach(function (line,index) { var name=svgEl("text",{x:loop.x,y:loop.y+(loop.compact?10:14)+index*lineGap,class:"sl-loop-name"}); name.textContent=line; group.appendChild(name); });
       nodesLayer.appendChild(group);
     });
 
