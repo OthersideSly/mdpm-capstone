@@ -41,6 +41,7 @@
 .sl-view-controls .btn { white-space: nowrap; }
 
 .sl-chain,
+.sl-metrics-panel,
 .sl-map-card,
 .sl-detail {
   margin-top: 1rem;
@@ -86,6 +87,52 @@
 .sl-chain-index { display: block; margin-bottom: 0.25rem; color: var(--muted-foreground); font-size: 0.68rem; font-weight: 650; }
 .sl-metrics { display: flex; flex-wrap: wrap; gap: 0.45rem 1.25rem; color: var(--muted-foreground); }
 .sl-metrics strong { color: var(--foreground); font-weight: 560; }
+
+.sl-metrics-panel { padding: 1rem 1.1rem; }
+.sl-metrics-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.sl-metrics-heading h3 {
+  margin: 0.18rem 0 0;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.25;
+}
+.sl-metrics-heading p { max-width: 34rem; margin: 0; text-align: right; }
+.sl-metrics-table-wrap { width: 100%; overflow-x: auto; }
+.sl-metrics-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: calc(var(--font-size-base) * 0.79);
+  line-height: 1.48;
+}
+.sl-metrics-table th,
+.sl-metrics-table td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  text-align: left;
+}
+.sl-metrics-table thead th {
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--muted) 62%, var(--card));
+  font-size: calc(var(--font-size-base) * 0.7);
+  font-weight: 650;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+.sl-metrics-table thead th:first-child { width: 17%; border-radius: 0.6rem 0 0 0; }
+.sl-metrics-table thead th:nth-child(2) { width: 28%; }
+.sl-metrics-table thead th:nth-child(3) { width: 23%; }
+.sl-metrics-table thead th:last-child { width: 32%; border-radius: 0 0.6rem 0 0; }
+.sl-metrics-table tbody th { font-weight: 620; }
+.sl-metrics-table tbody tr:last-child :is(th,td) { border-bottom: 0; }
+.sl-metrics-note { margin: 0.65rem 0 0; }
 
 .sl-map-card { padding: 1.1rem 1.2rem 1rem; }
 .sl-map-intro > div { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
@@ -138,6 +185,8 @@
   .sl-heading, .sl-map-intro { display: block; }
   .sl-view-controls { margin-top: 0.9rem; width: fit-content; max-width: 100%; flex-wrap: wrap; }
   .sl-map-intro p { margin-top: 0.5rem; text-align: left; }
+  .sl-metrics-heading { display: block; }
+  .sl-metrics-heading p { margin-top: 0.4rem; text-align: left; }
   .sl-chain ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .sl-chain li:nth-child(4)::after { display: none; }
 }

@@ -818,7 +818,7 @@ svg {
   color: var(--destructive);
 }
 </style>
-<link rel="stylesheet" href="system-loops.css">
+<link rel="stylesheet" href="system-loops.css?v=metrics-1">
 </head>
 <body>
 <div id="loyalty-map-v2" class="lm2-root">
@@ -858,7 +858,7 @@ svg {
       <div>
         <span class="lm2-view-label">Causal loop diagrams</span>
         <h2 id="sl-title">How value realization can accelerate—and constrain—itself</h2>
-        <p class="text-small">Explore the reinforcing growth dynamic, the operational constraint, or both as one coupled system.</p>
+        <p class="text-small">Explore the reinforcing growth dynamic, the operational constraint, or both as one set of linked loops.</p>
       </div>
       <div class="sl-view-controls" role="group" aria-label="Choose a causal loop view">
         <button type="button" class="btn btn-primary" data-loop-view="r1" aria-pressed="true">R1 · Growth</button>
@@ -879,6 +879,49 @@ svg {
         <span><strong>End-to-end realization</strong> S1 → S8</span>
       </div>
     </div>
+
+    <section class="sl-metrics-panel" aria-labelledby="sl-metrics-title">
+      <div class="sl-metrics-heading">
+        <div>
+          <span class="lm2-view-label">Potential measurement framework</span>
+          <h3 id="sl-metrics-title">Measure where worthwhile value is being lost</h3>
+        </div>
+        <p class="text-small">These measures distinguish upstream opportunity loss, unrealized earned value, and total loss across the complete journey.</p>
+      </div>
+      <div class="sl-metrics-table-wrap">
+        <table class="sl-metrics-table">
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Conceptual calculation</th>
+              <th scope="col">What it reveals</th>
+              <th scope="col">Diagnostic problem prevented</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Opportunity capture rate</th>
+              <td>Points successfully earned ÷ points available through worthwhile, eligible opportunities entering the chain</td>
+              <td>How effectively worthwhile earning potential progresses into confirmed earned value</td>
+              <td>Prevents missed surfacing, comprehension, action, or qualification failures from being misclassified as redemption problems</td>
+            </tr>
+            <tr>
+              <th scope="row">Earned-value realization rate</th>
+              <td>Earned points successfully converted into fulfilled benefits ÷ earned points available for intended use</td>
+              <td>How effectively earned value progresses through visibility, redemption, and fulfilment</td>
+              <td>Prevents issued points or balances from being treated as realized member value</td>
+            </tr>
+            <tr>
+              <th scope="row">End-to-end realization rate</th>
+              <td>Points-derived value successfully realized ÷ worthwhile, eligible points-value entering the chain</td>
+              <td>The conversion efficiency of the complete pathway from worthwhile opportunity to fulfilled benefit</td>
+              <td>Prevents local optimization of earning or redemption while total value loss persists elsewhere</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sl-metrics-note text-small text-muted">Operational definitions still need to establish cohort logic, points-to-benefit valuation, treatment of deliberate saving, and reward-specific expected fulfilment periods.</p>
+    </section>
 
     <div class="sl-map-card">
       <div class="sl-map-intro">
@@ -2853,7 +2896,7 @@ svg {
   },500);
 })();
 </script>
-<script src="system-loops.js"></script>
+<script src="system-loops.js?v=metrics-1"></script>
 
 <script id="codex-visualization-floating-ui-core" src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
 <script id="codex-visualization-floating-ui-dom" src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
