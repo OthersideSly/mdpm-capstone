@@ -72,55 +72,45 @@
   productRoot.innerHTML='\
     <div class="lp-stack">\
       <header class="lp-card lp-hero">\
-        <div><span class="lp-kicker">Product direction</span><h2 id="lp-product-title">From realized value to reliable loyalty</h2></div>\
-        <p class="text-small">The product direction translates the leverage analysis into a member experience, an operating capability, and a measurable system outcome.</p>\
+        <div><span class="lp-kicker">Product Definition</span><h2 id="lp-product-title">A member-controlled value-realization experience</h2></div>\
+        <p class="text-small">A focused product concept for turning worthwhile reward opportunities into value members can see, trust, and use.</p>\
       </header>\
       <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Vision and strategic thesis</span><h3>Build loyalty through repeated, reliable value realization</h3></div></div>\
+        <div class="lp-section-heading"><div><span class="lp-kicker">Product vision and strategic thesis</span><h3>Build loyalty through repeated, reliable value realization</h3></div></div>\
         <blockquote class="lp-quote">Enable every member to reliably turn worthwhile reward opportunities into value they can see, trust, and use.</blockquote>\
         <div class="lp-definition-grid">\
-          <div class="lp-definition-item"><span>Member experience</span><p>Help members discover worthwhile rewards, understand how to earn and use them, track progress from qualification through fulfilment, and resolve interruptions when promised value does not arrive.</p></div>\
-          <div class="lp-definition-item"><span>System capability</span><p>Connect reward-state information, outcome-based decisioning, and service workflows so the program learns from realized value—not merely points issued or offers activated—and reduces preventable value loss.</p></div>\
+          <div class="lp-definition-item"><span>For members</span><p>A member-controlled experience that helps loyalty-program members discover worthwhile rewards, understand how to earn and use them, track progress from qualification through fulfilment, and resolve interruptions when promised value does not arrive.</p></div>\
+          <div class="lp-definition-item"><span>Behind the experience</span><p>It connects reward-state information, outcome-based decisioning, and service workflows so the program can learn from successfully realized value—not merely points issued or offers activated—and continuously reduce preventable value loss.</p></div>\
         </div>\
       </section>\
       <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Mechanisms considered</span><h3>Four ways the product could act on the leverage points</h3></div><p class="text-small">The mechanisms build on one another; the highlighted wedge is the smallest coherent starting proposition.</p></div>\
-        <div class="lp-mechanism-grid">\
-          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>PM01</span><strong>Worthwhile opportunity discovery</strong></div><p>Make relevant, attainable opportunities easier to find and act upon. This is necessary table stakes and an upstream contributor to R1, but increasing discovery before strengthening fulfilment may worsen B1.</p><span class="lp-loop-effect">Supports R1 · may intensify B1 if fulfilment is weak</span></article>\
-          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>PM02</span><strong>Transparent value progression</strong></div><p>Show what is available, in progress, earned, pending, posted, redeemed, fulfilled, or unresolved. This is a necessary information layer, but visibility without resolution may expose failures while leaving members powerless.</p><span class="lp-loop-effect">Activates L01 · visibility alone cannot resolve failure</span></article>\
-          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>PM03</span><strong>Outcome-based learning</strong></div><p>Use realized, failed, and recovered outcomes to improve future decisions and system performance. This has high long-term leverage, but it is not a complete first member proposition by itself.</p><span class="lp-loop-effect">Activates L02 · long-term intelligence layer</span></article>\
-          <article class="lp-mechanism is-wedge"><div class="lp-mechanism-head"><span>PM04</span><strong>Proactive Value Assurance and Recovery</strong></div><p>Detect at-risk value, intervene, verify realization, and create learning signals. This is the strongest preliminary wedge because it directly reduces preventable loss while acting on both R1 and B1.</p><span class="lp-loop-effect">Activates L01–L03 · aligns to L04</span></article>\
+        <div class="lp-section-heading"><div><span class="lp-kicker">How the product works</span><h3>Four connected mechanisms—not four separate products</h3></div><p class="text-small">The experience follows value from discovery through realization, then feeds outcomes back into future decisions.</p></div>\
+        <div class="lp-mechanism-grid lp-product-path">\
+          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>1 · PM01</span><strong>Discover</strong></div><p>Surface worthwhile, attainable reward opportunities that a member can understand and act upon.</p><span class="lp-loop-effect">Worthwhile opportunity discovery</span></article>\
+          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>2 · PM02</span><strong>Track</strong></div><p>Make qualification, earning, posting, redemption, fulfilment, and unresolved states visible.</p><span class="lp-loop-effect">Transparent value progression</span></article>\
+          <article class="lp-mechanism is-wedge"><div class="lp-mechanism-head"><span>3 · PM04</span><strong>Assure and recover</strong></div><p>Detect at-risk value, intervene or route it, and verify that promised value was realized.</p><span class="lp-loop-effect">First product wedge</span></article>\
+          <article class="lp-mechanism"><div class="lp-mechanism-head"><span>4 · PM03</span><strong>Learn</strong></div><p>Use realized, failed, and recovered outcomes to improve future decisions and system performance.</p><span class="lp-loop-effect">Outcome-based learning</span></article>\
         </div>\
       </section>\
       <section class="lp-card lp-wedge">\
         <div class="lp-wedge-heading"><div><span class="lp-kicker">Converged product wedge</span><h3>Proactive Value Assurance and Recovery</h3></div><span class="viz-badge">First bounded proposition</span></div>\
         <p class="lp-wedge-definition">Monitor worthwhile reward opportunities as they progress from qualification through earning, redemption, and fulfilment; identify when promised value is delayed, missing, or at risk; and either resolve the issue automatically or route it to the responsible service pathway with the necessary context. Members remain informed and retain approval over consequential actions, while recovery outcomes help identify and prevent recurring sources of value loss.</p>\
-        <h4>Why this wedge emerged from the analysis</h4>\
-        <ul class="lp-rationale"><li>It intervenes directly on preventable loss after worthwhile value enters the chain.</li><li>It produces an observable member outcome rather than only an internal analytical capability.</li><li>It reduces delays, unresolved exceptions, and avoidable support demand in B1.</li><li>It increases realized value, trust, participation, and outcome information in R1.</li><li>It forces clarity across information, decision rules, service ownership, and fulfilment.</li><li>It can begin with one bounded reward journey or failure type and expand over time.</li></ul>\
+        <h4>Why this is where the product starts</h4>\
+        <ul class="lp-rationale"><li>It directly addresses preventable loss after worthwhile value enters the chain.</li><li>It creates an observable member outcome—not only an internal analytical capability.</li><li>It can start with one bounded reward journey or failure type and expand over time.</li></ul>\
         <div class="lp-impact-grid">\
           <div class="lp-impact"><strong>Strengthens R1</strong><p>Increases realized value, trust, repeat participation, and usable outcome information.</p></div>\
           <div class="lp-impact"><strong>Weakens B1</strong><p>Reduces delays, unresolved exceptions, avoidable support demand, and preventable value loss.</p></div>\
         </div>\
-        <div class="lp-sequence" aria-label="Closed-loop operating sequence"><span>Sense</span><span>Diagnose</span><span>Decide</span><span>Act</span><span>Verify</span><span>Learn</span></div>\
-        <div class="lp-impact-grid"><div class="lp-impact"><strong>Self-correcting</strong><p>At the individual-event level, safely restore worthwhile value that is delayed, missing, or at risk.</p></div><div class="lp-impact"><strong>Self-improving</strong><p>At the system level, use recovery outcomes to change future rules, decisions, capacity, and process design.</p></div></div>\
-        <p class="text-small text-muted">Data alone does not create a self-healing system. The capability also requires authority, rules, workflows, ownership, and organizational follow-through.</p>\
       </section>\
       <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Minimum coherent capabilities</span><h3>What must work for the wedge to be real</h3></div></div>\
-        <ol class="lp-capability-list">\
-          <li>Detect that worthwhile, eligible value has entered the chain.</li><li>Establish the expected next state and fulfilment condition.</li>\
-          <li>Monitor qualification, posting, redemption, and fulfilment.</li><li>Detect delays, discrepancies, failures, and unresolved exceptions.</li>\
-          <li>Diagnose the likely source and accountable owner.</li><li>Resolve automatically where authority and confidence permit.</li>\
-          <li>Route unresolved cases with context to an accountable owner.</li><li>Inform the member and obtain approval for consequential actions.</li>\
-          <li>Verify that the promised value was received and usable.</li><li>Capture the failure, intervention, outcome, and root-cause pattern.</li>\
-        </ol>\
-      </section>\
-      <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Product boundaries</span><h3>What success means—and what the product is not</h3></div></div>\
-        <div class="lp-two-column">\
-          <div><h4>Intended outcomes</h4><ul><li>Higher opportunity capture</li><li>Higher earned-value and end-to-end realization</li><li>Lower preventable value loss</li><li>Greater trust and repeat participation</li><li>Deeper engagement and appropriate relationship progression downstream</li></ul></div>\
-          <div><h4>Non-goals</h4><ul><li>Maximize redemption regardless of member or business value</li><li>Force every member toward a banking relationship</li><li>Surface attractive but unattainable opportunities</li><li>Treat intentional saving or informed rejection as lost value</li><li>Replace every underlying loyalty and banking system</li><li>Make AI the product rather than a possible enabling capability</li><li>Conceal recurring structural failures through repeated case-by-case recovery</li></ul></div>\
+        <div class="lp-section-heading"><div><span class="lp-kicker">What must be true</span><h3>A coherent operating capability behind the experience</h3></div><p class="text-small">The wedge works only when information, authority, workflows, ownership, and learning operate together.</p></div>\
+        <div class="lp-operating-grid">\
+          <article class="lp-operating-step"><span>1</span><div><strong>Observe</strong><p>Detect when worthwhile value enters the chain, establish its expected next state, and monitor progress.</p></div></article>\
+          <article class="lp-operating-step"><span>2</span><div><strong>Diagnose and decide</strong><p>Identify delays or failures, locate the likely source, and determine the responsible action and owner.</p></div></article>\
+          <article class="lp-operating-step"><span>3</span><div><strong>Resolve and verify</strong><p>Correct safely or route with context, keep the member informed, and confirm that value was received and usable.</p></div></article>\
+          <article class="lp-operating-step"><span>4</span><div><strong>Learn and prevent</strong><p>Capture outcomes and root-cause patterns so future rules, decisions, processes, and capacity can improve.</p></div></article>\
         </div>\
+        <div class="lp-sequence" aria-label="Closed-loop operating sequence"><span>Sense</span><span>Diagnose</span><span>Decide</span><span>Act</span><span>Verify</span><span>Learn</span></div>\
       </section>\
       <section class="lp-card" aria-labelledby="lp-metrics-title">\
         <div class="lp-section-heading"><div><span class="lp-kicker">Potential measurement framework</span><h3 id="lp-metrics-title">Measure where worthwhile value is being lost</h3></div><p class="text-small">Distinguish upstream opportunity loss, unrealized earned value, and total loss across the complete journey.</p></div>\
@@ -130,18 +120,6 @@
           <tr><th>End-to-end realization rate</th><td>Points-derived value successfully realized ÷ worthwhile, eligible points-value entering the chain</td><td>The conversion efficiency of the complete pathway from worthwhile opportunity to fulfilled benefit</td><td>Prevents local optimization of earning or redemption while total value loss persists elsewhere</td></tr>\
         </tbody></table></div>\
         <p class="text-small text-muted">Operational definitions still need cohort logic, points-to-benefit valuation, treatment of deliberate saving, and reward-specific expected fulfilment periods.</p>\
-      </section>\
-      <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">New feedback structures</span><h3>How the wedge could change the system</h3></div></div>\
-        <div class="lp-new-loops">\
-          <article class="lp-new-loop"><strong>R2 · Recovery Learning Loop</strong><div class="lp-mini-flow"><span>V11 Successful value recoveries</span> +→ <span>V12 Recovery-outcome information</span> + delay→ <span>V13 Detection and root-cause intelligence</span> +→ <span>V14 Recovery effectiveness</span> +→ <span>V11</span></div><p class="text-small">Successful recoveries improve future detection and diagnosis. R2 strengthens R1 through better outcome information, decisioning, realization, and trust.</p></article>\
-          <article class="lp-new-loop"><strong>B2 · Recurring Failure Prevention Loop</strong><div class="lp-mini-flow"><span>V15 Recurring failure incidence</span> +→ <span>V16 Detected failure patterns</span> + delay→ <span>V17 Preventive system changes</span> − delay→ <span>V15</span></div><p class="text-small">Patterns can prompt changes to rules, integrations, processes, partners, or capacity. B2 weakens the harmful constraint in B1 by reducing future recurrence.</p></article>\
-        </div>\
-        <p class="text-small text-muted">Recovery must feed both loops. If it only closes individual cases, the system remains reactive and may continue reproducing the same failures.</p>\
-      </section>\
-      <section class="lp-card">\
-        <div class="lp-section-heading"><div><span class="lp-kicker">Assumptions and validation needs</span><h3>What the next conversation must test</h3></div><p class="text-small">The model is coherent enough for continued product discovery, but its causal and operating assumptions remain provisional.</p></div>\
-        <div class="lp-validation-grid"><div><h4>Working foundations</h4><ul><li>Value realization is the main variable.</li><li>The target is preventable loss between worthwhile value and realization.</li><li>Loyalty is built through repeated, reliable value realization.</li><li>Informed declines and intentional saving are not value loss.</li><li>Proactive Value Assurance and Recovery is the preferred preliminary wedge.</li></ul><h4>Provisional causal claims</h4><ul><li>Realization increases trust and repeat participation.</li><li>Participation creates information that improves decisioning.</li><li>Participation growth creates enough operational pressure to constrain realization.</li><li>Recovery information can produce effective preventive change.</li></ul></div><div><h4>Key validation questions</h4><ol><li>Which reward events and states can be observed reliably?</li><li>Where do qualification, posting, redemption, and fulfilment failures occur most often?</li><li>What reward-specific fulfilment expectations or service levels exist?</li><li>Which teams or partners own resolution at each failure point?</li><li>What authority exists for automated correction, compensation, or routing?</li><li>Can recovery outcomes feed future decisioning and root-cause remediation?</li><li>Which member segment and reward journey offer the best first test?</li><li>What are the net economic effects of greater realization and reduced failure?</li></ol><h4>Current assessment</h4><ul><li>Problem and target variable: strong enough for continued discovery</li><li>R1 and B1: provisional but coherent</li><li>Leverage landscape: useful for an initial intervention area; requires organizational validation</li><li>Product definition: preliminary and traceable to the system analysis</li><li>Wedge: strong provisional candidate; feasibility remains untested</li></ul></div></div>\
       </section>\
       <p class="lp-fine-print text-small text-muted">Working product definition developed from Team Zig’s research and analysis for discussion and refinement.</p>\
     </div>';

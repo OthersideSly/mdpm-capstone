@@ -86,6 +86,9 @@
 .lp-definition-item p { margin: 0.35rem 0 0; }
 
 .lp-mechanism-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.9rem; }
+.lp-product-path { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.lp-product-path .lp-mechanism { position: relative; }
+.lp-product-path .lp-mechanism:not(:last-child)::after { content: "→"; position: absolute; z-index: 2; top: 50%; right: -0.38rem; transform: translate(50%,-50%); color: var(--muted-foreground); font-weight: 650; }
 .lp-mechanism { padding: 0.85rem; border: 1px solid var(--border); border-radius: 0.8rem; background: var(--card); }
 .lp-mechanism.is-wedge { border-color: var(--lm-future); background: color-mix(in srgb, var(--lm-future) 9%, var(--card)); }
 .lp-mechanism-head { display: flex; align-items: baseline; gap: 0.45rem; }
@@ -105,6 +108,11 @@
 .lp-sequence { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.4rem; margin-top: 0.85rem; }
 .lp-sequence span { position: relative; padding: 0.6rem 0.45rem; border: 1px solid var(--border); border-radius: 0.65rem; background: color-mix(in srgb, var(--lm-value) 13%, var(--card)); font-weight: 600; text-align: center; }
 .lp-sequence span:not(:last-child)::after { content: "→"; position: absolute; z-index: 2; right: -0.4rem; top: 50%; transform: translate(50%,-50%); color: var(--muted-foreground); }
+.lp-operating-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.85rem; }
+.lp-operating-step { display: grid; grid-template-columns: 2rem minmax(0,1fr); gap: 0.65rem; padding: 0.8rem; border: 1px solid var(--border); border-radius: 0.75rem; background: color-mix(in srgb, var(--muted) 36%, var(--card)); }
+.lp-operating-step > span { display: inline-flex; width: 2rem; height: 2rem; align-items: center; justify-content: center; border-radius: 999px; color: #fff; background: #405e6e; font-size: var(--font-size-small); font-weight: 650; }
+.lp-operating-step strong { font-weight: 620; }
+.lp-operating-step p { margin: 0.3rem 0 0; }
 
 .lp-capability-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 1rem; margin: 0.85rem 0 0; padding: 0; list-style: none; counter-reset: capability; }
 .lp-capability-list li { display: grid; grid-template-columns: 1.65rem 1fr; gap: 0.55rem; align-items: start; padding: 0.6rem; border-bottom: 1px solid var(--border); counter-increment: capability; }
@@ -145,6 +153,9 @@
   .lp-leverage-layout { grid-template-columns: 1fr; }
   .lp-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-definition-grid,.lp-mechanism-grid,.lp-impact-grid,.lp-two-column,.lp-new-loops { grid-template-columns: 1fr; }
+  .lp-product-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lp-product-path .lp-mechanism:nth-child(2)::after { display: none; }
+  .lp-operating-grid { grid-template-columns: 1fr; }
   .lp-validation-grid { grid-template-columns: 1fr; }
   .lp-sequence { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lp-sequence span:nth-child(3)::after { display: none; }
@@ -152,6 +163,8 @@
 @media (max-width: 560px) {
   #loyalty-map-v2 .viz-controls .btn { flex-basis: 100%; }
   .lp-capability-list { grid-template-columns: 1fr; }
+  .lp-product-path { grid-template-columns: 1fr; }
+  .lp-product-path .lp-mechanism::after { display: none; }
   .lp-detail-grid { grid-template-columns: 1fr; }
   .lp-sequence { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-sequence span:nth-child(3)::after { display: block; }
