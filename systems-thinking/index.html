@@ -818,8 +818,8 @@ svg {
   color: var(--destructive);
 }
 </style>
-<link rel="stylesheet" href="system-loops.css?v=compact-loop-labels-1">
-<link rel="stylesheet" href="leverage-product.css?v=product-wedge-term-1">
+<link rel="stylesheet" href="system-loops.css?v=explainability-pass-2">
+<link rel="stylesheet" href="leverage-product.css?v=explainability-pass-2">
 </head>
 <body>
 <div id="loyalty-map-v2" class="lm2-root">
@@ -869,6 +869,12 @@ svg {
         <button type="button" class="btn" data-loop-view="b1" aria-pressed="false">B1 · Constraint</button>
         <button type="button" class="btn" data-loop-view="coupled" aria-pressed="false">Linked Loops</button>
       </div>
+    </div>
+
+    <div class="sl-concept-guide" aria-label="Causal loop terminology">
+      <article><strong>Causal loop diagram</strong><p>Shows how variables influence one another over time. A “+” means they move in the same direction, a “−” means they move in opposite directions, and “delay” means the effect takes time.</p></article>
+      <article><strong>R1 · Reinforcing loop</strong><p>A cycle where change can build on itself. Here, successful value realization can improve trust, participation, learning, and future opportunities.</p></article>
+      <article><strong>B1 · Balancing loop</strong><p>A cycle that can slow or limit growth. Here, rising demand can increase operational load, friction, and preventable value loss.</p></article>
     </div>
 
     <div class="sl-chain" aria-labelledby="sl-chain-title">
@@ -2517,12 +2523,35 @@ svg {
     if (!skipDetail) updateDetail(id);
   }
 
+  var readingGuides={
+    current:{title:"How to read this map",subtitle:"Follow the system from overview to evidence.",steps:[["Choose a view","Start with Current System."],["Select a node","Choose any box to set the focus."],["Follow the emphasis","Trace the highlighted arrows and labels."],["Read the context","Review its role, evidence and connections below."]]},
+    external:{title:"How to read this map",subtitle:"Explore influences outside the system boundary.",steps:[["Choose a view","Start with Outside the Boundary."],["Select a factor","Choose any box to set the focus."],["Follow the emphasis","Trace the relationships brought forward."],["Read the context","Review how it may influence the bounded system."]]},
+    loops:{title:"How to read the System Loops",subtitle:"R1 reinforces change; B1 constrains it. R, B, S and V codes preserve research traceability—you do not need to memorize them.",steps:[["Choose a loop","Start with R1, B1, or view both as Linked Loops."],["Read direction and polarity","Follow each arrow; + means the same direction and − means the opposite."],["Select a variable","Choose a box to isolate its immediate relationships."],["Read the explanation","Use the panel below to understand incoming and outgoing effects."]]},
+    leverage:{title:"How to read the Leverage Points",subtitle:"L and V codes preserve traceability to the research—you do not need to memorize them.",steps:[["Start with the Linked Loops","Use R1 and B1 as the system context."],["Choose a leverage point","The list is ordered by systemic role, not a validated score."],["See its potential reach","Highlighted variables show where the intervention could act."],["Review implications","Read what it signals, its possible effect, and its dependencies."]]},
+    product:{title:"How to read the Product Definition",subtitle:"This moves from the full product vision to its first focused starting point. PM codes preserve research traceability.",steps:[["Start with the full vision","Understand the complete member and system ambition."],["Trace the mechanisms","Follow Discover, Track, Assure and recover, then Learn."],["Examine the first focus","See why assurance and recovery is the practical starting point."],["Check what must be true","Review operating requirements, system effects, and measures."]]},
+    cheat:{title:"How to use the Product Cheat Sheet",subtitle:"Use this as the concise conversation aid; the full Product Definition contains the supporting logic.",steps:[["Read the one-sentence product","Begin with the simplest description of the concept."],["Identify the focus user","See which members the first product focus is intended to protect."],["Scan capabilities and boundaries","Understand what the product enables and what remains outside it."],["Note open assumptions","Treat the cohort, first journey, and channel as decisions still to validate."]]}
+  };
+
+  function updateReadingGuide(viewName) {
+    var config=readingGuides[viewName] || readingGuides.current;
+    root.querySelector("#lm2-guide-title").textContent=config.title;
+    var subtitle=root.querySelector(".lm2-guide-heading .text-muted");
+    if (subtitle) subtitle.textContent=config.subtitle;
+    root.querySelectorAll(".lm2-guide-steps li").forEach(function (item,index) {
+      var step=config.steps[index];
+      if (!step) return;
+      item.querySelector("strong").textContent=step[0];
+      item.querySelector("small").textContent=step[1];
+    });
+  }
+
   function renderView(viewName) {
     var loopsView=root.querySelector("#system-loops-view");
     var leverageView=root.querySelector("#leverage-analysis-view");
     var productView=root.querySelector("#product-definition-view");
     var cheatView=root.querySelector("#product-cheat-view");
     var standardSections=root.querySelectorAll(":scope > .lm2-map-wrap, :scope > .lm2-legend, :scope > .lm2-detail");
+    updateReadingGuide(viewName);
     if (viewName==="loops" || viewName==="leverage" || viewName==="product" || viewName==="cheat") {
       currentView=viewName;
       loopsView.hidden=viewName!=="loops";
@@ -2608,7 +2637,7 @@ svg {
   var tourNodeByView={transition:"data",current:"engagement",future:"delivery",external:"technology-landscape"};
   var tourSteps=[
     {welcome:true,title:"Welcome to Team Zig's Systems Map",copy:"This short, hands-on tour shows you how to change perspectives, read the map, trace relationships and find the evidence behind each component.",nextLabel:"Start tour"},
-    {target:".viz-controls",interactive:true,title:"Choose a perspective",copy:"Try a view now. Each perspective reveals a different layer of the system, and the map below updates to match your choice."},
+    {target:".viz-controls",interactive:true,title:"Choose a map perspective",copy:"Try Current System or Outside the Boundary. This tour teaches the interactive node map; the later strategy tabs provide their own reading guides."},
     {target:".lm2-map-wrap",title:"Orient yourself to the map",copy:"Each box is a component in the active system view. Use the always-visible legend below the map to decode it: color identifies the component type, while line style distinguishes current, future and inferred relationships."},
     {target:function () { return grid.querySelector('[data-node-id="'+(tourNodeByView[currentView] || "data")+'"]') || grid.querySelector(".lm2-node"); },interactive:true,title:"Select a node",copy:"Try the highlighted node. Selecting it brings its immediate relationships forward and updates the supporting context without taking you away from the map."},
     {target:".lm2-canvas",demo:true,title:"Follow the emphasized relationships",copy:"Watch the selected node trace outward: its direct lines appear first, then their labels and connected nodes. Everything else stays visible but recedes for orientation."},
@@ -2748,6 +2777,9 @@ svg {
     cleanupTourDemo();
     var step=tourSteps[tourIndex];
     var target=tourTarget();
+    root.querySelectorAll('[data-map-view="loops"],[data-map-view="leverage"],[data-map-view="product"],[data-map-view="cheat"]').forEach(function (button) {
+      button.disabled=tourIndex===1;
+    });
     tour.classList.toggle("is-welcome",Boolean(step.welcome));
     tourProgress.textContent=step.welcome?"Welcome":tourIndex+" of "+(tourSteps.length-1);
     tourTitle.textContent=step.title;
@@ -2774,6 +2806,7 @@ svg {
     tourActive=false;
     tour.hidden=true;
     tour.classList.remove("is-welcome");
+    root.querySelectorAll('[data-map-view="loops"],[data-map-view="leverage"],[data-map-view="product"],[data-map-view="cheat"]').forEach(function (button) { button.disabled=false; });
     clearTourInteractivity();
     cleanupTourDemo();
     document.removeEventListener("keydown",handleTourKeydown);
@@ -2829,7 +2862,7 @@ svg {
 
   function startTour() {
     if (tourActive) return;
-    if (currentView==="loops" || currentView==="leverage" || currentView==="product") {
+    if (currentView==="loops" || currentView==="leverage" || currentView==="product" || currentView==="cheat") {
       var currentButton=root.querySelector('[data-map-view="current"]');
       if (currentButton) currentButton.click();
     }
@@ -2874,7 +2907,7 @@ svg {
 })();
 </script>
 <script src="system-loops.js?v=compact-loop-labels-1"></script>
-<script src="leverage-product.js?v=product-wedge-term-1"></script>
+<script src="leverage-product.js?v=explainability-pass-2"></script>
 
 <script id="codex-visualization-floating-ui-core" src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
 <script id="codex-visualization-floating-ui-dom" src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
