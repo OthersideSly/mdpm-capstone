@@ -58,7 +58,7 @@
       </header>\
       <div class="lp-leverage-layout">\
         <aside class="lp-card" aria-label="Identified leverage points">\
-          <div class="lp-selector-heading"><span class="lp-kicker">Strategic sequence</span><h3>Identified Leverage Points</h3><p class="text-small">Select a leverage point to see its potential impact on the Linked Loops.</p><p class="text-small text-muted">Ordered by systemic role and relevance to the first product focus—not a validated impact score.</p></div>\
+          <div class="lp-selector-heading"><span class="lp-kicker">Strategic sequence</span><h3>Identified Leverage Points</h3><p class="text-small">Select a leverage point to see its potential impact on the Linked Loops.</p><p class="text-small text-muted">Ordered by systemic role and relevance to the first product focus (product wedge)—not a validated impact score.</p></div>\
           <div id="lp-leverage-buttons" class="lp-leverage-list"></div>\
         </aside>\
         <section class="lp-card lp-diagram-card" aria-labelledby="lp-linked-title">\
@@ -83,7 +83,7 @@
         <div class="lp-definition-grid">\
           <div class="lp-definition-item"><span>For members</span><p>A digital rewards experience that helps members discover worthwhile opportunities, see where promised value stands, and initiate or approve recovery when it is delayed, missing, or at risk.</p></div>\
           <div class="lp-definition-item"><span>Behind the experience</span><p>It connects reward-state information, outcome-based decisioning, and service workflows so the program can learn from successfully realized value—not merely points issued or offers activated—and continuously reduce preventable value loss.</p></div>\
-          <div class="lp-definition-item lp-definition-wide"><span>Primary user for the first product focus</span><p>Loyalty-program members with worthwhile, eligible reward value already in motion and a detectable risk that some of it may be delayed, missed, or lost because of a qualification, posting, redemption, fulfilment, partner, or service breakdown. The initial cohort and reward journey still need validation.</p></div>\
+          <div class="lp-definition-item lp-definition-wide"><span>Primary user for the first product focus (product wedge)</span><p>Loyalty-program members with worthwhile, eligible reward value already in motion and a detectable risk that some of it may be delayed, missed, or lost because of a qualification, posting, redemption, fulfilment, partner, or service breakdown. The initial cohort and reward journey still need validation.</p></div>\
         </div>\
       </section>\
       <section class="lp-card">\
@@ -91,17 +91,17 @@
         <div class="lp-mechanism-grid lp-product-path">\
           <article class="lp-mechanism"><div class="lp-mechanism-head"><span>1 · PM01</span><strong>Discover</strong></div><p>Surface worthwhile, attainable reward opportunities that a member can understand and act upon.</p><span class="lp-loop-effect">Member-facing</span></article>\
           <article class="lp-mechanism"><div class="lp-mechanism-head"><span>2 · PM02</span><strong>Track</strong></div><p>Make qualification, earning, posting, redemption, fulfilment, and unresolved states visible.</p><span class="lp-loop-effect">Member-facing</span></article>\
-          <article class="lp-mechanism is-wedge"><div class="lp-mechanism-head"><span>3 · PM04</span><strong>Assure and recover</strong></div><p>Detect at-risk value, intervene or route it, and verify that promised value was realized.</p><span class="lp-loop-effect">First product focus</span></article>\
+          <article class="lp-mechanism is-wedge"><div class="lp-mechanism-head"><span>3 · PM04</span><strong>Assure and recover</strong></div><p>Detect at-risk value, intervene or route it, and verify that promised value was realized.</p><span class="lp-loop-effect">First product focus (product wedge)</span></article>\
           <article class="lp-mechanism"><div class="lp-mechanism-head"><span>4 · PM03</span><strong>Learn</strong></div><p>Use realized, failed, and recovered outcomes to improve future decisions and system performance.</p><span class="lp-loop-effect">Behind the experience</span></article>\
         </div>\
       </section>\
       <section class="lp-card lp-wedge">\
-        <div class="lp-wedge-heading"><div><span class="lp-kicker">First product focus</span><h3>Proactive Value Assurance and Recovery</h3></div><span class="viz-badge">Focused starting point</span></div>\
-        <p class="lp-focus-explainer">This is the first focused part of the broader product vision. It starts with one member cohort, reward journey, and preventable failure type so the team can test whether detecting and recovering at-risk value improves realization and trust before expanding the product.</p>\
+        <div class="lp-wedge-heading"><div><span class="lp-kicker">First product focus (product wedge)</span><h3>Proactive Value Assurance and Recovery</h3></div><span class="viz-badge">Focused starting point</span></div>\
+        <p class="lp-focus-explainer"><strong>In product-strategy terms, this focus is the product wedge:</strong> a deliberately narrow entry point into the broader product vision. It starts with one member cohort, reward journey, and preventable failure type so the team can test whether detecting and recovering at-risk value improves realization and trust before expanding the product.</p>\
         <p class="lp-wedge-definition">Monitor worthwhile reward opportunities as they progress from qualification through earning, redemption, and fulfilment; identify when promised value is delayed, missing, or at risk; and either resolve the issue automatically or route it to the responsible service pathway with the necessary context. Members remain informed and retain approval over consequential actions, while recovery outcomes help identify and prevent recurring sources of value loss.</p>\
         <div class="lp-focus-map" aria-label="Relationship between systems leverage and product scope">\
           <div><span>Leverage point</span><strong>Exception detection and recovery</strong><p>Where intervention could change system behaviour.</p></div>\
-          <div class="is-focus"><span>First product focus</span><strong>Proactive Value Assurance and Recovery</strong><p>The practical high-leverage starting point.</p></div>\
+          <div class="is-focus"><span>First product focus (product wedge)</span><strong>Proactive Value Assurance and Recovery</strong><p>The practical high-leverage starting point.</p></div>\
           <div><span>North-star product</span><strong>Discover → Track → Assure and recover → Learn</strong><p>The complete connected product direction.</p></div>\
         </div>\
         <h4>Why this is where the product starts</h4>\
@@ -144,7 +144,7 @@
           <span class="lp-cheat-number">01</span><div><span class="lp-kicker">Product in one sentence</span><h3>What is the digital product?</h3><p class="lp-cheat-answer">A digital rewards experience that helps loyalty-program members discover worthwhile opportunities, see where promised value stands, and initiate or approve recovery when it is delayed, missing, or at risk.</p></div>\
         </article>\
         <article class="lp-card lp-cheat-card">\
-          <span class="lp-cheat-number">02</span><div><span class="lp-kicker">Primary user for the first product focus</span><h3>Who is it primarily designed for?</h3><p class="lp-cheat-answer">Loyalty-program members with worthwhile, eligible reward value already in motion and a detectable risk that some of it may be delayed, missed, or lost because of a system or service breakdown.</p><span class="lp-cheat-trace">Risk-state segment—not an attitude-based persona. Initial cohort and reward journey still to be validated.</span></div>\
+          <span class="lp-cheat-number">02</span><div><span class="lp-kicker">Primary user for the first product focus (product wedge)</span><h3>Who is it primarily designed for?</h3><p class="lp-cheat-answer">Loyalty-program members with worthwhile, eligible reward value already in motion and a detectable risk that some of it may be delayed, missed, or lost because of a system or service breakdown.</p><span class="lp-cheat-trace">Risk-state segment—not an attitude-based persona. Initial cohort and reward journey still to be validated.</span></div>\
         </article>\
         <article class="lp-card lp-cheat-card">\
           <span class="lp-cheat-number">03</span><div><span class="lp-kicker">Core job / outcome</span><h3>What is the user trying to accomplish?</h3><p class="lp-cheat-answer">“Help me receive and use the worthwhile reward value I was promised—and recover it without diagnosing the system or repeatedly chasing support when something breaks.”</p><span class="lp-cheat-trace">Grounded in the system goal of realized value and the R1/B1 leverage analysis.</span></div>\
@@ -153,9 +153,9 @@
           <span class="lp-cheat-number">04</span><div><span class="lp-kicker">What the product enables</span><h3>What would the member see, use, or do?</h3><div class="lp-cheat-capabilities">\
             <div><strong>Discover</strong><p>See worthwhile, attainable reward opportunities.</p></div>\
             <div><strong>Track</strong><p>Follow qualification, earning, posting, redemption, and fulfilment status.</p></div>\
-            <div class="is-focus"><strong>Assure and recover</strong><span class="lp-capability-tag">First product focus</span><p>Detect at-risk value, notify the member, resolve it safely or route it with context, and verify the outcome.</p></div>\
+            <div class="is-focus"><strong>Assure and recover</strong><span class="lp-capability-tag">First product focus (product wedge)</span><p>Detect at-risk value, notify the member, resolve it safely or route it with context, and verify the outcome.</p></div>\
             <div><strong>Learn</strong><p>Use recovery outcomes behind the experience to reduce repeat failures and improve future decisions.</p></div>\
-          </div></div>\
+          </div><p class="lp-plain-language"><strong>Product-strategy meaning:</strong> a product wedge is the deliberately narrow starting point used to enter and test a broader product vision.</p></div>\
         </article>\
         <article class="lp-card lp-cheat-card lp-cheat-wide">\
           <span class="lp-cheat-number">05</span><div><span class="lp-kicker">Product boundary</span><h3>What will—and will not—the product support?</h3><div class="lp-cheat-boundary">\
