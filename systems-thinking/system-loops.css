@@ -91,6 +91,15 @@
 .sl-map-intro > div { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .sl-map-intro strong { font-weight: 620; }
 .sl-map-intro p { max-width: 38rem; text-align: right; }
+.sl-loop-narrative {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-left: 3px solid color-mix(in srgb, var(--ring) 72%, var(--border));
+  background: color-mix(in srgb, var(--accent) 42%, var(--card));
+  line-height: 1.55;
+}
+.sl-loop-narrative p { margin: 0; }
+.sl-loop-narrative p + p { margin-top: 0.5rem; }
 .sl-canvas-wrap { width: 100%; overflow-x: auto; }
 .sl-canvas { display: block; width: 100%; min-width: 720px; height: auto; margin-top: 0.4rem; }
 .sl-canvas marker path { fill: var(--muted-foreground); }
@@ -98,13 +107,13 @@
 .sl-edge {
   fill: none;
   stroke: var(--muted-foreground);
-  stroke-width: 2.2;
+  stroke: color-mix(in srgb, var(--ring) 80%, var(--foreground));
+  stroke-width: 3.2;
   marker-end: url(#sl-arrow);
   transition: opacity 150ms ease, stroke-width 150ms ease;
 }
 .sl-edge.is-delay { stroke-dasharray: 8 6; }
-.sl-edge.is-dimmed { opacity: 0.1; }
-.sl-edge.is-active { stroke: color-mix(in srgb, var(--ring) 80%, var(--foreground)); stroke-width: 4; }
+.sl-edge.is-active { stroke-width: 3.2; }
 .sl-edge-label { fill: var(--muted-foreground); font-size: 16px; font-weight: 650; text-anchor: middle; }
 .sl-edge-note { fill: var(--muted-foreground); font-size: 12px; font-style: italic; text-anchor: middle; }
 
@@ -115,15 +124,14 @@
 .sl-node .sl-node-id { fill: var(--muted-foreground); font-size: 12px; font-weight: 650; letter-spacing: 0.05em; }
 .sl-node .sl-node-label { font-size: 16px; font-weight: 580; }
 .sl-node.is-selected rect { stroke: color-mix(in srgb, var(--ring) 85%, var(--foreground)); stroke-width: 3; }
-.sl-node.is-connected rect { stroke: color-mix(in srgb, var(--ring) 60%, var(--border)); stroke-width: 2.2; }
-.sl-node.is-dimmed { opacity: 0.34; }
 .sl-map-hint { margin: 0.1rem 0 0; text-align: center; }
 
 .sl-detail { padding: 1rem 1.2rem; }
 .sl-detail p { margin: 0.65rem 0; }
 .sl-detail-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
 .sl-link-card { padding: 0.65rem 0.75rem; border-left: 3px solid var(--ring); background: var(--muted); font-size: var(--font-size-small); }
-.sl-link-card strong { display: block; margin-bottom: 0.15rem; font-weight: 580; }
+.sl-link-card strong { display: block; margin-bottom: 0.2rem; font-weight: 580; }
+.sl-link-mechanism { display: block; margin-top: 0.25rem; color: var(--foreground); line-height: 1.45; }
 .sl-fine-print { max-width: 58rem; margin: 0.75rem auto 0; text-align: center; }
 
 @media (max-width: 900px) {

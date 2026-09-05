@@ -33,29 +33,58 @@
     r1:{
       badge:"R1 · Reinforcing",title:"The value-realization flywheel",
       summary:"Reliable realization can build trust and participation, producing the outcome information required to improve future decisions.",
+      narrative:[
+        "As decision relevance and opportunity visibility improve, members capture more worthwhile opportunities. Greater capture increases successful value realization. Repeated realization builds trust, which supports continued participation. Participation generates richer evidence about what members pursue, earn, redeem, realize, ignore, or struggle with. When that outcome information improves decisioning, future opportunities become more relevant and visible.",
+        "The loop can also move downward: poor relevance can reduce opportunity capture and realization, weakening trust, participation, outcome information, and future decisioning. This is a learning loop organized around realized outcomes—not simply offer personalization."
+      ],
       nodes:{V01:[600,80],V02:[930,190],V03:[1010,430],V04:[760,580],V05:[440,580],V06:[190,430],V07:[270,190]},
       edges:[
-        ["V01","V02","+",""],["V02","V03","+",""],["V03","V04","+","delay"],["V04","V05","+","delay"],
-        ["V05","V06","+","conditional"],["V06","V07","+","delay"],["V07","V01","+","operational"]
+        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned."],
+        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized."],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."],
+        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with."],
+        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action."],
+        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context."]
       ]
     },
     b1:{
       badge:"B1 · Balancing",title:"The operational constraint",
       summary:"Participation can increase processing demand and operational load, creating friction that reduces realized value and eventually constrains participation.",
+      narrative:[
+        "As repeat participation increases, more reward events must be qualified, posted, redeemed, fulfilled, explained, and supported. If this demand grows faster than effective operational capacity, delays, errors, and unresolved exceptions increase. These failures reduce successful value realization, weaken trust, and eventually constrain participation.",
+        "Balancing does not mean beneficial. This loop can impose a ceiling on participation and value realization."
+      ],
       nodes:{V05:[600,80],V08:[930,190],V09:[1010,430],V10:[760,580],V03:[440,580],V04:[190,430]},
       edges:[
-        ["V05","V08","+",""],["V08","V09","+","conditional"],["V09","V10","+","delay"],
-        ["V10","V03","−","journey-dependent"],["V03","V04","+","delay"],["V04","V05","+",""]
+        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions."],
+        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately."],
+        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases."],
+        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit."],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."]
       ]
     },
     coupled:{
-      badge:"R1 + B1 · Coupled",title:"Growth and constraint in one system",
+      badge:"R1 + B1 · Linked Loops",title:"Growth and constraint in one system",
       summary:"The desired flywheel and its operational constraint share value realization, trust, and repeat participation.",
-      nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[85,330],V08:[1010,565],V09:[1120,330],V10:[1010,100]},
+      narrative:[
+        "Repeat participation creates two effects at the same time: richer outcome information can strengthen relevance and learning through R1, while additional qualification, fulfilment, exception, and support demand can increase operational pressure through B1.",
+        "The central tension is whether learning, coordination, and recovery improve quickly enough for the reinforcing value-realization loop to remain stronger than the operational constraint created by growing participation."
+      ],
+      nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1070,330],V10:[1010,100]},
       edges:[
-        ["V01","V02","+",""],["V02","V03","+",""],["V03","V04","+","delay"],["V04","V05","+","delay"],
-        ["V05","V06","+","conditional"],["V06","V07","+","delay"],["V07","V01","+","operational"],
-        ["V05","V08","+",""],["V08","V09","+","conditional"],["V09","V10","+","delay"],["V10","V03","−","journey-dependent"]
+        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned."],
+        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized."],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."],
+        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with."],
+        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action."],
+        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context."],
+        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions."],
+        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately."],
+        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases."],
+        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit."]
       ]
     }
   };
@@ -82,15 +111,17 @@
   function edgePath(a,b) {
     var dx=b[0]-a[0],dy=b[1]-a[1];
     var length=Math.sqrt(dx*dx+dy*dy) || 1;
-    var sx=a[0]+dx/length*112,sy=a[1]+dy/length*45;
-    var ex=b[0]-dx/length*112,ey=b[1]-dy/length*45;
+    var boundary=Math.min(Math.abs(dx)>0?112/Math.abs(dx):Infinity,Math.abs(dy)>0?45/Math.abs(dy):Infinity);
+    var gap=14/length;
+    var sx=a[0]+dx*(boundary+gap),sy=a[1]+dy*(boundary+gap);
+    var ex=b[0]-dx*(boundary+gap),ey=b[1]-dy*(boundary+gap);
     var bend=Math.min(72,length*0.16);
     var nx=-dy/length*bend,ny=dx/length*bend;
     return "M "+sx+" "+sy+" Q "+((sx+ex)/2+nx)+" "+((sy+ey)/2+ny)+" "+ex+" "+ey;
   }
 
   function linkText(edge) {
-    var note=edge[3] ? " · "+edge[3] : "";
+    var note=edge[3] ? " · delay" : "";
     return edge[2]+note;
   }
 
@@ -105,27 +136,18 @@
     section.querySelector("#sl-detail-links").innerHTML=links.map(function (edge) {
       var outgoing=edge[0]===selected;
       var other=variables[outgoing?edge[1]:edge[0]];
-      return '<div class="sl-link-card"><strong>'+(outgoing?'Outgoing → ':'← Incoming ')+other.label+'</strong><span>'+linkText(edge)+'</span></div>';
+      return '<div class="sl-link-card"><strong>'+(outgoing?'Outgoing → ':'← Incoming ')+other.label+'</strong><span>'+linkText(edge)+'</span><span class="sl-link-mechanism">'+edge[4]+'</span></div>';
     }).join("");
   }
 
   function applySelection() {
-    var layout=layouts[activeView];
-    var connected={}; connected[selected]=true;
-    layout.edges.forEach(function (edge) {
-      if (edge[0]===selected || edge[1]===selected) { connected[edge[0]]=true; connected[edge[1]]=true; }
-    });
     nodesLayer.querySelectorAll(".sl-node").forEach(function (node) {
       var id=node.getAttribute("data-id");
       node.classList.toggle("is-selected",id===selected);
-      node.classList.toggle("is-connected",id!==selected && Boolean(connected[id]));
-      node.classList.toggle("is-dimmed",!connected[id]);
     });
     edgesLayer.querySelectorAll(".sl-edge-group").forEach(function (group) {
-      var active=group.getAttribute("data-from")===selected || group.getAttribute("data-to")===selected;
-      group.querySelector(".sl-edge").classList.toggle("is-active",active);
-      group.querySelector(".sl-edge").classList.toggle("is-dimmed",!active);
-      group.querySelectorAll("text").forEach(function (label) { label.style.opacity=active?"1":"0.22"; });
+      group.querySelector(".sl-edge").classList.add("is-active");
+      group.querySelectorAll("text").forEach(function (label) { label.style.opacity="1"; });
     });
     updateDetail();
   }
@@ -136,18 +158,19 @@
     section.querySelector("#sl-loop-badge").textContent=layout.badge;
     section.querySelector("#sl-loop-title").textContent=layout.title;
     section.querySelector("#sl-loop-summary").textContent=layout.summary;
+    section.querySelector("#sl-loop-narrative").innerHTML=layout.narrative.map(function (paragraph) { return "<p>"+paragraph+"</p>"; }).join("");
     nodesLayer.textContent="";
     edgesLayer.textContent="";
 
     layout.edges.forEach(function (edge) {
       var a=layout.nodes[edge[0]],b=layout.nodes[edge[1]];
       var group=svgEl("g",{class:"sl-edge-group","data-from":edge[0],"data-to":edge[1]});
-      var path=svgEl("path",{d:edgePath(a,b),class:"sl-edge"+(edge[3].indexOf("delay")>=0?" is-delay":"")});
+      var path=svgEl("path",{d:edgePath(a,b),class:"sl-edge is-active"+(edge[3]?" is-delay":"")});
       group.appendChild(path);
       var mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
       var polarity=svgEl("text",{x:mx,y:my-7,class:"sl-edge-label"}); polarity.textContent=edge[2];
       group.appendChild(polarity);
-      if (edge[3]) { var note=svgEl("text",{x:mx,y:my+12,class:"sl-edge-note"}); note.textContent=edge[3]; group.appendChild(note); }
+      if (edge[3]) { var note=svgEl("text",{x:mx,y:my+12,class:"sl-edge-note"}); note.textContent="delay"; group.appendChild(note); }
       edgesLayer.appendChild(group);
     });
 
