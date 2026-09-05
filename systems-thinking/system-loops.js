@@ -39,13 +39,13 @@
       ],
       nodes:{V01:[600,80],V02:[930,190],V03:[1010,430],V04:[760,580],V05:[440,580],V06:[190,430],V07:[270,190]},
       edges:[
-        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned."],
-        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized."],
-        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
-        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."],
-        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with."],
-        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action."],
-        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context."]
+        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned.","CL01"],
+        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized.","CL02"],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program.","CL03"],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again.","CL04"],
+        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with.","CL05"],
+        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action.","CL06"],
+        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context.","CL07"]
       ]
     },
     b1:{
@@ -57,12 +57,12 @@
       ],
       nodes:{V05:[600,80],V08:[930,190],V09:[1010,430],V10:[760,580],V03:[440,580],V04:[190,430]},
       edges:[
-        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions."],
-        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately."],
-        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases."],
-        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit."],
-        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
-        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."]
+        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions.","CL08"],
+        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately.","CL09"],
+        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases.","CL10"],
+        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit.","CL11"],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program.","CL12 · same relationship as CL03"],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again.","CL13 · same relationship as CL04"]
       ]
     },
     coupled:{
@@ -74,17 +74,17 @@
       ],
       nodes:{V01:[180,100],V02:[470,100],V03:[740,220],V04:[740,445],V05:[470,565],V06:[180,565],V07:[130,330],V08:[1010,565],V09:[1070,330],V10:[1010,100]},
       edges:[
-        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned."],
-        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized."],
-        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program."],
-        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again."],
-        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with."],
-        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action."],
-        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context."],
-        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions."],
-        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately."],
-        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases."],
-        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit."]
+        ["V01","V02","+",false,"Relevant, understandable opportunities are more likely to be pursued and successfully earned.","CL01"],
+        ["V02","V03","+",false,"More worthwhile value captured creates more value capable of being fulfilled and realized.","CL02"],
+        ["V03","V04","+",true,"Repeated successful delivery gradually builds confidence in the program.","CL03 / CL12"],
+        ["V04","V05","+",true,"Higher trust increases members’ willingness to participate again.","CL04 / CL13"],
+        ["V05","V06","+",false,"Participation creates outcome signals about what members pursue, receive, ignore, or struggle with.","CL05"],
+        ["V06","V07","+",true,"Usable outcomes improve learning after analysis, decision updates, and organizational action.","CL06"],
+        ["V07","V01","+",false,"Better decisions improve opportunity selection, timing, eligibility, and delivery context.","CL07"],
+        ["V05","V08","+",false,"More participation produces more transactions, qualifications, fulfilments, and possible exceptions.","CL08"],
+        ["V08","V09","+",false,"Demand increases operational load when capacity and coordination do not scale proportionately.","CL09"],
+        ["V09","V10","+",true,"Capacity pressure and weak coordination tend to increase backlogs, delays, errors, and unresolved cases.","CL10"],
+        ["V10","V03","−",false,"Failures prevent worthwhile value from becoming a successfully fulfilled benefit.","CL11"]
       ]
     }
   };
@@ -136,7 +136,7 @@
     section.querySelector("#sl-detail-links").innerHTML=links.map(function (edge) {
       var outgoing=edge[0]===selected;
       var other=variables[outgoing?edge[1]:edge[0]];
-      return '<div class="sl-link-card"><strong>'+(outgoing?'Outgoing → ':'← Incoming ')+other.label+'</strong><span>'+linkText(edge)+'</span><span class="sl-link-mechanism">'+edge[4]+'</span></div>';
+      return '<div class="sl-link-card"><strong>'+(outgoing?'Outgoing → ':'← Incoming ')+other.label+'</strong><span>'+edge[5]+' · '+linkText(edge)+'</span><span class="sl-link-mechanism">'+edge[4]+'</span></div>';
     }).join("");
   }
 

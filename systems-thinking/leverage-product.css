@@ -37,6 +37,7 @@
 .lp-canvas marker path { fill: var(--muted-foreground); }
 .lp-loop-edge { fill: none; stroke: color-mix(in srgb, var(--ring) 62%, var(--foreground)); stroke-width: 2.8; marker-end: url(#lp-arrow); }
 .lp-loop-edge.is-delay { stroke-dasharray: 8 6; }
+.lp-loop-edge.is-leverage { stroke: var(--lm-future); stroke-width: 4.2; }
 .lp-loop-polarity { fill: var(--muted-foreground); font-size: 15px; font-weight: 650; text-anchor: middle; }
 .lp-loop-node rect { fill: color-mix(in srgb, var(--lm-capability) 14%, var(--card)); stroke: var(--border); stroke-width: 1.4; transition: stroke 150ms ease, stroke-width 150ms ease, fill 150ms ease; }
 .lp-loop-node.is-shared rect { fill: color-mix(in srgb, var(--lm-value) 18%, var(--card)); }
@@ -88,6 +89,8 @@
 
 .lp-wedge { border-color: color-mix(in srgb, var(--lm-future) 58%, var(--border)); }
 .lp-wedge-definition { margin: 0.8rem 0 0; font-size: calc(var(--font-size-base) * 0.93); line-height: 1.58; }
+.lp-rationale { margin: 0.85rem 0 0; padding-left: 1.15rem; }
+.lp-rationale li + li { margin-top: 0.32rem; }
 .lp-impact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.85rem; }
 .lp-impact { padding: 0.75rem; border-radius: 0.75rem; background: var(--muted); }
 .lp-impact strong { display: block; margin-bottom: 0.3rem; }
@@ -122,6 +125,10 @@
 .lp-new-loop p { margin: 0.45rem 0 0; }
 .lp-mini-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin-top: 0.65rem; }
 .lp-mini-flow span { padding: 0.28rem 0.45rem; border-radius: 0.4rem; background: var(--card); border: 1px solid var(--border); font-size: var(--font-size-small); }
+.lp-validation-grid { display: grid; grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr); gap: 1rem; margin-top: 0.85rem; }
+.lp-validation-grid h4 { margin: 0 0 0.45rem; }
+.lp-validation-grid ul,.lp-validation-grid ol { margin: 0; padding-left: 1.15rem; }
+.lp-validation-grid li + li { margin-top: 0.32rem; }
 .lp-fine-print { max-width: 60rem; margin: 0.75rem auto 0; text-align: center; }
 
 @media (max-width: 900px) {
@@ -130,6 +137,7 @@
   .lp-hero > p,.lp-section-heading > p { margin-top: 0.45rem; text-align: left; }
   .lp-leverage-layout { grid-template-columns: 1fr; }
   .lp-definition-grid,.lp-mechanism-grid,.lp-impact-grid,.lp-two-column,.lp-new-loops { grid-template-columns: 1fr; }
+  .lp-validation-grid { grid-template-columns: 1fr; }
   .lp-sequence { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .lp-sequence span:nth-child(3)::after { display: none; }
 }
